@@ -5,6 +5,8 @@
 	<projects>
 		<project>yunkuo.common</project>
 		<project>yunkuo.core</project>
+		<project>yunkuo-core</project>
+		<project>yunkuo-common</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
