@@ -1,4 +1,4 @@
-package com.yunkuo.cms.action.member;
+package com.yunkuo.cms.controller.site;
 
 import static com.yunkuo.cms.Constants.TPLDIR_CSI;
 
@@ -13,8 +13,9 @@ import com.yunkuo.cms.web.CmsUtils;
 import com.yunkuo.cms.web.FrontUtils;
 import com.yunkuo.common.web.RequestUtils;
 
+
 @Controller
-public class LoginAct {
+public class IdentityController {
 	public static final String LOGIN_CSI = "tpl.loginCsi";
 
 	/**
@@ -33,5 +34,4 @@ public class LoginAct {
 		return FrontUtils.getTplPath(request, site.getSolutionPath(),
 				TPLDIR_CSI, LOGIN_CSI);
 	}
-
 }
