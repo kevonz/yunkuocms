@@ -1,4 +1,4 @@
-package com.yunkuo.cms.web.admin.controller;
+package com.yunkuo.cms.controller.admin;
 
 import static com.yunkuo.core.action.front.LoginAct.MESSAGE;
 import static com.yunkuo.core.action.front.LoginAct.PROCESS_URL;
