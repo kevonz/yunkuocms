@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.octo.captcha.service.image.ImageCaptchaService;
-import com.yunkuo.cms.action.member.CasLoginAct;
 import com.yunkuo.cms.entity.main.CmsSite;
 import com.yunkuo.cms.manager.main.CmsUserMng;
 import com.yunkuo.cms.web.CmsUtils;
@@ -130,7 +129,7 @@ public class IndexController {
 	//####
 	
 	private static final Logger log = LoggerFactory
-			.getLogger(CasLoginAct.class);
+			.getLogger(IndexController.class);
 
 	public static final String COOKIE_ERROR_REMAINING = "_error_remaining";
 	public static final String LOGIN_INPUT = "tpl.loginInput";

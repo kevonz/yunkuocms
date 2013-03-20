@@ -1,4 +1,4 @@
-package com.yunkuo.cms.action.member;
+package com.yunkuo.cms.controller.site.member;
 
 import java.util.Date;
 
