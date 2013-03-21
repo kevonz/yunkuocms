@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.yunkuo.cms.entity.main.Channel;
 import com.yunkuo.cms.entity.main.CmsSite;
 import com.yunkuo.cms.manager.main.ChannelMng;
-import com.yunkuo.cms.web.CmsUtils;
+import com.yunkuo.cms.utils.CmsUtils;
 import com.yunkuo.common.web.ResponseUtils;
 
 @Controller

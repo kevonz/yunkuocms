@@ -1,8 +1,8 @@
 package com.yunkuo.cms.lucene;
 
-import static com.yunkuo.cms.Constants.TPL_STYLE_LIST;
-import static com.yunkuo.cms.Constants.TPL_SUFFIX;
-import static com.yunkuo.cms.web.FrontUtils.PARAM_STYLE_LIST;
+import static com.yunkuo.cms.constant.Constants.TPL_STYLE_LIST;
+import static com.yunkuo.cms.constant.Constants.TPL_SUFFIX;
+import static com.yunkuo.cms.utils.FrontUtils.PARAM_STYLE_LIST;
 import static com.yunkuo.common.web.Constants.UTF8;
 import static com.yunkuo.common.web.freemarker.DirectiveUtils.OUT_LIST;
 import static com.yunkuo.common.web.freemarker.DirectiveUtils.OUT_PAGINATION;
@@ -17,9 +17,9 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.lucene.queryParser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.yunkuo.cms.Constants;
+import com.yunkuo.cms.constant.Constants;
 import com.yunkuo.cms.entity.main.CmsSite;
-import com.yunkuo.cms.web.FrontUtils;
+import com.yunkuo.cms.utils.FrontUtils;
 import com.yunkuo.common.page.Pagination;
 import com.yunkuo.common.web.freemarker.DirectiveUtils;
 import com.yunkuo.common.web.freemarker.ParamsRequiredException;

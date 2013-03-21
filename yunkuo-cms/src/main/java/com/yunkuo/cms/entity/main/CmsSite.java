@@ -1,8 +1,8 @@
 package com.yunkuo.cms.entity.main;
 
-import static com.yunkuo.cms.Constants.RES_PATH;
-import static com.yunkuo.cms.Constants.TPL_BASE;
-import static com.yunkuo.cms.Constants.UPLOAD_PATH;
+import static com.yunkuo.cms.constant.Constants.RES_PATH;
+import static com.yunkuo.cms.constant.Constants.TPL_BASE;
+import static com.yunkuo.cms.constant.Constants.UPLOAD_PATH;
 import static com.yunkuo.common.web.Constants.DEFAULT;
 
 import java.util.Collection;

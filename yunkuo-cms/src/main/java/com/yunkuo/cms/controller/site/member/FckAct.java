@@ -25,7 +25,7 @@ import com.yunkuo.cms.entity.main.CmsSite;
 import com.yunkuo.cms.entity.main.CmsUser;
 import com.yunkuo.cms.entity.main.MarkConfig;
 import com.yunkuo.cms.manager.main.CmsUserMng;
-import com.yunkuo.cms.web.CmsUtils;
+import com.yunkuo.cms.utils.CmsUtils;
 import com.yunkuo.common.fck.Command;
 import com.yunkuo.common.fck.ResourceType;
 import com.yunkuo.common.fck.UploadResponse;

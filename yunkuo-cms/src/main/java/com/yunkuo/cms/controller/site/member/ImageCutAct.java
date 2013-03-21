@@ -1,6 +1,6 @@
 package com.yunkuo.cms.controller.site.member;
 
-import static com.yunkuo.cms.Constants.TPLDIR_MEMBER;
+import static com.yunkuo.cms.constant.Constants.TPLDIR_MEMBER;
 
 import java.io.File;
 
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.yunkuo.cms.entity.main.CmsSite;
 import com.yunkuo.cms.entity.main.CmsUser;
 import com.yunkuo.cms.entity.main.MemberConfig;
-import com.yunkuo.cms.web.CmsUtils;
-import com.yunkuo.cms.web.FrontUtils;
+import com.yunkuo.cms.utils.CmsUtils;
+import com.yunkuo.cms.utils.FrontUtils;
 import com.yunkuo.common.image.ImageScale;
 import com.yunkuo.common.upload.FileRepository;
 import com.yunkuo.core.entity.Ftp;

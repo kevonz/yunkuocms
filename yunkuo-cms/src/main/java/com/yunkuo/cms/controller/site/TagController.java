@@ -1,6 +1,6 @@
 package com.yunkuo.cms.controller.site;
 
-import static com.yunkuo.cms.Constants.TPLDIR_SPECIAL;
+import static com.yunkuo.cms.constant.Constants.TPLDIR_SPECIAL;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.yunkuo.cms.entity.main.CmsSite;
 import com.yunkuo.cms.entity.main.ContentTag;
 import com.yunkuo.cms.manager.main.ContentTagMng;
-import com.yunkuo.cms.web.CmsUtils;
-import com.yunkuo.cms.web.FrontUtils;
+import com.yunkuo.cms.utils.CmsUtils;
+import com.yunkuo.cms.utils.FrontUtils;
 
 @Controller
 public class TagController {

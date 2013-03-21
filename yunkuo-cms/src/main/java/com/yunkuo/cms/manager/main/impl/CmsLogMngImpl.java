@@ -18,7 +18,7 @@ import com.yunkuo.cms.entity.main.CmsSite;
 import com.yunkuo.cms.entity.main.CmsUser;
 import com.yunkuo.cms.manager.main.CmsLogMng;
 import com.yunkuo.cms.manager.main.CmsUserMng;
-import com.yunkuo.cms.web.CmsUtils;
+import com.yunkuo.cms.utils.CmsUtils;
 import com.yunkuo.common.page.Pagination;
 import com.yunkuo.common.web.RequestUtils;
 import com.yunkuo.common.web.springmvc.MessageResolver;

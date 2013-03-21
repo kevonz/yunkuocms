@@ -1,6 +1,6 @@
 package com.yunkuo.cms.controller.site.member;
 
-import static com.yunkuo.cms.Constants.TPLDIR_MEMBER;
+import static com.yunkuo.cms.constant.Constants.TPLDIR_MEMBER;
 
 import java.io.IOException;
 
@@ -21,9 +21,9 @@ import com.yunkuo.cms.entity.main.CmsUserExt;
 import com.yunkuo.cms.entity.main.MemberConfig;
 import com.yunkuo.cms.manager.main.CmsUserExtMng;
 import com.yunkuo.cms.manager.main.CmsUserMng;
-import com.yunkuo.cms.web.CmsUtils;
-import com.yunkuo.cms.web.FrontUtils;
-import com.yunkuo.cms.web.WebErrors;
+import com.yunkuo.cms.utils.CmsUtils;
+import com.yunkuo.cms.utils.FrontUtils;
+import com.yunkuo.cms.utils.WebErrors;
 import com.yunkuo.common.web.ResponseUtils;
 
 /**

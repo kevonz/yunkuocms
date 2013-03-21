@@ -31,31 +31,31 @@
 		</property>
 	</bean>
 	<!--标签-->
-	<bean id="cms_pagination" class="com.yunkuo.cms.action.directive.PaginationDirective"/>
-	<bean id="cms_channel_list" class="com.yunkuo.cms.action.directive.ChannelListDirective"/>
-	<bean id="cms_channel_page" class="com.yunkuo.cms.action.directive.ChannelPageDirective"/>
-	<bean id="cms_channel" class="com.yunkuo.cms.action.directive.ChannelDirective"/>
-	<bean id="cms_content" class="com.yunkuo.cms.action.directive.ContentDirective"/>
-	<bean id="cms_content_list" class="com.yunkuo.cms.action.directive.ContentListDirective"/>
-	<bean id="cms_content_page" class="com.yunkuo.cms.action.directive.ContentPageDirective"/>
-	<bean id="cms_tag_list" class="com.yunkuo.cms.action.directive.ContentTagListDirective"/>
-	<bean id="cms_tag_page" class="com.yunkuo.cms.action.directive.ContentTagPageDirective"/>
-	<bean id="cms_topic_list" class="com.yunkuo.cms.action.directive.CmsTopicListDirective"/>
-	<bean id="cms_topic_page" class="com.yunkuo.cms.action.directive.CmsTopicPageDirective"/>
-	<bean id="cms_comment_list" class="com.yunkuo.cms.action.directive.CmsCommentListDirective"/>
-	<bean id="cms_comment_page" class="com.yunkuo.cms.action.directive.CmsCommentPageDirective"/>
-	<bean id="cms_guestbook_ctg_list" class="com.yunkuo.cms.action.directive.CmsGuestbookCtgListDirective"/>
-	<bean id="cms_guestbook_list" class="com.yunkuo.cms.action.directive.CmsGuestbookListDirective"/>
-	<bean id="cms_guestbook_page" class="com.yunkuo.cms.action.directive.CmsGuestbookPageDirective"/>
-	<bean id="cms_vote" class="com.yunkuo.cms.action.directive.CmsVoteDirective"/>
-	<bean id="cms_friendlink_ctg_list" class="com.yunkuo.cms.action.directive.CmsFriendlinkCtgListDirective"/>
-	<bean id="cms_friendlink_list" class="com.yunkuo.cms.action.directive.CmsFriendlinkListDirective"/>
+	<bean id="cms_pagination" class="com.yunkuo.cms.controller.site.directive.PaginationDirective"/>
+	<bean id="cms_channel_list" class="com.yunkuo.cms.controller.site.directive.ChannelListDirective"/>
+	<bean id="cms_channel_page" class="com.yunkuo.cms.controller.site.directive.ChannelPageDirective"/>
+	<bean id="cms_channel" class="com.yunkuo.cms.controller.site.directive.ChannelDirective"/>
+	<bean id="cms_content" class="com.yunkuo.cms.controller.site.directive.ContentDirective"/>
+	<bean id="cms_content_list" class="com.yunkuo.cms.controller.site.directive.ContentListDirective"/>
+	<bean id="cms_content_page" class="com.yunkuo.cms.controller.site.directive.ContentPageDirective"/>
+	<bean id="cms_tag_list" class="com.yunkuo.cms.controller.site.directive.ContentTagListDirective"/>
+	<bean id="cms_tag_page" class="com.yunkuo.cms.controller.site.directive.ContentTagPageDirective"/>
+	<bean id="cms_topic_list" class="com.yunkuo.cms.controller.site.directive.CmsTopicListDirective"/>
+	<bean id="cms_topic_page" class="com.yunkuo.cms.controller.site.directive.CmsTopicPageDirective"/>
+	<bean id="cms_comment_list" class="com.yunkuo.cms.controller.site.directive.CmsCommentListDirective"/>
+	<bean id="cms_comment_page" class="com.yunkuo.cms.controller.site.directive.CmsCommentPageDirective"/>
+	<bean id="cms_guestbook_ctg_list" class="com.yunkuo.cms.controller.site.directive.CmsGuestbookCtgListDirective"/>
+	<bean id="cms_guestbook_list" class="com.yunkuo.cms.controller.site.directive.CmsGuestbookListDirective"/>
+	<bean id="cms_guestbook_page" class="com.yunkuo.cms.controller.site.directive.CmsGuestbookPageDirective"/>
+	<bean id="cms_vote" class="com.yunkuo.cms.controller.site.directive.CmsVoteDirective"/>
+	<bean id="cms_friendlink_ctg_list" class="com.yunkuo.cms.controller.site.directive.CmsFriendlinkCtgListDirective"/>
+	<bean id="cms_friendlink_list" class="com.yunkuo.cms.controller.site.directive.CmsFriendlinkListDirective"/>
 	<bean id="cms_lucene_list" class="com.yunkuo.cms.lucene.LuceneDirectiveList"/>
 	<bean id="cms_lucene_page" class="com.yunkuo.cms.lucene.LuceneDirectivePage"/>
-	<bean id="cms_advertising" class="com.yunkuo.cms.action.directive.CmsAdvertisingDirective"/>
+	<bean id="cms_advertising" class="com.yunkuo.cms.controller.site.directive.CmsAdvertisingDirective"/>
 	
 	<!--后台权限标签-->
-	<bean id="cms_perm" class="com.yunkuo.cms.web.PermistionDirective"/>
+	<bean id="cms_perm" class="com.yunkuo.cms.utils.PermistionDirective"/>
 	
 	<!--SERVICE-->
 	<bean id="contentCountCache" class="com.yunkuo.cms.service.ContentCountCacheImpl"/>
@@ -299,7 +299,7 @@
 	<bean id="realPathResolver" class="com.yunkuo.common.web.springmvc.ServletContextRealPathResolver"/>
 	<bean id="fileRepository" class="com.yunkuo.common.upload.FileRepository"/>
 	
-	<bean id="templateAct" class="com.yunkuo.cms.action.admin.assist.TemplateAct">
+	<bean id="templateAct" class="com.yunkuo.cms.controller.admin.assist.TemplateAct">
 		<property name="tplManager" ref="tplManager"/>
 	</bean>
 	<!--文件模板-->

@@ -1,6 +1,6 @@
 package com.yunkuo.cms.manager.assist.impl;
 
-import static com.yunkuo.cms.web.FrontUtils.RES_EXP;
+import static com.yunkuo.cms.utils.FrontUtils.RES_EXP;
 import static com.yunkuo.common.web.Constants.SPT;
 import static com.yunkuo.common.web.Constants.UTF8;
 
@@ -30,7 +30,7 @@ import com.yunkuo.cms.entity.assist.CmsFile;
 import com.yunkuo.cms.entity.main.CmsSite;
 import com.yunkuo.cms.manager.assist.CmsFileMng;
 import com.yunkuo.cms.manager.assist.CmsResourceMng;
-import com.yunkuo.cms.web.FrontUtils;
+import com.yunkuo.cms.utils.FrontUtils;
 import com.yunkuo.common.file.FileWrap;
 import com.yunkuo.common.file.FileWrap.FileComparator;
 import com.yunkuo.common.util.Zipper.FileEntry;

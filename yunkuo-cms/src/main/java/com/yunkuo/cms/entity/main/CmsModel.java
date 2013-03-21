@@ -1,9 +1,9 @@
 package com.yunkuo.cms.entity.main;
 
-import static com.yunkuo.cms.Constants.TPLDIR_ALONE;
-import static com.yunkuo.cms.Constants.TPLDIR_CHANNEL;
-import static com.yunkuo.cms.Constants.TPLDIR_CONTENT;
-import static com.yunkuo.cms.Constants.TPL_SUFFIX;
+import static com.yunkuo.cms.constant.Constants.TPLDIR_ALONE;
+import static com.yunkuo.cms.constant.Constants.TPLDIR_CHANNEL;
+import static com.yunkuo.cms.constant.Constants.TPLDIR_CONTENT;
+import static com.yunkuo.cms.constant.Constants.TPL_SUFFIX;
 import static com.yunkuo.common.web.Constants.DEFAULT;
 
 import org.apache.commons.lang.StringUtils;

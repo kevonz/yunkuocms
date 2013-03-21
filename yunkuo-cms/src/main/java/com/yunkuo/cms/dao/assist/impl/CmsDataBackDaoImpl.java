@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
-import com.yunkuo.cms.Constants;
+import com.yunkuo.cms.constant.Constants;
 import com.yunkuo.cms.dao.assist.CmsDataBackDao;
 import com.yunkuo.cms.entity.back.CmsField;
 

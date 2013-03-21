@@ -1,6 +1,6 @@
 package com.yunkuo.cms.controller.site.member;
 
-import static com.yunkuo.cms.Constants.TPLDIR_GUESTBOOK;
+import static com.yunkuo.cms.constant.Constants.TPLDIR_GUESTBOOK;
 import static com.yunkuo.common.page.SimplePage.cpn;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,9 +16,9 @@ import com.yunkuo.cms.entity.main.CmsSite;
 import com.yunkuo.cms.entity.main.CmsUser;
 import com.yunkuo.cms.entity.main.MemberConfig;
 import com.yunkuo.cms.manager.assist.CmsGuestbookMng;
-import com.yunkuo.cms.web.CmsUtils;
-import com.yunkuo.cms.web.FrontUtils;
-import com.yunkuo.cms.web.WebErrors;
+import com.yunkuo.cms.utils.CmsUtils;
+import com.yunkuo.cms.utils.FrontUtils;
+import com.yunkuo.cms.utils.WebErrors;
 import com.yunkuo.common.page.Pagination;
 import com.yunkuo.common.web.CookieUtils;
 

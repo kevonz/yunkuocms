@@ -18,7 +18,7 @@ import com.yunkuo.cms.entity.main.CmsUser;
 import com.yunkuo.cms.manager.main.ChannelMng;
 import com.yunkuo.cms.manager.main.CmsUserMng;
 import com.yunkuo.cms.statistic.CmsStatistic.CmsStatisticModel;
-import com.yunkuo.cms.web.CmsUtils;
+import com.yunkuo.cms.utils.CmsUtils;
 import com.yunkuo.common.page.Pagination;
 import com.yunkuo.common.web.CookieUtils;
 import com.yunkuo.common.web.RequestUtils;

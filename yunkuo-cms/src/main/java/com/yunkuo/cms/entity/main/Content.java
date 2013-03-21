@@ -16,8 +16,8 @@ import org.apache.commons.lang.StringUtils;
 import com.yunkuo.cms.entity.assist.CmsComment;
 import com.yunkuo.cms.entity.main.Channel.AfterCheckEnum;
 import com.yunkuo.cms.entity.main.base.BaseContent;
-import com.yunkuo.cms.staticpage.StaticPageUtils;
-import com.yunkuo.cms.web.CmsThreadVariable;
+import com.yunkuo.cms.utils.CmsThreadVariable;
+import com.yunkuo.cms.utils.StaticPageUtils;
 import com.yunkuo.core.web.ContentInterface;
 
 public class Content extends BaseContent implements ContentInterface {

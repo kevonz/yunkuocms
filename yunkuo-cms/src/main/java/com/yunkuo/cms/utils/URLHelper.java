@@ -6,7 +6,6 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.web.util.UrlPathHelper;
 
 import com.yunkuo.cms.entity.main.CmsSite;
-import com.yunkuo.cms.web.CmsUtils;
 
 /**
  * URI帮助类

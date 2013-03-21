@@ -1,7 +1,7 @@
 package com.yunkuo.cms.staticpage;
 
-import static com.yunkuo.cms.Constants.TPLDIR_INDEX;
-import static com.yunkuo.cms.action.front.DynamicPageAct.TPL_INDEX;
+import static com.yunkuo.cms.constant.Constants.TPLDIR_INDEX;
+import static com.yunkuo.cms.controller.site.unit.DynamicPageAct.TPL_INDEX;
 import static com.yunkuo.common.web.Constants.UTF8;
 
 import java.io.File;
@@ -27,7 +27,7 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import com.yunkuo.cms.entity.main.Channel;
 import com.yunkuo.cms.entity.main.CmsSite;
 import com.yunkuo.cms.entity.main.Content;
-import com.yunkuo.cms.web.FrontUtils;
+import com.yunkuo.cms.utils.FrontUtils;
 import com.yunkuo.common.web.Constants;
 import com.yunkuo.common.web.springmvc.RealPathResolver;
 

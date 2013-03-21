@@ -7,7 +7,6 @@
 	default-lazy-init="true">
 	<context:component-scan base-package="com.yunkuo.cms.controller.site" />
 	<context:annotation-config/>
-	<context:component-scan base-package="com.yunkuo.cms.action.front" />
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="cacheSeconds" value="-1"/>
 		<property name="basenames">
@@ -35,8 +34,8 @@
 			</list>
 		</property>
 	</bean>
-	<bean id="frontContextInterceptor" class="com.yunkuo.cms.web.FrontContextInterceptor"/>
-	<bean id="frontLocaleInterceptor" class="com.yunkuo.cms.web.FrontLocaleInterceptor"/>
+	<bean id="frontContextInterceptor" class="com.yunkuo.cms.utils.FrontContextInterceptor"/>
+	<bean id="frontLocaleInterceptor" class="com.yunkuo.cms.utils.FrontLocaleInterceptor"/>
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
 		<property name="cookieName" value="clientlanguage"/>
 		<property name="cookieMaxAge" value="-1"/>

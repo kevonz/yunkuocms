@@ -18,7 +18,7 @@ import com.yunkuo.cms.manager.main.ChannelMng;
 import com.yunkuo.cms.manager.main.CmsUserMng;
 import com.yunkuo.cms.statistic.workload.CmsWorkLoadStatistic.CmsWorkLoadStatisticDateKind;
 import com.yunkuo.cms.statistic.workload.CmsWorkLoadStatistic.CmsWorkLoadStatisticGroup;
-import com.yunkuo.cms.web.CmsUtils;
+import com.yunkuo.cms.utils.CmsUtils;
 import com.yunkuo.common.util.DateUtils;
 
 /**

@@ -13,7 +13,7 @@ import java.util.TreeSet;
 import org.apache.commons.lang.StringUtils;
 
 import com.yunkuo.cms.entity.main.base.BaseChannel;
-import com.yunkuo.cms.staticpage.StaticPageUtils;
+import com.yunkuo.cms.utils.StaticPageUtils;
 import com.yunkuo.common.hibernate3.HibernateTree;
 import com.yunkuo.common.hibernate3.PriorityComparator;
 import com.yunkuo.common.hibernate3.PriorityInterface;

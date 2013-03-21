@@ -23,7 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.yunkuo.cms.Constants;
+import com.yunkuo.cms.constant.Constants;
 import com.yunkuo.cms.entity.main.Content;
 import com.yunkuo.cms.manager.main.ContentMng;
 import com.yunkuo.common.page.Pagination;
