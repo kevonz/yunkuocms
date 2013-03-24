@@ -7,9 +7,9 @@
 		<property name="configLocation">
 			<value>/WEB-INF/config/ehcache/ehcache-application.xml</value>
 		</property>
-		<property name="diskStoreLocation">
+		<!-- <property name="diskStoreLocation">
 			<value>/WEB-INF/cache/application</value>
-		</property>
+		</property> -->
 	</bean>
 	<!--SESSION缓存-->
 	<bean id="ehSessionCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
