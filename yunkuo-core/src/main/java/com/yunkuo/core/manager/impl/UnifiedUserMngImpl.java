@@ -42,7 +42,7 @@ public class UnifiedUserMngImpl implements UnifiedUserMng {
 		user.setResetKey(uuid);
 		String resetPwd = RandomStringUtils.randomNumeric(10);
 		user.setResetPwd(resetPwd);
-		senderEmail(user.getId(), user.getUsername(), user.getEmail(), user
+		senderEmail(user.getUserId(), user.getUsername(), user.getEmail(), user
 				.getResetKey(), user.getResetPwd(), email, tpl);
 		return user;
 	}
@@ -136,13 +136,13 @@ public class UnifiedUserMngImpl implements UnifiedUserMng {
 					+ username);
 		}
 		if (!pwdEncoder.isPasswordValid(user.getPassword(), password)) {
-			updateLoginError(user.getId(), ip);
+			updateLoginError(user.getUserId(), ip);
 			throw new BadCredentialsException("password invalid");
 		}
 		if (!user.getActivation()) {
 			throw new BadCredentialsException("account not activated");
 		}
-		updateLoginSuccess(user.getId(), ip);
+		updateLoginSuccess(user.getUserId(), ip);
 		return user;
 	}
 
@@ -288,7 +288,7 @@ public class UnifiedUserMngImpl implements UnifiedUserMng {
 	}
 
 	public UnifiedUser activeLogin(UnifiedUser user, String ip) {
-		updateLoginSuccess(user.getId(), ip);
+		updateLoginSuccess(user.getUserId(), ip);
 		return user;
 	}
 

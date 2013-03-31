@@ -58,7 +58,7 @@ public class UnifiedUserAct {
 		}
 		UnifiedUser user = manager.save(username, email, password, request
 				.getRemoteAddr());
-		log.info("save UnifiedUser id={}, username={}", user.getId(), user
+		log.info("save UnifiedUser id={}, username={}", user.getUserId(), user
 				.getUsername());
 		return "redirect:v_list";
 	}
@@ -71,7 +71,7 @@ public class UnifiedUserAct {
 			return errors.showErrorPage(model);
 		}
 		UnifiedUser user = manager.update(id, password, email);
-		log.info("update UnifiedUser id={}.", user.getId());
+		log.info("update UnifiedUser id={}.", user.getUserId());
 		return list(pageNo, request, model);
 	}
 
@@ -84,7 +84,7 @@ public class UnifiedUserAct {
 		}
 		UnifiedUser[] beans = manager.deleteByIds(ids);
 		for (UnifiedUser bean : beans) {
-			log.info("delete UnifiedUser id={}", bean.getId());
+			log.info("delete UnifiedUser id={}", bean.getUserId());
 		}
 		return list(pageNo, request, model);
 	}

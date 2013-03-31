@@ -572,7 +572,7 @@ public class IdentityController {
 			model.addAttribute("status", 5);
 		} else {
 			try {
-				unifiedUserMng.passwordForgotten(user.getId(), sender, msgTpl);
+				unifiedUserMng.passwordForgotten(user.getUserId(), sender, msgTpl);
 				model.addAttribute("status", 0);
 			} catch (Exception e) {
 				// 发送邮件异常

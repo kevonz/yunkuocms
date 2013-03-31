@@ -322,7 +322,7 @@ public class CmsUser extends BaseCmsUser implements PriorityInterface {
 
 	public void forUser(UnifiedUser u) {
 		setDisabled(false);
-		setId(u.getId());
+		setId(u.getUserId());
 		setUsername(u.getUsername());
 		setEmail(u.getEmail());
 		setRegisterIp(u.getRegisterIp());

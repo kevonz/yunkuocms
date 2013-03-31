@@ -35,7 +35,7 @@ public class AuthenticationMngImpl implements AuthenticationMng {
 			BadCredentialsException {
 		UnifiedUser user = unifiedUserMng.login(username, password, ip);
 		Authentication auth = new Authentication();
-		auth.setUid(user.getId());
+		auth.setUid(user.getUserId());
 		auth.setUsername(user.getUsername());
 		auth.setEmail(user.getEmail());
 		auth.setLoginIp(ip);
@@ -49,7 +49,7 @@ public class AuthenticationMngImpl implements AuthenticationMng {
 			SessionProvider session) {
 		unifiedUserMng.activeLogin(user, ip);
 		Authentication auth = new Authentication();
-		auth.setUid(user.getId());
+		auth.setUid(user.getUserId());
 		auth.setUsername(user.getUsername());
 		auth.setEmail(user.getEmail());
 		auth.setLoginIp(ip);
