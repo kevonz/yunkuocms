@@ -93,8 +93,8 @@ public class AdminLoginController {
 				Authentication auth = authMng.login(username, password, ip,
 						request, response, session);
 				// 是否需要在这里加上登录次数的更新？按正常的方式，应该在process里面处理的，不过这里处理也没大问题。
-				cmsUserMng.updateLoginInfo(auth.getUid(), ip);
-				CmsUser user = cmsUserMng.findById(auth.getUid());
+				cmsUserMng.updateLoginInfo(auth.getUserId(), ip);
+				CmsUser user = cmsUserMng.findById(auth.getUserId());
 				if (user.getDisabled()) {
 					// 如果已经禁用，则退出登录。
 					authMng.deleteById(auth.getId());

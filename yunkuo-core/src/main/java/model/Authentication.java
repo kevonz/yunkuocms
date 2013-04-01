@@ -1,12 +1,9 @@
-package com.yunkuo.core.entity;
+package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
-import org.hibernate.annotations.GenericGenerator;
-
 import java.util.Date;
-import java.sql.Timestamp;
+
 
 /**
  * The persistent class for the yk_authentication database table.
@@ -16,12 +13,9 @@ import java.sql.Timestamp;
 @Table(name="yk_authentication")
 public class Authentication implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-//	private int hashCode = Integer.MIN_VALUE;
 
-	@Id	
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
-	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="authentication_id")
 	private String id;
 
@@ -38,26 +32,19 @@ public class Authentication implements Serializable {
 	@Column(name="update_time")
 	private Date updateTime;
 
-	private int userId;
+	private int userid;
 
 	private String username;
 
 	public Authentication() {
 	}
 
-	public void init() {
-		Date now = new Timestamp(System.currentTimeMillis());
-		setLoginTime(now);
-		setUpdateTime(now);
-	}
-	
 	public String getId() {
 		return this.id;
 	}
 
 	public void setId(String id) {
 		this.id = id;
-		//this.hashCode = Integer.MIN_VALUE;
 	}
 
 	public String getEmail() {
@@ -92,12 +79,12 @@ public class Authentication implements Serializable {
 		this.updateTime = updateTime;
 	}
 
-	public int getUserId() {
-		return this.userId;
+	public int getUserid() {
+		return this.userid;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
 
 	public String getUsername() {
@@ -108,31 +95,4 @@ public class Authentication implements Serializable {
 		this.username = username;
 	}
 
-	
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.core.entity.Authentication)) return false;
-		else {
-			com.yunkuo.core.entity.Authentication authentication = (com.yunkuo.core.entity.Authentication) obj;
-			if (null == this.getId() || null == authentication.getId()) return false;
-			else return (this.getId().equals(authentication.getId()));
-		}
-	}
-
-	/*public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
-	}*/
-
-
-	public String toString () {
-		return super.toString();
-	}
 }

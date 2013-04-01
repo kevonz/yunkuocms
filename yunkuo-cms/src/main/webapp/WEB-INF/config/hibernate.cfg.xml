@@ -6,6 +6,7 @@
 <hibernate-configuration>
     <session-factory>
         <mapping class="com.yunkuo.core.entity.UnifiedUser" />
+        <mapping class="com.yunkuo.core.entity.Authentication" />
     </session-factory>
          
 </hibernate-configuration>
