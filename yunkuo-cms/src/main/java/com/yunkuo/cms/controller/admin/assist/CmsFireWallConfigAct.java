@@ -142,7 +142,7 @@ public class CmsFireWallConfigAct {
 			site.setDomainAlias(domain);
 		}
 		if(site.getUploadFtp()!=null){
-			siteManager.update(site, site.getUploadFtp().getId());
+			siteManager.update(site, site.getUploadFtp().getFtpId());
 		}else{
 			siteManager.update(site, null);
 		}

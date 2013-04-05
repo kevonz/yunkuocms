@@ -7,6 +7,7 @@
     <session-factory>
         <mapping class="com.yunkuo.core.entity.UnifiedUser" />
         <mapping class="com.yunkuo.core.entity.Authentication" />
+        <mapping class="com.yunkuo.core.entity.Ftp" />
     </session-factory>
          
 </hibernate-configuration>

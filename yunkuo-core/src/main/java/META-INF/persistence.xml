@@ -3,5 +3,6 @@
 	<persistence-unit name="yunkuo-core">
 		<class>model.Authentication</class>
 		<class>model.UnifiedUser</class>
+		<class>model.Ftp1</class>
 	</persistence-unit>
 </persistence>

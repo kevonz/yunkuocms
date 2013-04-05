@@ -50,23 +50,23 @@ public class FtpAct {
 			return errors.showErrorPage(model);
 		}
 		bean = manager.save(bean);
-		log.info("save Ftp id={}", bean.getId());
-		cmsLogMng.operating(request, "ftp.log.save", "id=" + bean.getId()
-				+ ";name=" + bean.getName());
+		log.info("save Ftp id={}", bean.getFtpId());
+		cmsLogMng.operating(request, "ftp.log.save", "id=" + bean.getFtpId()
+				+ ";name=" + bean.getFtpName());
 		return "redirect:v_list";
 	}
 
 	@RequestMapping("/ftp/o_update")
 	public String update(Ftp bean, Integer pageNo, HttpServletRequest request,
 			ModelMap model) {
-		WebErrors errors = validateUpdate(bean.getId(), request);
+		WebErrors errors = validateUpdate(bean.getFtpId(), request);
 		if (errors.hasErrors()) {
 			return errors.showErrorPage(model);
 		}
 		bean = manager.update(bean);
-		log.info("update Ftp id={}.", bean.getId());
-		cmsLogMng.operating(request, "ftp.log.update", "id=" + bean.getId()
-				+ ";name=" + bean.getName());
+		log.info("update Ftp id={}.", bean.getFtpId());
+		cmsLogMng.operating(request, "ftp.log.update", "id=" + bean.getFtpId()
+				+ ";name=" + bean.getFtpName());
 		return list(pageNo, request, model);
 	}
 
@@ -79,9 +79,9 @@ public class FtpAct {
 		}
 		Ftp[] beans = manager.deleteByIds(ids);
 		for (Ftp bean : beans) {
-			log.info("delete Ftp id={}", bean.getId());
-			cmsLogMng.operating(request, "ftp.log.delete", "id=" + bean.getId()
-					+ ";name=" + bean.getName());
+			log.info("delete Ftp id={}", bean.getFtpId());
+			cmsLogMng.operating(request, "ftp.log.delete", "id=" + bean.getFtpId()
+					+ ";name=" + bean.getFtpName());
 		}
 		return list(pageNo, request, model);
 	}
