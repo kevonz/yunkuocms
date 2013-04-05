@@ -9,6 +9,8 @@ public interface CmsDataBackDao {
 
 	public List<String> listTables();
 
+    public List<String> listTables(String catalog);
+    
 	public List<CmsField> listFields(String tablename);
 
 	public List<String> listDataBases();

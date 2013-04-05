@@ -70,9 +70,17 @@ public class DataAct {
 	@RequestMapping("/data/v_list")
 	public String list(ModelMap model, HttpServletRequest request,
 			HttpServletResponse response) {
-		List<String> tables = dataBackMng.listTabels();
-		model.addAttribute("tables", tables);
-		return "data/list";
+		List<String> tables = null;
+		try {
+            // tables = dataBackMng.listTabels();
+            tables = dataBackMng.listTabels(dataBackMng.getDefaultCatalog());
+        }
+        catch (SQLException e) {
+            model.addAttribute("msg", e.toString());
+            return "common/error_message";
+        }
+        model.addAttribute("tables", tables);
+        return "data/list";
 	}
 	
 	@RequestMapping("/data/v_listfields")

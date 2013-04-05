@@ -34,6 +34,11 @@ public class CmsDataBackMngImpl implements CmsDataBackMng {
 	public List<String> listTabels() {
 		return dao.listTables();
 	}
+	
+	@Transactional(readOnly = true)
+    public List<String> listTabels(String catalog) {
+        return dao.listTables(catalog);
+    }
 
 	@Transactional(readOnly = true)
 	public List<String> listDataBases() {

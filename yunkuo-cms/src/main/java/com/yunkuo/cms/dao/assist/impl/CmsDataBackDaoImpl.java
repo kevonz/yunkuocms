@@ -73,6 +73,18 @@ public class CmsDataBackDaoImpl extends JdbcDaoSupport implements
 		return tables;
 	}
 	
+    public List<String> listTables(String catalog) {
+        String sql = " SELECT TABLE_NAME FROM information_schema.`TABLES` WHERE TABLE_SCHEMA='"
+                     + catalog
+                     + "' ";
+        List<String> tables = new ArrayList<String>();
+        SqlRowSet set = getJdbcTemplate().queryForRowSet(sql);
+        while (set.next()) {
+            tables.add(set.getString(1));
+        }
+        return tables;
+    }
+	
 	public List<String> listDataBases() {
 		String sql = " show  databases ";
 		List<String> tables = new ArrayList<String>();

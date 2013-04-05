@@ -7,6 +7,8 @@ import com.yunkuo.cms.entity.back.CmsField;
 
 public interface CmsDataBackMng {
 	public List<String> listTabels();
+	
+    public List<String> listTabels(String catalog);
 
 	public List<CmsField> listFields(String tablename);
 
