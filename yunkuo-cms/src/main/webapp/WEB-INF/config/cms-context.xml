@@ -18,7 +18,7 @@
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />	
 	<!-- 配置允许访问静态文件 -->
 	<mvc:annotation-driven/>
-	<mvc:resources mapping="/static/**" location="/static/"/>    
+	<!-- <mvc:resources mapping="/static/**" location="/static/"/>     -->
     <mvc:default-servlet-handler />
 	
 	
@@ -299,9 +299,9 @@
 	<bean id="realPathResolver" class="com.yunkuo.common.web.springmvc.ServletContextRealPathResolver"/>
 	<bean id="fileRepository" class="com.yunkuo.common.upload.FileRepository"/>
 	
-	<bean id="templateAct" class="com.yunkuo.cms.controller.admin.assist.TemplateAct">
+<!-- 	<bean id="templateAct" class="com.yunkuo.cms.controller.admin.assist.TemplateAct">
 		<property name="tplManager" ref="tplManager"/>
-	</bean>
+	</bean> -->
 	<!--文件模板-->
 	<bean id="tplManager" class="com.yunkuo.core.tpl.FileTplManagerImpl"/>	
 	<!--数据库模板

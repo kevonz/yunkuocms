@@ -270,7 +270,7 @@ public class TemplateAct {
 		ResponseUtils.renderText(response, "");
 	}
 
-	@RequestMapping(value = "/template/v_setting")
+	@RequestMapping(value = "/template/v_setting", method = RequestMethod.GET)
 	public String setting(HttpServletRequest request,
 			HttpServletResponse response, ModelMap model) {
 		CmsSite site = CmsUtils.getSite(request);
@@ -413,10 +413,17 @@ public class TemplateAct {
 
 	@Autowired
 	private CmsLogMng cmsLogMng;
+
+	@Autowired
 	private TplManager tplManager;
+
+	@Autowired
 	private CmsResourceMng resourceMng;
+
+	@Autowired
 	private CmsSiteMng cmsSiteMng;
 
+	@Autowired
 	public void setTplManager(TplManager tplManager) {
 		this.tplManager = tplManager;
 	}
