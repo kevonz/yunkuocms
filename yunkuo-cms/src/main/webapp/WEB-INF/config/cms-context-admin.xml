@@ -113,7 +113,7 @@
 	</bean>
 
 	<context:annotation-config/>
-	<context:component-scan base-package="com.yunkuo.cms.controller.admin,com.yunkuo.cms.lucene,com.yunkuo.cms.staticpage.StaticAct" />
+	<context:component-scan base-package="com.yunkuo.cms.controller.admin,com.yunkuo.cms.lucene" />
 <!-- 	<bean id="templateAct" class="com.yunkuo.cms.controller.admin.assist.TemplateAct">
 		<property name="tplManager" ref="tplManager"/>
 	</bean>	 -->

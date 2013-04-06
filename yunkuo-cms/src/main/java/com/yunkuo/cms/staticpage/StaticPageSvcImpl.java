@@ -198,8 +198,11 @@ public class StaticPageSvcImpl implements StaticPageSvc, InitializingBean {
 	}
 
 	private MessageSource tplMessageSource;
+	@Autowired
 	private RealPathResolver realPathResolver;
+	@Autowired
 	private StaticPageDao staticPageDao;
+	
 	private Configuration conf;
 
 	public void afterPropertiesSet() throws Exception {
@@ -207,16 +210,17 @@ public class StaticPageSvcImpl implements StaticPageSvc, InitializingBean {
 		Assert.notNull(tplMessageSource,
 				"tplMessageSource configuration cannot be null!");
 	}
-
+	
+	@Autowired
 	public void setFreeMarkerConfigurer(
 			FreeMarkerConfigurer freeMarkerConfigurer) {
 		this.conf = freeMarkerConfigurer.getConfiguration();
 	}
-
 	public void setTplMessageSource(MessageSource tplMessageSource) {
 		this.tplMessageSource = tplMessageSource;
 	}
 
+	/*
 	@Autowired
 	public void setStaticPageDao(StaticPageDao staticPageDao) {
 		this.staticPageDao = staticPageDao;
@@ -226,5 +230,5 @@ public class StaticPageSvcImpl implements StaticPageSvc, InitializingBean {
 	public void setRealPathResolver(RealPathResolver realPathResolver) {
 		this.realPathResolver = realPathResolver;
 	}
-
+*/
 }
