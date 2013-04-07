@@ -1,26 +1,71 @@
 ﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-		<groupId>com.yunkuo.cms</groupId>
-		<artifactId>pom.parent</artifactId>
-		<version>1.0.0</version>
-		<relativePath>..\pom.parent\</relativePath>
-  </parent>
-  <groupId>com.yunkuo.cms</groupId>
-  <artifactId>yunkuo-common</artifactId>
-  <version>1.0.0</version>
-  <!--<version>${com.yunkuo.cms.yunkuo-common.version}</version>-->
-  <packaging>jar</packaging>
-  <name>yunkuo-common</name>
-  <url>http://maven.apache.org</url>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.yunkuo.cms</groupId>
+	<artifactId>pom.parent</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<properties>
+		<!-- cms version configuration -->
+		<com.yunkuo.cms.version.major>1</com.yunkuo.cms.version.major>
+		<com.yunkuo.cms.version.minor>0</com.yunkuo.cms.version.minor>
+		<com.yunkuo.cms.version.patch>0</com.yunkuo.cms.version.patch>
+		<com.yunkuo.cms.version.branch>MAIN</com.yunkuo.cms.version.branch>
+		<com.yunkuo.cms.version.type>SNAPSHOT</com.yunkuo.cms.version.type>
+		<com.yunkuo.cms.version>${com.yunkuo.cms.version.major}.${com.yunkuo.cms.version.minor}.${com.yunkuo.cms.version.patch}-${com.yunkuo.cms.version.branch}-${com.yunkuo.cms.version.type}</com.yunkuo.cms.version>
 
-    <properties>
-    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.springframework-version>3.2.2.RELEASE</org.springframework-version>
-		<org.slf4j-version>1.6.1</org.slf4j-version>
+		<!-- cms versions -->
+		<com.yunkuo.cms.yunkuo-common.version>${com.yunkuo.cms.version}</com.yunkuo.cms.yunkuo-common.version>
+		<com.yunkuo.cms.yunkuo-core.version>${com.yunkuo.cms.version}</com.yunkuo.cms.yunkuo-core.version>
+		<com.yunkuo.cms.yunkuo-cms.version>${com.yunkuo.cms.version}</com.yunkuo.cms.yunkuo-cms.version>
+		
+		<!-- dependency version control -->
+		<com.yunkuo.cms.dependency.org.springframework-version>3.2.2.RELEASE</com.yunkuo.cms.dependency.org.springframework-version>
+		<com.yunkuo.cms.dependency.org.slf4j-version>1.6.1</com.yunkuo.cms.dependency.org.slf4j-version>
 	</properties>
-	<dependencies>
+
+	<!-- Reporting configuration -->
+	<!-- This section determines what elements make up the project site. -->
+	<!-- See the individual plugin documentation for more details. -->
+	<!-- http://maven.apache.org/ref/current/maven-model/maven.html#class_reporting -->
+	<reporting />
+
+	<!-- Build configuration -->
+	<!-- This section is used to control all aspects of the build process itself. -->
+	<build>
+		<!-- Plugin Management -->
+		<!-- This section is used to force the version and plugins across all projects -->
+		<pluginManagement>
+		</pluginManagement>
+
+		<!-- Plugins -->
+		<!-- This section defines plugin executions that will apply to every project. -->
+		<plugins>
+		</plugins>
+	</build>
+
+	<!-- Dependency Management -->
+	<!-- This section determines the effective version of artifacts that appear 
+		in inherited projects. -->
+	<!-- Those projects may simply refer to the artifact by groupId, artifactId, 
+		and scope. -->
+	<!-- We user this to maintain dependency convergence for widely used libraries 
+		like spring, hibernate, etc. -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+			<groupId>com.yunkuo</groupId>
+			<artifactId>yunkuo.common</artifactId>
+			<scope>provided</scope>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.yunkuo</groupId>
+			<artifactId>yunkuo.core</artifactId>
+			<scope>provided</scope>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	
 		<!-- ======================================== -->
 		<!-- 系统提供依赖 -->
 		<!-- ======================================== -->
@@ -110,22 +155,27 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>${org.springframework-version}</version>
+			<version>${com.yunkuo.cms.dependency.org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${com.yunkuo.cms.dependency.org.springframework-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>${org.springframework-version}</version>
+			<version>${com.yunkuo.cms.dependency.org.springframework-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jms</artifactId>
-			<version>${org.springframework-version}</version>
+			<version>${com.yunkuo.cms.dependency.org.springframework-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>${org.springframework-version}</version>
+			<version>${com.yunkuo.cms.dependency.org.springframework-version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>javax.servlet.jsp</groupId>
@@ -207,17 +257,17 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>${org.slf4j-version}</version>
+			<version>${com.yunkuo.cms.dependency.org.slf4j-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
-			<version>${org.slf4j-version}</version>
+			<version>${com.yunkuo.cms.dependency.org.slf4j-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>${org.slf4j-version}</version>
+			<version>${com.yunkuo.cms.dependency.org.slf4j-version}</version>
 		</dependency>
 
 		<!-- ======================================== -->
@@ -240,8 +290,7 @@
 					<artifactId>ant</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency> -->		
-
+		</dependency> -->
 		<!-- ======================================== -->
 		<!-- FreeMarker依赖 -->
 		<!-- ======================================== -->
@@ -250,6 +299,7 @@
 			<artifactId>freemarker</artifactId>
 			<version>2.3.19</version>
 		</dependency>
+
 		<!-- ======================================== -->
 		<!-- Quartz -->
 		<!-- ======================================== -->
@@ -311,5 +361,48 @@
 			<version>4.8.1</version>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+		</dependencies>
+	</dependencyManagement>
+	
+	<repositories>
+		<repository>
+			<id>jetty</id>
+			<url>http://download.eclipse.org/jetty/updates/jetty-bundles-8.x</url>
+		</repository>
+		<repository>
+			<id>mvnrepository.com</id>
+			<url>http://mvnrepository.com/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>repo1.maven.org</id>
+			<url>http://repo1.maven.org/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<!-- <repository> <id>mvn.dev.alipay.net</id> <url>http://mvn.dev.alipay.net:8081/artifactory/repo</url> 
+			<snapshots> <enabled>false</enabled> </snapshots> </repository> -->
+		<repository>
+			<id>spring.source</id>
+			<name>SpringSource Repository</name>
+			<url>http://repo.springsource.org/release</url>
+		</repository>
+		<!-- <repository> <id>alibabatech.com</id> <url>http://code.alibabatech.com/svn/fastjson/repository</url> 
+			</repository> -->
+		<repository>
+			<id>taobao.org</id>
+			<url>http://code.taobao.org/mvn/repository</url>
+		</repository>
+		<repository>
+			<id>spring.maven.milestone</id>
+			<url>http://maven.springframework.org/milestone</url>
+		</repository>
+		<repository>
+			<id>Spark Repository</id>
+			<url>http://www.sparkjava.com/nexus/content/repositories/spark</url>
+		</repository>
+	</repositories>
 </project>

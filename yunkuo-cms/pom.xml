@@ -1,10 +1,10 @@
 ﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.yunkuo</groupId>
-	<artifactId>cms</artifactId>
+	<groupId>com.yunkuo.cms</groupId>
+	<artifactId>yunkuo-cms</artifactId>
 	<name>yunkuo-cms</name>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>war</packaging>
 	<properties>
 		<org.springframework-version>3.2.2.RELEASE</org.springframework-version>
@@ -12,16 +12,16 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>com.yunkuo</groupId>
-			<artifactId>yunkuo.common</artifactId>
+			<groupId>com.yunkuo.cms</groupId>
+			<artifactId>yunkuo-common</artifactId>
 			<scope>provided</scope>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
-			<groupId>com.yunkuo</groupId>
-			<artifactId>yunkuo.core</artifactId>
+			<groupId>com.yunkuo.cms</groupId>
+			<artifactId>yunkuo-core</artifactId>
 			<scope>provided</scope>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 	
 		<!-- ======================================== -->
