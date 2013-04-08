@@ -7,10 +7,10 @@
 		<version>1.0.0</version>
 		<relativePath>.\pom.parent\</relativePath>
 	</parent>
-	<artifactId>cms</artifactId>
+	<artifactId>yunkuocms</artifactId>
 	<packaging>pom</packaging>
-	<name>cms</name>
-	<description>cms</description>
+	<name>yunkuocms</name>
+	<description>yunkuocms</description>
 	<modules>
 		<module>pom.parent</module>		
 		<module>yunkuo-common</module>
