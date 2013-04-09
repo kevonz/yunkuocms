@@ -26,7 +26,7 @@ public class ConfigMngImpl implements ConfigMng {
 		List<Config> list = dao.getList();
 		Map<String, String> map = new HashMap<String, String>(list.size());
 		for (Config config : list) {
-			map.put(config.getId(), config.getValue());
+			map.put(config.getCfgKey(), config.getCfgValue());
 		}
 		return map;
 	}
@@ -35,7 +35,7 @@ public class ConfigMngImpl implements ConfigMng {
 	public String getValue(String id) {
 		Config entity = dao.findById(id);
 		if (entity != null) {
-			return entity.getValue();
+			return entity.getCfgValue();
 		} else {
 			return null;
 		}
@@ -72,10 +72,10 @@ public class ConfigMngImpl implements ConfigMng {
 	public Config updateOrSave(String key, String value) {
 		Config config = dao.findById(key);
 		if (config != null) {
-			config.setValue(value);
+			config.setCfgValue(value);
 		} else {
 			config = new Config(key);
-			config.setValue(value);
+			config.setCfgValue(value);
 			dao.save(config);
 		}
 		return config;

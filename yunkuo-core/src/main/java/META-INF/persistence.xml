@@ -4,5 +4,6 @@
 		<class>model.Authentication</class>
 		<class>model.UnifiedUser</class>
 		<class>model.Ftp1</class>
+		<class>com.yunkuo.core.entity.Config</class>
 	</persistence-unit>
 </persistence>
