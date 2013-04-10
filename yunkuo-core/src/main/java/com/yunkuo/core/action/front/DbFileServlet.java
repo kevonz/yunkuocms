@@ -40,7 +40,7 @@ public class DbFileServlet extends HttpServlet {
 		if (mimeType != null) {
 			response.setContentType(mimeType);
 		}
-		String filename = file.getId();
+		String filename = file.getFilename();
 		int index = filename.lastIndexOf("/");
 		if (index != -1) {
 			filename = filename.substring(index + 1);

@@ -87,7 +87,7 @@ public class DbTplMngImpl implements TemplateLoader, TplManager {
 
 	public void save(String name, String source, boolean isDirectory) {
 		DbTpl bean = new DbTpl();
-		bean.setId(name);
+		bean.setName(name);
 		if (!isDirectory && source == null) {
 			source = "";
 		}
@@ -121,7 +121,7 @@ public class DbTplMngImpl implements TemplateLoader, TplManager {
 						"parent directory is a file: " + parentDir.getName());
 			} else if (parentDir == null) {
 				dirTpl = new DbTpl();
-				dirTpl.setId(dir);
+				dirTpl.setName(dir);
 				dirTpl.setDirectory(true);
 				dao.save(dirTpl);
 			}
@@ -182,14 +182,14 @@ public class DbTplMngImpl implements TemplateLoader, TplManager {
 			return;
 		}
 		dao.deleteById(orig);
-		String name = StringUtils.replace(tpl.getId(), orig, dist, 1);
+		String name = StringUtils.replace(tpl.getName(), orig, dist, 1);
 		save(name, tpl.getSource(), tpl.isDirectory());
 		createParentDir(name);
 		if (tpl.isDirectory()) {
 			List<DbTpl> list = dao.getStartWith(orig + "/");
 			for (DbTpl t : list) {
-				dao.deleteById(t.getId());
-				name = StringUtils.replace(t.getId(), orig, dist, 1);
+				dao.deleteById(t.getName());
+				name = StringUtils.replace(t.getName(), orig, dist, 1);
 				save(name, t.getSource(), t.isDirectory());
 			}
 		}

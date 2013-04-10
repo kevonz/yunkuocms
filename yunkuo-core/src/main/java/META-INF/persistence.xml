@@ -5,5 +5,7 @@
 		<class>model.UnifiedUser</class>
 		<class>model.Ftp1</class>
 		<class>com.yunkuo.core.entity.Config</class>
+		<class>com.yunkuo.core.entity.DbTpl</class>
+		<class>com.yunkuo.core.entity.DbFile</class>
 	</persistence-unit>
 </persistence>

@@ -9,6 +9,8 @@
         <mapping class="com.yunkuo.core.entity.Authentication" />
         <mapping class="com.yunkuo.core.entity.Ftp" />
         <mapping class="com.yunkuo.core.entity.Config" />
+        <mapping class="com.yunkuo.core.entity.DbFile" />
+        <mapping class="com.yunkuo.core.entity.DbTpl" />
     </session-factory>
          
 </hibernate-configuration>
