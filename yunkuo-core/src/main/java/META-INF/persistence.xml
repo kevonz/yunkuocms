@@ -7,5 +7,6 @@
 		<class>com.yunkuo.core.entity.Config</class>
 		<class>com.yunkuo.core.entity.DbTpl</class>
 		<class>com.yunkuo.core.entity.DbFile</class>
+		<class>com.yunkuo.core.entity.base.BaseConfig</class>
 	</persistence-unit>
 </persistence>

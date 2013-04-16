@@ -8,6 +8,8 @@ import org.apache.commons.lang.math.NumberUtils;
 
 import com.yunkuo.common.email.EmailSender;
 import com.yunkuo.common.email.MessageTemplate;
+import com.yunkuo.core.entity.base.BaseConfig;
+
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -18,15 +20,10 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="yk_config")
-public class Config implements Serializable {
+public class Config extends BaseConfig {
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@Column(name="cfg_key")
-	private String cfgKey;
-
-	@Column(name="cfg_value")
-	private String cfgValue;
+	
 
 	public Config() {
 	}
@@ -34,25 +31,10 @@ public class Config implements Serializable {
 	 * Constructor for primary key
 	 */
 	public Config(java.lang.String cfgKey) {
-		this.cfgKey = cfgKey;
+		this.setCfgKey(cfgKey);
 	}
 	
 
-	public String getCfgKey() {
-		return this.cfgKey;
-	}
-
-	public void setCfgKey(String cfgKey) {
-		this.cfgKey = cfgKey;
-	}
-
-	public String getCfgValue() {
-		return this.cfgValue;
-	}
-
-	public void setCfgValue(String cfgValue) {
-		this.cfgValue = cfgValue;
-	}
 
 	public static class ConfigLogin {
 		public static String LOGIN_ERROR_INTERVAL = "login_error_interval";
