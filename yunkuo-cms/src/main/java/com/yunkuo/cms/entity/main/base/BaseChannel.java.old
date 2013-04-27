@@ -2,6 +2,7 @@ package com.yunkuo.cms.entity.main.base;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -12,10 +13,6 @@ import javax.persistence.*;
 @Table(name="cms_channel")
 public abstract class BaseChannel  implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	public static String REF = "Channel";
 	public static String PROP_MODEL = "model";
 	public static String PROP_CHANNEL_EXT = "channelExt";
@@ -93,41 +90,17 @@ public abstract class BaseChannel  implements Serializable {
 	// one to one
 	private com.yunkuo.cms.entity.main.ChannelExt channelExt;
 
-	//bi-directional many-to-one association to CmsSite
-	@ManyToOne
-	@JoinColumn(name="site_id")
+	// many to one
 	private com.yunkuo.cms.entity.main.CmsSite site;
-	
-	//bi-directional many-to-one association to CmsModel
-	@ManyToOne
-	@JoinColumn(name="model_id")
 	private com.yunkuo.cms.entity.main.CmsModel model;
-	
-	//bi-directional many-to-one association to CmsChannelAttr
-	@OneToMany(mappedBy="cmsChannel")
 	private com.yunkuo.cms.entity.main.Channel parent;
 
 	// collections
-	//bi-directional many-to-one association to CmsChannelDepartment
-	@OneToMany(mappedBy="cmsChannel")
 	private java.util.Set<com.yunkuo.cms.entity.main.Channel> child;
-
-	//bi-directional one-to-one association to CmsChannelTxt
-	@OneToMany(mappedBy="cmsChannel")
 	private java.util.Set<com.yunkuo.cms.entity.main.CmsGroup> viewGroups;
-
-	//bi-directional one-to-one association to CmsChannelTxt
-	@OneToMany(mappedBy="cmsChannel")
 	private java.util.Set<com.yunkuo.cms.entity.main.CmsGroup> contriGroups;
-	//bi-directional many-to-one association to CmsChannelUser
-	@OneToMany(mappedBy="cmsChannel")
 	private java.util.Set<com.yunkuo.cms.entity.main.CmsUser> users;
-	//bi-directional one-to-one association to CmsChannelTxt
-	@OneToMany(mappedBy="cmsChannel")
 	private java.util.Set<com.yunkuo.cms.entity.main.ChannelTxt> channelTxtSet;
-
-	//bi-directional one-to-one association to CmsChannelTxt
-	@OneToMany(mappedBy="cmsChannel")
 	private java.util.Map<java.lang.String, java.lang.String> attr;
 
 

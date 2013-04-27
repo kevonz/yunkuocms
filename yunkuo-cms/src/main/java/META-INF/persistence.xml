@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="cms">
+		<class>com.yunkuo.cms.entity.main.base.BaseChannel</class>
+		<class>com.yunkuo.cms.entity.main.base.tmp.BaseChannel</class>
+		<class>com.yunkuo.cms.entity.main.base.tmp.CmsChannelAttr</class>
+		<class>com.yunkuo.cms.entity.main.base.tmp.CmsChannelDepartment</class>
+		<class>com.yunkuo.cms.entity.main.base.tmp.CmsChannelDepartmentPK</class>
+		<class>com.yunkuo.cms.entity.main.base.tmp.CmsChannelExt</class>
+		<class>com.yunkuo.cms.entity.main.base.tmp.CmsChannelTxt</class>
+		<class>com.yunkuo.cms.entity.main.base.tmp.CmsChannelUser</class>
+		<class>com.yunkuo.cms.entity.main.base.tmp.CmsChannelUserPK</class>
+		<class>com.yunkuo.cms.entity.main.base.tmp.CmsModel</class>
+		<class>com.yunkuo.cms.entity.main.base.tmp.CmsSite</class>
+	</persistence-unit>
+</persistence>
