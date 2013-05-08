@@ -12,5 +12,8 @@
 		<class>com.yunkuo.cms.entity.main.base.tmp.CmsChannelUserPK</class>
 		<class>com.yunkuo.cms.entity.main.base.tmp.CmsModel</class>
 		<class>com.yunkuo.cms.entity.main.base.tmp.CmsSite</class>
+		<class>com.yunkuo.cms.entity.main.base.CmsLog</class>
+		<class>com.yunkuo.cms.entity.main.base.tmp.CmsLog</class>
+		<class>com.yunkuo.cms.entity.main.base.tmp.CmsUser</class>
 	</persistence-unit>
 </persistence>

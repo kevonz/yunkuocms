@@ -11,6 +11,7 @@
         <mapping class="com.yunkuo.core.entity.Config" />
         <mapping class="com.yunkuo.core.entity.DbFile" />
         <mapping class="com.yunkuo.core.entity.DbTpl" />
+        <mapping class="com.yunkuo.cms.entity.main.CmsLog" />
     </session-factory>
          
 </hibernate-configuration>

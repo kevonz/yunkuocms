@@ -1,23 +1,23 @@
-package com.yunkuo.cms.entity.main.base;
+package com.yunkuo.cms.entity.main.base.tmp;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
-import com.yunkuo.cms.entity.main.CmsSite;
-import com.yunkuo.cms.entity.main.CmsUser;
-
 import java.util.Date;
 
 
-
-@MappedSuperclass
-public abstract class BaseCmsLog implements Serializable {
+/**
+ * The persistent class for the cms_log database table.
+ * 
+ */
+@Entity
+@Table(name="cms_log")
+public class CmsLog implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="log_id")
-	private int id;
+	private int logId;
 
 	private int category;
 
@@ -27,7 +27,7 @@ public abstract class BaseCmsLog implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="log_time")
-	private Date time;
+	private Date logTime;
 
 	private String title;
 
@@ -36,22 +36,22 @@ public abstract class BaseCmsLog implements Serializable {
 	//bi-directional many-to-one association to CmsSite
 	@ManyToOne
 	@JoinColumn(name="site_id")
-	private CmsSite site;
+	private CmsSite cmsSite;
 
 	//bi-directional many-to-one association to CmsUser
 	@ManyToOne
 	@JoinColumn(name="user_id")
-	private CmsUser user;
+	private CmsUser cmsUser;
 
-	public BaseCmsLog() {
+	public CmsLog() {
 	}
 
-	public int getId() {
-		return this.id;
+	public int getLogId() {
+		return this.logId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setLogId(int logId) {
+		this.logId = logId;
 	}
 
 	public int getCategory() {
@@ -78,12 +78,12 @@ public abstract class BaseCmsLog implements Serializable {
 		this.ip = ip;
 	}
 
-	public Date getTime() {
-		return this.time;
+	public Date getLogTime() {
+		return this.logTime;
 	}
 
-	public void setTime(Date logTime) {
-		this.time = logTime;
+	public void setLogTime(Date logTime) {
+		this.logTime = logTime;
 	}
 
 	public String getTitle() {
@@ -102,20 +102,20 @@ public abstract class BaseCmsLog implements Serializable {
 		this.url = url;
 	}
 
-	public CmsSite getSite() {
-		return this.site;
+	public CmsSite getCmsSite() {
+		return this.cmsSite;
 	}
 
-	public void setSite(CmsSite cmsSite) {
-		this.site = cmsSite;
+	public void setCmsSite(CmsSite cmsSite) {
+		this.cmsSite = cmsSite;
 	}
 
-	public CmsUser getUser() {
-		return this.user;
+	public CmsUser getCmsUser() {
+		return this.cmsUser;
 	}
 
-	public void setUser(CmsUser cmsUser) {
-		this.user = cmsUser;
+	public void setCmsUser(CmsUser cmsUser) {
+		this.cmsUser = cmsUser;
 	}
 
 }
