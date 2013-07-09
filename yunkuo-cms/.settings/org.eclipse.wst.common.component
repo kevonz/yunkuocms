@@ -3,10 +3,10 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <dependent-module archiveName="yunkuo.core.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/yunkuo-core/yunkuo-core">
+        <dependent-module archiveName="yunkuo-common-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/yunkuo-common/yunkuo-common">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="yunkuo.common.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/yunkuo-common/yunkuo-common">
+        <dependent-module archiveName="yunkuo-core-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/yunkuo-core/yunkuo-core">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/yunkuo-cms/target/classes"/>

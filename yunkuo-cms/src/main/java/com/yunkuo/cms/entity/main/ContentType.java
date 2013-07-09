@@ -1,7 +1,16 @@
 package com.yunkuo.cms.entity.main;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import com.yunkuo.cms.entity.main.base.BaseContentType;
 
+/**
+ * The persistent class for the cms_content_type database table.
+ * 
+ */
+@Entity
+@Table(name="cms_content_type")
 public class ContentType extends BaseContentType {
 	private static final long serialVersionUID = 1L;
 
@@ -13,17 +22,17 @@ public class ContentType extends BaseContentType {
 	/**
 	 * Constructor for primary key
 	 */
-	public ContentType (java.lang.Integer id) {
+	public ContentType (int id) {
 		super(id);
 	}
 
 	/**
 	 * Constructor for required fields
 	 */
-	public ContentType (
-		java.lang.Integer id,
+/*	public ContentType (
+		int id,
 		java.lang.String name,
-		java.lang.Boolean hasImage,
+		boolean hasImage,
 		java.lang.Boolean disabled) {
 
 		super (
@@ -31,7 +40,7 @@ public class ContentType extends BaseContentType {
 			name,
 			hasImage,
 			disabled);
-	}
+	}*/
 
 	/* [CONSTRUCTOR MARKER END] */
 
