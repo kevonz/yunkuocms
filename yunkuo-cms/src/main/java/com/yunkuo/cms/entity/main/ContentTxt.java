@@ -1,9 +1,14 @@
 package com.yunkuo.cms.entity.main;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import org.apache.commons.lang.StringUtils;
 
 import com.yunkuo.cms.entity.main.base.BaseContentTxt;
 
+@Entity
+@Table(name="cms_content_txt")
 public class ContentTxt extends BaseContentTxt {
 	private static final long serialVersionUID = 1L;
 	public static String PAGE_START = "<p>[NextPage]";
@@ -25,7 +30,7 @@ public class ContentTxt extends BaseContentTxt {
 		}
 		int start = 0, end = 0;
 		for (int i = 0; i < pageNo; i++) {
-			// 如果不是第一页
+			// 濡傛灉涓嶆槸绗竴椤�
 			if (i != 0) {
 				start = txt.indexOf(PAGE_END, end);
 				if (start == -1) {
@@ -92,7 +97,7 @@ public class ContentTxt extends BaseContentTxt {
 	}
 
 	/**
-	 * 是否所有属性都为空
+	 * 鏄惁鎵�湁灞炴�閮戒负绌�
 	 * 
 	 * @return
 	 */

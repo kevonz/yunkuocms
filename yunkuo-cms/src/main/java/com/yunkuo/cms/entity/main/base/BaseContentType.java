@@ -12,7 +12,7 @@ public class BaseContentType implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="type_id")
-	private int typeId;
+	private int id;
 
 	@Column(name="has_image")
 	private boolean hasImage;
@@ -27,20 +27,20 @@ public class BaseContentType implements Serializable {
 	private boolean disabled;
 
 	@Column(name="type_name")
-	private String typeName;
+	private String name;
 
 	public BaseContentType() {
 	}
-	public BaseContentType(int typeId) {
-		this.typeId = typeId;
+	public BaseContentType(int id) {
+		this.id = id;
 	}
 
 	public int getId() {
-		return this.typeId;
+		return this.id;
 	}
 
 	public void setId(int typeId) {
-		this.typeId = typeId;
+		this.id = typeId;
 	}
 
 	public boolean getHasImage() {
@@ -76,11 +76,11 @@ public class BaseContentType implements Serializable {
 	}
 
 	public String getName() {
-		return this.typeName;
+		return this.name;
 	}
 
-	public void setName(String typeName) {
-		this.typeName = typeName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

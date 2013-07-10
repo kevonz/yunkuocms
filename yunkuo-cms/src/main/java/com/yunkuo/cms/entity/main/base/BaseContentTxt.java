@@ -2,32 +2,103 @@ package com.yunkuo.cms.entity.main.base;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.yunkuo.cms.entity.main.Content;
+
 
 /**
- * This is an object that contains data related to the cms_content_txt table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_content_txt"
+ * The persistent class for the cms_content_txt database table.
+ * 
  */
 
+@MappedSuperclass
 public abstract class BaseContentTxt  implements Serializable {
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="content_id")
+	private Integer id;
 
-	public static String REF = "ContentTxt";
-	public static String PROP_TXT2 = "txt2";
-	public static String PROP_TXT = "txt";
-	public static String PROP_TXT1 = "txt1";
-	public static String PROP_CONTENT = "content";
-	public static String PROP_ID = "id";
-	public static String PROP_TXT3 = "txt3";
+	@Lob
+	private String txt;
 
+	@Lob
+	private String txt1;
 
-	// constructors
-	public BaseContentTxt () {
-		initialize();
+	@Lob
+	private String txt2;
+
+	@Lob
+	private String txt3;
+
+	// one to one
+	//private com.yunkuo.cms.entity.main.Content content;
+	//bi-directional one-to-one association to CmsContent
+	@OneToOne
+	@JoinColumn(name="content_id")
+	private Content content;
+	
+	public Content getContent() {
+		return content;
 	}
 
+	public void setContent(Content content) {
+		this.content = content;
+	}
+
+	public BaseContentTxt() {
+	}
+
+	public Integer getId() {
+		return this.id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getTxt() {
+		return this.txt;
+	}
+
+	public void setTxt(String txt) {
+		this.txt = txt;
+	}
+
+	public String getTxt1() {
+		return this.txt1;
+	}
+
+	public void setTxt1(String txt1) {
+		this.txt1 = txt1;
+	}
+
+	public String getTxt2() {
+		return this.txt2;
+	}
+
+	public void setTxt2(String txt2) {
+		this.txt2 = txt2;
+	}
+
+	public String getTxt3() {
+		return this.txt3;
+	}
+
+	public void setTxt3(String txt3) {
+		this.txt3 = txt3;
+	}
+	
 	/**
 	 * Constructor for primary key
 	 */
@@ -37,128 +108,7 @@ public abstract class BaseContentTxt  implements Serializable {
 	}
 
 	protected void initialize () {}
-
-
-
-	private int hashCode = Integer.MIN_VALUE;
-
-	// primary key
-	private java.lang.Integer id;
-
-	// fields
-	private java.lang.String txt;
-	private java.lang.String txt1;
-	private java.lang.String txt2;
-	private java.lang.String txt3;
-
-	// one to one
-	private com.yunkuo.cms.entity.main.Content content;
-
-
-
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="foreign"
-     *  column="content_id"
-     */
-	public java.lang.Integer getId () {
-		return id;
-	}
-
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
-	}
-
-
-
-
-	/**
-	 * Return the value associated with the column: txt
-	 */
-	public java.lang.String getTxt () {
-		return txt;
-	}
-
-	/**
-	 * Set the value related to the column: txt
-	 * @param txt the txt value
-	 */
-	public void setTxt (java.lang.String txt) {
-		this.txt = txt;
-	}
-
-
-	/**
-	 * Return the value associated with the column: txt1
-	 */
-	public java.lang.String getTxt1 () {
-		return txt1;
-	}
-
-	/**
-	 * Set the value related to the column: txt1
-	 * @param txt1 the txt1 value
-	 */
-	public void setTxt1 (java.lang.String txt1) {
-		this.txt1 = txt1;
-	}
-
-
-	/**
-	 * Return the value associated with the column: txt2
-	 */
-	public java.lang.String getTxt2 () {
-		return txt2;
-	}
-
-	/**
-	 * Set the value related to the column: txt2
-	 * @param txt2 the txt2 value
-	 */
-	public void setTxt2 (java.lang.String txt2) {
-		this.txt2 = txt2;
-	}
-
-
-	/**
-	 * Return the value associated with the column: txt3
-	 */
-	public java.lang.String getTxt3 () {
-		return txt3;
-	}
-
-	/**
-	 * Set the value related to the column: txt3
-	 * @param txt3 the txt3 value
-	 */
-	public void setTxt3 (java.lang.String txt3) {
-		this.txt3 = txt3;
-	}
-
-
-	/**
-	 * Return the value associated with the column: content
-	 */
-	public com.yunkuo.cms.entity.main.Content getContent () {
-		return content;
-	}
-
-	/**
-	 * Set the value related to the column: content
-	 * @param content the content value
-	 */
-	public void setContent (com.yunkuo.cms.entity.main.Content content) {
-		this.content = content;
-	}
-
-
-
+	
 	public boolean equals (Object obj) {
 		if (null == obj) return false;
 		if (!(obj instanceof com.yunkuo.cms.entity.main.ContentTxt)) return false;
@@ -169,7 +119,7 @@ public abstract class BaseContentTxt  implements Serializable {
 		}
 	}
 
-	public int hashCode () {
+	/*public int hashCode () {
 		if (Integer.MIN_VALUE == this.hashCode) {
 			if (null == this.getId()) return super.hashCode();
 			else {
@@ -178,12 +128,10 @@ public abstract class BaseContentTxt  implements Serializable {
 			}
 		}
 		return this.hashCode;
-	}
-
+	}*/
 
 	public String toString () {
 		return super.toString();
 	}
-
 
 }

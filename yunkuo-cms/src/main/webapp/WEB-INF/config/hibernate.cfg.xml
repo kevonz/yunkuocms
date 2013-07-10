@@ -13,7 +13,7 @@
         <mapping class="com.yunkuo.core.entity.DbTpl" />
         <mapping class="com.yunkuo.cms.entity.main.CmsLog" />
         <mapping class="com.yunkuo.cms.entity.main.ContentType" />
-        
+        <mapping class="com.yunkuo.cms.entity.main.ContentTxt" />        
     </session-factory>
          
 </hibernate-configuration>
