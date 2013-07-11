@@ -15,6 +15,9 @@
         <mapping class="com.yunkuo.cms.entity.main.ContentType" />
         <mapping class="com.yunkuo.cms.entity.main.ContentTxt" />
         <mapping class="com.yunkuo.cms.entity.main.ContentExt" />
+        <mapping class="com.yunkuo.cms.entity.main.ContentTag" />
+        <mapping class="com.yunkuo.cms.entity.main.ContentTagMapping" />
     </session-factory>
+
          
 </hibernate-configuration>

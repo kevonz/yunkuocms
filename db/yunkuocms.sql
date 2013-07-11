@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : local
-Source Server Version : 50612
+Source Server         : localhost
+Source Server Version : 50527
 Source Host           : localhost:3306
 Source Database       : yunkuo_cms_2013
 
 Target Server Type    : MYSQL
-Target Server Version : 50612
+Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2013-07-11 13:40:24
+Date: 2013-07-12 00:36:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -668,16 +668,16 @@ CREATE TABLE `cms_advertising_attr` (
 -- ----------------------------
 -- Records of cms_advertising_attr
 -- ----------------------------
-INSERT INTO `cms_advertising_attr` VALUES ('1', 'image_title', '查看CMS官方网站');
+INSERT INTO `cms_advertising_attr` VALUES ('1', 'image_title', '查看JEECMS官方网站');
 INSERT INTO `cms_advertising_attr` VALUES ('1', 'image_url', '/r/cms/www/red/img/banner.gif');
 INSERT INTO `cms_advertising_attr` VALUES ('1', 'image_target', '_blank');
-INSERT INTO `cms_advertising_attr` VALUES ('1', 'image_link', 'http://www.cms.com');
+INSERT INTO `cms_advertising_attr` VALUES ('1', 'image_link', 'http://www.jeecms.com');
 INSERT INTO `cms_advertising_attr` VALUES ('1', 'image_width', '735');
 INSERT INTO `cms_advertising_attr` VALUES ('1', 'image_height', '70');
-INSERT INTO `cms_advertising_attr` VALUES ('2', 'image_title', 'CMS官方网站');
+INSERT INTO `cms_advertising_attr` VALUES ('2', 'image_title', 'JEECMS官方网站');
 INSERT INTO `cms_advertising_attr` VALUES ('2', 'image_url', '/r/cms/www/red/img/banner1.jpg');
 INSERT INTO `cms_advertising_attr` VALUES ('2', 'image_target', '_blank');
-INSERT INTO `cms_advertising_attr` VALUES ('2', 'image_link', 'http://www.cms.com');
+INSERT INTO `cms_advertising_attr` VALUES ('2', 'image_link', 'http://www.jeecms.com');
 INSERT INTO `cms_advertising_attr` VALUES ('2', 'image_width', '960');
 INSERT INTO `cms_advertising_attr` VALUES ('2', 'image_height', '60');
 INSERT INTO `cms_advertising_attr` VALUES ('3', 'image_height', '89');
@@ -691,7 +691,7 @@ INSERT INTO `cms_advertising_attr` VALUES ('4', 'image_target', '_blank');
 INSERT INTO `cms_advertising_attr` VALUES ('4', 'image_url', '/u/cms/www/201112/17145028j3bj.jpg');
 INSERT INTO `cms_advertising_attr` VALUES ('4', 'image_width', '980');
 INSERT INTO `cms_advertising_attr` VALUES ('5', 'image_height', '109');
-INSERT INTO `cms_advertising_attr` VALUES ('5', 'image_link', 'http://3x.cms.com');
+INSERT INTO `cms_advertising_attr` VALUES ('5', 'image_link', 'http://3x.jeecms.com');
 INSERT INTO `cms_advertising_attr` VALUES ('5', 'image_target', '_blank');
 INSERT INTO `cms_advertising_attr` VALUES ('5', 'image_url', '/u/cms/www/201112/18155751wi1k.gif');
 INSERT INTO `cms_advertising_attr` VALUES ('5', 'image_width', '215');
@@ -896,7 +896,7 @@ CREATE TABLE `cms_channel_txt` (
 -- ----------------------------
 -- Records of cms_channel_txt
 -- ----------------------------
-INSERT INTO `cms_channel_txt` VALUES ('10', '<p><font size=\"2\">&nbsp; &nbsp; CMS是JavaEE版网站管理系统（Java Enterprise Edition Content Manage System）的简称。</font></p>\r\n<p><font size=\"2\">&nbsp;&nbsp;&nbsp;&nbsp;Java凭借其强大、稳定、安全、高效等多方面的优势，一直是企业级应用的首选。在国外基于JavaEE技术的CMS已经发展的相当成熟，但授权费昂贵，一般需几十万一套；而国内在这方面一直比较薄弱，至今没有一款基于JavaEE技术的开源免费CMS产品。这次我们本着&quot;大气开源，诚信图强&quot;的原则将我们开发的这套CMS系统源码完全公布，希望能为国内JavaEE技术的发展尽自己的一份力量。</font></p>\r\n<p><font size=\"2\">&nbsp; &nbsp; CMS使用目前java主流技术架构：hibernate3+spring3+freemarker。AJAX使用jquery和json实现。视图层并没有使用传统的 JSP技术，而是使用更为专业、灵活、高效freemarker。 数据库使用MYSQL，并可支持orcale、DB2、SQLServer等主流数据库。应用服务器使用tomcat，并支持其他weblogic、 websphere等应用服务器。</font></p>\r\n<p><font size=\"2\">&nbsp; &nbsp; CMS并不是一个只追求技术之先进，而不考虑用户实际使用的象牙塔CMS。系统的设计宗旨就是从用户的需求出发，提供最便利、合理的使用方式，懂html就能建站，从设计上满足搜索引擎优化，最小性能消耗满足小网站要求、可扩展群集满足大网站需要。</font></p>\r\n<p><font size=\"2\">&nbsp;&nbsp;&nbsp;&nbsp;很多人觉得java、jsp难掌握，技术门槛高。cms具有强大的模板机制。所有前台页面均由模板生成，通过在线编辑模板轻松调整页面显示。模板内容不涉及任何java和jsp技术，只需掌握html语法和cms标签即可完成动态网页制作。</font></p>\r\n<p><font size=\"2\">&nbsp;&nbsp;&nbsp;&nbsp;强大、灵活的标签。提供两种风格的标签，一种风格的标签封装了大量互联网上常见的显示样式，通过调整参数就可实现文章列表、图文混排、图文滚动、跑马灯、焦点图等效果。这种标签的优势在于页面制作简单、效率高，对js、css、html不够精通和希望快速建站的用户非常适用。并且各种效果的内容不使用js生成，对搜索引擎非常友好。另一种风格的标签只负责读取数据，由用户自己控制显示内容和显示方式，想到什么就能做到什么，对于技术能力高和追求个性化的用户，可谓如鱼得水。</font></p>\r\n<p><font size=\"2\">&nbsp;&nbsp;&nbsp;&nbsp;采用完全生成静态页面技术，加快页面访问速度，提升搜索引擎友好性；采用扁平的、可自定义的路径结构。对于有特别需求者，可自定义页面后缀，如.php,.asp,.aspx等。</font></p>\r\n<p><font size=\"2\">&nbsp;&nbsp;&nbsp;&nbsp;站群设计，对于大型的网站，往往需要通过次级域名建立子站群，各个子站后台管理权限可以分离，程序和附件分离，前台用户实现单点登录，大规模网站轻松建设。</font></p>', null, null, null);
+INSERT INTO `cms_channel_txt` VALUES ('10', '<p><font size=\"2\">&nbsp; &nbsp; CMS是JavaEE版网站管理系统（Java Enterprise Edition Content Manage System）的简称。</font></p>\r\n<p><font size=\"2\">&nbsp;&nbsp;&nbsp;&nbsp;Java凭借其强大、稳定、安全、高效等多方面的优势，一直是企业级应用的首选。在国外基于JavaEE技术的CMS已经发展的相当成熟，但授权费昂贵，一般需几十万一套；而国内在这方面一直比较薄弱，至今没有一款基于JavaEE技术的开源免费CMS产品。这次我们本着&quot;大气开源，诚信图强&quot;的原则将我们开发的这套JEECMS系统源码完全公布，希望能为国内JavaEE技术的发展尽自己的一份力量。</font></p>\r\n<p><font size=\"2\">&nbsp; &nbsp; CMS使用目前java主流技术架构：hibernate3+spring3+freemarker。AJAX使用jquery和json实现。视图层并没有使用传统的 JSP技术，而是使用更为专业、灵活、高效freemarker。 数据库使用MYSQL，并可支持orcale、DB2、SQLServer等主流数据库。应用服务器使用tomcat，并支持其他weblogic、 websphere等应用服务器。</font></p>\r\n<p><font size=\"2\">&nbsp; &nbsp; CMS并不是一个只追求技术之先进，而不考虑用户实际使用的象牙塔CMS。系统的设计宗旨就是从用户的需求出发，提供最便利、合理的使用方式，懂html就能建站，从设计上满足搜索引擎优化，最小性能消耗满足小网站要求、可扩展群集满足大网站需要。</font></p>\r\n<p><font size=\"2\">&nbsp;&nbsp;&nbsp;&nbsp;很多人觉得java、jsp难掌握，技术门槛高。cms具有强大的模板机制。所有前台页面均由模板生成，通过在线编辑模板轻松调整页面显示。模板内容不涉及任何java和jsp技术，只需掌握html语法和cms标签即可完成动态网页制作。</font></p>\r\n<p><font size=\"2\">&nbsp;&nbsp;&nbsp;&nbsp;强大、灵活的标签。提供两种风格的标签，一种风格的标签封装了大量互联网上常见的显示样式，通过调整参数就可实现文章列表、图文混排、图文滚动、跑马灯、焦点图等效果。这种标签的优势在于页面制作简单、效率高，对js、css、html不够精通和希望快速建站的用户非常适用。并且各种效果的内容不使用js生成，对搜索引擎非常友好。另一种风格的标签只负责读取数据，由用户自己控制显示内容和显示方式，想到什么就能做到什么，对于技术能力高和追求个性化的用户，可谓如鱼得水。</font></p>\r\n<p><font size=\"2\">&nbsp;&nbsp;&nbsp;&nbsp;采用完全生成静态页面技术，加快页面访问速度，提升搜索引擎友好性；采用扁平的、可自定义的路径结构。对于有特别需求者，可自定义页面后缀，如.php,.asp,.aspx等。</font></p>\r\n<p><font size=\"2\">&nbsp;&nbsp;&nbsp;&nbsp;站群设计，对于大型的网站，往往需要通过次级域名建立子站群，各个子站后台管理权限可以分离，程序和附件分离，前台用户实现单点登录，大规模网站轻松建设。</font></p>', null, null, null);
 
 -- ----------------------------
 -- Table structure for `cms_channel_user`
@@ -1061,19 +1061,19 @@ INSERT INTO `cms_comment_ext` VALUES ('11', '0:0:0:0:0:0:0:1', 'rthdrh', null);
 DROP TABLE IF EXISTS `cms_config`;
 CREATE TABLE `cms_config` (
   `config_id` int(11) NOT NULL,
-  `context_path` varchar(20) DEFAULT '/Cms' COMMENT '部署路径',
+  `context_path` varchar(20) DEFAULT '/JeeCms' COMMENT '部署路径',
   `servlet_point` varchar(20) DEFAULT NULL COMMENT 'Servlet挂载点',
   `port` int(11) DEFAULT NULL COMMENT '端口',
   `db_file_uri` varchar(50) NOT NULL DEFAULT '/dbfile.svl?n=' COMMENT '数据库附件访问地址',
   `is_upload_to_db` tinyint(1) NOT NULL DEFAULT '0' COMMENT '上传附件至数据库',
-  `def_img` varchar(255) NOT NULL DEFAULT '/Cms/r/cms/www/default/no_picture.gif' COMMENT '图片不存在时默认图片',
+  `def_img` varchar(255) NOT NULL DEFAULT '/JeeCms/r/cms/www/default/no_picture.gif' COMMENT '图片不存在时默认图片',
   `login_url` varchar(255) NOT NULL DEFAULT '/login.jspx' COMMENT '登录地址',
   `process_url` varchar(255) DEFAULT NULL COMMENT '登录后处理地址',
   `mark_on` tinyint(1) NOT NULL DEFAULT '1' COMMENT '开启图片水印',
   `mark_width` int(11) NOT NULL DEFAULT '120' COMMENT '图片最小宽度',
   `mark_height` int(11) NOT NULL DEFAULT '120' COMMENT '图片最小高度',
   `mark_image` varchar(100) DEFAULT '/r/cms/www/watermark.png' COMMENT '图片水印',
-  `mark_content` varchar(100) NOT NULL DEFAULT 'www.cms.com' COMMENT '文字水印内容',
+  `mark_content` varchar(100) NOT NULL DEFAULT 'www.jeecms.com' COMMENT '文字水印内容',
   `mark_size` int(11) NOT NULL DEFAULT '20' COMMENT '文字水印大小',
   `mark_color` varchar(10) NOT NULL DEFAULT '#FF0000' COMMENT '文字水印颜色',
   `mark_alpha` int(11) NOT NULL DEFAULT '50' COMMENT '水印透明度（0-100）',
@@ -1082,7 +1082,7 @@ CREATE TABLE `cms_config` (
   `mark_offset_y` int(11) NOT NULL DEFAULT '0' COMMENT 'y坐标偏移量',
   `count_clear_time` date NOT NULL COMMENT '计数器清除时间',
   `count_copy_time` datetime NOT NULL COMMENT '计数器拷贝时间',
-  `download_code` varchar(32) NOT NULL DEFAULT 'cms' COMMENT '下载防盗链md5混淆码',
+  `download_code` varchar(32) NOT NULL DEFAULT 'jeecms' COMMENT '下载防盗链md5混淆码',
   `download_time` int(11) NOT NULL DEFAULT '12' COMMENT '下载有效时间（小时）',
   `email_host` varchar(50) DEFAULT NULL COMMENT '邮件发送服务器',
   `email_encoding` varchar(20) DEFAULT NULL COMMENT '邮件发送编码',
@@ -1096,7 +1096,7 @@ CREATE TABLE `cms_config` (
 -- ----------------------------
 -- Records of cms_config
 -- ----------------------------
-INSERT INTO `cms_config` VALUES ('1', '/cms', null, '8080', '/dbfile.svl?n=', '0', '/r/cms/www/no_picture.gif', '/login.jspx', null, '1', '120', '120', '/r/cms/www/watermark.png', 'www.yunkuo.com', '20', '#FF0000', '50', '1', '0', '0', '2013-02-17', '2013-02-17 23:38:19', 'cms', '12', null, null, null, null, null, '1');
+INSERT INTO `cms_config` VALUES ('1', '/cms', null, '8080', '/dbfile.svl?n=', '0', '/r/cms/www/no_picture.gif', '/login.jspx', null, '1', '120', '120', '/r/cms/www/watermark.png', 'www.yunkuo.com', '20', '#FF0000', '50', '1', '0', '0', '2013-07-11', '2013-07-11 20:46:02', 'jeecms', '12', null, null, null, null, null, '1');
 
 -- ----------------------------
 -- Table structure for `cms_config_attr`
@@ -1148,7 +1148,7 @@ CREATE TABLE `cms_content` (
   CONSTRAINT `fk_cms_content_site` FOREIGN KEY (`site_id`) REFERENCES `cms_site` (`site_id`),
   CONSTRAINT `fk_cms_content_type` FOREIGN KEY (`type_id`) REFERENCES `cms_content_type` (`type_id`),
   CONSTRAINT `fk_cms_content_user` FOREIGN KEY (`user_id`) REFERENCES `cms_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=608 DEFAULT CHARSET=utf8 COMMENT='CMS内容表';
+) ENGINE=InnoDB AUTO_INCREMENT=609 DEFAULT CHARSET=utf8 COMMENT='CMS内容表';
 
 -- ----------------------------
 -- Records of cms_content
@@ -1158,7 +1158,7 @@ INSERT INTO `cms_content` VALUES ('35', '11', '1', '1', '1', '2011-01-03 21:38:3
 INSERT INTO `cms_content` VALUES ('36', '11', '1', '1', '1', '2011-01-03 21:38:32', '0', '0', '0', '2', '0', '0', '0', '0');
 INSERT INTO `cms_content` VALUES ('37', '11', '1', '1', '1', '2011-01-03 21:38:33', '0', '0', '1', '2', '0', '0', '0', '0');
 INSERT INTO `cms_content` VALUES ('38', '11', '1', '1', '1', '2011-01-03 21:38:35', '0', '0', '0', '2', '0', '0', '0', '0');
-INSERT INTO `cms_content` VALUES ('39', '11', '1', '4', '1', '2011-01-03 21:38:36', '0', '0', '0', '2', '0', '0', '0', '0');
+INSERT INTO `cms_content` VALUES ('39', '11', '1', '4', '1', '2011-01-03 21:38:36', '0', '0', '0', '2', '11', '0', '0', '0');
 INSERT INTO `cms_content` VALUES ('40', '11', '1', '1', '1', '2011-01-03 21:38:38', '0', '0', '0', '2', '0', '0', '0', '0');
 INSERT INTO `cms_content` VALUES ('41', '11', '1', '1', '1', '2011-01-03 21:38:39', '0', '0', '0', '2', '0', '0', '0', '0');
 INSERT INTO `cms_content` VALUES ('42', '11', '1', '1', '1', '2011-01-03 21:38:40', '0', '0', '1', '2', '0', '0', '0', '0');
@@ -1303,7 +1303,7 @@ INSERT INTO `cms_content` VALUES ('299', '45', '1', '2', '1', '2011-12-19 10:23:
 INSERT INTO `cms_content` VALUES ('300', '45', '1', '2', '1', '2011-12-19 10:27:20', '0', '0', '0', '2', '0', '0', '0', '0');
 INSERT INTO `cms_content` VALUES ('301', '45', '1', '2', '1', '2011-12-19 10:30:37', '0', '0', '0', '2', '0', '0', '0', '0');
 INSERT INTO `cms_content` VALUES ('302', '45', '1', '2', '1', '2011-12-19 10:34:05', '0', '0', '0', '2', '0', '0', '0', '0');
-INSERT INTO `cms_content` VALUES ('303', '45', '1', '2', '1', '2011-12-19 10:36:59', '0', '0', '0', '2', '1', '0', '0', '0');
+INSERT INTO `cms_content` VALUES ('303', '45', '1', '2', '1', '2011-12-19 10:36:59', '0', '0', '0', '2', '0', '0', '0', '0');
 INSERT INTO `cms_content` VALUES ('304', '52', '1', '3', '1', '2011-12-19 10:48:59', '0', '0', '1', '2', '0', '0', '0', '0');
 INSERT INTO `cms_content` VALUES ('305', '52', '1', '2', '1', '2011-12-19 10:58:55', '0', '0', '1', '2', '0', '0', '0', '0');
 INSERT INTO `cms_content` VALUES ('306', '52', '1', '2', '1', '2011-12-19 10:59:44', '0', '0', '1', '2', '0', '0', '0', '0');
@@ -1607,35 +1607,40 @@ INSERT INTO `cms_content` VALUES ('604', '11', '1', '1', '1', '2012-11-18 16:59:
 INSERT INTO `cms_content` VALUES ('605', '11', '1', '1', '1', '2012-11-18 16:59:45', '0', '0', '0', '2', '0', '0', '0', '0');
 INSERT INTO `cms_content` VALUES ('606', '11', '1', '1', '1', '2012-11-18 16:59:46', '0', '0', '0', '2', '0', '0', '0', '0');
 INSERT INTO `cms_content` VALUES ('607', '11', '1', '1', '1', '2012-11-18 16:59:47', '0', '0', '0', '2', '0', '0', '0', '0');
+INSERT INTO `cms_content` VALUES ('608', '11', '1', '1', '1', '2013-07-09 23:14:56', '0', '0', '0', '2', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `cms_contenttag`
 -- ----------------------------
 DROP TABLE IF EXISTS `cms_contenttag`;
 CREATE TABLE `cms_contenttag` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `content_id` int(11) NOT NULL,
   `tag_id` int(11) NOT NULL,
   `priority` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
   KEY `fk_cms_content_tag` (`tag_id`),
   KEY `fk_cms_tag_content` (`content_id`),
   CONSTRAINT `fk_cms_content_tag` FOREIGN KEY (`tag_id`) REFERENCES `cms_content_tag` (`tag_id`),
   CONSTRAINT `fk_cms_tag_content` FOREIGN KEY (`content_id`) REFERENCES `cms_content` (`content_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CMS内容标签关联表';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='CMS内容标签关联表';
 
 -- ----------------------------
 -- Records of cms_contenttag
 -- ----------------------------
-INSERT INTO `cms_contenttag` VALUES ('112', '40', '0');
-INSERT INTO `cms_contenttag` VALUES ('112', '41', '1');
-INSERT INTO `cms_contenttag` VALUES ('115', '42', '0');
-INSERT INTO `cms_contenttag` VALUES ('115', '43', '1');
-INSERT INTO `cms_contenttag` VALUES ('116', '44', '0');
-INSERT INTO `cms_contenttag` VALUES ('116', '45', '1');
-INSERT INTO `cms_contenttag` VALUES ('116', '46', '2');
-INSERT INTO `cms_contenttag` VALUES ('117', '47', '0');
-INSERT INTO `cms_contenttag` VALUES ('117', '48', '1');
-INSERT INTO `cms_contenttag` VALUES ('117', '49', '2');
-INSERT INTO `cms_contenttag` VALUES ('340', '53', '0');
+INSERT INTO `cms_contenttag` VALUES ('1', '112', '40', '0');
+INSERT INTO `cms_contenttag` VALUES ('2', '112', '41', '1');
+INSERT INTO `cms_contenttag` VALUES ('3', '115', '42', '0');
+INSERT INTO `cms_contenttag` VALUES ('4', '115', '43', '1');
+INSERT INTO `cms_contenttag` VALUES ('5', '116', '44', '0');
+INSERT INTO `cms_contenttag` VALUES ('6', '116', '45', '1');
+INSERT INTO `cms_contenttag` VALUES ('7', '116', '46', '2');
+INSERT INTO `cms_contenttag` VALUES ('8', '117', '47', '0');
+INSERT INTO `cms_contenttag` VALUES ('9', '117', '48', '1');
+INSERT INTO `cms_contenttag` VALUES ('10', '117', '49', '2');
+INSERT INTO `cms_contenttag` VALUES ('11', '340', '53', '0');
+INSERT INTO `cms_contenttag` VALUES ('12', '608', '54', '0');
+INSERT INTO `cms_contenttag` VALUES ('13', '608', '55', '1');
 
 -- ----------------------------
 -- Table structure for `cms_content_attachment`
@@ -2278,6 +2283,7 @@ INSERT INTO `cms_content_channel` VALUES ('11', '604');
 INSERT INTO `cms_content_channel` VALUES ('11', '605');
 INSERT INTO `cms_content_channel` VALUES ('11', '606');
 INSERT INTO `cms_content_channel` VALUES ('11', '607');
+INSERT INTO `cms_content_channel` VALUES ('11', '608');
 
 -- ----------------------------
 -- Table structure for `cms_content_check`
@@ -2753,6 +2759,7 @@ INSERT INTO `cms_content_check` VALUES ('604', '2', null, '0', null, null);
 INSERT INTO `cms_content_check` VALUES ('605', '2', null, '0', null, null);
 INSERT INTO `cms_content_check` VALUES ('606', '2', null, '0', null, null);
 INSERT INTO `cms_content_check` VALUES ('607', '2', null, '0', null, null);
+INSERT INTO `cms_content_check` VALUES ('608', '2', null, '0', null, null);
 
 -- ----------------------------
 -- Table structure for `cms_content_count`
@@ -2784,12 +2791,12 @@ CREATE TABLE `cms_content_count` (
 -- ----------------------------
 -- Records of cms_content_count
 -- ----------------------------
-INSERT INTO `cms_content_count` VALUES ('34', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('34', '6', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('35', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('36', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('37', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('38', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_content_count` VALUES ('39', '14', '2', '0', '0', '2', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('39', '42', '28', '28', '11', '2', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('40', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('41', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('42', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
@@ -2815,7 +2822,7 @@ INSERT INTO `cms_content_count` VALUES ('65', '0', '0', '0', '0', '0', '0', '0',
 INSERT INTO `cms_content_count` VALUES ('66', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('112', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('115', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_content_count` VALUES ('116', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('116', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('117', '2', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('172', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('173', '4', '0', '0', '0', '0', '0', '0', '0', '1', '1', '1', '1', '0', '0', '0', '0', '0');
@@ -2866,21 +2873,21 @@ INSERT INTO `cms_content_count` VALUES ('230', '0', '0', '0', '0', '0', '0', '0'
 INSERT INTO `cms_content_count` VALUES ('231', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('232', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('233', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_content_count` VALUES ('234', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_content_count` VALUES ('235', '4', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('234', '9', '4', '4', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('235', '4', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('236', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_content_count` VALUES ('237', '5', '0', '0', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('237', '5', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('238', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('239', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('240', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('241', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('242', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_content_count` VALUES ('243', '2', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('243', '2', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('244', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('245', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_content_count` VALUES ('246', '1', '1', '0', '0', '3', '3', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_content_count` VALUES ('247', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_content_count` VALUES ('248', '2', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('246', '2', '1', '1', '0', '3', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('247', '5', '4', '4', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('248', '2', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('249', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('251', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('252', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
@@ -2923,7 +2930,7 @@ INSERT INTO `cms_content_count` VALUES ('288', '0', '0', '0', '0', '0', '0', '0'
 INSERT INTO `cms_content_count` VALUES ('289', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('290', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('291', '4', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_content_count` VALUES ('292', '7', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('292', '7', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('293', '3', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('294', '3', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('295', '16', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
@@ -2934,14 +2941,14 @@ INSERT INTO `cms_content_count` VALUES ('299', '2', '0', '0', '0', '0', '0', '0'
 INSERT INTO `cms_content_count` VALUES ('300', '2', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('301', '4', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('302', '3', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_content_count` VALUES ('303', '3', '1', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('303', '3', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('304', '3', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('305', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('306', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('307', '2', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('308', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('309', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_content_count` VALUES ('310', '8', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('310', '8', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('311', '9', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('312', '3', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('313', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
@@ -2954,14 +2961,14 @@ INSERT INTO `cms_content_count` VALUES ('319', '5', '0', '0', '0', '0', '0', '0'
 INSERT INTO `cms_content_count` VALUES ('320', '21', '0', '0', '0', '0', '0', '0', '0', '2', '2', '1', '2', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('321', '2', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('322', '3', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_content_count` VALUES ('323', '16', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('323', '16', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('324', '10', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('325', '10', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('326', '13', '0', '0', '0', '0', '0', '0', '0', '2', '2', '1', '2', '0', '0', '0', '0', '0');
-INSERT INTO `cms_content_count` VALUES ('327', '8', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('327', '9', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('328', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('329', '6', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_content_count` VALUES ('330', '9', '1', '0', '0', '0', '0', '0', '0', '1', '1', '1', '1', '0', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('330', '9', '0', '0', '0', '0', '0', '0', '0', '1', '1', '1', '1', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('331', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('332', '10', '0', '0', '0', '0', '0', '0', '0', '2', '2', '1', '2', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('333', '2', '0', '0', '0', '0', '0', '0', '0', '1', '1', '1', '1', '0', '0', '0', '0', '0');
@@ -3161,7 +3168,7 @@ INSERT INTO `cms_content_count` VALUES ('527', '0', '0', '0', '0', '0', '0', '0'
 INSERT INTO `cms_content_count` VALUES ('528', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('529', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('530', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_content_count` VALUES ('531', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('531', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('532', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('533', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('534', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
@@ -3237,7 +3244,8 @@ INSERT INTO `cms_content_count` VALUES ('603', '0', '0', '0', '0', '0', '0', '0'
 INSERT INTO `cms_content_count` VALUES ('604', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('605', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('606', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-INSERT INTO `cms_content_count` VALUES ('607', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('607', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('608', '10', '10', '10', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `cms_content_ext`
@@ -3329,17 +3337,17 @@ INSERT INTO `cms_content_ext` VALUES ('196', '婚礼上最倒霉十大新郎', n
 INSERT INTO `cms_content_ext` VALUES ('197', '婚礼上最倒霉十大新郎', null, null, null, null, '婚礼上最倒霉十大新郎', '2011-12-17 16:12:55', '/u/cms/www/201112/17165616uvy4.swf', 'FLASH', null, '0', null, null, '/u/cms/www/201112/171612535rhr.jpg', null, null, '1');
 INSERT INTO `cms_content_ext` VALUES ('198', '婚礼上最倒霉十大新郎', null, null, null, null, null, '2011-12-17 16:13:26', '/u/cms/www/201112/17165616uvy4.swf', 'FLASH', null, '0', null, null, '/u/cms/www/201112/17161324z8jn.jpg', null, null, '1');
 INSERT INTO `cms_content_ext` VALUES ('209', '好搞笑的视频', null, null, null, null, null, '2011-12-17 16:56:26', '/u/cms/www/201112/17165616uvy4.swf', 'FLASH', null, '0', null, null, '/u/cms/www/201112/17161324z8jn.jpg', null, null, '1');
-INSERT INTO `cms_content_ext` VALUES ('210', 'cms视频教程', null, null, null, null, 'cms视频教程', '2011-12-17 16:59:57', '/u/cms/www/201112/17165616uvy4.swf', 'FLASH', null, '0', null, null, '/u/cms/www/201112/17161324z8jn.jpg', null, null, '1');
-INSERT INTO `cms_content_ext` VALUES ('211', 'cms要发视频教程了', null, null, null, null, 'cms要发视频教程了', '2011-12-17 17:00:14', '/u/cms/www/201112/17165616uvy4.swf', 'FLASH', null, '0', null, null, '/u/cms/www/201112/17161324z8jn.jpg', null, null, '1');
+INSERT INTO `cms_content_ext` VALUES ('210', 'jeecms视频教程', null, null, null, null, 'jeecms视频教程', '2011-12-17 16:59:57', '/u/cms/www/201112/17165616uvy4.swf', 'FLASH', null, '0', null, null, '/u/cms/www/201112/17161324z8jn.jpg', null, null, '1');
+INSERT INTO `cms_content_ext` VALUES ('211', 'jeecms要发视频教程了', null, null, null, null, 'jeecms要发视频教程了', '2011-12-17 17:00:14', '/u/cms/www/201112/17165616uvy4.swf', 'FLASH', null, '0', null, null, '/u/cms/www/201112/17161324z8jn.jpg', null, null, '1');
 INSERT INTO `cms_content_ext` VALUES ('212', '超级火爆的恶搞视频', null, null, null, null, '超级火爆的恶搞视频', '2011-12-17 17:01:18', '/u/cms/www/201112/17165616uvy4.swf', 'FLASH', null, '0', null, null, '/u/cms/www/201112/17161324z8jn.jpg', null, null, '1');
 INSERT INTO `cms_content_ext` VALUES ('213', '视频功能很强大啊', null, null, null, null, '视频功能很强大啊', '2011-12-17 17:01:50', '/u/cms/www/201112/17165616uvy4.swf', 'FLASH', null, '0', null, null, '/u/cms/www/201112/17161324z8jn.jpg', null, null, '1');
 INSERT INTO `cms_content_ext` VALUES ('214', '测试一下视频功能', null, null, null, null, '测试一下视频功能', '2011-12-17 17:02:03', '/u/cms/www/201112/17165616uvy4.swf', 'FLASH', null, '0', null, null, '/u/cms/www/201112/17161324z8jn.jpg', null, null, '1');
 INSERT INTO `cms_content_ext` VALUES ('215', '果然很有才', null, null, null, null, '果然很有才', '2011-12-17 17:02:20', '/u/cms/www/201112/17165616uvy4.swf', 'FLASH', null, '0', null, null, '/u/cms/www/201112/17161324z8jn.jpg', null, null, '1');
-INSERT INTO `cms_content_ext` VALUES ('216', '我爱cms', null, null, null, null, null, '2011-12-17 17:05:34', '/u/cms/www/201112/17165616uvy4.swf', 'FLASH', null, '0', null, null, '/u/cms/www/201112/17161324z8jn.jpg', null, null, '1');
+INSERT INTO `cms_content_ext` VALUES ('216', '我爱jeecms', null, null, null, null, null, '2011-12-17 17:05:34', '/u/cms/www/201112/17165616uvy4.swf', 'FLASH', null, '0', null, null, '/u/cms/www/201112/17161324z8jn.jpg', null, null, '1');
 INSERT INTO `cms_content_ext` VALUES ('217', 'hold不住了', null, null, null, null, 'hold不住了', '2011-12-17 17:07:05', '/u/cms/www/201112/17165616uvy4.swf', 'FLASH', null, '0', null, null, '/u/cms/www/201112/17161324z8jn.jpg', null, null, '1');
 INSERT INTO `cms_content_ext` VALUES ('218', '视频功能多好啊', null, null, null, null, '视频功能多好啊', '2011-12-17 17:08:21', '/u/cms/www/201112/17165616uvy4.swf', 'FLASH', null, '0', null, null, '/u/cms/www/201112/171612286b6w.jpg', null, null, '1');
 INSERT INTO `cms_content_ext` VALUES ('219', '玩的很开心啊', null, null, null, null, '玩的很开心啊', '2011-12-17 17:09:29', '/u/cms/www/201112/17165616uvy4.swf', 'FLASH', null, '0', null, null, '/u/cms/www/201112/171612286b6w.jpg', null, null, '1');
-INSERT INTO `cms_content_ext` VALUES ('220', 'cms2012来啦', null, null, null, null, 'cms2012来啦', '2011-12-17 17:10:57', '/u/cms/www/201112/17165616uvy4.swf', 'FLASH', null, '0', null, null, '/u/cms/www/201112/171612286b6w.jpg', null, null, '1');
+INSERT INTO `cms_content_ext` VALUES ('220', 'jeecms2012来啦', null, null, null, null, 'jeecms2012来啦', '2011-12-17 17:10:57', '/u/cms/www/201112/17165616uvy4.swf', 'FLASH', null, '0', null, null, '/u/cms/www/201112/171612286b6w.jpg', null, null, '1');
 INSERT INTO `cms_content_ext` VALUES ('223', '冬日的温暖', '冬日的温暖', null, null, null, '冬日的温暖', '2011-12-17 17:21:16', null, null, null, '0', null, null, '/u/cms/www/201112/171415447op5.jpg', null, null, '1');
 INSERT INTO `cms_content_ext` VALUES ('224', '冬日写真', null, null, null, null, null, '2011-12-17 17:25:18', null, null, null, '0', null, null, '/u/cms/www/201112/171415447op5.jpg', null, null, '1');
 INSERT INTO `cms_content_ext` VALUES ('225', '演史上最长贺岁大片', null, null, null, null, '故事以两个好朋友在寻找多年不见的好兄弟兰彻的过程中展开的回忆.讲述十年前兰彻顶替他人来到皇家工程学院读书...', '2011-12-17 17:27:30', null, null, null, '0', '/u/cms/www/201112/17141604lrhh.jpg', null, '/u/cms/www/201112/171415447op5.jpg', null, null, '1');
@@ -3723,6 +3731,7 @@ INSERT INTO `cms_content_ext` VALUES ('604', '8888中国国家深海基地预计
 INSERT INTO `cms_content_ext` VALUES ('605', '温家宝赴金边途中表示:中国经济进一步趋稳|温家宝|金边|经济', null, null, null, null, null, '2012-11-18 16:59:45', null, null, null, '0', null, null, null, null, null, '1');
 INSERT INTO `cms_content_ext` VALUES ('606', '烟台至大连航线客运船舶受大风影响全部停航|烟台|大连|船舶', null, null, null, null, null, '2012-11-18 16:59:46', null, null, null, '0', null, null, null, null, null, '1');
 INSERT INTO `cms_content_ext` VALUES ('607', '习近平:本届中央以学习贯彻十八大精神来开局|十八大|中央|工作', null, null, null, null, null, '2012-11-18 16:59:47', null, null, null, '0', null, null, null, null, null, '1');
+INSERT INTO `cms_content_ext` VALUES ('608', 'aaaaa', 'aa', 'aa', '23', '32', 'aas', '2013-07-09 23:14:56', null, null, null, '0', null, null, null, null, null, '1');
 
 -- ----------------------------
 -- Table structure for `cms_content_group_view`
@@ -3943,7 +3952,7 @@ CREATE TABLE `cms_content_tag` (
   `ref_counter` int(11) NOT NULL DEFAULT '1' COMMENT '被引用的次数',
   PRIMARY KEY (`tag_id`),
   UNIQUE KEY `ak_tag_name` (`tag_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8 COMMENT='CMS内容TAG表';
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8 COMMENT='CMS内容TAG表';
 
 -- ----------------------------
 -- Records of cms_content_tag
@@ -3964,6 +3973,9 @@ INSERT INTO `cms_content_tag` VALUES ('48', '网站', '1');
 INSERT INTO `cms_content_tag` VALUES ('49', '规模化', '1');
 INSERT INTO `cms_content_tag` VALUES ('52', '调控', '0');
 INSERT INTO `cms_content_tag` VALUES ('53', '121', '1');
+INSERT INTO `cms_content_tag` VALUES ('54', 'a', '1');
+INSERT INTO `cms_content_tag` VALUES ('55', 'b', '1');
+INSERT INTO `cms_content_tag` VALUES ('57', 'eee', '1');
 
 -- ----------------------------
 -- Table structure for `cms_content_topic`
@@ -4388,6 +4400,7 @@ INSERT INTO `cms_content_txt` VALUES ('604', '<p>　　新华网青岛11月16日
 INSERT INTO `cms_content_txt` VALUES ('605', '\n\n<p>　　中新网金边11月18日电 (记者 张朔)当地时间18日下午2时许，中国总理温家宝乘坐的专机平稳降落在柬埔寨首都金边国际机场。从北京赴金边飞行途中，温家宝对记者表示，中国有望继续成为地区和世界经济增长的重要引擎。</p>\n\n<p>　　应东盟轮值主席国柬埔寨王国首相洪森、泰王国总理英拉·钦那瓦邀请，温家宝于18日至21日出席在柬埔寨金边举行的第15次中国-东盟(10+1)领导人会议、东盟与中日韩(10+3)合作15周年纪念峰会和第七届东亚峰会，并对柬埔寨和泰国进行正式访问。</p>\n\n<p>　　在赴金边途中，温家宝对记者说，东亚合作发展很快，成果丰硕，但也面临一些挑战。应该看到，在世界经济复苏势头减缓、东亚经济下行压力增大背景下，加强协调配合，共克时艰，是唯一正确的选择，也是各国的共同愿望。</p>\n\n<p>　　温家宝表示，中国经济进一步趋稳，有望在更长时期、更高水平上保持增长，继续成为地区和世界经济增长的重要引擎。我这次与会，将突出团结、合作、发展主题，提出一系列新的倡议，与各方增进互信，凝聚共识，推动东亚合作继续稳定健康向前发展。我对此抱有信心。</p>\n\n<p>　　关于访问柬埔寨，温家宝指出，中柬两国是友好邻邦，传统友谊源远流长。柬埔寨是今年东盟轮值主席国和东亚领导人系列会议主办国。我希望通过此访，进一步增进中柬传统友谊，深化互利合作，密切双方在地区事务中的沟通配合，推动两国全面战略合作伙伴关系迈上新台阶，更好地造福两国人民。</p>\n\n<p>　　温家宝抵达金边时，柬埔寨政府高级官员、中国驻柬埔寨大使潘广学、中国驻东盟大使杨秀萍等到机场迎接。</p>\n\n<p align=\"right\">（原标题：温家宝赴金边途中见记者：中国经济进一步趋稳）</p>\n', null, null, null);
 INSERT INTO `cms_content_txt` VALUES ('606', '\n\n<p>　　中新网烟台11月18日电(杨兵) 记者18日从烟台海事局获悉，受即将来临的大风天气影响，烟台至大连航线客运船舶将于18日傍晚18时全部停航。预计19日中午风力减弱后陆续恢复营运。</p>\n\n<p>　　据烟台市气象局18日发布的天气预报，烟台至大连航线海域18日中午到夜间南风6级傍晚转西北风6-7级，后半夜增强到7-8级，阵风9级，中浪中涌转大到巨浪、大到巨涌。19日白天北到西北风7-8级，中午减弱为6-7级，大到巨浪、大到巨涌转大浪大涌。</p>\n\n<p>　　据悉，山东省有关部门规定，海面风力7级及以上时，从事港口旅客运输服务的港口经营人不得允许旅客、车辆上船，以避免客运船舶恶劣天气冒险开航。</p>\n\n<p>　　烟台海事局将加强对在港和锚泊避风船舶的监督管理，督促在港船舶保持通讯畅通，对来港避风船舶实施重点监控，防止走锚等险情发生。</p>\n\n<p>　　每年10月至次年3月间，山东烟台海域频繁受到较强冬季季风影响，容易发生海上突发事件。(完)</p>\n\n<p align=\"right\">(原标题：烟台至大连航线客运船舶因大风停航)</p>\n', null, null, null);
 INSERT INTO `cms_content_txt` VALUES ('607', '\n\n<p>　　新华网北京11月18日电 十八届中共中央政治局11月17日上午就深入学习贯彻党的十八大精神进行第一次集体学习。中共中央总书记习近平在主持学习时强调，坚持和发展中国特色社会主义是贯穿党的十八大报告的一条主线。我们要紧紧抓住这条主线，把坚持和发展中国特色社会主义作为学习贯彻党的十八大精神的聚焦点、着力点、落脚点，把党的十八大精神学得更加深入、领会得更加透彻、贯彻得更加自觉。</p>\n\n<p>　　李克强、张德江、俞正声、刘云山、王岐山、张高丽就深刻领会和贯彻落实党的十八大精神谈了体会。他们表示，党的十八大进一步向世人昭示了中国共产党高举中国特色社会主义伟大旗帜的坚定立场，进一步向全党全国发出了全面建成小康社会的动员令。全党全国要紧密团结在以习近平同志为总书记的党中央周围，做好学习宣传贯彻工作，增强对中国特色社会主义的道路自信、理论自信、制度自信，切实使党的十八大精神成为全面建成小康社会、夺取中国特色社会主义事业新胜利的强大思想武器。要继续抓住和用好我国发展的重要战略机遇期，冷静分析和妥善应对面临的挑战，切实抓好发展这个党执政兴国的第一要务，推动各项事业全面发展。要坚持党要管党、从严治党，全面加强党的建设，不断提高领导水平和执政水平，坚决反对各种消极腐败现象，始终紧紧依靠人民前进，把党的十八大提出的各项目标任务落到实处。中共中央政治局各位同志认真听取了他们的意见。</p>\n\n<p>　　习近平在主持学习时发表了讲话。他指出，党的十八大和十八届一中全会刚刚胜利闭幕，今天我们以学习贯彻党的十八大精神为题，举行十八届中央政治局第一次集体学习，目的是以实际行动带头学习领会、带头贯彻落实党的十八大精神。国内外都在看我们这一届中央领导集体工作会以什么来开局，我们就以深入学习宣传贯彻党的十八大精神来开好局、起好步。</p>\n\n<p>　　习近平强调，党的十八大报告勾画了在新的历史条件下全面建成小康社会、加快推进社会主义现代化、夺取中国特色社会主义新胜利的宏伟蓝图，是我们党团结带领全国各族人民沿着中国特色社会主义道路继续前进、为全面建成小康社会而奋斗的政治宣言和行动纲领，为我们这一届中央领导集体的工作指明了方向。中央已经发出关于认真学习宣传贯彻党的十八大精神的通知，各级党委要按照通知要求，把学习宣传贯彻党的十八大精神引向深入。</p>\n\n<p>　　习近平就紧紧围绕坚持和发展中国特色社会主义学习宣传贯彻党的十八大精神提出了5点要求。一是要深刻领会中国特色社会主义是党和人民长期实践取得的根本成就。中国特色社会主义是中国共产党和中国人民团结的旗帜、奋进的旗帜、胜利的旗帜。我们要全面建成小康社会、加快推进社会主义现代化、实现中华民族伟大复兴，必须始终高举中国特色社会主义伟大旗帜，坚定不移坚持和发展中国特色社会主义。二是要深刻领会中国特色社会主义是由道路、理论体系、制度三位一体构成的。中国特色社会主义道路是实现我国社会主义现代化的必由之路，是创造人民美好生活的必由之路。中国特色社会主义理论体系是马克思主义中国化最新成果。在当代中国，坚持中国特色社会主义理论体系，就是真正坚持马克思主义。中国特色社会主义制度符合我国国情，集中体现了中国特色社会主义的特点和优势，是中国发展进步的根本制度保障。中国特色社会主义事业不断发展，中国特色社会主义制度也需要不断完善，从而为夺取中国特色社会主义新胜利提供更加有效的制度保障。三是要深刻领会建设中国特色社会主义的总依据、总布局、总任务。社会主义初级阶段是当代中国的最大国情、最大实际，我们在任何情况下都要牢牢把握这个最大国情，坚持“一个中心、两个基本点”不动摇。中国特色社会主义是全面发展的社会主义，我们要在经济不断发展的基础上，协调推进政治建设、文化建设、社会建设、生态文明建设以及其他各方面建设。我们党领导人民进行革命建设改革，就是要让中国人民富裕起来，国家强盛起来，振兴伟大的中华民族。我们要紧紧扭住这个总任务，一代一代锲而不舍干下去。四是要深刻领会夺取中国特色社会主义新胜利的基本要求。这些基本要求进一步回答了在新的历史征程上怎样才能夺取中国特色社会主义新胜利的基本问题。抓住了这些基本要求，就能更好凝聚力量、攻坚克难，继续推动科学发展、促进社会和谐，继续改善人民生活、增进人民福祉，完成时代赋予的光荣而艰巨的任务。五是要深刻领会确保党始终成为中国特色社会主义事业的坚强领导核心。全党要增强紧迫感和责任感，牢牢把握党的建设总要求，坚定理想信念，保持同人民群众的血肉联系，保持党的肌体健康，不断提高党的领导水平和执政水平、提高拒腐防变和抵御风险能力，使我们党在坚持和发展中国特色社会主义的历史进程中始终成为坚强领导核心。</p>\n\n<p>　　习近平强调，发展中国特色社会主义是一项长期的艰巨的历史任务。全党同志一定要以更加坚定的信念、更加顽强的努力，毫不动摇坚持、与时俱进发展中国特色社会主义，不断丰富中国特色社会主义的实践特色、理论特色、民族特色、时代特色，团结带领全国各族人民，努力实现全面建成小康社会各项目标任务。</p>\n\n<p align=\"right\">(原标题：习近平在中共中央政治局第一次集体学习时强调：深入学习宣传贯彻党的十八大精神)</p>\n', null, null, null);
+INSERT INTO `cms_content_txt` VALUES ('608', '<p>assssawf</p>', null, null, null);
 
 -- ----------------------------
 -- Table structure for `cms_content_type`
@@ -4447,7 +4460,7 @@ CREATE TABLE `cms_file` (
 -- ----------------------------
 -- Records of cms_file
 -- ----------------------------
-INSERT INTO `cms_file` VALUES ('/u/cms/www/201112/17095324wp2z.jpg', '', '0', null);
+INSERT INTO `cms_file` VALUES ('/u/cms/www/201112/17095324wp2z.jpg', '', '1', '608');
 INSERT INTO `cms_file` VALUES ('/u/cms/www/201112/171410455sqq.jpg', '', '1', null);
 INSERT INTO `cms_file` VALUES ('/u/cms/www/201112/17141056zbjl.jpg', '', '1', null);
 INSERT INTO `cms_file` VALUES ('/u/cms/www/201112/17141320s4xy.jpg', '', '1', null);
@@ -4891,7 +4904,7 @@ CREATE TABLE `cms_guestbook_ext` (
 -- ----------------------------
 INSERT INTO `cms_guestbook_ext` VALUES ('1', '湖南未来一周仍维持低温雨雪天气', '湖南未来一周仍维持低温雨雪天气', null, null, null, null);
 INSERT INTO `cms_guestbook_ext` VALUES ('2', '范冰冰退出娱乐圈', '范冰冰退出娱乐圈', null, null, null, null);
-INSERT INTO `cms_guestbook_ext` VALUES ('3', 'CMS v3.0.2正式版发布', '终于发布了', null, null, null, null);
+INSERT INTO `cms_guestbook_ext` VALUES ('3', 'JEECMS v3.0.2正式版发布', '终于发布了', null, null, null, null);
 INSERT INTO `cms_guestbook_ext` VALUES ('4', '多重压力将影响整体衣柜发展', '据悉，2010年下半年以来，衣柜企业整体销售形势不容乐观。不少企业下滑幅度高达60%，在一些主流卖场里，即使排名前十名的企业也未必能盈利。在这种情况下，企业纷纷打出了涨价牌，实属无奈之举。', '1111111111', null, null, null);
 INSERT INTO `cms_guestbook_ext` VALUES ('5', '1111111111111111111111111111111', '11111111111111111111111111111111111111111111111111111111111111111111111', null, null, null, null);
 INSERT INTO `cms_guestbook_ext` VALUES ('6', '11111111111111111111', '1111111111111111111111111111111', null, null, '1111111111', null);
@@ -4916,7 +4929,7 @@ CREATE TABLE `cms_keyword` (
 -- ----------------------------
 -- Records of cms_keyword
 -- ----------------------------
-INSERT INTO `cms_keyword` VALUES ('1', null, '内容管理系统', '<a href=\"http://www.cms.com/\" target=\"_blank\">内容管理系统</a>', '0');
+INSERT INTO `cms_keyword` VALUES ('1', '1', '内容管理系统', '<a href=\"http://www.jeecms.com/\" target=\"_blank\">内容管理系统</a>', '0');
 
 -- ----------------------------
 -- Table structure for `cms_log`
@@ -4937,72 +4950,85 @@ CREATE TABLE `cms_log` (
   KEY `fk_cms_log_user` (`user_id`),
   CONSTRAINT `fk_cms_log_site` FOREIGN KEY (`site_id`) REFERENCES `cms_site` (`site_id`),
   CONSTRAINT `fk_cms_log_user` FOREIGN KEY (`user_id`) REFERENCES `cms_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8 COMMENT='CMS日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8 COMMENT='CMS日志表';
 
 -- ----------------------------
 -- Records of cms_log
 -- ----------------------------
-INSERT INTO `cms_log` VALUES ('1', '1', null, '1', '2012-11-18 16:09:28', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('2', '1', null, '1', '2012-11-18 16:10:25', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('3', '1', '1', '3', '2012-11-18 16:17:53', '0:0:0:0:0:0:0:1', '/cms/admin/cms/acquisition/o_update.do', '修改采集', 'id=1;name=新浪国内新闻');
-INSERT INTO `cms_log` VALUES ('4', '1', null, '1', '2012-11-18 16:57:09', '127.0.0.1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('5', '1', '1', '3', '2012-11-18 16:57:53', '127.0.0.1', '/cms/admin/cms/acquisition/o_update.do', '修改采集', 'id=1;name=新浪国内新闻');
-INSERT INTO `cms_log` VALUES ('6', null, null, '2', '2013-01-22 23:57:29', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录失败', 'username=admin;password=password');
-INSERT INTO `cms_log` VALUES ('7', null, null, '2', '2013-01-22 23:57:34', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录失败', 'username=admin;password=password');
-INSERT INTO `cms_log` VALUES ('8', '1', null, '1', '2013-01-22 23:57:37', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('9', '1', null, '1', '2013-01-23 00:19:09', '127.0.0.1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('10', '1', null, '1', '2013-01-23 23:32:47', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('11', '1', '1', '3', '2013-01-23 23:33:48', '0:0:0:0:0:0:0:1', '/cms/admin/cms/site/o_update.do', '修改站点', 'id=1;name=YunKuoCMS');
-INSERT INTO `cms_log` VALUES ('12', '1', '1', '3', '2013-01-23 23:39:28', '0:0:0:0:0:0:0:1', '/cms/admin/cms/config/o_mark_update.do', '修改水印设置', null);
-INSERT INTO `cms_log` VALUES ('13', '1', '1', '3', '2013-01-23 23:45:03', '0:0:0:0:0:0:0:1', '/cms/admin/cms/config/o_login_update.do', '修改登录设置', null);
-INSERT INTO `cms_log` VALUES ('14', '1', '1', '3', '2013-01-23 23:50:04', '0:0:0:0:0:0:0:1', '/cms/admin/cms/config/o_login_update.do', '修改登录设置', null);
-INSERT INTO `cms_log` VALUES ('15', '1', '1', '3', '2013-01-23 23:51:06', '0:0:0:0:0:0:0:1', '/cms/admin/cms/config/o_login_update.do', '修改登录设置', null);
-INSERT INTO `cms_log` VALUES ('16', '1', '1', '3', '2013-01-23 23:51:18', '0:0:0:0:0:0:0:1', '/cms/admin/cms/config/o_system_update.do', '修改系统设置', null);
-INSERT INTO `cms_log` VALUES ('17', '1', null, '1', '2013-01-24 00:07:08', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('18', '1', '1', '3', '2013-01-24 00:08:25', '0:0:0:0:0:0:0:1', '/cms/admin/cms/config/o_system_update.do', '修改系统设置', null);
-INSERT INTO `cms_log` VALUES ('19', '1', '1', '3', '2013-01-24 00:10:53', '0:0:0:0:0:0:0:1', '/cms/admin/cms/message/v_send.do', '发送站内信', 'id=1;title=test');
-INSERT INTO `cms_log` VALUES ('20', '1', '1', '3', '2013-01-24 00:10:53', '0:0:0:0:0:0:0:1', '/cms/admin/cms/message/v_send.do', '发送站内信', 'id=2;title=test');
-INSERT INTO `cms_log` VALUES ('21', '1', '1', '3', '2013-01-24 00:10:53', '0:0:0:0:0:0:0:1', '/cms/admin/cms/message/v_send.do', '发送站内信', 'id=3;title=test');
-INSERT INTO `cms_log` VALUES ('22', '1', null, '1', '2013-01-24 00:26:30', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('23', '1', null, '1', '2013-01-24 00:32:24', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('24', '1', null, '1', '2013-01-24 21:08:09', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('25', '1', null, '1', '2013-01-24 21:15:47', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('26', '1', null, '1', '2013-01-24 21:16:42', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('27', '1', null, '1', '2013-01-24 21:19:47', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('28', '1', '1', '3', '2013-01-24 21:23:57', '0:0:0:0:0:0:0:1', '/cms/admin/cms/content/o_update.do', '修改文章', 'id=604;title=8888中国国家深海基地预计将于明年5月底前开工|国家深海基地|开工');
-INSERT INTO `cms_log` VALUES ('29', '1', null, '1', '2013-01-24 22:08:21', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('30', '1', null, '1', '2013-01-24 22:57:32', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('31', '1', null, '1', '2013-01-24 22:59:22', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('32', '1', null, '1', '2013-01-24 23:24:37', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('33', '1', null, '1', '2013-01-24 23:51:34', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('34', '1', null, '1', '2013-01-28 23:10:46', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('35', '1', null, '1', '2013-02-01 20:33:17', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('36', '1', null, '1', '2013-02-02 21:23:23', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('37', '1', null, '1', '2013-02-02 21:50:37', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('38', '1', '1', '3', '2013-02-02 21:54:16', '0:0:0:0:0:0:0:1', '/cms/admin/cms/template/o_ajaxUpdate.do', '修改模板', 'filename=/WEB-INF/template/cms/www/red/alone/单页000.html');
-INSERT INTO `cms_log` VALUES ('39', '1', '1', '3', '2013-02-02 22:19:24', '0:0:0:0:0:0:0:1', '/cms/admin/cms/site/o_save.do', '增加站点', 'id=2;name=111');
-INSERT INTO `cms_log` VALUES ('40', '1', null, '1', '2013-02-02 23:49:29', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('41', '1', null, '1', '2013-02-03 00:20:51', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('42', '1', null, '1', '2013-02-03 18:54:38', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('43', '1', null, '1', '2013-02-06 00:31:03', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('44', '1', null, '1', '2013-02-07 00:02:23', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('45', '1', null, '1', '2013-02-12 23:32:11', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('46', '1', null, '1', '2013-02-13 21:38:58', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login.do', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('47', '1', null, '1', '2013-02-13 22:37:46', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('48', '1', '1', '3', '2013-02-13 22:38:36', '0:0:0:0:0:0:0:1', '/cms/admin/cms/topic/o_update', '修改专题', 'id=2;name=上海世博会专题000');
-INSERT INTO `cms_log` VALUES ('49', '1', '1', '3', '2013-02-13 22:47:45', '0:0:0:0:0:0:0:1', '/cms/admin/cms/channel/o_update', '修改栏目', 'id=10;name=关于我们');
-INSERT INTO `cms_log` VALUES ('50', '1', null, '1', '2013-02-14 18:27:03', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('51', '1', null, '1', '2013-02-16 23:38:01', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('52', '1', '1', '3', '2013-02-16 23:39:12', '0:0:0:0:0:0:0:1', '/cms/admin/cms/friendlink/o_update', '修改友情链接', 'id=1;name=YunKuo');
-INSERT INTO `cms_log` VALUES ('53', '1', '1', '3', '2013-02-16 23:39:50', '0:0:0:0:0:0:0:1', '/cms/admin/cms/friendlink/o_update', '修改友情链接', 'id=2;name=YunKuoCMS');
-INSERT INTO `cms_log` VALUES ('54', '1', null, '1', '2013-03-04 23:05:37', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('55', '1', null, '1', '2013-03-04 23:13:55', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('56', '1', null, '1', '2013-03-07 20:59:06', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('57', '1', null, '1', '2013-03-07 22:16:23', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('58', '1', null, '1', '2013-03-09 23:51:31', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login', '登录成功', null);
-INSERT INTO `cms_log` VALUES ('59', '1', '1', '3', '2013-03-09 23:52:22', '0:0:0:0:0:0:0:1', '/cms/admin/cms/template/o_ajaxUpdate', '修改模板', 'filename=/WEB-INF/template/cms/www/com/index/首页.html');
+INSERT INTO `cms_log` VALUES ('1', '1', null, '1', '2012-11-18 16:09:28', '0:0:0:0:0:0:0:1', '/jeecms/jeeadmin/jeecms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('2', '1', null, '1', '2012-11-18 16:10:25', '0:0:0:0:0:0:0:1', '/jeecms/jeeadmin/jeecms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('3', '1', '1', '3', '2012-11-18 16:17:53', '0:0:0:0:0:0:0:1', '/jeecms/jeeadmin/jeecms/acquisition/o_update.do', '修改采集', 'id=1;name=新浪国内新闻');
+INSERT INTO `cms_log` VALUES ('4', '1', null, '1', '2012-11-18 16:57:09', '127.0.0.1', '/jeecms/jeeadmin/jeecms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('5', '1', '1', '3', '2012-11-18 16:57:53', '127.0.0.1', '/jeecms/jeeadmin/jeecms/acquisition/o_update.do', '修改采集', 'id=1;name=新浪国内新闻');
+INSERT INTO `cms_log` VALUES ('6', null, null, '2', '2013-01-22 23:57:29', '0:0:0:0:0:0:0:1', '/cms-ui/jeeadmin/jeecms/login.do', '登录失败', 'username=admin;password=password');
+INSERT INTO `cms_log` VALUES ('7', null, null, '2', '2013-01-22 23:57:34', '0:0:0:0:0:0:0:1', '/cms-ui/jeeadmin/jeecms/login.do', '登录失败', 'username=admin;password=password');
+INSERT INTO `cms_log` VALUES ('8', '1', null, '1', '2013-01-22 23:57:37', '0:0:0:0:0:0:0:1', '/cms-ui/jeeadmin/jeecms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('9', '1', null, '1', '2013-01-23 00:19:09', '127.0.0.1', '/cms-ui/jeeadmin/jeecms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('10', '1', null, '1', '2013-01-23 23:32:47', '0:0:0:0:0:0:0:1', '/cms-ui/jeeadmin/jeecms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('11', '1', '1', '3', '2013-01-23 23:33:48', '0:0:0:0:0:0:0:1', '/cms-ui/jeeadmin/jeecms/site/o_update.do', '修改站点', 'id=1;name=YunKuoCMS');
+INSERT INTO `cms_log` VALUES ('12', '1', '1', '3', '2013-01-23 23:39:28', '0:0:0:0:0:0:0:1', '/cms-ui/jeeadmin/jeecms/config/o_mark_update.do', '修改水印设置', null);
+INSERT INTO `cms_log` VALUES ('13', '1', '1', '3', '2013-01-23 23:45:03', '0:0:0:0:0:0:0:1', '/cms-ui/jeeadmin/jeecms/config/o_login_update.do', '修改登录设置', null);
+INSERT INTO `cms_log` VALUES ('14', '1', '1', '3', '2013-01-23 23:50:04', '0:0:0:0:0:0:0:1', '/cms-ui/jeeadmin/jeecms/config/o_login_update.do', '修改登录设置', null);
+INSERT INTO `cms_log` VALUES ('15', '1', '1', '3', '2013-01-23 23:51:06', '0:0:0:0:0:0:0:1', '/cms-ui/jeeadmin/jeecms/config/o_login_update.do', '修改登录设置', null);
+INSERT INTO `cms_log` VALUES ('16', '1', '1', '3', '2013-01-23 23:51:18', '0:0:0:0:0:0:0:1', '/cms-ui/jeeadmin/jeecms/config/o_system_update.do', '修改系统设置', null);
+INSERT INTO `cms_log` VALUES ('17', '1', null, '1', '2013-01-24 00:07:08', '0:0:0:0:0:0:0:1', '/cms-ui/jeeadmin/jeecms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('18', '1', '1', '3', '2013-01-24 00:08:25', '0:0:0:0:0:0:0:1', '/cms-ui/jeeadmin/jeecms/config/o_system_update.do', '修改系统设置', null);
+INSERT INTO `cms_log` VALUES ('19', '1', '1', '3', '2013-01-24 00:10:53', '0:0:0:0:0:0:0:1', '/cms-ui/jeeadmin/jeecms/message/v_send.do', '发送站内信', 'id=1;title=test');
+INSERT INTO `cms_log` VALUES ('20', '1', '1', '3', '2013-01-24 00:10:53', '0:0:0:0:0:0:0:1', '/cms-ui/jeeadmin/jeecms/message/v_send.do', '发送站内信', 'id=2;title=test');
+INSERT INTO `cms_log` VALUES ('21', '1', '1', '3', '2013-01-24 00:10:53', '0:0:0:0:0:0:0:1', '/cms-ui/jeeadmin/jeecms/message/v_send.do', '发送站内信', 'id=3;title=test');
+INSERT INTO `cms_log` VALUES ('22', '1', null, '1', '2013-01-24 00:26:30', '0:0:0:0:0:0:0:1', '/cms-ui/admin/jeecms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('23', '1', null, '1', '2013-01-24 00:32:24', '0:0:0:0:0:0:0:1', '/cms-ui/admin/jeecms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('24', '1', null, '1', '2013-01-24 21:08:09', '0:0:0:0:0:0:0:1', '/cms-ui/jeeadmin/jeecms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('25', '1', null, '1', '2013-01-24 21:15:47', '0:0:0:0:0:0:0:1', '/cms-ui/admin/jeecms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('26', '1', null, '1', '2013-01-24 21:16:42', '0:0:0:0:0:0:0:1', '/cms-ui/admin/jeecms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('27', '1', null, '1', '2013-01-24 21:19:47', '0:0:0:0:0:0:0:1', '/cms-ui/admin/jeecms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('28', '1', '1', '3', '2013-01-24 21:23:57', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/content/o_update.do', '修改文章', 'id=604;title=8888中国国家深海基地预计将于明年5月底前开工|国家深海基地|开工');
+INSERT INTO `cms_log` VALUES ('29', '1', null, '1', '2013-01-24 22:08:21', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('30', '1', null, '1', '2013-01-24 22:57:32', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('31', '1', null, '1', '2013-01-24 22:59:22', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('32', '1', null, '1', '2013-01-24 23:24:37', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('33', '1', null, '1', '2013-01-24 23:51:34', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('34', '1', null, '1', '2013-01-28 23:10:46', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('35', '1', null, '1', '2013-02-01 20:33:17', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('36', '1', null, '1', '2013-02-02 21:23:23', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('37', '1', null, '1', '2013-02-02 21:50:37', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('38', '1', '1', '3', '2013-02-02 21:54:16', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/template/o_ajaxUpdate.do', '修改模板', 'filename=/WEB-INF/template/cms/www/red/alone/单页000.html');
+INSERT INTO `cms_log` VALUES ('39', '1', '1', '3', '2013-02-02 22:19:24', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/site/o_save.do', '增加站点', 'id=2;name=111');
+INSERT INTO `cms_log` VALUES ('40', '1', null, '1', '2013-02-02 23:49:29', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('41', '1', null, '1', '2013-02-03 00:20:51', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('42', '1', null, '1', '2013-02-03 18:54:38', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('43', '1', null, '1', '2013-02-06 00:31:03', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('44', '1', null, '1', '2013-02-07 00:02:23', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('45', '1', null, '1', '2013-02-12 23:32:11', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('46', '1', null, '1', '2013-02-13 21:38:58', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login.do', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('47', '1', null, '1', '2013-02-13 22:37:46', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('48', '1', '1', '3', '2013-02-13 22:38:36', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/topic/o_update', '修改专题', 'id=2;name=上海世博会专题000');
+INSERT INTO `cms_log` VALUES ('49', '1', '1', '3', '2013-02-13 22:47:45', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/channel/o_update', '修改栏目', 'id=10;name=关于我们');
+INSERT INTO `cms_log` VALUES ('50', '1', null, '1', '2013-02-14 18:27:03', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('51', '1', null, '1', '2013-02-16 23:38:01', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('52', '1', '1', '3', '2013-02-16 23:39:12', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/friendlink/o_update', '修改友情链接', 'id=1;name=YunKuo');
+INSERT INTO `cms_log` VALUES ('53', '1', '1', '3', '2013-02-16 23:39:50', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/friendlink/o_update', '修改友情链接', 'id=2;name=YunKuoCMS');
+INSERT INTO `cms_log` VALUES ('54', '1', null, '1', '2013-03-04 23:05:37', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('55', '1', null, '1', '2013-03-04 23:13:55', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('56', '1', null, '1', '2013-03-07 20:59:06', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('57', '1', null, '1', '2013-03-07 22:16:23', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('58', '1', null, '1', '2013-03-09 23:51:31', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('59', '1', '1', '3', '2013-03-09 23:52:22', '0:0:0:0:0:0:0:1', '/cms-ui/admin/cms/template/o_ajaxUpdate', '修改模板', 'filename=/WEB-INF/template/cms/www/com/index/首页.html');
 INSERT INTO `cms_log` VALUES ('60', '1', null, '1', '2013-07-07 20:20:35', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
 INSERT INTO `cms_log` VALUES ('61', '1', '1', '3', '2013-07-07 20:21:01', '127.0.0.1', '/cms/admin/cms/config/o_system_update', '修改系统设置', null);
+INSERT INTO `cms_log` VALUES ('62', '1', null, '1', '2013-07-09 21:24:56', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('63', '1', null, '1', '2013-07-09 22:08:59', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('64', '1', null, '1', '2013-07-09 22:41:47', '0:0:0:0:0:0:0:1', '/cms/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('65', '1', null, '1', '2013-07-09 22:56:07', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('66', '1', null, '1', '2013-07-09 23:14:17', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('67', '1', '1', '3', '2013-07-09 23:14:57', '127.0.0.1', '/cms/admin/cms/content/o_save', '增加文章', 'id=608;title=aaaaa');
+INSERT INTO `cms_log` VALUES ('68', '1', null, '1', '2013-07-11 22:14:44', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('69', '1', '1', '3', '2013-07-11 22:15:02', '127.0.0.1', '/cms/admin/cms/content/o_update', '修改文章', 'id=608;title=aaaaa');
+INSERT INTO `cms_log` VALUES ('70', '1', '1', '3', '2013-07-11 22:17:50', '127.0.0.1', '/cms/admin/cms/tag/o_delete', '删除TAG', 'id=56;name=c');
+INSERT INTO `cms_log` VALUES ('71', '1', '1', '3', '2013-07-11 22:18:33', '127.0.0.1', '/cms/admin/cms/tag/o_save', '增加TAG', 'id=57;name=eee');
+INSERT INTO `cms_log` VALUES ('72', '1', null, '1', '2013-07-11 23:13:06', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('73', '1', null, '1', '2013-07-11 23:19:05', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('74', '1', null, '1', '2013-07-11 23:29:50', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
 
 -- ----------------------------
 -- Table structure for `cms_message`
@@ -5517,139 +5543,167 @@ CREATE TABLE `cms_site_flow` (
   PRIMARY KEY (`flow_id`),
   KEY `fk_cms_flow_site` (`site_id`),
   CONSTRAINT `fk_cms_flow_site` FOREIGN KEY (`site_id`) REFERENCES `cms_site` (`site_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8 COMMENT='站点流量统计表';
+) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=utf8 COMMENT='站点流量统计表';
 
 -- ----------------------------
 -- Records of cms_site_flow
 -- ----------------------------
-INSERT INTO `cms_site_flow` VALUES ('1', '1', '0:0:0:0:0:0:0:1', '2012-11-18', '2012-11-18 16:19:49', 'http://localhost:8080/cms/news/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '', '8D35F7B0A90E4F1A7B07B8968DF18DC1');
-INSERT INTO `cms_site_flow` VALUES ('2', '1', '0:0:0:0:0:0:0:1', '2012-11-18', '2012-11-18 16:23:36', 'http://localhost:8080/cms/', 'http://localhost:8080', 'http://localhost:8080/cms/news/index.jhtml', '', '', '8D35F7B0A90E4F1A7B07B8968DF18DC1');
-INSERT INTO `cms_site_flow` VALUES ('3', '1', '0:0:0:0:0:0:0:1', '2012-11-18', '2012-11-18 16:23:59', 'http://localhost:8080/cms/world/238.htm', 'http://localhost:8080', 'http://localhost:8080/cms/news/index.jhtml', '', '', '8D35F7B0A90E4F1A7B07B8968DF18DC1');
-INSERT INTO `cms_site_flow` VALUES ('4', '1', '0:0:0:0:0:0:0:1', '2012-11-18', '2012-11-18 16:24:12', 'http://localhost:8080/cms/wyty/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms/world/338.jhtml', '', '', '8D35F7B0A90E4F1A7B07B8968DF18DC1');
-INSERT INTO `cms_site_flow` VALUES ('5', '1', '0:0:0:0:0:0:0:1', '2012-11-18', '2012-11-18 16:24:06', 'http://localhost:8080/cms/world/338.htm', '', '', '', '', '8D35F7B0A90E4F1A7B07B8968DF18DC1');
-INSERT INTO `cms_site_flow` VALUES ('6', '1', '0:0:0:0:0:0:0:1', '2012-11-18', '2012-11-18 16:24:27', 'http://localhost:8080/cms/world/438.htm', '', '', '', '', '8D35F7B0A90E4F1A7B07B8968DF18DC1');
-INSERT INTO `cms_site_flow` VALUES ('7', '1', '0:0:0:0:0:0:0:1', '2012-11-18', '2012-11-18 16:24:43', 'http://localhost:8080/cms/world/508.htm', '', '', '', '', '8D35F7B0A90E4F1A7B07B8968DF18DC1');
-INSERT INTO `cms_site_flow` VALUES ('8', '1', '127.0.0.1', '2012-11-18', '2012-11-18 16:56:40', 'http://localhost:8080/cms/system/516.htm', 'http://localhost:8080', 'http://localhost:8080/cms/system/index_2.jhtml', '', '本机地址', '5E6CFE3939C749C1F874F96616FBCFD0');
-INSERT INTO `cms_site_flow` VALUES ('9', '1', '127.0.0.1', '2012-11-18', '2012-11-18 16:56:30', 'http://localhost:8080/cms/system/index_2.htm', 'http://localhost:8080', 'http://localhost:8080/cms/system/index.jhtml', '', '本机地址', '5E6CFE3939C749C1F874F96616FBCFD0');
-INSERT INTO `cms_site_flow` VALUES ('10', '1', '127.0.0.1', '2012-11-18', '2012-11-18 16:56:24', 'http://localhost:8080/cms/system/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms/system/529.jhtml', '', '本机地址', '5E6CFE3939C749C1F874F96616FBCFD0');
-INSERT INTO `cms_site_flow` VALUES ('11', '1', '127.0.0.1', '2012-11-18', '2012-11-18 16:56:51', 'http://localhost:8080/cms/download/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms/system/516.jhtml', '', '本机地址', '5E6CFE3939C749C1F874F96616FBCFD0');
-INSERT INTO `cms_site_flow` VALUES ('12', '1', '127.0.0.1', '2012-11-18', '2012-11-18 16:58:07', 'http://localhost:8080/cms/', 'http://localhost:8080', 'http://localhost:8080/cms/download/index.jhtml', '', '本机地址', '5E6CFE3939C749C1F874F96616FBCFD0');
-INSERT INTO `cms_site_flow` VALUES ('13', '1', '127.0.0.1', '2012-11-18', '2012-11-18 17:00:39', 'http://localhost:8080/cms/', 'http://localhost:8080', 'http://localhost:8080/cms/admin/cms/top.do', '', '本机地址', '2F8C1DC0046DEF5CDCCCB1C0B5C1705D');
-INSERT INTO `cms_site_flow` VALUES ('14', '1', '127.0.0.1', '2012-11-18', '2012-11-18 17:00:55', 'http://localhost:8080/cms/news/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '本机地址', '2F8C1DC0046DEF5CDCCCB1C0B5C1705D');
-INSERT INTO `cms_site_flow` VALUES ('15', '1', '127.0.0.1', '2012-11-18', '2012-11-18 17:01:20', 'http://localhost:8080/cms/gnxw/606.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/news/index.jhtml', '', '本机地址', '2F8C1DC0046DEF5CDCCCB1C0B5C1705D');
-INSERT INTO `cms_site_flow` VALUES ('16', '1', '0:0:0:0:0:0:0:1', '2013-1-22', '2013-01-22 23:58:08', 'http://localhost:8080/cms/gnxw/607.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/admin/cms/content/v_list.do', '', '', '6D86D08359A2B3D68D980F5A8976BC16');
-INSERT INTO `cms_site_flow` VALUES ('17', '1', '0:0:0:0:0:0:0:1', '2013-1-23', '2013-01-23 00:00:43', 'http://localhost:8080/cms/', 'http://localhost:8080', 'http://localhost:8080/cms/admin/cms/top.do', '', '', '6D86D08359A2B3D68D980F5A8976BC16');
-INSERT INTO `cms_site_flow` VALUES ('18', '1', '0:0:0:0:0:0:0:1', '2013-1-23', '2013-01-23 00:00:45', 'http://localhost:8080/cms/gnxw/39.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '', '6D86D08359A2B3D68D980F5A8976BC16');
-INSERT INTO `cms_site_flow` VALUES ('19', '1', '127.0.0.1', '2013-1-23', '2013-01-23 00:18:47', 'http://localhost:8080/cms/', '', '', '', '本机地址', '57E968DDF8FD1C9FE0D819B3767FA6A5');
-INSERT INTO `cms_site_flow` VALUES ('20', '1', '127.0.0.1', '2013-1-23', '2013-01-23 00:20:24', 'http://localhost:8080/cms/gnxw/607.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/admin/cms/content/v_list.do', '', '本机地址', '57E968DDF8FD1C9FE0D819B3767FA6A5');
-INSERT INTO `cms_site_flow` VALUES ('21', '1', '127.0.0.1', '2013-1-23', '2013-01-23 00:18:49', 'http://localhost:8080/cms/shehui/248.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '本机地址', '57E968DDF8FD1C9FE0D819B3767FA6A5');
-INSERT INTO `cms_site_flow` VALUES ('22', '1', '127.0.0.1', '2013-1-23', '2013-01-23 00:33:44', 'http://localhost:8080/cms/', '', '', '', '本机地址', '9BC6DACF6B24490869D685630B055B7E');
-INSERT INTO `cms_site_flow` VALUES ('23', '1', '0:0:0:0:0:0:0:1', '2013-1-23', '2013-01-23 23:34:38', 'http://localhost:8080/cms/gnxw/605.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/member/contribute_list.jspx', '', '', 'AD8CD3F1B55656A01CEE20A7F188F2BB');
-INSERT INTO `cms_site_flow` VALUES ('24', '1', '0:0:0:0:0:0:0:1', '2013-1-23', '2013-01-23 23:34:04', 'http://localhost:8080/cms/', 'http://localhost:8080', 'http://localhost:8080/cms/search.jspx?q=%E8%AF%B7%E8%BE%93%E5%85%A5%E5%85%B3%E9%94%AE%E8%AF%8D&channelId=', '', '', 'AD8CD3F1B55656A01CEE20A7F188F2BB');
-INSERT INTO `cms_site_flow` VALUES ('25', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 21:24:13', 'http://localhost:8080/cms/', 'http://localhost:8080', 'http://localhost:8080/cms/admin/cms/top.do', '', '', 'B88C3A7E5C4BA9790399B0B38F276075');
-INSERT INTO `cms_site_flow` VALUES ('26', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 21:42:07', 'http://localhost:8080/cms/gnxw/606.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/admin/cms/content/v_list.do?cid=1', '', '', 'B88C3A7E5C4BA9790399B0B38F276075');
-INSERT INTO `cms_site_flow` VALUES ('27', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 21:46:41', 'http://localhost:8080/cms/whxy/297.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/picture/index.jhtml', '', '', 'B88C3A7E5C4BA9790399B0B38F276075');
-INSERT INTO `cms_site_flow` VALUES ('28', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 23:26:47', 'http://localhost:8080/cms/', 'http://localhost:8080', 'http://localhost:8080/cms/admin/cms/top.do', '', '', 'moq9ghkot08sj47p7y9j4ua4');
-INSERT INTO `cms_site_flow` VALUES ('29', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 23:26:52', 'http://localhost:8080/cms/gnxw/39.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '', 'moq9ghkot08sj47p7y9j4ua4');
-INSERT INTO `cms_site_flow` VALUES ('30', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 23:27:29', 'http://localhost:8080/cms/gnxw/40.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/gnxw/39.jhtml', '', '', 'moq9ghkot08sj47p7y9j4ua4');
-INSERT INTO `cms_site_flow` VALUES ('31', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 23:27:51', 'http://localhost:8080/cms/news/index.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/gnxw/39.jhtml', '', '', 'moq9ghkot08sj47p7y9j4ua4');
-INSERT INTO `cms_site_flow` VALUES ('32', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 23:27:59', 'http://localhost:8080/cms/photo/187.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/photo/186.jhtml', '', '', 'moq9ghkot08sj47p7y9j4ua4');
-INSERT INTO `cms_site_flow` VALUES ('33', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 23:28:10', 'http://localhost:8080/cms/download/index.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/photo/187.jhtml', '', '', 'moq9ghkot08sj47p7y9j4ua4');
-INSERT INTO `cms_site_flow` VALUES ('34', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 23:27:55', 'http://localhost:8080/cms/photo/186.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/news/index.jhtml', '', '', 'moq9ghkot08sj47p7y9j4ua4');
-INSERT INTO `cms_site_flow` VALUES ('35', '1', '0:0:0:0:0:0:0:1', '2013-1-27', '2013-01-27 23:20:28', 'http://localhost:8080/cms/', '', '', '', '', 'uy3r260f382m1nuk1vtreqa1r');
-INSERT INTO `cms_site_flow` VALUES ('36', '1', '0:0:0:0:0:0:0:1', '2013-1-28', '2013-01-28 00:15:41', 'http://localhost:8080/cms/', 'http://localhost:8080', 'http://localhost:8080/cms/register.jspx', '', '', '1af23ime8jex41ub014jsy6dty');
-INSERT INTO `cms_site_flow` VALUES ('37', '1', '0:0:0:0:0:0:0:1', '2013-1-28', '2013-01-28 23:12:18', 'http://localhost:8080/cms/cjbd/112.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/tag/40.jspx', '', '', '5DA84C60D4DA5CCF9EF7C9ACED066F2A');
-INSERT INTO `cms_site_flow` VALUES ('38', '1', '0:0:0:0:0:0:0:1', '2013-1-31', '2013-01-31 23:59:54', 'http://localhost:8080/cms/?locale=zh_CN', 'http://localhost:8080', 'http://localhost:8080/cms/login.jspx?returnUrl=/', '', '', 'D24DFB3E1EF2F14920C49E349EC91D60');
-INSERT INTO `cms_site_flow` VALUES ('39', '1', '0:0:0:0:0:0:0:1', '2013-2-1', '2013-02-01 21:04:57', 'http://localhost:8080/cms/', '', '', '', '', '55FA62F13E22437DD80571F5C945CB12');
-INSERT INTO `cms_site_flow` VALUES ('40', '1', '0:0:0:0:0:0:0:1', '2013-2-1', '2013-02-01 21:59:33', 'http://localhost:8080/cms/news/index.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/member/index.jspx', '', '', '55FA62F13E22437DD80571F5C945CB12');
-INSERT INTO `cms_site_flow` VALUES ('41', '1', '0:0:0:0:0:0:0:1', '2013-2-1', '2013-02-01 22:39:28', 'http://localhost:8080/cms/shehui/247.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '', '55FA62F13E22437DD80571F5C945CB12');
-INSERT INTO `cms_site_flow` VALUES ('42', '1', '0:0:0:0:0:0:0:1', '2013-2-1', '2013-02-01 23:36:33', 'http://localhost:8080/cms/shehui/246.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '', '55FA62F13E22437DD80571F5C945CB12');
-INSERT INTO `cms_site_flow` VALUES ('43', '1', '0:0:0:0:0:0:0:1', '2013-2-2', '2013-02-02 00:14:11', 'http://localhost:8080/cms/news/index.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/member/contribute_add.jspx', '', '', '55FA62F13E22437DD80571F5C945CB12');
-INSERT INTO `cms_site_flow` VALUES ('44', '1', '0:0:0:0:0:0:0:1', '2013-2-2', '2013-02-02 23:11:52', 'http://localhost:8080/cms/', '', '', '', '', 'D29D81CA52A74B58E9142745CD60B172');
-INSERT INTO `cms_site_flow` VALUES ('45', '1', '0:0:0:0:0:0:0:1', '2013-2-2', '2013-02-02 23:49:00', 'http://localhost:8080/cms/', 'http://localhost:8080', 'http://localhost:8080/cms/gnxw/39.jhtml', '', '', 'A77AD84C029362DE7ED2FB4D72333788');
-INSERT INTO `cms_site_flow` VALUES ('46', '1', '0:0:0:0:0:0:0:1', '2013-2-3', '2013-02-03 18:55:15', 'http://localhost:8080/cms/?locale=zh_CN', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '', '74638FA1FB258A0B60AD1B65BA732D39');
-INSERT INTO `cms_site_flow` VALUES ('47', '1', '0:0:0:0:0:0:0:1', '2013-2-3', '2013-02-03 18:55:49', 'http://localhost:8080/cms/phone/292.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/product/index.jhtml', '', '', '74638FA1FB258A0B60AD1B65BA732D39');
-INSERT INTO `cms_site_flow` VALUES ('48', '1', '0:0:0:0:0:0:0:1', '2013-2-3', '2013-02-03 18:55:41', 'http://localhost:8080/cms/product/index.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/guestbook.jspx', '', '', '74638FA1FB258A0B60AD1B65BA732D39');
-INSERT INTO `cms_site_flow` VALUES ('49', '1', '0:0:0:0:0:0:0:1', '2013-2-3', '2013-02-03 21:25:53', 'http://localhost:8080/cms/', '', '', '', '', 'AA2E4F4A8F7CF0F700DFF3C4AC91579F');
-INSERT INTO `cms_site_flow` VALUES ('50', '1', '0:0:0:0:0:0:0:1', '2013-2-3', '2013-02-03 21:27:46', 'http://localhost:8080/cms/gnxw/603.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/admin/cms/content/v_list.do', '', '', 'AA2E4F4A8F7CF0F700DFF3C4AC91579F');
-INSERT INTO `cms_site_flow` VALUES ('51', '1', '0:0:0:0:0:0:0:1', '2013-2-3', '2013-02-03 21:25:56', 'http://localhost:8080/cms/gnxw/39.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '', 'AA2E4F4A8F7CF0F700DFF3C4AC91579F');
-INSERT INTO `cms_site_flow` VALUES ('52', '1', '0:0:0:0:0:0:0:1', '2013-2-3', '2013-02-03 23:26:28', 'http://localhost:8080/cms/?locale=zh_CN', 'http://localhost:8080', 'http://localhost:8080/cms/login.jspx', '', '', 'AA2E4F4A8F7CF0F700DFF3C4AC91579F');
-INSERT INTO `cms_site_flow` VALUES ('53', '1', '0:0:0:0:0:0:0:1', '2013-2-3', '2013-02-03 23:39:57', 'http://localhost:8080/cms/news/index.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/comment.jspx?contentId=246', '', '', 'AA2E4F4A8F7CF0F700DFF3C4AC91579F');
-INSERT INTO `cms_site_flow` VALUES ('54', '1', '0:0:0:0:0:0:0:1', '2013-2-4', '2013-02-04 21:11:52', 'http://localhost:8080/cms/?locale=zh_CN', 'http://localhost:8080', 'http://localhost:8080/cms/login.jspx?returnUrl=/', '', '', 'fnwe7kje2gwb1i6hxy2ke7cje');
-INSERT INTO `cms_site_flow` VALUES ('55', '1', '0:0:0:0:0:0:0:1', '2013-2-5', '2013-02-05 21:58:06', 'http://localhost:8080/cms/news/index.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '', '0A4F0DDE3219D007A5CEF9D3C20A6269');
-INSERT INTO `cms_site_flow` VALUES ('56', '1', '0:0:0:0:0:0:0:1', '2013-2-5', '2013-02-05 21:58:32', 'http://localhost:8080/cms/gnxw/index_2.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/gnxw/index.jhtml', '', '', '0A4F0DDE3219D007A5CEF9D3C20A6269');
-INSERT INTO `cms_site_flow` VALUES ('57', '1', '0:0:0:0:0:0:0:1', '2013-2-5', '2013-02-05 21:59:21', 'http://localhost:8080/cms/gnxw/index_3.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/gnxw/index_2.jhtml', '', '', '0A4F0DDE3219D007A5CEF9D3C20A6269');
-INSERT INTO `cms_site_flow` VALUES ('58', '1', '0:0:0:0:0:0:0:1', '2013-2-5', '2013-02-05 21:58:22', 'http://localhost:8080/cms/gnxw/index.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/news/index.jhtml', '', '', '0A4F0DDE3219D007A5CEF9D3C20A6269');
-INSERT INTO `cms_site_flow` VALUES ('59', '1', '0:0:0:0:0:0:0:1', '2013-2-5', '2013-02-05 22:32:40', 'http://localhost:8080/cms/shehui/250.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '', '0A4F0DDE3219D007A5CEF9D3C20A6269');
-INSERT INTO `cms_site_flow` VALUES ('60', '1', '0:0:0:0:0:0:0:1', '2013-2-5', '2013-02-05 22:35:21', 'http://localhost:8080/cms/?locale=zh_CN', 'http://localhost:8080', 'http://localhost:8080/cms/login.jspx?returnUrl=/', '', '', 'CFB0E8424BF93F9ED97766BC0316AB78');
-INSERT INTO `cms_site_flow` VALUES ('61', '1', '0:0:0:0:0:0:0:1', '2013-2-5', '2013-02-05 22:42:23', 'http://localhost:8080/cms/gnxw/249.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/topic/2.jspx', '', '', 'CFB0E8424BF93F9ED97766BC0316AB78');
-INSERT INTO `cms_site_flow` VALUES ('62', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 00:32:52', 'http://localhost:8080/cms/', '', '', '', '', '6E0FE640A168EE5A6B02A16387205E6B');
-INSERT INTO `cms_site_flow` VALUES ('63', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 22:11:20', 'http://localhost:8080/cms/index.html', '', '', '', '', '02A8D37922F9801DFFCE0BC18732AD56');
-INSERT INTO `cms_site_flow` VALUES ('64', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 23:04:12', 'http://localhost:8080/cms/index.html', '', '', '', '', '2EC4A7EAC7F3D0753CF2830FF674CB62');
-INSERT INTO `cms_site_flow` VALUES ('65', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 23:05:18', 'http://localhost:8080/cms/gnxw/39.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms/index.html', '', '', '2EC4A7EAC7F3D0753CF2830FF674CB62');
-INSERT INTO `cms_site_flow` VALUES ('66', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 23:08:06', 'http://localhost:8080/cms/shehui/250.htm', '', '', '', '', 'CCAF02F6121714F6122B0C0FE1801A5E');
-INSERT INTO `cms_site_flow` VALUES ('67', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 23:07:45', 'http://localhost:8080/cms/shehui/250.jsp', '', '', '', '', 'CCAF02F6121714F6122B0C0FE1801A5E');
-INSERT INTO `cms_site_flow` VALUES ('68', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 23:12:44', 'http://localhost:8080/cms/gnxw/39.htm', '', '', '', '', 'CCAF02F6121714F6122B0C0FE1801A5E');
-INSERT INTO `cms_site_flow` VALUES ('69', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 23:13:19', 'http://localhost:8080/cms/index.jhtml', '', '', '', '', 'CCAF02F6121714F6122B0C0FE1801A5E');
-INSERT INTO `cms_site_flow` VALUES ('70', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 23:36:06', 'http://localhost:8080/cms/', '', '', '', '', 'CCAF02F6121714F6122B0C0FE1801A5E');
-INSERT INTO `cms_site_flow` VALUES ('71', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 23:45:42', 'http://localhost:8080/cms/?locale=zh_CN', 'http://localhost:8080', 'http://localhost:8080/cms/login.jspx?returnUrl=/', '', '', 'CCAF02F6121714F6122B0C0FE1801A5E');
-INSERT INTO `cms_site_flow` VALUES ('72', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:01:46', 'http://localhost:8080/cms/gnxw/602.htm', '', '', '', '', 'CCAF02F6121714F6122B0C0FE1801A5E');
-INSERT INTO `cms_site_flow` VALUES ('73', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:01:59', 'http://localhost:8080/cms/dong/327.htm', '', '', '', '', 'A6ADB9138103617B212FAD9B8B642E01');
-INSERT INTO `cms_site_flow` VALUES ('74', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:01:46', 'http://localhost:8080/cms/gnxw/39.htm', '', '', '', '', 'CCAF02F6121714F6122B0C0FE1801A5E');
-INSERT INTO `cms_site_flow` VALUES ('75', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:05:48', 'http://localhost:8080/cms/?locale=zh_CN', 'http://localhost:8080', 'http://localhost:8080/cms/login.jspx?returnUrl=/', '', '', 'A6ADB9138103617B212FAD9B8B642E01');
-INSERT INTO `cms_site_flow` VALUES ('76', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:06:18', 'http://localhost:8080/cms/about.htm', '', '', '', '', 'A6ADB9138103617B212FAD9B8B642E01');
-INSERT INTO `cms_site_flow` VALUES ('77', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:09:06', 'http://localhost:8080/cms/', '', '', '', '', 'A6ADB9138103617B212FAD9B8B642E01');
-INSERT INTO `cms_site_flow` VALUES ('78', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:08:48', 'http://localhost:8080/cms/index.jhtml', '', '', '', '', 'A6ADB9138103617B212FAD9B8B642E01');
-INSERT INTO `cms_site_flow` VALUES ('79', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:21:06', 'http://localhost:8080/cms/', 'http://localhost:8080', 'http://localhost:8080/cms/index.jhtml', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
-INSERT INTO `cms_site_flow` VALUES ('80', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:21:18', 'http://localhost:8080/cms/index.htm', '', '', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
-INSERT INTO `cms_site_flow` VALUES ('81', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:21:47', 'http://localhost:8080/cms/about.htm', '', '', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
-INSERT INTO `cms_site_flow` VALUES ('82', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:22:21', 'http://localhost:8080/cms/shehui/246.htm', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
-INSERT INTO `cms_site_flow` VALUES ('83', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:21:52', 'http://localhost:8080/cms/shehui/247.htm', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
-INSERT INTO `cms_site_flow` VALUES ('84', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:22:08', 'http://localhost:8080/cms/works/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms/download/index.htm', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
-INSERT INTO `cms_site_flow` VALUES ('85', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:21:59', 'http://localhost:8080/cms/wyty/275.htm', 'http://localhost:8080', 'http://localhost:8080/cms/picture/index.htm', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
-INSERT INTO `cms_site_flow` VALUES ('86', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:22:06', 'http://localhost:8080/cms/download/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms/guestbook.jspx', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
-INSERT INTO `cms_site_flow` VALUES ('87', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:22:16', 'http://localhost:8080/cms/dong/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms/works/index.htm', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
-INSERT INTO `cms_site_flow` VALUES ('88', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:22:17', 'http://localhost:8080/cms/tiankong/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms/dong/index.htm', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
-INSERT INTO `cms_site_flow` VALUES ('89', '1', '0:0:0:0:0:0:0:1', '2013-2-8', '2013-02-08 01:11:24', 'http://localhost:8080/cms/', '', '', '', '', '175onbaamcjep1q1esad1u5hrj');
-INSERT INTO `cms_site_flow` VALUES ('90', '1', '0:0:0:0:0:0:0:1', '2013-2-8', '2013-02-08 20:58:58', 'http://localhost/cms/download/index.htm', 'http://localhost', 'http://localhost/cms/cjbd/116.htm', '', '', 'umnyu2r2ytjk19r4dik9jf138');
-INSERT INTO `cms_site_flow` VALUES ('91', '1', '0:0:0:0:0:0:0:1', '2013-2-8', '2013-02-08 21:16:01', 'http://localhost/cms/gnxw/607.htm', '', '', '', '', '14zctwlm6ntvltxacu19b1fh2');
-INSERT INTO `cms_site_flow` VALUES ('92', '1', '0:0:0:0:0:0:0:1', '2013-2-8', '2013-02-08 21:23:23', 'http://localhost/cms/', 'http://localhost', 'http://localhost/cms/gnxw/607.htm', '', '', '14zctwlm6ntvltxacu19b1fh2');
-INSERT INTO `cms_site_flow` VALUES ('93', '1', '0:0:0:0:0:0:0:1', '2013-2-8', '2013-02-08 23:03:55', 'http://localhost/cms/', '', '', '', '', '1mjsgg108dlzi1pizwpzjdp03');
-INSERT INTO `cms_site_flow` VALUES ('94', '1', '0:0:0:0:0:0:0:1', '2013-2-8', '2013-02-08 23:23:52', 'http://localhost/cms/', 'http://localhost', 'http://localhost/cms/login?returnUrl=http://localhost/cms/login?returnUrl=/', '', '', 'uh8clykdjxdt1xaiy16llt920');
-INSERT INTO `cms_site_flow` VALUES ('95', '1', '0:0:0:0:0:0:0:1', '2013-2-9', '2013-02-09 00:17:06', 'http://localhost/cms/news/index.htm', 'http://localhost', 'http://localhost/cms/guestbook', '', '', '1nl58ulbxhrw7e5y0sihf5oot');
-INSERT INTO `cms_site_flow` VALUES ('96', '1', '0:0:0:0:0:0:0:1', '2013-2-9', '2013-02-09 00:17:10', 'http://localhost/cms/world/237.htm', 'http://localhost', 'http://localhost/cms/news/index.htm', '', '', '1nl58ulbxhrw7e5y0sihf5oot');
-INSERT INTO `cms_site_flow` VALUES ('97', '1', '0:0:0:0:0:0:0:1', '2013-2-10', '2013-02-10 22:02:28', 'http://localhost/cms/gnxw/607.htm', '', '', '', '', '1rrfrijt6lewc1c956ccsu7tv9');
-INSERT INTO `cms_site_flow` VALUES ('98', '1', '0:0:0:0:0:0:0:1', '2013-2-10', '2013-02-10 23:13:38', 'http://localhost/cms/', '', '', '', '', '19if54zmum2971552ydujfifk3');
-INSERT INTO `cms_site_flow` VALUES ('99', '1', '0:0:0:0:0:0:0:1', '2013-2-10', '2013-02-10 23:15:03', 'http://localhost/cms/mrzx/index.htm', 'http://localhost', 'http://localhost/cms/', '', '', '1npzizhmyik58x56whbdi18ug');
-INSERT INTO `cms_site_flow` VALUES ('100', '1', '0:0:0:0:0:0:0:1', '2013-2-10', '2013-02-10 23:14:02', 'http://localhost/cms/veido/index.htm', 'http://localhost', 'http://localhost/cms/', '', '', '19if54zmum2971552ydujfifk3');
-INSERT INTO `cms_site_flow` VALUES ('101', '1', '0:0:0:0:0:0:0:1', '2013-2-10', '2013-02-10 23:14:04', 'http://localhost/cms/hhqw/310.htm', 'http://localhost', 'http://localhost/cms/veido/index.htm', '', '', '19if54zmum2971552ydujfifk3');
-INSERT INTO `cms_site_flow` VALUES ('102', '1', '0:0:0:0:0:0:0:1', '2013-2-10', '2013-02-10 23:15:51', 'http://localhost/cms/shehui/62.htm', 'http://localhost', 'http://localhost/cms/', '', '', '1npzizhmyik58x56whbdi18ug');
-INSERT INTO `cms_site_flow` VALUES ('103', '1', '0:0:0:0:0:0:0:1', '2013-2-10', '2013-02-10 23:21:03', 'http://localhost/cms/tiankong/324.htm', 'http://localhost', 'http://localhost/cms/shehui/62.htm', '', '', '1npzizhmyik58x56whbdi18ug');
-INSERT INTO `cms_site_flow` VALUES ('104', '1', '0:0:0:0:0:0:0:1', '2013-2-11', '2013-02-11 00:16:13', 'http://localhost/cms/?locale=zh_CN', 'http://localhost', 'http://localhost/cms/login?returnUrl=/', '', '', '7ihwicjnt9j41dgb8480987dk');
-INSERT INTO `cms_site_flow` VALUES ('105', '1', '0:0:0:0:0:0:0:1', '2013-2-12', '2013-02-12 12:06:33', 'http://localhost/cms/', '', '', '', '', '2921l88tc9pg1tyv8m26r07ba');
-INSERT INTO `cms_site_flow` VALUES ('106', '1', '0:0:0:0:0:0:0:1', '2013-2-12', '2013-02-12 21:13:55', 'http://localhost/cms/', '', '', '', '', 'fxcks5jgdxlw12g3phc8wqktv');
-INSERT INTO `cms_site_flow` VALUES ('107', '1', '0:0:0:0:0:0:0:1', '2013-2-12', '2013-02-12 21:14:14', 'http://localhost/cms/?locale=zh_CN', 'http://localhost', 'http://localhost/cms/login?returnUrl=/', '', '', '1bgbc6l91wfkh118o00mmv5yzh');
-INSERT INTO `cms_site_flow` VALUES ('108', '1', '0:0:0:0:0:0:0:1', '2013-2-12', '2013-02-12 21:46:30', 'http://localhost/cms/?locale=zh_CN', 'http://localhost', 'http://localhost/cms/login', '', '', '196cddte00oif1udn62xcode8x');
-INSERT INTO `cms_site_flow` VALUES ('109', '1', '0:0:0:0:0:0:0:1', '2013-2-12', '2013-02-12 23:33:13', 'http://localhost/cms/', 'http://localhost', 'http://localhost/cms/admin/cms/top.do', '', '', '1p7yhtbke47821uxomrv6llicc');
-INSERT INTO `cms_site_flow` VALUES ('110', '1', '0:0:0:0:0:0:0:1', '2013-2-13', '2013-02-13 00:02:44', 'http://localhost/cms/shehui/248.htm', 'http://localhost', 'http://localhost/cms/', '', '', '1p7yhtbke47821uxomrv6llicc');
-INSERT INTO `cms_site_flow` VALUES ('111', '1', '0:0:0:0:0:0:0:1', '2013-2-13', '2013-02-13 21:34:13', 'http://localhost/cms/', 'http://localhost', 'http://localhost/cms/download/index.htm', '', '', '17up03wynn8ap17rf2mzsjtei2');
-INSERT INTO `cms_site_flow` VALUES ('112', '1', '0:0:0:0:0:0:0:1', '2013-2-13', '2013-02-13 22:26:12', 'http://localhost/cms/', 'http://localhost', 'http://localhost/cms/download/index.htm', '', '', 'it90vonlqecy46rtraf6mpfr');
-INSERT INTO `cms_site_flow` VALUES ('113', '1', '0:0:0:0:0:0:0:1', '2013-2-13', '2013-02-13 22:38:50', 'http://localhost:8080/cms/', '', '', '', '', '385A61CD12B7ACAE76C2D99E3C21DCC1');
-INSERT INTO `cms_site_flow` VALUES ('114', '1', '0:0:0:0:0:0:0:1', '2013-2-13', '2013-02-13 22:39:34', 'http://localhost:8080/cms/gnxw/249.htm', 'http://localhost:8080', 'http://localhost:8080/cms/topic/2', '', '', '385A61CD12B7ACAE76C2D99E3C21DCC1');
-INSERT INTO `cms_site_flow` VALUES ('115', '1', '0:0:0:0:0:0:0:1', '2013-2-13', '2013-02-13 22:42:19', 'http://localhost:8080/cms/shehui/247.htm', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '', '385A61CD12B7ACAE76C2D99E3C21DCC1');
-INSERT INTO `cms_site_flow` VALUES ('116', '1', '0:0:0:0:0:0:0:1', '2013-2-14', '2013-02-14 22:31:44', 'http://localhost/cms/?locale=zh_CN', 'http://localhost', 'http://localhost/cms/login?returnUrl=/', '', '', '1x5kibxfj7tu1seaau26extnp');
-INSERT INTO `cms_site_flow` VALUES ('117', '1', '0:0:0:0:0:0:0:1', '2013-2-14', '2013-02-14 22:32:14', 'http://localhost/cms/tiankong/324.htm', 'http://localhost', 'http://localhost/cms/?locale=zh_CN', '', '', '1x5kibxfj7tu1seaau26extnp');
-INSERT INTO `cms_site_flow` VALUES ('118', '1', '0:0:0:0:0:0:0:1', '2013-2-16', '2013-02-16 23:41:04', 'http://localhost/cms/product/index.htm', 'http://localhost', 'http://localhost/cms/vote_result?voteId=1', '', '', 'ct9suysu1rgi15wq6h9a6047i');
-INSERT INTO `cms_site_flow` VALUES ('119', '1', '0:0:0:0:0:0:0:1', '2013-3-4', '2013-03-04 23:05:04', 'http://localhost/cms/', '', '', '', '', '1im2iwviql7ms1vc2080ykoqsh');
-INSERT INTO `cms_site_flow` VALUES ('120', '1', '0:0:0:0:0:0:0:1', '2013-3-7', '2013-03-07 21:20:55', 'http://localhost/cms/mrzx/index.htm', 'http://localhost', 'http://localhost/cms/', '', '', '1v7t3rphqjy4x9oktzaw1jdi9');
-INSERT INTO `cms_site_flow` VALUES ('121', '1', '0:0:0:0:0:0:0:1', '2013-3-9', '2013-03-09 23:52:28', 'http://localhost:8080/cms/', 'http://localhost:8080', 'http://localhost:8080/cms/admin/cms/top', '', '', 'EF30C58B481B2CE321E35D93CCCC4637');
-INSERT INTO `cms_site_flow` VALUES ('122', '1', '0:0:0:0:0:0:0:1', '2013-3-9', '2013-03-09 23:54:33', 'http://localhost:8080/cms/news/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '', 'EF30C58B481B2CE321E35D93CCCC4637');
-INSERT INTO `cms_site_flow` VALUES ('123', '1', '0:0:0:0:0:0:0:1', '2013-3-9', '2013-03-09 23:54:44', 'http://localhost:8080/cms/download/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms/veido/index.htm', '', '', 'EF30C58B481B2CE321E35D93CCCC4637');
-INSERT INTO `cms_site_flow` VALUES ('124', '1', '0:0:0:0:0:0:0:1', '2013-3-9', '2013-03-09 23:54:42', 'http://localhost:8080/cms/veido/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms/picture/index.htm', '', '', 'EF30C58B481B2CE321E35D93CCCC4637');
-INSERT INTO `cms_site_flow` VALUES ('125', '1', '0:0:0:0:0:0:0:1', '2013-3-9', '2013-03-09 23:54:45', 'http://localhost:8080/cms/works/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms/download/index.htm', '', '', 'EF30C58B481B2CE321E35D93CCCC4637');
+INSERT INTO `cms_site_flow` VALUES ('1', '1', '0:0:0:0:0:0:0:1', '2012-11-18', '2012-11-18 16:19:49', 'http://localhost:8080/jeecms/news/index.htm', 'http://localhost:8080', 'http://localhost:8080/jeecms/', '', '', '8D35F7B0A90E4F1A7B07B8968DF18DC1');
+INSERT INTO `cms_site_flow` VALUES ('2', '1', '0:0:0:0:0:0:0:1', '2012-11-18', '2012-11-18 16:23:36', 'http://localhost:8080/jeecms/', 'http://localhost:8080', 'http://localhost:8080/jeecms/news/index.jhtml', '', '', '8D35F7B0A90E4F1A7B07B8968DF18DC1');
+INSERT INTO `cms_site_flow` VALUES ('3', '1', '0:0:0:0:0:0:0:1', '2012-11-18', '2012-11-18 16:23:59', 'http://localhost:8080/jeecms/world/238.htm', 'http://localhost:8080', 'http://localhost:8080/jeecms/news/index.jhtml', '', '', '8D35F7B0A90E4F1A7B07B8968DF18DC1');
+INSERT INTO `cms_site_flow` VALUES ('4', '1', '0:0:0:0:0:0:0:1', '2012-11-18', '2012-11-18 16:24:12', 'http://localhost:8080/jeecms/wyty/index.htm', 'http://localhost:8080', 'http://localhost:8080/jeecms/world/338.jhtml', '', '', '8D35F7B0A90E4F1A7B07B8968DF18DC1');
+INSERT INTO `cms_site_flow` VALUES ('5', '1', '0:0:0:0:0:0:0:1', '2012-11-18', '2012-11-18 16:24:06', 'http://localhost:8080/jeecms/world/338.htm', '', '', '', '', '8D35F7B0A90E4F1A7B07B8968DF18DC1');
+INSERT INTO `cms_site_flow` VALUES ('6', '1', '0:0:0:0:0:0:0:1', '2012-11-18', '2012-11-18 16:24:27', 'http://localhost:8080/jeecms/world/438.htm', '', '', '', '', '8D35F7B0A90E4F1A7B07B8968DF18DC1');
+INSERT INTO `cms_site_flow` VALUES ('7', '1', '0:0:0:0:0:0:0:1', '2012-11-18', '2012-11-18 16:24:43', 'http://localhost:8080/jeecms/world/508.htm', '', '', '', '', '8D35F7B0A90E4F1A7B07B8968DF18DC1');
+INSERT INTO `cms_site_flow` VALUES ('8', '1', '127.0.0.1', '2012-11-18', '2012-11-18 16:56:40', 'http://localhost:8080/jeecms/system/516.htm', 'http://localhost:8080', 'http://localhost:8080/jeecms/system/index_2.jhtml', '', '本机地址', '5E6CFE3939C749C1F874F96616FBCFD0');
+INSERT INTO `cms_site_flow` VALUES ('9', '1', '127.0.0.1', '2012-11-18', '2012-11-18 16:56:30', 'http://localhost:8080/jeecms/system/index_2.htm', 'http://localhost:8080', 'http://localhost:8080/jeecms/system/index.jhtml', '', '本机地址', '5E6CFE3939C749C1F874F96616FBCFD0');
+INSERT INTO `cms_site_flow` VALUES ('10', '1', '127.0.0.1', '2012-11-18', '2012-11-18 16:56:24', 'http://localhost:8080/jeecms/system/index.htm', 'http://localhost:8080', 'http://localhost:8080/jeecms/system/529.jhtml', '', '本机地址', '5E6CFE3939C749C1F874F96616FBCFD0');
+INSERT INTO `cms_site_flow` VALUES ('11', '1', '127.0.0.1', '2012-11-18', '2012-11-18 16:56:51', 'http://localhost:8080/jeecms/download/index.htm', 'http://localhost:8080', 'http://localhost:8080/jeecms/system/516.jhtml', '', '本机地址', '5E6CFE3939C749C1F874F96616FBCFD0');
+INSERT INTO `cms_site_flow` VALUES ('12', '1', '127.0.0.1', '2012-11-18', '2012-11-18 16:58:07', 'http://localhost:8080/jeecms/', 'http://localhost:8080', 'http://localhost:8080/jeecms/download/index.jhtml', '', '本机地址', '5E6CFE3939C749C1F874F96616FBCFD0');
+INSERT INTO `cms_site_flow` VALUES ('13', '1', '127.0.0.1', '2012-11-18', '2012-11-18 17:00:39', 'http://localhost:8080/jeecms/', 'http://localhost:8080', 'http://localhost:8080/jeecms/jeeadmin/jeecms/top.do', '', '本机地址', '2F8C1DC0046DEF5CDCCCB1C0B5C1705D');
+INSERT INTO `cms_site_flow` VALUES ('14', '1', '127.0.0.1', '2012-11-18', '2012-11-18 17:00:55', 'http://localhost:8080/jeecms/news/index.htm', 'http://localhost:8080', 'http://localhost:8080/jeecms/', '', '本机地址', '2F8C1DC0046DEF5CDCCCB1C0B5C1705D');
+INSERT INTO `cms_site_flow` VALUES ('15', '1', '127.0.0.1', '2012-11-18', '2012-11-18 17:01:20', 'http://localhost:8080/jeecms/gnxw/606.jhtml', 'http://localhost:8080', 'http://localhost:8080/jeecms/news/index.jhtml', '', '本机地址', '2F8C1DC0046DEF5CDCCCB1C0B5C1705D');
+INSERT INTO `cms_site_flow` VALUES ('16', '1', '0:0:0:0:0:0:0:1', '2013-1-22', '2013-01-22 23:58:08', 'http://localhost:8080/cms-ui/gnxw/607.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/jeeadmin/jeecms/content/v_list.do', '', '', '6D86D08359A2B3D68D980F5A8976BC16');
+INSERT INTO `cms_site_flow` VALUES ('17', '1', '0:0:0:0:0:0:0:1', '2013-1-23', '2013-01-23 00:00:43', 'http://localhost:8080/cms-ui/', 'http://localhost:8080', 'http://localhost:8080/cms-ui/jeeadmin/jeecms/top.do', '', '', '6D86D08359A2B3D68D980F5A8976BC16');
+INSERT INTO `cms_site_flow` VALUES ('18', '1', '0:0:0:0:0:0:0:1', '2013-1-23', '2013-01-23 00:00:45', 'http://localhost:8080/cms-ui/gnxw/39.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/', '', '', '6D86D08359A2B3D68D980F5A8976BC16');
+INSERT INTO `cms_site_flow` VALUES ('19', '1', '127.0.0.1', '2013-1-23', '2013-01-23 00:18:47', 'http://localhost:8080/cms-ui/', '', '', '', '本机地址', '57E968DDF8FD1C9FE0D819B3767FA6A5');
+INSERT INTO `cms_site_flow` VALUES ('20', '1', '127.0.0.1', '2013-1-23', '2013-01-23 00:20:24', 'http://localhost:8080/cms-ui/gnxw/607.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/jeeadmin/jeecms/content/v_list.do', '', '本机地址', '57E968DDF8FD1C9FE0D819B3767FA6A5');
+INSERT INTO `cms_site_flow` VALUES ('21', '1', '127.0.0.1', '2013-1-23', '2013-01-23 00:18:49', 'http://localhost:8080/cms-ui/shehui/248.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/', '', '本机地址', '57E968DDF8FD1C9FE0D819B3767FA6A5');
+INSERT INTO `cms_site_flow` VALUES ('22', '1', '127.0.0.1', '2013-1-23', '2013-01-23 00:33:44', 'http://localhost:8080/jeecms/', '', '', '', '本机地址', '9BC6DACF6B24490869D685630B055B7E');
+INSERT INTO `cms_site_flow` VALUES ('23', '1', '0:0:0:0:0:0:0:1', '2013-1-23', '2013-01-23 23:34:38', 'http://localhost:8080/cms-ui/gnxw/605.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/member/contribute_list.jspx', '', '', 'AD8CD3F1B55656A01CEE20A7F188F2BB');
+INSERT INTO `cms_site_flow` VALUES ('24', '1', '0:0:0:0:0:0:0:1', '2013-1-23', '2013-01-23 23:34:04', 'http://localhost:8080/cms-ui/', 'http://localhost:8080', 'http://localhost:8080/cms-ui/search.jspx?q=%E8%AF%B7%E8%BE%93%E5%85%A5%E5%85%B3%E9%94%AE%E8%AF%8D&channelId=', '', '', 'AD8CD3F1B55656A01CEE20A7F188F2BB');
+INSERT INTO `cms_site_flow` VALUES ('25', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 21:24:13', 'http://localhost:8080/cms-ui/', 'http://localhost:8080', 'http://localhost:8080/cms-ui/admin/cms/top.do', '', '', 'B88C3A7E5C4BA9790399B0B38F276075');
+INSERT INTO `cms_site_flow` VALUES ('26', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 21:42:07', 'http://localhost:8080/cms-ui/gnxw/606.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/admin/cms/content/v_list.do?cid=1', '', '', 'B88C3A7E5C4BA9790399B0B38F276075');
+INSERT INTO `cms_site_flow` VALUES ('27', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 21:46:41', 'http://localhost:8080/cms-ui/whxy/297.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/picture/index.jhtml', '', '', 'B88C3A7E5C4BA9790399B0B38F276075');
+INSERT INTO `cms_site_flow` VALUES ('28', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 23:26:47', 'http://localhost:8080/cms-ui/', 'http://localhost:8080', 'http://localhost:8080/cms-ui/admin/cms/top.do', '', '', 'moq9ghkot08sj47p7y9j4ua4');
+INSERT INTO `cms_site_flow` VALUES ('29', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 23:26:52', 'http://localhost:8080/cms-ui/gnxw/39.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/', '', '', 'moq9ghkot08sj47p7y9j4ua4');
+INSERT INTO `cms_site_flow` VALUES ('30', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 23:27:29', 'http://localhost:8080/cms-ui/gnxw/40.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/gnxw/39.jhtml', '', '', 'moq9ghkot08sj47p7y9j4ua4');
+INSERT INTO `cms_site_flow` VALUES ('31', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 23:27:51', 'http://localhost:8080/cms-ui/news/index.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/gnxw/39.jhtml', '', '', 'moq9ghkot08sj47p7y9j4ua4');
+INSERT INTO `cms_site_flow` VALUES ('32', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 23:27:59', 'http://localhost:8080/cms-ui/photo/187.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/photo/186.jhtml', '', '', 'moq9ghkot08sj47p7y9j4ua4');
+INSERT INTO `cms_site_flow` VALUES ('33', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 23:28:10', 'http://localhost:8080/cms-ui/download/index.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/photo/187.jhtml', '', '', 'moq9ghkot08sj47p7y9j4ua4');
+INSERT INTO `cms_site_flow` VALUES ('34', '1', '0:0:0:0:0:0:0:1', '2013-1-24', '2013-01-24 23:27:55', 'http://localhost:8080/cms-ui/photo/186.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/news/index.jhtml', '', '', 'moq9ghkot08sj47p7y9j4ua4');
+INSERT INTO `cms_site_flow` VALUES ('35', '1', '0:0:0:0:0:0:0:1', '2013-1-27', '2013-01-27 23:20:28', 'http://localhost:8080/cms-ui/', '', '', '', '', 'uy3r260f382m1nuk1vtreqa1r');
+INSERT INTO `cms_site_flow` VALUES ('36', '1', '0:0:0:0:0:0:0:1', '2013-1-28', '2013-01-28 00:15:41', 'http://localhost:8080/cms-ui/', 'http://localhost:8080', 'http://localhost:8080/cms-ui/register.jspx', '', '', '1af23ime8jex41ub014jsy6dty');
+INSERT INTO `cms_site_flow` VALUES ('37', '1', '0:0:0:0:0:0:0:1', '2013-1-28', '2013-01-28 23:12:18', 'http://localhost:8080/cms-ui/cjbd/112.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/tag/40.jspx', '', '', '5DA84C60D4DA5CCF9EF7C9ACED066F2A');
+INSERT INTO `cms_site_flow` VALUES ('38', '1', '0:0:0:0:0:0:0:1', '2013-1-31', '2013-01-31 23:59:54', 'http://localhost:8080/cms-ui/?locale=zh_CN', 'http://localhost:8080', 'http://localhost:8080/cms-ui/login.jspx?returnUrl=/', '', '', 'D24DFB3E1EF2F14920C49E349EC91D60');
+INSERT INTO `cms_site_flow` VALUES ('39', '1', '0:0:0:0:0:0:0:1', '2013-2-1', '2013-02-01 21:04:57', 'http://localhost:8080/cms-ui/', '', '', '', '', '55FA62F13E22437DD80571F5C945CB12');
+INSERT INTO `cms_site_flow` VALUES ('40', '1', '0:0:0:0:0:0:0:1', '2013-2-1', '2013-02-01 21:59:33', 'http://localhost:8080/cms-ui/news/index.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/member/index.jspx', '', '', '55FA62F13E22437DD80571F5C945CB12');
+INSERT INTO `cms_site_flow` VALUES ('41', '1', '0:0:0:0:0:0:0:1', '2013-2-1', '2013-02-01 22:39:28', 'http://localhost:8080/cms-ui/shehui/247.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/', '', '', '55FA62F13E22437DD80571F5C945CB12');
+INSERT INTO `cms_site_flow` VALUES ('42', '1', '0:0:0:0:0:0:0:1', '2013-2-1', '2013-02-01 23:36:33', 'http://localhost:8080/cms-ui/shehui/246.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/', '', '', '55FA62F13E22437DD80571F5C945CB12');
+INSERT INTO `cms_site_flow` VALUES ('43', '1', '0:0:0:0:0:0:0:1', '2013-2-2', '2013-02-02 00:14:11', 'http://localhost:8080/cms-ui/news/index.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/member/contribute_add.jspx', '', '', '55FA62F13E22437DD80571F5C945CB12');
+INSERT INTO `cms_site_flow` VALUES ('44', '1', '0:0:0:0:0:0:0:1', '2013-2-2', '2013-02-02 23:11:52', 'http://localhost:8080/cms-ui/', '', '', '', '', 'D29D81CA52A74B58E9142745CD60B172');
+INSERT INTO `cms_site_flow` VALUES ('45', '1', '0:0:0:0:0:0:0:1', '2013-2-2', '2013-02-02 23:49:00', 'http://localhost:8080/cms-ui/', 'http://localhost:8080', 'http://localhost:8080/cms-ui/gnxw/39.jhtml', '', '', 'A77AD84C029362DE7ED2FB4D72333788');
+INSERT INTO `cms_site_flow` VALUES ('46', '1', '0:0:0:0:0:0:0:1', '2013-2-3', '2013-02-03 18:55:15', 'http://localhost:8080/cms-ui/?locale=zh_CN', 'http://localhost:8080', 'http://localhost:8080/cms-ui/', '', '', '74638FA1FB258A0B60AD1B65BA732D39');
+INSERT INTO `cms_site_flow` VALUES ('47', '1', '0:0:0:0:0:0:0:1', '2013-2-3', '2013-02-03 18:55:49', 'http://localhost:8080/cms-ui/phone/292.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/product/index.jhtml', '', '', '74638FA1FB258A0B60AD1B65BA732D39');
+INSERT INTO `cms_site_flow` VALUES ('48', '1', '0:0:0:0:0:0:0:1', '2013-2-3', '2013-02-03 18:55:41', 'http://localhost:8080/cms-ui/product/index.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/guestbook.jspx', '', '', '74638FA1FB258A0B60AD1B65BA732D39');
+INSERT INTO `cms_site_flow` VALUES ('49', '1', '0:0:0:0:0:0:0:1', '2013-2-3', '2013-02-03 21:25:53', 'http://localhost:8080/cms-ui/', '', '', '', '', 'AA2E4F4A8F7CF0F700DFF3C4AC91579F');
+INSERT INTO `cms_site_flow` VALUES ('50', '1', '0:0:0:0:0:0:0:1', '2013-2-3', '2013-02-03 21:27:46', 'http://localhost:8080/cms-ui/gnxw/603.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/admin/cms/content/v_list.do', '', '', 'AA2E4F4A8F7CF0F700DFF3C4AC91579F');
+INSERT INTO `cms_site_flow` VALUES ('51', '1', '0:0:0:0:0:0:0:1', '2013-2-3', '2013-02-03 21:25:56', 'http://localhost:8080/cms-ui/gnxw/39.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/', '', '', 'AA2E4F4A8F7CF0F700DFF3C4AC91579F');
+INSERT INTO `cms_site_flow` VALUES ('52', '1', '0:0:0:0:0:0:0:1', '2013-2-3', '2013-02-03 23:26:28', 'http://localhost:8080/cms-ui/?locale=zh_CN', 'http://localhost:8080', 'http://localhost:8080/cms-ui/login.jspx', '', '', 'AA2E4F4A8F7CF0F700DFF3C4AC91579F');
+INSERT INTO `cms_site_flow` VALUES ('53', '1', '0:0:0:0:0:0:0:1', '2013-2-3', '2013-02-03 23:39:57', 'http://localhost:8080/cms-ui/news/index.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/comment.jspx?contentId=246', '', '', 'AA2E4F4A8F7CF0F700DFF3C4AC91579F');
+INSERT INTO `cms_site_flow` VALUES ('54', '1', '0:0:0:0:0:0:0:1', '2013-2-4', '2013-02-04 21:11:52', 'http://localhost:8080/cms-ui/?locale=zh_CN', 'http://localhost:8080', 'http://localhost:8080/cms-ui/login.jspx?returnUrl=/', '', '', 'fnwe7kje2gwb1i6hxy2ke7cje');
+INSERT INTO `cms_site_flow` VALUES ('55', '1', '0:0:0:0:0:0:0:1', '2013-2-5', '2013-02-05 21:58:06', 'http://localhost:8080/cms-ui/news/index.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/', '', '', '0A4F0DDE3219D007A5CEF9D3C20A6269');
+INSERT INTO `cms_site_flow` VALUES ('56', '1', '0:0:0:0:0:0:0:1', '2013-2-5', '2013-02-05 21:58:32', 'http://localhost:8080/cms-ui/gnxw/index_2.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/gnxw/index.jhtml', '', '', '0A4F0DDE3219D007A5CEF9D3C20A6269');
+INSERT INTO `cms_site_flow` VALUES ('57', '1', '0:0:0:0:0:0:0:1', '2013-2-5', '2013-02-05 21:59:21', 'http://localhost:8080/cms-ui/gnxw/index_3.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/gnxw/index_2.jhtml', '', '', '0A4F0DDE3219D007A5CEF9D3C20A6269');
+INSERT INTO `cms_site_flow` VALUES ('58', '1', '0:0:0:0:0:0:0:1', '2013-2-5', '2013-02-05 21:58:22', 'http://localhost:8080/cms-ui/gnxw/index.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/news/index.jhtml', '', '', '0A4F0DDE3219D007A5CEF9D3C20A6269');
+INSERT INTO `cms_site_flow` VALUES ('59', '1', '0:0:0:0:0:0:0:1', '2013-2-5', '2013-02-05 22:32:40', 'http://localhost:8080/cms-ui/shehui/250.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/', '', '', '0A4F0DDE3219D007A5CEF9D3C20A6269');
+INSERT INTO `cms_site_flow` VALUES ('60', '1', '0:0:0:0:0:0:0:1', '2013-2-5', '2013-02-05 22:35:21', 'http://localhost:8080/cms-ui/?locale=zh_CN', 'http://localhost:8080', 'http://localhost:8080/cms-ui/login.jspx?returnUrl=/', '', '', 'CFB0E8424BF93F9ED97766BC0316AB78');
+INSERT INTO `cms_site_flow` VALUES ('61', '1', '0:0:0:0:0:0:0:1', '2013-2-5', '2013-02-05 22:42:23', 'http://localhost:8080/cms-ui/gnxw/249.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/topic/2.jspx', '', '', 'CFB0E8424BF93F9ED97766BC0316AB78');
+INSERT INTO `cms_site_flow` VALUES ('62', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 00:32:52', 'http://localhost:8080/cms-ui/', '', '', '', '', '6E0FE640A168EE5A6B02A16387205E6B');
+INSERT INTO `cms_site_flow` VALUES ('63', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 22:11:20', 'http://localhost:8080/cms-ui/index.html', '', '', '', '', '02A8D37922F9801DFFCE0BC18732AD56');
+INSERT INTO `cms_site_flow` VALUES ('64', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 23:04:12', 'http://localhost:8080/cms-ui/index.html', '', '', '', '', '2EC4A7EAC7F3D0753CF2830FF674CB62');
+INSERT INTO `cms_site_flow` VALUES ('65', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 23:05:18', 'http://localhost:8080/cms-ui/gnxw/39.jhtml', 'http://localhost:8080', 'http://localhost:8080/cms-ui/index.html', '', '', '2EC4A7EAC7F3D0753CF2830FF674CB62');
+INSERT INTO `cms_site_flow` VALUES ('66', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 23:08:06', 'http://localhost:8080/cms-ui/shehui/250.htm', '', '', '', '', 'CCAF02F6121714F6122B0C0FE1801A5E');
+INSERT INTO `cms_site_flow` VALUES ('67', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 23:07:45', 'http://localhost:8080/cms-ui/shehui/250.jsp', '', '', '', '', 'CCAF02F6121714F6122B0C0FE1801A5E');
+INSERT INTO `cms_site_flow` VALUES ('68', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 23:12:44', 'http://localhost:8080/cms-ui/gnxw/39.htm', '', '', '', '', 'CCAF02F6121714F6122B0C0FE1801A5E');
+INSERT INTO `cms_site_flow` VALUES ('69', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 23:13:19', 'http://localhost:8080/cms-ui/index.jhtml', '', '', '', '', 'CCAF02F6121714F6122B0C0FE1801A5E');
+INSERT INTO `cms_site_flow` VALUES ('70', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 23:36:06', 'http://localhost:8080/cms-ui/', '', '', '', '', 'CCAF02F6121714F6122B0C0FE1801A5E');
+INSERT INTO `cms_site_flow` VALUES ('71', '1', '0:0:0:0:0:0:0:1', '2013-2-6', '2013-02-06 23:45:42', 'http://localhost:8080/cms-ui/?locale=zh_CN', 'http://localhost:8080', 'http://localhost:8080/cms-ui/login.jspx?returnUrl=/', '', '', 'CCAF02F6121714F6122B0C0FE1801A5E');
+INSERT INTO `cms_site_flow` VALUES ('72', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:01:46', 'http://localhost:8080/cms-ui/gnxw/602.htm', '', '', '', '', 'CCAF02F6121714F6122B0C0FE1801A5E');
+INSERT INTO `cms_site_flow` VALUES ('73', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:01:59', 'http://localhost:8080/cms-ui/dong/327.htm', '', '', '', '', 'A6ADB9138103617B212FAD9B8B642E01');
+INSERT INTO `cms_site_flow` VALUES ('74', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:01:46', 'http://localhost:8080/cms-ui/gnxw/39.htm', '', '', '', '', 'CCAF02F6121714F6122B0C0FE1801A5E');
+INSERT INTO `cms_site_flow` VALUES ('75', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:05:48', 'http://localhost:8080/cms-ui/?locale=zh_CN', 'http://localhost:8080', 'http://localhost:8080/cms-ui/login.jspx?returnUrl=/', '', '', 'A6ADB9138103617B212FAD9B8B642E01');
+INSERT INTO `cms_site_flow` VALUES ('76', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:06:18', 'http://localhost:8080/cms-ui/about.htm', '', '', '', '', 'A6ADB9138103617B212FAD9B8B642E01');
+INSERT INTO `cms_site_flow` VALUES ('77', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:09:06', 'http://localhost:8080/cms-ui/', '', '', '', '', 'A6ADB9138103617B212FAD9B8B642E01');
+INSERT INTO `cms_site_flow` VALUES ('78', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:08:48', 'http://localhost:8080/cms-ui/index.jhtml', '', '', '', '', 'A6ADB9138103617B212FAD9B8B642E01');
+INSERT INTO `cms_site_flow` VALUES ('79', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:21:06', 'http://localhost:8080/cms-ui/', 'http://localhost:8080', 'http://localhost:8080/cms-ui/index.jhtml', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
+INSERT INTO `cms_site_flow` VALUES ('80', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:21:18', 'http://localhost:8080/cms-ui/index.htm', '', '', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
+INSERT INTO `cms_site_flow` VALUES ('81', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:21:47', 'http://localhost:8080/cms-ui/about.htm', '', '', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
+INSERT INTO `cms_site_flow` VALUES ('82', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:22:21', 'http://localhost:8080/cms-ui/shehui/246.htm', 'http://localhost:8080', 'http://localhost:8080/cms-ui/', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
+INSERT INTO `cms_site_flow` VALUES ('83', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:21:52', 'http://localhost:8080/cms-ui/shehui/247.htm', 'http://localhost:8080', 'http://localhost:8080/cms-ui/', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
+INSERT INTO `cms_site_flow` VALUES ('84', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:22:08', 'http://localhost:8080/cms-ui/works/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms-ui/download/index.htm', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
+INSERT INTO `cms_site_flow` VALUES ('85', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:21:59', 'http://localhost:8080/cms-ui/wyty/275.htm', 'http://localhost:8080', 'http://localhost:8080/cms-ui/picture/index.htm', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
+INSERT INTO `cms_site_flow` VALUES ('86', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:22:06', 'http://localhost:8080/cms-ui/download/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms-ui/guestbook.jspx', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
+INSERT INTO `cms_site_flow` VALUES ('87', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:22:16', 'http://localhost:8080/cms-ui/dong/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms-ui/works/index.htm', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
+INSERT INTO `cms_site_flow` VALUES ('88', '1', '0:0:0:0:0:0:0:1', '2013-2-7', '2013-02-07 00:22:17', 'http://localhost:8080/cms-ui/tiankong/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms-ui/dong/index.htm', '', '', 'E8CF4A86EAA6791DD0ED3FE2BA256749');
+INSERT INTO `cms_site_flow` VALUES ('89', '1', '0:0:0:0:0:0:0:1', '2013-2-8', '2013-02-08 01:11:24', 'http://localhost:8080/cms-ui/', '', '', '', '', '175onbaamcjep1q1esad1u5hrj');
+INSERT INTO `cms_site_flow` VALUES ('90', '1', '0:0:0:0:0:0:0:1', '2013-2-8', '2013-02-08 20:58:58', 'http://localhost/cms-ui/download/index.htm', 'http://localhost', 'http://localhost/cms-ui/cjbd/116.htm', '', '', 'umnyu2r2ytjk19r4dik9jf138');
+INSERT INTO `cms_site_flow` VALUES ('91', '1', '0:0:0:0:0:0:0:1', '2013-2-8', '2013-02-08 21:16:01', 'http://localhost/cms-ui/gnxw/607.htm', '', '', '', '', '14zctwlm6ntvltxacu19b1fh2');
+INSERT INTO `cms_site_flow` VALUES ('92', '1', '0:0:0:0:0:0:0:1', '2013-2-8', '2013-02-08 21:23:23', 'http://localhost/cms-ui/', 'http://localhost', 'http://localhost/cms-ui/gnxw/607.htm', '', '', '14zctwlm6ntvltxacu19b1fh2');
+INSERT INTO `cms_site_flow` VALUES ('93', '1', '0:0:0:0:0:0:0:1', '2013-2-8', '2013-02-08 23:03:55', 'http://localhost/cms-ui/', '', '', '', '', '1mjsgg108dlzi1pizwpzjdp03');
+INSERT INTO `cms_site_flow` VALUES ('94', '1', '0:0:0:0:0:0:0:1', '2013-2-8', '2013-02-08 23:23:52', 'http://localhost/cms-ui/', 'http://localhost', 'http://localhost/cms-ui/login?returnUrl=http://localhost/cms-ui/login?returnUrl=/', '', '', 'uh8clykdjxdt1xaiy16llt920');
+INSERT INTO `cms_site_flow` VALUES ('95', '1', '0:0:0:0:0:0:0:1', '2013-2-9', '2013-02-09 00:17:06', 'http://localhost/cms-ui/news/index.htm', 'http://localhost', 'http://localhost/cms-ui/guestbook', '', '', '1nl58ulbxhrw7e5y0sihf5oot');
+INSERT INTO `cms_site_flow` VALUES ('96', '1', '0:0:0:0:0:0:0:1', '2013-2-9', '2013-02-09 00:17:10', 'http://localhost/cms-ui/world/237.htm', 'http://localhost', 'http://localhost/cms-ui/news/index.htm', '', '', '1nl58ulbxhrw7e5y0sihf5oot');
+INSERT INTO `cms_site_flow` VALUES ('97', '1', '0:0:0:0:0:0:0:1', '2013-2-10', '2013-02-10 22:02:28', 'http://localhost/cms-ui/gnxw/607.htm', '', '', '', '', '1rrfrijt6lewc1c956ccsu7tv9');
+INSERT INTO `cms_site_flow` VALUES ('98', '1', '0:0:0:0:0:0:0:1', '2013-2-10', '2013-02-10 23:13:38', 'http://localhost/cms-ui/', '', '', '', '', '19if54zmum2971552ydujfifk3');
+INSERT INTO `cms_site_flow` VALUES ('99', '1', '0:0:0:0:0:0:0:1', '2013-2-10', '2013-02-10 23:15:03', 'http://localhost/cms-ui/mrzx/index.htm', 'http://localhost', 'http://localhost/cms-ui/', '', '', '1npzizhmyik58x56whbdi18ug');
+INSERT INTO `cms_site_flow` VALUES ('100', '1', '0:0:0:0:0:0:0:1', '2013-2-10', '2013-02-10 23:14:02', 'http://localhost/cms-ui/veido/index.htm', 'http://localhost', 'http://localhost/cms-ui/', '', '', '19if54zmum2971552ydujfifk3');
+INSERT INTO `cms_site_flow` VALUES ('101', '1', '0:0:0:0:0:0:0:1', '2013-2-10', '2013-02-10 23:14:04', 'http://localhost/cms-ui/hhqw/310.htm', 'http://localhost', 'http://localhost/cms-ui/veido/index.htm', '', '', '19if54zmum2971552ydujfifk3');
+INSERT INTO `cms_site_flow` VALUES ('102', '1', '0:0:0:0:0:0:0:1', '2013-2-10', '2013-02-10 23:15:51', 'http://localhost/cms-ui/shehui/62.htm', 'http://localhost', 'http://localhost/cms-ui/', '', '', '1npzizhmyik58x56whbdi18ug');
+INSERT INTO `cms_site_flow` VALUES ('103', '1', '0:0:0:0:0:0:0:1', '2013-2-10', '2013-02-10 23:21:03', 'http://localhost/cms-ui/tiankong/324.htm', 'http://localhost', 'http://localhost/cms-ui/shehui/62.htm', '', '', '1npzizhmyik58x56whbdi18ug');
+INSERT INTO `cms_site_flow` VALUES ('104', '1', '0:0:0:0:0:0:0:1', '2013-2-11', '2013-02-11 00:16:13', 'http://localhost/cms-ui/?locale=zh_CN', 'http://localhost', 'http://localhost/cms-ui/login?returnUrl=/', '', '', '7ihwicjnt9j41dgb8480987dk');
+INSERT INTO `cms_site_flow` VALUES ('105', '1', '0:0:0:0:0:0:0:1', '2013-2-12', '2013-02-12 12:06:33', 'http://localhost/cms-ui/', '', '', '', '', '2921l88tc9pg1tyv8m26r07ba');
+INSERT INTO `cms_site_flow` VALUES ('106', '1', '0:0:0:0:0:0:0:1', '2013-2-12', '2013-02-12 21:13:55', 'http://localhost/cms-ui/', '', '', '', '', 'fxcks5jgdxlw12g3phc8wqktv');
+INSERT INTO `cms_site_flow` VALUES ('107', '1', '0:0:0:0:0:0:0:1', '2013-2-12', '2013-02-12 21:14:14', 'http://localhost/cms-ui/?locale=zh_CN', 'http://localhost', 'http://localhost/cms-ui/login?returnUrl=/', '', '', '1bgbc6l91wfkh118o00mmv5yzh');
+INSERT INTO `cms_site_flow` VALUES ('108', '1', '0:0:0:0:0:0:0:1', '2013-2-12', '2013-02-12 21:46:30', 'http://localhost/cms-ui/?locale=zh_CN', 'http://localhost', 'http://localhost/cms-ui/login', '', '', '196cddte00oif1udn62xcode8x');
+INSERT INTO `cms_site_flow` VALUES ('109', '1', '0:0:0:0:0:0:0:1', '2013-2-12', '2013-02-12 23:33:13', 'http://localhost/cms-ui/', 'http://localhost', 'http://localhost/cms-ui/admin/cms/top.do', '', '', '1p7yhtbke47821uxomrv6llicc');
+INSERT INTO `cms_site_flow` VALUES ('110', '1', '0:0:0:0:0:0:0:1', '2013-2-13', '2013-02-13 00:02:44', 'http://localhost/cms-ui/shehui/248.htm', 'http://localhost', 'http://localhost/cms-ui/', '', '', '1p7yhtbke47821uxomrv6llicc');
+INSERT INTO `cms_site_flow` VALUES ('111', '1', '0:0:0:0:0:0:0:1', '2013-2-13', '2013-02-13 21:34:13', 'http://localhost/cms-ui/', 'http://localhost', 'http://localhost/cms-ui/download/index.htm', '', '', '17up03wynn8ap17rf2mzsjtei2');
+INSERT INTO `cms_site_flow` VALUES ('112', '1', '0:0:0:0:0:0:0:1', '2013-2-13', '2013-02-13 22:26:12', 'http://localhost/cms-ui/', 'http://localhost', 'http://localhost/cms-ui/download/index.htm', '', '', 'it90vonlqecy46rtraf6mpfr');
+INSERT INTO `cms_site_flow` VALUES ('113', '1', '0:0:0:0:0:0:0:1', '2013-2-13', '2013-02-13 22:38:50', 'http://localhost:8080/cms-ui/', '', '', '', '', '385A61CD12B7ACAE76C2D99E3C21DCC1');
+INSERT INTO `cms_site_flow` VALUES ('114', '1', '0:0:0:0:0:0:0:1', '2013-2-13', '2013-02-13 22:39:34', 'http://localhost:8080/cms-ui/gnxw/249.htm', 'http://localhost:8080', 'http://localhost:8080/cms-ui/topic/2', '', '', '385A61CD12B7ACAE76C2D99E3C21DCC1');
+INSERT INTO `cms_site_flow` VALUES ('115', '1', '0:0:0:0:0:0:0:1', '2013-2-13', '2013-02-13 22:42:19', 'http://localhost:8080/cms-ui/shehui/247.htm', 'http://localhost:8080', 'http://localhost:8080/cms-ui/', '', '', '385A61CD12B7ACAE76C2D99E3C21DCC1');
+INSERT INTO `cms_site_flow` VALUES ('116', '1', '0:0:0:0:0:0:0:1', '2013-2-14', '2013-02-14 22:31:44', 'http://localhost/cms-ui/?locale=zh_CN', 'http://localhost', 'http://localhost/cms-ui/login?returnUrl=/', '', '', '1x5kibxfj7tu1seaau26extnp');
+INSERT INTO `cms_site_flow` VALUES ('117', '1', '0:0:0:0:0:0:0:1', '2013-2-14', '2013-02-14 22:32:14', 'http://localhost/cms-ui/tiankong/324.htm', 'http://localhost', 'http://localhost/cms-ui/?locale=zh_CN', '', '', '1x5kibxfj7tu1seaau26extnp');
+INSERT INTO `cms_site_flow` VALUES ('118', '1', '0:0:0:0:0:0:0:1', '2013-2-16', '2013-02-16 23:41:04', 'http://localhost/cms-ui/product/index.htm', 'http://localhost', 'http://localhost/cms-ui/vote_result?voteId=1', '', '', 'ct9suysu1rgi15wq6h9a6047i');
+INSERT INTO `cms_site_flow` VALUES ('119', '1', '0:0:0:0:0:0:0:1', '2013-3-4', '2013-03-04 23:05:04', 'http://localhost/cms-ui/', '', '', '', '', '1im2iwviql7ms1vc2080ykoqsh');
+INSERT INTO `cms_site_flow` VALUES ('120', '1', '0:0:0:0:0:0:0:1', '2013-3-7', '2013-03-07 21:20:55', 'http://localhost/cms-ui/mrzx/index.htm', 'http://localhost', 'http://localhost/cms-ui/', '', '', '1v7t3rphqjy4x9oktzaw1jdi9');
+INSERT INTO `cms_site_flow` VALUES ('121', '1', '0:0:0:0:0:0:0:1', '2013-3-9', '2013-03-09 23:52:28', 'http://localhost:8080/cms-ui/', 'http://localhost:8080', 'http://localhost:8080/cms-ui/admin/cms/top', '', '', 'EF30C58B481B2CE321E35D93CCCC4637');
+INSERT INTO `cms_site_flow` VALUES ('122', '1', '0:0:0:0:0:0:0:1', '2013-3-9', '2013-03-09 23:54:33', 'http://localhost:8080/cms-ui/news/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms-ui/', '', '', 'EF30C58B481B2CE321E35D93CCCC4637');
+INSERT INTO `cms_site_flow` VALUES ('123', '1', '0:0:0:0:0:0:0:1', '2013-3-9', '2013-03-09 23:54:44', 'http://localhost:8080/cms-ui/download/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms-ui/veido/index.htm', '', '', 'EF30C58B481B2CE321E35D93CCCC4637');
+INSERT INTO `cms_site_flow` VALUES ('124', '1', '0:0:0:0:0:0:0:1', '2013-3-9', '2013-03-09 23:54:42', 'http://localhost:8080/cms-ui/veido/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms-ui/picture/index.htm', '', '', 'EF30C58B481B2CE321E35D93CCCC4637');
+INSERT INTO `cms_site_flow` VALUES ('125', '1', '0:0:0:0:0:0:0:1', '2013-3-9', '2013-03-09 23:54:45', 'http://localhost:8080/cms-ui/works/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms-ui/download/index.htm', '', '', 'EF30C58B481B2CE321E35D93CCCC4637');
 INSERT INTO `cms_site_flow` VALUES ('126', '1', '127.0.0.1', '2013-7-7', '2013-07-07 20:21:21', 'http://localhost:8080/cms/', 'http://localhost:8080', 'http://localhost:8080/cms/admin/cms/top', '', '本机地址', '778B1C0A79A52D096A91AF43272A39F1');
 INSERT INTO `cms_site_flow` VALUES ('127', '1', '127.0.0.1', '2013-7-8', '2013-07-08 20:23:52', 'http://localhost:8080/cms/?locale=zh_CN', 'http://localhost:8080', 'http://localhost:8080/cms/login?returnUrl=/', '', '本机地址', 'E46F1C7EC1521299DA8F9C76E68A929E');
 INSERT INTO `cms_site_flow` VALUES ('128', '1', '127.0.0.1', '2013-7-8', '2013-07-08 20:25:29', 'http://localhost:8080/cms/cjbd/255.htm', '', '', '', '本机地址', 'E46F1C7EC1521299DA8F9C76E68A929E');
+INSERT INTO `cms_site_flow` VALUES ('129', '1', '127.0.0.1', '2013-7-9', '2013-07-09 23:15:19', 'http://localhost:8080/cms/gnxw/608.htm', 'http://localhost:8080', 'http://localhost:8080/cms/admin/cms/content/v_list', '', '本机地址', '6E361DA5F31ADE4E872B51C05724E952');
+INSERT INTO `cms_site_flow` VALUES ('130', '1', '127.0.0.1', '2013-7-9', '2013-07-09 23:13:52', 'http://localhost:8080/cms/', '', '', '', '本机地址', 'B827055F94B5F15B2FEAF81F52AD733D');
+INSERT INTO `cms_site_flow` VALUES ('131', '1', '127.0.0.1', '2013-7-10', '2013-07-10 21:48:50', 'http://localhost:8080/cms/?locale=zh_CN', 'http://localhost:8080', 'http://localhost:8080/cms/login?returnUrl=/', '', '本机地址', '180D6FDB308838CD4D6C545C16999D1C');
+INSERT INTO `cms_site_flow` VALUES ('132', '1', '127.0.0.1', '2013-7-10', '2013-07-10 21:49:20', 'http://localhost:8080/cms/dong/327.htm', 'http://localhost:8080', 'http://localhost:8080/cms/admin/cms/content/v_list', '', '本机地址', '180D6FDB308838CD4D6C545C16999D1C');
+INSERT INTO `cms_site_flow` VALUES ('133', '1', '127.0.0.1', '2013-7-10', '2013-07-10 21:49:08', 'http://localhost:8080/cms/gnxw/608.htm', 'http://localhost:8080', 'http://localhost:8080/cms/admin/cms/content/v_list', '', '本机地址', '180D6FDB308838CD4D6C545C16999D1C');
+INSERT INTO `cms_site_flow` VALUES ('134', '1', '127.0.0.1', '2013-7-10', '2013-07-10 21:52:32', 'http://localhost:8080/cms/world/234.htm', 'http://localhost:8080', 'http://localhost:8080/cms/news/index.htm', '', '本机地址', '180D6FDB308838CD4D6C545C16999D1C');
+INSERT INTO `cms_site_flow` VALUES ('135', '1', '127.0.0.1', '2013-7-10', '2013-07-10 22:16:06', 'http://localhost:8080/cms/gnxw/608.htm', 'http://localhost:8080', 'http://localhost:8080/cms/shehui/246.htm', '', '本机地址', '140823294F92A584BF79152CCD19ED5E');
+INSERT INTO `cms_site_flow` VALUES ('136', '1', '127.0.0.1', '2013-7-10', '2013-07-10 22:50:40', 'http://localhost:8080/cms/news/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms/gnxw/608.htm', '', '本机地址', '3195B881E84BD31C56ECA902DE33E880');
+INSERT INTO `cms_site_flow` VALUES ('137', '1', '127.0.0.1', '2013-7-10', '2013-07-10 23:15:16', 'http://localhost:8080/cms/', '', '', '', '本机地址', '3195B881E84BD31C56ECA902DE33E880');
+INSERT INTO `cms_site_flow` VALUES ('138', '1', '127.0.0.1', '2013-7-10', '2013-07-10 23:15:08', 'http://localhost:8080/cms/gnxw/35.htm', 'http://localhost:8080', 'http://localhost:8080/cms/gnxw/34.htm', '', '本机地址', '3195B881E84BD31C56ECA902DE33E880');
+INSERT INTO `cms_site_flow` VALUES ('139', '1', '127.0.0.1', '2013-7-10', '2013-07-10 23:15:56', 'http://localhost:8080/cms/shehui/246.htm', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '本机地址', '3195B881E84BD31C56ECA902DE33E880');
+INSERT INTO `cms_site_flow` VALUES ('140', '1', '127.0.0.1', '2013-7-10', '2013-07-10 23:28:06', 'http://localhost:8080/cms/gnxw/39.htm', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '本机地址', '01F919843F448B8FB49C5F41C8E6D5F5');
+INSERT INTO `cms_site_flow` VALUES ('141', '1', '127.0.0.1', '2013-7-10', '2013-07-10 23:35:12', 'http://localhost:8080/cms/gnxw/39.htm', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '本机地址', 'BCD8F93090140C28DF4DDB4E9529EE54');
+INSERT INTO `cms_site_flow` VALUES ('142', '1', '127.0.0.1', '2013-7-10', '2013-07-10 23:39:55', 'http://localhost:8080/cms/', '', '', '', '本机地址', 'BCD8F93090140C28DF4DDB4E9529EE54');
+INSERT INTO `cms_site_flow` VALUES ('143', '1', '127.0.0.1', '2013-7-10', '2013-07-10 23:41:39', 'http://localhost:8080/cms/gnxw/39.htm', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '本机地址', 'C72900B07F7283F15D8884B9A3DAB7FB');
+INSERT INTO `cms_site_flow` VALUES ('144', '1', '127.0.0.1', '2013-7-10', '2013-07-10 23:44:46', 'http://localhost:8080/cms/', '', '', '', '本机地址', 'C72900B07F7283F15D8884B9A3DAB7FB');
+INSERT INTO `cms_site_flow` VALUES ('145', '1', '127.0.0.1', '2013-7-11', '2013-07-11 00:05:02', 'http://localhost:8080/cms/gnxw/39.htm', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '本机地址', 'C72900B07F7283F15D8884B9A3DAB7FB');
+INSERT INTO `cms_site_flow` VALUES ('146', '1', '127.0.0.1', '2013-7-11', '2013-07-11 00:06:07', 'http://localhost:8080/cms/gnxw/38.htm', 'http://localhost:8080', 'http://localhost:8080/cms/gnxw/39.htm', '', '本机地址', 'C72900B07F7283F15D8884B9A3DAB7FB');
+INSERT INTO `cms_site_flow` VALUES ('147', '1', '127.0.0.1', '2013-7-11', '2013-07-11 00:06:10', 'http://localhost:8080/cms/news/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms/gnxw/38.htm', '', '本机地址', 'C72900B07F7283F15D8884B9A3DAB7FB');
+INSERT INTO `cms_site_flow` VALUES ('148', '1', '127.0.0.1', '2013-7-11', '2013-07-11 00:17:44', 'http://localhost:8080/cms/gnxw/34.htm', 'http://localhost:8080', 'http://localhost:8080/cms/news/index.htm', '', '本机地址', 'FEEEC32F09DC9B9270B9218D7DDC8A46');
+INSERT INTO `cms_site_flow` VALUES ('149', '1', '127.0.0.1', '2013-7-11', '2013-07-11 00:18:09', 'http://localhost:8080/cms/gnxw/34.htm', '', '', '', '本机地址', 'E9C35BDD894F5EC67A6C950D51EB8E15');
+INSERT INTO `cms_site_flow` VALUES ('150', '1', '127.0.0.1', '2013-7-11', '2013-07-11 00:19:15', 'http://localhost:8080/cms/gnxw/608.htm', 'http://localhost:8080', 'http://localhost:8080/cms/search?q=aaaaa&channelId=', '', '本机地址', 'E9C35BDD894F5EC67A6C950D51EB8E15');
+INSERT INTO `cms_site_flow` VALUES ('151', '1', '127.0.0.1', '2013-7-11', '2013-07-11 20:50:58', 'http://localhost:8080/cms/gnxw/39.htm', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '本机地址', '6F02B66905418CB351853B25AB870A32');
+INSERT INTO `cms_site_flow` VALUES ('152', '1', '127.0.0.1', '2013-7-11', '2013-07-11 22:14:17', 'http://localhost:8080/cms/gnxw/39.htm', 'http://localhost:8080', 'http://localhost:8080/cms/shehui/188.htm', '', '本机地址', '7BCA26BD99A1C0E2161E6714F351EFD4');
+INSERT INTO `cms_site_flow` VALUES ('153', '1', '127.0.0.1', '2013-7-11', '2013-07-11 22:14:10', 'http://localhost:8080/cms/shehui/188.htm', '', '', '', '本机地址', '7BCA26BD99A1C0E2161E6714F351EFD4');
+INSERT INTO `cms_site_flow` VALUES ('154', '1', '127.0.0.1', '2013-7-11', '2013-07-11 22:13:50', 'http://localhost:8080/cms/', '', '', '', '本机地址', '6F02B66905418CB351853B25AB870A32');
+INSERT INTO `cms_site_flow` VALUES ('155', '1', '127.0.0.1', '2013-7-11', '2013-07-11 22:14:00', 'http://localhost:8080/cms/shehui/247.htm', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '本机地址', '7BCA26BD99A1C0E2161E6714F351EFD4');
+INSERT INTO `cms_site_flow` VALUES ('156', '1', '127.0.0.1', '2013-7-11', '2013-07-11 22:14:29', 'http://localhost:8080/cms/gnxw/608.htm', 'http://localhost:8080', 'http://localhost:8080/cms/gnxw/39.htm', '', '本机地址', '7BCA26BD99A1C0E2161E6714F351EFD4');
 
 -- ----------------------------
 -- Table structure for `cms_site_model`
@@ -5751,7 +5805,7 @@ CREATE TABLE `cms_user` (
 -- ----------------------------
 -- Records of cms_user
 -- ----------------------------
-INSERT INTO `cms_user` VALUES ('1', '1', 'admin', 'bettersaas@163.com', '2011-01-03 00:00:00', '127.0.0.1', '2013-07-08 20:23:51', '127.0.0.1', '201', '9', '0', '0', null, '1', '0', '0', '0');
+INSERT INTO `cms_user` VALUES ('1', '1', 'admin', 'bettersaas@163.com', '2011-01-03 00:00:00', '127.0.0.1', '2013-07-11 23:29:50', '127.0.0.1', '211', '9', '0', '0', null, '1', '0', '0', '0');
 INSERT INTO `cms_user` VALUES ('5', '1', 'test', 'test@163.com', '2011-12-19 15:26:02', '192.168.0.173', '2011-12-19 15:26:02', '192.168.0.173', '0', '0', '0', '0', '2011-12-19', '0', '0', '0', '0');
 INSERT INTO `cms_user` VALUES ('6', '1', 'bettersaas', 'bettersaas@163.com', '2013-01-23 23:48:52', '0:0:0:0:0:0:0:1', '2013-01-31 23:59:53', '0:0:0:0:0:0:0:1', '1', '0', '0', '0', '2013-01-23', '0', '0', '0', '0');
 INSERT INTO `cms_user` VALUES ('7', '1', 'aaa', 'aaa@aa.com', '2013-02-03 20:40:04', '0:0:0:0:0:0:0:1', '2013-02-03 20:40:04', '0:0:0:0:0:0:0:1', '0', '0', '0', '0', '2013-02-03', '0', '0', '0', '0');
@@ -5819,7 +5873,7 @@ CREATE TABLE `cms_user_ext` (
 -- ----------------------------
 -- Records of cms_user_ext
 -- ----------------------------
-INSERT INTO `cms_user_ext` VALUES ('1', 'cms', '1', null, '2348985t999', null, null, null, null, null, '/cms/user/images/201302/012108334utw.png', '');
+INSERT INTO `cms_user_ext` VALUES ('1', 'cms', '1', null, '2348985t999', null, null, null, null, null, '/cms-ui/user/images/201302/012108334utw.png', '');
 INSERT INTO `cms_user_ext` VALUES ('5', null, null, null, null, ',', null, null, null, null, null, null);
 INSERT INTO `cms_user_ext` VALUES ('6', null, null, null, null, null, null, null, null, null, null, null);
 INSERT INTO `cms_user_ext` VALUES ('7', null, null, null, null, null, null, null, null, null, null, null);
@@ -5971,7 +6025,17 @@ INSERT INTO `yk_authentication` VALUES ('18b79c81d3cd4588b5ffffd0bf484e57', '1',
 INSERT INTO `yk_authentication` VALUES ('1fc0a82141734855a61486d0c8e7c049', '1', 'admin', 'bettersaas@163.com', '2013-02-02 22:07:04', '0:0:0:0:0:0:0:1', '2013-02-02 23:22:54');
 INSERT INTO `yk_authentication` VALUES ('22c118aa1ffa4d5abcb0a471dbc32f93', '1', 'admin', 'bettersaas@163.com', '2013-03-07 20:59:05', '0:0:0:0:0:0:0:1', '2013-03-07 21:29:16');
 INSERT INTO `yk_authentication` VALUES ('297e8b6e3fb910c5013fb913920e0000', '1', 'admin', 'bettersaas@163.com', '2013-07-07 20:20:34', '127.0.0.1', '2013-07-07 20:21:43');
-INSERT INTO `yk_authentication` VALUES ('297e8b6e3fbe3c4d013fbe3ceb6a0000', '1', 'admin', 'bettersaas@163.com', '2013-07-08 20:23:50', '127.0.0.1', '2013-07-08 20:33:43');
+INSERT INTO `yk_authentication` VALUES ('297e8b6e3fbe3c4d013fbe3ceb6a0000', '1', 'admin', 'bettersaas@163.com', '2013-07-08 20:23:50', '127.0.0.1', '2013-07-08 21:38:43');
+INSERT INTO `yk_authentication` VALUES ('297e8b6e3fc39acb013fc39b348e0000', '1', 'admin', 'bettersaas@163.com', '2013-07-09 21:24:56', '0:0:0:0:0:0:0:1', '2013-07-09 21:28:37');
+INSERT INTO `yk_authentication` VALUES ('297e8b6e3fc3c15f013fc3c388e30000', '1', 'admin', 'bettersaas@163.com', '2013-07-09 22:08:59', '0:0:0:0:0:0:0:1', '2013-07-09 22:13:27');
+INSERT INTO `yk_authentication` VALUES ('297e8b6e3fc3e11d013fc3e18f7e0000', '1', 'admin', 'bettersaas@163.com', '2013-07-09 22:41:46', '0:0:0:0:0:0:0:1', '2013-07-09 22:51:06');
+INSERT INTO `yk_authentication` VALUES ('297e8b6e3fc3ee30013fc3eeb08f0000', '1', 'admin', 'bettersaas@163.com', '2013-07-09 22:56:07', '127.0.0.1', '2013-07-09 23:09:00');
+INSERT INTO `yk_authentication` VALUES ('297e8b6e3fc3fe8c013fc3ff51630000', '1', 'admin', 'bettersaas@163.com', '2013-07-09 23:14:17', '127.0.0.1', '2013-07-09 23:19:02');
+INSERT INTO `yk_authentication` VALUES ('297e8b6e3fc8ce28013fc8d76f200000', '1', 'admin', 'bettersaas@163.com', '2013-07-10 21:48:49', '127.0.0.1', '2013-07-10 21:59:52');
+INSERT INTO `yk_authentication` VALUES ('297e8b6e3fce1478013fce1585590000', '1', 'admin', 'bettersaas@163.com', '2013-07-11 22:14:44', '127.0.0.1', '2013-07-11 22:34:43');
+INSERT INTO `yk_authentication` VALUES ('297e8b6e3fce4a16013fce4af3120000', '1', 'admin', 'bettersaas@163.com', '2013-07-11 23:13:05', '127.0.0.1', '2013-07-11 23:16:40');
+INSERT INTO `yk_authentication` VALUES ('297e8b6e3fce5006013fce506f5f0000', '1', 'admin', 'bettersaas@163.com', '2013-07-11 23:19:05', '127.0.0.1', '2013-07-11 23:19:16');
+INSERT INTO `yk_authentication` VALUES ('297e8b6e3fce59e5013fce5a48c00000', '1', 'admin', 'bettersaas@163.com', '2013-07-11 23:29:50', '127.0.0.1', '2013-07-11 23:39:46');
 INSERT INTO `yk_authentication` VALUES ('2e22d4a8115f4029ab9a031ebd987e28', '1', 'admin', 'bettersaas@163.com', '2013-03-04 23:05:37', '0:0:0:0:0:0:0:1', '2013-03-04 23:05:50');
 INSERT INTO `yk_authentication` VALUES ('31233bdfeb6848d6b9fbd6012c305573', '1', 'admin', 'bettersaas@163.com', '2013-03-04 23:13:55', '0:0:0:0:0:0:0:1', '2013-03-04 23:33:56');
 INSERT INTO `yk_authentication` VALUES ('352776b1f5984c39aacfbd3ed6aa899e', '1', 'admin', 'bettersaas@163.com', '2013-02-12 21:14:13', '0:0:0:0:0:0:0:1', '2013-02-12 21:14:14');
@@ -6046,7 +6110,7 @@ INSERT INTO `yk_config` VALUES ('message_forgotpassword_text', '用户ID：${uid
 INSERT INTO `yk_config` VALUES ('message_register_subject', '欢迎注册');
 INSERT INTO `yk_config` VALUES ('message_register_text', '用户名：${username}，激活码：${activationCode}');
 INSERT INTO `yk_config` VALUES ('message_subject', 'CMS会员密码找回信息');
-INSERT INTO `yk_config` VALUES ('message_text', '感谢您使用CMS系统会员密码找回功能，请记住以下找回信息：\r\n用户ID：${uid}\r\n用户名：${username}\r\n您的新密码为：${resetPwd}\r\n请访问如下链接新密码才能生效：\r\nhttp://localhost/member/password_reset.jspx?uid=${uid}&key=${resetKey}\r\n');
+INSERT INTO `yk_config` VALUES ('message_text', '感谢您使用JEECMS系统会员密码找回功能，请记住以下找回信息：\r\n用户ID：${uid}\r\n用户名：${username}\r\n您的新密码为：${resetPwd}\r\n请访问如下链接新密码才能生效：\r\nhttp://localhost/member/password_reset.jspx?uid=${uid}&key=${resetKey}\r\n');
 
 -- ----------------------------
 -- Table structure for `yk_ftp`
@@ -6130,7 +6194,7 @@ CREATE TABLE `yk_user` (
 -- ----------------------------
 -- Records of yk_user
 -- ----------------------------
-INSERT INTO `yk_user` VALUES ('1', 'admin', 'bettersaas@163.com', '21232f297a57a5a743894a0e4a801fc3', '2011-01-03 00:00:00', '127.0.0.1', '2013-07-08 20:23:50', '127.0.0.1', '203', null, null, null, '0', null, '1', null);
+INSERT INTO `yk_user` VALUES ('1', 'admin', 'bettersaas@163.com', '21232f297a57a5a743894a0e4a801fc3', '2011-01-03 00:00:00', '127.0.0.1', '2013-07-11 23:29:50', '127.0.0.1', '213', null, null, null, '0', null, '1', null);
 INSERT INTO `yk_user` VALUES ('5', 'kevon', 'kevonz@163000.com', '098f6bcd4621d373cade4e832627b4f6', '2011-12-19 15:26:02', '192.168.0.173', '2011-12-19 15:26:02', '192.168.0.173', '0', null, null, null, '0', null, '1', null);
 INSERT INTO `yk_user` VALUES ('6', 'test', 'test@163.com', '098f6bcd4621d373cade4e832627b4f6', '2013-01-23 23:48:52', '0:0:0:0:0:0:0:1', '2013-01-31 23:59:53', '0:0:0:0:0:0:0:1', '1', null, null, null, '0', null, '1', null);
 INSERT INTO `yk_user` VALUES ('7', 'aaa', 'aaa@aa.com', '47bce5c74f589f4867dbd57e9ca9f808', '2013-02-03 20:40:04', '0:0:0:0:0:0:0:1', '2013-02-03 20:40:04', '0:0:0:0:0:0:0:1', '0', null, null, null, '0', null, '0', '657c0a90c3dc439185c1e80769c3a397');
