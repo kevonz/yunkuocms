@@ -12,10 +12,10 @@ import java.util.Date;
  * The persistent class for the cms_content_ext database table.
  * 
  */
-/*@Entity
-@Table(name="cms_content_ext")*/
+//@Entity
+//@Table(name="cms_content_ext")
 @MappedSuperclass
-@NamedQuery(name="ContentExt.findAll", query="SELECT c FROM CmsContentExt c")
+//@NamedQuery(name="ContentExt.findAll", query="SELECT c FROM CmsContentExt c")
 public class BaseContentExt implements Serializable {
 	private static final long serialVersionUID = 1L;
 

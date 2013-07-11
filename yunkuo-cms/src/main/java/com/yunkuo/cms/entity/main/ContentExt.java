@@ -3,14 +3,14 @@ package com.yunkuo.cms.entity.main;
 import com.yunkuo.cms.entity.main.base.BaseContentExt;
 import org.apache.commons.lang.StringUtils;
 
-import javax.persistence.NamedQuery;
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
 @Table(name="cms_content_ext")
-@NamedQuery(name="CmsContentExt.findAll", query="SELECT c FROM CmsContentExt c")
+//@NamedQuery(name="CmsContentExt.findAll", query="SELECT c FROM CmsContentExt c")
 public class ContentExt extends BaseContentExt {
 	private static final long serialVersionUID = 1L;
 
