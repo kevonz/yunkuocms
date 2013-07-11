@@ -1,7 +1,4 @@
-package com.yunkuo.cms.entity.main.base;
-
-
-import com.yunkuo.cms.entity.main.Content;
+package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -12,17 +9,16 @@ import java.util.Date;
  * The persistent class for the cms_content_ext database table.
  * 
  */
-/*@Entity
-@Table(name="cms_content_ext")*/
-@MappedSuperclass
-@NamedQuery(name="ContentExt.findAll", query="SELECT c FROM CmsContentExt c")
-public class BaseContentExt implements Serializable {
+@Entity
+@Table(name="cms_content_ext")
+@NamedQuery(name="CmsContentExt.findAll", query="SELECT c FROM CmsContentExt c")
+public class CmsContentExt implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="content_id")
-	private int id;
+	private int contentId;
 
 	private String author;
 
@@ -32,7 +28,7 @@ public class BaseContentExt implements Serializable {
 	private String description;
 
 	@Column(name="is_bold")
-	private boolean bold;
+	private byte isBold;
 
 	private String link;
 
@@ -43,7 +39,7 @@ public class BaseContentExt implements Serializable {
 	private String mediaType;
 
 	@Column(name="need_regenerate")
-	private boolean needRegenerate;
+	private byte needRegenerate;
 
 	private String origin;
 
@@ -74,31 +70,17 @@ public class BaseContentExt implements Serializable {
 	//bi-directional one-to-one association to CmsContent
 	@OneToOne
 	@JoinColumn(name="content_id")
-	private Content content;
+	private CmsContent cmsContent;
 
-	public BaseContentExt() {
-	}
-    public BaseContentExt (int id){
-        this.id = id;
-    }
-    public BaseContentExt (
-            int id,
-            String title,
-            Date releaseDate,
-            boolean bold,
-            boolean needRegenerate){
-        this.id = id;
-        this.title = title;
-        this.releaseDate = releaseDate;
-        this.bold = bold;
-        this.needRegenerate = needRegenerate;
-    }
-	public int getId() {
-		return this.id;
+	public CmsContentExt() {
 	}
 
-	public void setId(int contentId) {
-		this.id = contentId;
+	public int getContentId() {
+		return this.contentId;
+	}
+
+	public void setContentId(int contentId) {
+		this.contentId = contentId;
 	}
 
 	public String getAuthor() {
@@ -125,12 +107,12 @@ public class BaseContentExt implements Serializable {
 		this.description = description;
 	}
 
-	public Boolean getBold() {
-		return this.bold;
+	public byte getIsBold() {
+		return this.isBold;
 	}
 
-	public void setBold(Boolean isBold) {
-		this.bold = isBold;
+	public void setIsBold(byte isBold) {
+		this.isBold = isBold;
 	}
 
 	public String getLink() {
@@ -157,11 +139,11 @@ public class BaseContentExt implements Serializable {
 		this.mediaType = mediaType;
 	}
 
-	public Boolean getNeedRegenerate() {
+	public byte getNeedRegenerate() {
 		return this.needRegenerate;
 	}
 
-	public void setNeedRegenerate(Boolean needRegenerate) {
+	public void setNeedRegenerate(byte needRegenerate) {
 		this.needRegenerate = needRegenerate;
 	}
 
@@ -237,12 +219,12 @@ public class BaseContentExt implements Serializable {
 		this.typeImg = typeImg;
 	}
 
-	public Content getContent() {
-		return this.content;
+	public CmsContent getCmsContent() {
+		return this.cmsContent;
 	}
 
-	public void setContent(Content content) {
-		this.content = content;
+	public void setCmsContent(CmsContent cmsContent) {
+		this.cmsContent = cmsContent;
 	}
 
 }

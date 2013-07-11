@@ -1,11 +1,16 @@
 package com.yunkuo.cms.entity.main;
 
-import java.sql.Timestamp;
-
+import com.yunkuo.cms.entity.main.base.BaseContentExt;
 import org.apache.commons.lang.StringUtils;
 
-import com.yunkuo.cms.entity.main.base.BaseContentExt;
+import javax.persistence.NamedQuery;
+import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Date;
 
+@Entity
+@Table(name="cms_content_ext")
+@NamedQuery(name="CmsContentExt.findAll", query="SELECT c FROM CmsContentExt c")
 public class ContentExt extends BaseContentExt {
 	private static final long serialVersionUID = 1L;
 
@@ -26,12 +31,12 @@ public class ContentExt extends BaseContentExt {
 		if (getReleaseDate() == null) {
 			setReleaseDate(new Timestamp(System.currentTimeMillis()));
 		}
-		if (getBold() == null) {
+		/*if (getBold()) {
 			setBold(false);
-		}
-		if(getNeedRegenerate()==null){
+		}*/
+		/*if(getNeedRegenerate()==null){
 			setNeedRegenerate(true);
-		}
+		}*/
 		blankToNull();
 	}
 
@@ -85,7 +90,7 @@ public class ContentExt extends BaseContentExt {
 	/**
 	 * Constructor for primary key
 	 */
-	public ContentExt (java.lang.Integer id) {
+	public ContentExt (int id) {
 		super(id);
 	}
 
@@ -93,11 +98,11 @@ public class ContentExt extends BaseContentExt {
 	 * Constructor for required fields
 	 */
 	public ContentExt (
-		java.lang.Integer id,
-		java.lang.String title,
-		java.util.Date releaseDate,
-		java.lang.Boolean bold,
-		java.lang.Boolean needRegenerate) {
+		int id,
+		String title,
+        Date releaseDate,
+		boolean bold,
+		boolean needRegenerate) {
 
 		super (
 			id,
