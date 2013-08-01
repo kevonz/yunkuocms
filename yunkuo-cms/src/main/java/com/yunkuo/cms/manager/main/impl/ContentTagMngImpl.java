@@ -1,22 +1,18 @@
 package com.yunkuo.cms.manager.main.impl;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
+import com.yunkuo.cms.dao.main.ContentTagDao;
+import com.yunkuo.cms.entity.main.Content;
+import com.yunkuo.cms.entity.main.ContentTag;
+import com.yunkuo.cms.manager.main.ContentTagMng;
+import com.yunkuo.common.hibernate3.Updater;
+import com.yunkuo.common.page.Pagination;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.yunkuo.cms.dao.main.ContentTagDao;
-import com.yunkuo.cms.entity.main.ContentTag;
-import com.yunkuo.cms.manager.main.ContentTagMng;
-import com.yunkuo.common.hibernate3.Updater;
-import com.yunkuo.common.page.Pagination;
+import java.util.*;
 
 @Service
 @Transactional
@@ -164,6 +160,8 @@ public class ContentTagMngImpl implements ContentTagMng {
 		}
 		for (ContentTag tag : toRemove) {
 			//由于事务真正删除关联的sql语句还没有执行，这个时候cms_contenttag里至少还有一条数据。
+            //TODO remove unuseful tag
+            /*
 			if (dao.countContentRef(tag.getId()) <= 1) {
 				dao.deleteById(tag.getId());
 			} else {
@@ -171,6 +169,7 @@ public class ContentTagMngImpl implements ContentTagMng {
 				log.warn("ContentTag ref to Content > 1,"
 						+ " while ContentTag.ref_counter <= 0");
 			}
+            */
 		}
 	}
 
@@ -187,7 +186,11 @@ public class ContentTagMngImpl implements ContentTagMng {
 	}
 
 	public ContentTag deleteById(Integer id) {
-		dao.deleteContentRef(id);
+		//dao.deleteContentRef(id);
+        ContentTag tag = dao.findById(id);
+        for(Content content : tag.getContentList()){
+            content.getTags().remove(tag);
+        }
 		ContentTag bean = dao.deleteById(id);
 		return bean;
 	}

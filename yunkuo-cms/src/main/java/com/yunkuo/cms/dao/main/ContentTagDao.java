@@ -1,10 +1,10 @@
 package com.yunkuo.cms.dao.main;
 
-import java.util.List;
-
 import com.yunkuo.cms.entity.main.ContentTag;
 import com.yunkuo.common.hibernate3.Updater;
 import com.yunkuo.common.page.Pagination;
+
+import java.util.List;
 
 public interface ContentTagDao {
 	public List<ContentTag> getList(Integer count, boolean cacheable);
@@ -22,7 +22,7 @@ public interface ContentTagDao {
 
 	public ContentTag deleteById(Integer id);
 
-	public int deleteContentRef(Integer id);
+	//public int deleteContentRef(Integer id);
 
-	public int countContentRef(Integer id);
+	//public int countContentRef(Integer id);
 }

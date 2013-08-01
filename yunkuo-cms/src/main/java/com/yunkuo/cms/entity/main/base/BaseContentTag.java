@@ -1,11 +1,7 @@
 package com.yunkuo.cms.entity.main.base;
 
-import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.*;
-
-import com.yunkuo.cms.entity.main.ContentTagMapping;
+import java.io.Serializable;
 
 
 /**
@@ -32,6 +28,7 @@ public abstract class BaseContentTag implements Serializable {
 	//bi-directional many-to-one association to ContentTagMapping
 	//@OneToMany(mappedBy="ContentTag")
 	//private List<ContentTagMapping> contentTags;
+
 	public BaseContentTag() {
 	}
 	

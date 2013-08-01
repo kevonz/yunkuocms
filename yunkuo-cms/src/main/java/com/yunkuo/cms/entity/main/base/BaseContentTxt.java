@@ -1,19 +1,11 @@
 package com.yunkuo.cms.entity.main.base;
 
-import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToOne;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.yunkuo.cms.entity.main.Content;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import javax.persistence.*;
+import java.io.Serializable;
 
 
 /**
@@ -25,8 +17,10 @@ import com.yunkuo.cms.entity.main.Content;
 public abstract class BaseContentTxt  implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="content_id")
+    @GenericGenerator(name="foreignKey", strategy="foreign", parameters=@Parameter(name="property", value="content"))
+    @GeneratedValue(generator="foreignKey", strategy=GenerationType.IDENTITY)
 	private Integer id;
 
 	@Lob

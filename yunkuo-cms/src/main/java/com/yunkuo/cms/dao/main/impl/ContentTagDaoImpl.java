@@ -1,16 +1,15 @@
 package com.yunkuo.cms.dao.main.impl;
 
-import java.util.List;
-
-import org.apache.commons.lang.StringUtils;
-import org.hibernate.Query;
-import org.springframework.stereotype.Repository;
-
 import com.yunkuo.cms.dao.main.ContentTagDao;
 import com.yunkuo.cms.entity.main.ContentTag;
 import com.yunkuo.common.hibernate3.Finder;
 import com.yunkuo.common.hibernate3.HibernateBaseDao;
 import com.yunkuo.common.page.Pagination;
+import org.apache.commons.lang.StringUtils;
+import org.hibernate.Query;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class ContentTagDaoImpl extends HibernateBaseDao<ContentTag, Integer>
@@ -57,11 +56,12 @@ public class ContentTagDaoImpl extends HibernateBaseDao<ContentTag, Integer>
 	public ContentTag deleteById(Integer id) {
 		ContentTag entity = super.get(id);
 		if (entity != null) {
+
 			getSession().delete(entity);
 		}
 		return entity;
 	}
-
+/*
 	public int deleteContentRef(Integer id) {
 		Query query = getSession().getNamedQuery("ContentTag.deleteContentRef");
 		return query.setParameter(0, id).executeUpdate();
@@ -72,7 +72,7 @@ public class ContentTagDaoImpl extends HibernateBaseDao<ContentTag, Integer>
 		return ((Number) (query.setParameter(0, id).list().iterator().next()))
 				.intValue();
 	}
-
+*/
 	@Override
 	protected Class<ContentTag> getEntityClass() {
 		return ContentTag.class;

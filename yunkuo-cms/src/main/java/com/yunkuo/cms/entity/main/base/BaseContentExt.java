@@ -2,9 +2,10 @@ package com.yunkuo.cms.entity.main.base;
 
 
 import com.yunkuo.cms.entity.main.Content;
-
-import java.io.Serializable;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 
@@ -20,9 +21,12 @@ public class BaseContentExt implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+    //TODO update id
+	//@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="content_id")
-	private int id;
+    @GenericGenerator(name="foreignKey", strategy="foreign", parameters=@Parameter(name="property", value="content"))
+    @GeneratedValue(generator="foreignKey", strategy=GenerationType.IDENTITY)
+    private int id;
 
 	private String author;
 
@@ -243,6 +247,7 @@ public class BaseContentExt implements Serializable {
 
 	public void setContent(Content content) {
 		this.content = content;
+       // this.id = content.getId();
 	}
 
 }
