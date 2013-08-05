@@ -1,7 +1,7 @@
 package com.yunkuo.cms.entity.main.base.tmp;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -57,17 +57,9 @@ public class BaseChannel implements Serializable {
 	@OneToMany(mappedBy="cmsChannel")
 	private List<CmsChannelAttr> cmsChannelAttrs;
 
-	//bi-directional many-to-one association to CmsChannelDepartment
-	@OneToMany(mappedBy="cmsChannel")
-	private List<CmsChannelDepartment> cmsChannelDepartments;
-
 	//bi-directional one-to-one association to CmsChannelTxt
 	@OneToOne(mappedBy="cmsChannel")
 	private CmsChannelTxt cmsChannelTxt;
-
-	//bi-directional many-to-one association to CmsChannelUser
-	@OneToMany(mappedBy="cmsChannel")
-	private List<CmsChannelUser> cmsChannelUsers;
 
 	public BaseChannel() {
 	}
@@ -144,6 +136,20 @@ public class BaseChannel implements Serializable {
 		this.cmsChannels = cmsChannels;
 	}
 
+	public BaseChannel addCmsChannel(BaseChannel cmsChannel) {
+		getCmsChannels().add(cmsChannel);
+		cmsChannel.setCmsChannel(this);
+
+		return cmsChannel;
+	}
+
+	public BaseChannel removeCmsChannel(BaseChannel cmsChannel) {
+		getCmsChannels().remove(cmsChannel);
+		cmsChannel.setCmsChannel(null);
+
+		return cmsChannel;
+	}
+
 	public CmsModel getCmsModel() {
 		return this.cmsModel;
 	}
@@ -168,12 +174,18 @@ public class BaseChannel implements Serializable {
 		this.cmsChannelAttrs = cmsChannelAttrs;
 	}
 
-	public List<CmsChannelDepartment> getCmsChannelDepartments() {
-		return this.cmsChannelDepartments;
+	public CmsChannelAttr addCmsChannelAttr(CmsChannelAttr cmsChannelAttr) {
+		getCmsChannelAttrs().add(cmsChannelAttr);
+		cmsChannelAttr.setCmsChannel(this);
+
+		return cmsChannelAttr;
 	}
 
-	public void setCmsChannelDepartments(List<CmsChannelDepartment> cmsChannelDepartments) {
-		this.cmsChannelDepartments = cmsChannelDepartments;
+	public CmsChannelAttr removeCmsChannelAttr(CmsChannelAttr cmsChannelAttr) {
+		getCmsChannelAttrs().remove(cmsChannelAttr);
+		cmsChannelAttr.setCmsChannel(null);
+
+		return cmsChannelAttr;
 	}
 
 	public CmsChannelTxt getCmsChannelTxt() {
@@ -182,14 +194,6 @@ public class BaseChannel implements Serializable {
 
 	public void setCmsChannelTxt(CmsChannelTxt cmsChannelTxt) {
 		this.cmsChannelTxt = cmsChannelTxt;
-	}
-
-	public List<CmsChannelUser> getCmsChannelUsers() {
-		return this.cmsChannelUsers;
-	}
-
-	public void setCmsChannelUsers(List<CmsChannelUser> cmsChannelUsers) {
-		this.cmsChannelUsers = cmsChannelUsers;
 	}
 
 }

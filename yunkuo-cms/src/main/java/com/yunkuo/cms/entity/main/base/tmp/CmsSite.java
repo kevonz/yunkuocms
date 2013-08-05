@@ -282,4 +282,18 @@ public class CmsSite implements Serializable {
 		this.cmsChannels = cmsChannels;
 	}
 
+	public BaseChannel addCmsChannel(BaseChannel cmsChannel) {
+		getCmsChannels().add(cmsChannel);
+		cmsChannel.setCmsSite(this);
+
+		return cmsChannel;
+	}
+
+	public BaseChannel removeCmsChannel(BaseChannel cmsChannel) {
+		getCmsChannels().remove(cmsChannel);
+		cmsChannel.setCmsSite(null);
+
+		return cmsChannel;
+	}
+
 }

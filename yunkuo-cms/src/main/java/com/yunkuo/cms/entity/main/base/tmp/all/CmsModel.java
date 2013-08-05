@@ -1,4 +1,4 @@
-package com.yunkuo.cms.entity.main.base.tmp;
+package com.yunkuo.cms.entity.main.base.tmp.all;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -57,6 +57,10 @@ public class CmsModel implements Serializable {
 	//bi-directional many-to-one association to BaseChannel
 	@OneToMany(mappedBy="cmsModel")
 	private List<BaseChannel> cmsChannels;
+
+	//bi-directional many-to-one association to CmsModelItem
+	@OneToMany(mappedBy="cmsModel")
+	private List<CmsModelItem> cmsModelItems;
 
 	public CmsModel() {
 	}
@@ -185,6 +189,28 @@ public class CmsModel implements Serializable {
 		cmsChannel.setCmsModel(null);
 
 		return cmsChannel;
+	}
+
+	public List<CmsModelItem> getCmsModelItems() {
+		return this.cmsModelItems;
+	}
+
+	public void setCmsModelItems(List<CmsModelItem> cmsModelItems) {
+		this.cmsModelItems = cmsModelItems;
+	}
+
+	public CmsModelItem addCmsModelItem(CmsModelItem cmsModelItem) {
+		getCmsModelItems().add(cmsModelItem);
+		cmsModelItem.setCmsModel(this);
+
+		return cmsModelItem;
+	}
+
+	public CmsModelItem removeCmsModelItem(CmsModelItem cmsModelItem) {
+		getCmsModelItems().remove(cmsModelItem);
+		cmsModelItem.setCmsModel(null);
+
+		return cmsModelItem;
 	}
 
 }
