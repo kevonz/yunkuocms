@@ -1,189 +1,114 @@
 package com.yunkuo.cms.entity.main.base;
 
+import com.yunkuo.cms.entity.main.CmsSite;
+import com.yunkuo.cms.entity.main.CmsUser;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 
 /**
- * This is an object that contains data related to the cms_user_site table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_user_site"
+ * The persistent class for the cms_user_site database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_user_site")*/
+@MappedSuperclass
+public class BaseCmsUserSite implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsUserSite  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="usersite_id")
+	private int id;
 
-	public static String REF = "CmsUserSite";
-	public static String PROP_ALL_CHANNEL = "allChannel";
-	public static String PROP_SITE = "site";
-	public static String PROP_USER = "user";
-	public static String PROP_CHECK_STEP = "checkStep";
-	public static String PROP_ID = "id";
+	@Column(name="check_step")
+	private Byte checkStep;
 
+	@Column(name="is_all_channel")
+	private Boolean allChannel;
 
-	// constructors
-	public BaseCmsUserSite () {
-		initialize();
-	}
+	//bi-directional many-to-one association to CmsUser
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private CmsUser user;
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsUserSite (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+	//bi-directional many-to-one association to CmsSite
+	@ManyToOne
+	@JoinColumn(name="site_id")
+	private CmsSite site;
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsUserSite (
-		java.lang.Integer id,
-		com.yunkuo.cms.entity.main.CmsUser user,
-		com.yunkuo.cms.entity.main.CmsSite site,
-		java.lang.Byte checkStep,
-		java.lang.Boolean allChannel) {
+    // constructors
+    public BaseCmsUserSite () {
+        initialize();
+    }
 
-		this.setId(id);
-		this.setUser(user);
-		this.setSite(site);
-		this.setCheckStep(checkStep);
-		this.setAllChannel(allChannel);
-		initialize();
-	}
-
-	protected void initialize () {}
-
-
-
-	private int hashCode = Integer.MIN_VALUE;
-
-	// primary key
-	private java.lang.Integer id;
-
-	// fields
-	private java.lang.Byte checkStep;
-	private java.lang.Boolean allChannel;
-
-	// many to one
-	private com.yunkuo.cms.entity.main.CmsUser user;
-	private com.yunkuo.cms.entity.main.CmsSite site;
-
-
-
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="identity"
-     *  column="usersite_id"
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsUserSite (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsUserSite (
+            java.lang.Integer id,
+            com.yunkuo.cms.entity.main.CmsUser user,
+            com.yunkuo.cms.entity.main.CmsSite site,
+            java.lang.Byte checkStep,
+            java.lang.Boolean allChannel) {
+
+        this.setId(id);
+        this.setUser(user);
+        this.setSite(site);
+        this.setCheckStep(checkStep);
+        this.setAllChannel(allChannel);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+	public int getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
+	public void setId(int id) {
 		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: check_step
-	 */
-	public java.lang.Byte getCheckStep () {
-		return checkStep;
+	public Byte getCheckStep() {
+		return this.checkStep;
 	}
 
-	/**
-	 * Set the value related to the column: check_step
-	 * @param checkStep the check_step value
-	 */
-	public void setCheckStep (java.lang.Byte checkStep) {
+	public void setCheckStep(Byte checkStep) {
 		this.checkStep = checkStep;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_all_channel
-	 */
-	public java.lang.Boolean getAllChannel () {
-		return allChannel;
+	public Boolean getAllChannel() {
+		return this.allChannel;
 	}
 
-	/**
-	 * Set the value related to the column: is_all_channel
-	 * @param allChannel the is_all_channel value
-	 */
-	public void setAllChannel (java.lang.Boolean allChannel) {
-		this.allChannel = allChannel;
+	public void setAllChannel(Boolean isAllChannel) {
+		this.allChannel = isAllChannel;
 	}
 
-
-	/**
-	 * Return the value associated with the column: user_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsUser getUser () {
-		return user;
+	public CmsUser getUser() {
+		return this.user;
 	}
 
-	/**
-	 * Set the value related to the column: user_id
-	 * @param user the user_id value
-	 */
-	public void setUser (com.yunkuo.cms.entity.main.CmsUser user) {
-		this.user = user;
+	public void setUser(CmsUser cmsUser) {
+		this.user = cmsUser;
 	}
 
-
-	/**
-	 * Return the value associated with the column: site_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsSite getSite () {
-		return site;
+	public CmsSite getSite() {
+		return this.site;
 	}
 
-	/**
-	 * Set the value related to the column: site_id
-	 * @param site the site_id value
-	 */
-	public void setSite (com.yunkuo.cms.entity.main.CmsSite site) {
-		this.site = site;
+	public void setSite(CmsSite cmsSite) {
+		this.site = cmsSite;
 	}
-
-
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.main.CmsUserSite)) return false;
-		else {
-			com.yunkuo.cms.entity.main.CmsUserSite cmsUserSite = (com.yunkuo.cms.entity.main.CmsUserSite) obj;
-			if (null == this.getId() || null == cmsUserSite.getId()) return false;
-			else return (this.getId().equals(cmsUserSite.getId()));
-		}
-	}
-
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
-	}
-
-
-	public String toString () {
-		return super.toString();
-	}
-
 
 }

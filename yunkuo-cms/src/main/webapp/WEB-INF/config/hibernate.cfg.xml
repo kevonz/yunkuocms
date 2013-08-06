@@ -23,6 +23,7 @@
         <mapping class="com.yunkuo.cms.entity.main.CmsSiteModel" />
         <mapping class="com.yunkuo.cms.entity.main.ContentCount" />
         <mapping class="com.yunkuo.cms.entity.main.ContentCheck" />
+        <mapping class="com.yunkuo.cms.entity.main.CmsUserSite" />
     </session-factory>
 
          

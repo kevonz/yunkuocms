@@ -1,7 +1,10 @@
 package com.yunkuo.cms.entity.main;
 
 import com.yunkuo.cms.entity.main.base.BaseCmsUserSite;
+import javax.persistence.*;
 
+@Entity
+@Table(name="cms_user_site")
 public class CmsUserSite extends BaseCmsUserSite {
 	private static final long serialVersionUID = 1L;
 
