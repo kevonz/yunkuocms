@@ -21,6 +21,7 @@
         <mapping class="com.yunkuo.cms.entity.main.ChannelTxt" />
         <mapping class="com.yunkuo.cms.entity.main.ChannelExt" />
         <mapping class="com.yunkuo.cms.entity.main.CmsSiteModel" />
+        <mapping class="com.yunkuo.cms.entity.main.ContentCount" />
     </session-factory>
 
          

@@ -2,6 +2,10 @@ package com.yunkuo.cms.entity.main;
 
 import com.yunkuo.cms.entity.main.base.BaseContentCount;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="cms_content_count")
 public class ContentCount extends BaseContentCount {
 	private static final long serialVersionUID = 1L;
 
