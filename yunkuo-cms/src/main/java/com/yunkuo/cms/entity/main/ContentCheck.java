@@ -1,9 +1,12 @@
 package com.yunkuo.cms.entity.main;
 
+import com.yunkuo.cms.entity.main.base.BaseContentCheck;
 import org.apache.commons.lang.StringUtils;
 
-import com.yunkuo.cms.entity.main.base.BaseContentCheck;
+import javax.persistence.*;
 
+@Entity
+@Table(name="cms_content_check")
 public class ContentCheck extends BaseContentCheck {
 	private static final long serialVersionUID = 1L;
 	/**
