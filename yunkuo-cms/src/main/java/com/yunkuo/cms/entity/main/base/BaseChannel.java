@@ -123,7 +123,7 @@ public abstract class BaseChannel  implements Serializable {
     // collections
     //bi-directional many-to-one association to CmsChannelDepartment
     @OneToMany//(mappedBy="channel")
-    @JoinColumn(name="channel_id")
+    @JoinColumn(name="parent_id")
     private Set<Channel> child;
 
     ////bi-directional one-to-one association to CmsChannelTxt

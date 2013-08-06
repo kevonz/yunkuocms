@@ -355,7 +355,8 @@ public class Channel extends BaseChannel implements HibernateTree<Integer>,
 			Set<Channel> rights, Channel exclude, boolean hasContentOnly) {
 		if ((rights != null && !rights.contains(channel))
 				|| (exclude != null && exclude.equals(channel))
-                || list.contains(channel)) {
+                //|| list.contains(channel)
+                ) {
 			return;
 		}
 		list.add(channel);
