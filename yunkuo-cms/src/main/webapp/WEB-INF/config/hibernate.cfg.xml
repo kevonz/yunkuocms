@@ -20,6 +20,7 @@
         <mapping class="com.yunkuo.cms.entity.main.CmsChannelAttr" />
         <mapping class="com.yunkuo.cms.entity.main.ChannelTxt" />
         <mapping class="com.yunkuo.cms.entity.main.ChannelExt" />
+        <mapping class="com.yunkuo.cms.entity.main.CmsSiteModel" />
     </session-factory>
 
          
