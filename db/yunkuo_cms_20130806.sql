@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2013-08-06 08:50:41
+Date: 2013-08-06 21:14:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -851,7 +851,7 @@ CREATE TABLE `cms_channel_ext` (
 -- ----------------------------
 -- Records of cms_channel_ext
 -- ----------------------------
-INSERT INTO `cms_channel_ext` VALUES ('1', '新闻', null, null, '0', '0', '0', '0', '20', null, null, null, '/WEB-INF/template/cms/www/red/channel/新闻栏目.html', null, null, null, '0', '0', '139', '139', '310', '310', '0', '1', '0', '新闻资讯', '新闻资讯', '新闻资讯');
+INSERT INTO `cms_channel_ext` VALUES ('1', '新闻', null, null, '0', '0', '0', '0', '20', null, null, null, '/WEB-INF/template/cms/www/red/channel/新闻栏目.html', '/WEB-INF/template/cms/www/red/content/新闻内容.html', null, null, '0', '0', '139', '139', '310', '310', '0', '1', '0', '新闻资讯', '新闻资讯', '新闻资讯');
 INSERT INTO `cms_channel_ext` VALUES ('9', '下载', null, null, '0', '0', '1', '0', '20', null, null, null, null, null, null, null, '0', '0', '139', '139', '310', '310', '0', '1', '0', '下载中心', '下载中心', '下载中心');
 INSERT INTO `cms_channel_ext` VALUES ('10', '关于我们', null, null, '0', '0', '1', '0', '20', null, null, null, null, null, null, null, '0', '0', '139', '139', '310', '310', '0', '1', '0', '关于我们', '关于我们', '关于我们');
 INSERT INTO `cms_channel_ext` VALUES ('11', '国内新闻', null, null, '0', '0', '0', '0', '20', null, null, null, '/WEB-INF/template/cms/www/red/channel/新闻栏目_子栏目.html', '/WEB-INF/template/cms/www/red/content/新闻内容.html', null, null, '0', '0', '139', '139', '310', '310', '0', '1', '0', '国内新闻', '国内新闻', '国内新闻');
@@ -1150,7 +1150,7 @@ CREATE TABLE `cms_content` (
   CONSTRAINT `fk_cms_content_site` FOREIGN KEY (`site_id`) REFERENCES `cms_site` (`site_id`),
   CONSTRAINT `fk_cms_content_type` FOREIGN KEY (`type_id`) REFERENCES `cms_content_type` (`type_id`),
   CONSTRAINT `fk_cms_content_user` FOREIGN KEY (`user_id`) REFERENCES `cms_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=618 DEFAULT CHARSET=utf8 COMMENT='CMS内容表';
+) ENGINE=InnoDB AUTO_INCREMENT=619 DEFAULT CHARSET=utf8 COMMENT='CMS内容表';
 
 -- ----------------------------
 -- Records of cms_content
@@ -1609,6 +1609,7 @@ INSERT INTO `cms_content` VALUES ('605', '11', '1', '1', '1', '2012-11-18 16:59:
 INSERT INTO `cms_content` VALUES ('606', '11', '1', '1', '1', '2012-11-18 16:59:46', '0', '0', '0', '2', '0', '0', '0', '0');
 INSERT INTO `cms_content` VALUES ('607', '11', '1', '1', '1', '2012-11-18 16:59:47', '0', '0', '0', '2', '0', '0', '0', '0');
 INSERT INTO `cms_content` VALUES ('617', '11', '1', '1', '1', '2013-08-04 20:49:43', '0', '0', '0', '2', '2', '0', '0', '0');
+INSERT INTO `cms_content` VALUES ('618', '11', '1', '1', '1', '2013-08-06 20:04:39', '0', '0', '0', '2', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `cms_contenttag`
@@ -1624,7 +1625,7 @@ CREATE TABLE `cms_contenttag` (
   KEY `fk_cms_tag_content` (`content_id`),
   CONSTRAINT `fk_cms_content_tag` FOREIGN KEY (`tag_id`) REFERENCES `cms_content_tag` (`tag_id`),
   CONSTRAINT `fk_cms_tag_content` FOREIGN KEY (`content_id`) REFERENCES `cms_content` (`content_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='CMS内容标签关联表';
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COMMENT='CMS内容标签关联表';
 
 -- ----------------------------
 -- Records of cms_contenttag
@@ -1647,6 +1648,12 @@ INSERT INTO `cms_contenttag` VALUES ('23', '617', '69', '4');
 INSERT INTO `cms_contenttag` VALUES ('24', '617', '62', '5');
 INSERT INTO `cms_contenttag` VALUES ('25', '617', '70', '6');
 INSERT INTO `cms_contenttag` VALUES ('26', '617', '71', '7');
+INSERT INTO `cms_contenttag` VALUES ('27', '618', '54', '0');
+INSERT INTO `cms_contenttag` VALUES ('28', '618', '72', '1');
+INSERT INTO `cms_contenttag` VALUES ('29', '618', '61', '2');
+INSERT INTO `cms_contenttag` VALUES ('30', '618', '73', '3');
+INSERT INTO `cms_contenttag` VALUES ('31', '618', '74', '4');
+INSERT INTO `cms_contenttag` VALUES ('32', '618', '75', '5');
 
 -- ----------------------------
 -- Table structure for `cms_content_attachment`
@@ -2293,6 +2300,7 @@ INSERT INTO `cms_content_channel` VALUES ('11', '605');
 INSERT INTO `cms_content_channel` VALUES ('11', '606');
 INSERT INTO `cms_content_channel` VALUES ('11', '607');
 INSERT INTO `cms_content_channel` VALUES ('11', '617');
+INSERT INTO `cms_content_channel` VALUES ('11', '618');
 
 -- ----------------------------
 -- Table structure for `cms_content_check`
@@ -2768,6 +2776,7 @@ INSERT INTO `cms_content_check` VALUES ('605', '2', null, '0', null, null);
 INSERT INTO `cms_content_check` VALUES ('606', '2', null, '0', null, null);
 INSERT INTO `cms_content_check` VALUES ('607', '2', null, '0', null, null);
 INSERT INTO `cms_content_check` VALUES ('617', '2', null, '0', null, null);
+INSERT INTO `cms_content_check` VALUES ('618', '2', null, '0', null, null);
 
 -- ----------------------------
 -- Table structure for `cms_content_count`
@@ -3253,6 +3262,7 @@ INSERT INTO `cms_content_count` VALUES ('605', '1', '0', '0', '0', '0', '0', '0'
 INSERT INTO `cms_content_count` VALUES ('606', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('607', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 INSERT INTO `cms_content_count` VALUES ('617', '2', '2', '2', '2', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `cms_content_count` VALUES ('618', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `cms_content_ext`
@@ -3738,6 +3748,7 @@ INSERT INTO `cms_content_ext` VALUES ('605', '温家宝赴金边途中表示:中
 INSERT INTO `cms_content_ext` VALUES ('606', '烟台至大连航线客运船舶受大风影响全部停航|烟台|大连|船舶', null, null, null, null, null, '2012-11-18 16:59:46', null, null, null, '0', null, null, null, null, null, '1');
 INSERT INTO `cms_content_ext` VALUES ('607', '习近平:本届中央以学习贯彻十八大精神来开局|十八大|中央|工作', null, null, null, null, null, '2012-11-18 16:59:47', null, null, null, '0', null, null, null, null, null, '1');
 INSERT INTO `cms_content_ext` VALUES ('617', 'rgrgrggr999', null, null, null, null, 'gr', '2013-08-02 00:08:46', null, null, '#FF8080', '0', null, null, null, null, null, '1');
+INSERT INTO `cms_content_ext` VALUES ('618', 'dfbvgesrgresgdrfesgdres', 'srgerg', 'afew', 'awf', null, 'afwafwf', '2013-08-06 20:04:39', null, null, '#00FFFF', '1', null, null, null, null, null, '0');
 
 -- ----------------------------
 -- Table structure for `cms_content_group_view`
@@ -3958,7 +3969,7 @@ CREATE TABLE `cms_content_tag` (
   `ref_counter` int(11) NOT NULL DEFAULT '1' COMMENT '被引用的次数',
   PRIMARY KEY (`tag_id`),
   UNIQUE KEY `ak_tag_name` (`tag_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8 COMMENT='CMS内容TAG表';
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8 COMMENT='CMS内容TAG表';
 
 -- ----------------------------
 -- Records of cms_content_tag
@@ -3978,9 +3989,9 @@ INSERT INTO `cms_content_tag` VALUES ('47', '王建硕', '1');
 INSERT INTO `cms_content_tag` VALUES ('48', '网站', '1');
 INSERT INTO `cms_content_tag` VALUES ('49', '规模化', '1');
 INSERT INTO `cms_content_tag` VALUES ('52', '调控', '0');
-INSERT INTO `cms_content_tag` VALUES ('54', 'a', '0');
+INSERT INTO `cms_content_tag` VALUES ('54', 'a', '1');
 INSERT INTO `cms_content_tag` VALUES ('57', 'eee', '1');
-INSERT INTO `cms_content_tag` VALUES ('61', 'e', '0');
+INSERT INTO `cms_content_tag` VALUES ('61', 'e', '1');
 INSERT INTO `cms_content_tag` VALUES ('62', 'f', '1');
 INSERT INTO `cms_content_tag` VALUES ('63', 'g', '1');
 INSERT INTO `cms_content_tag` VALUES ('64', 'fewe', '0');
@@ -3990,6 +4001,10 @@ INSERT INTO `cms_content_tag` VALUES ('68', 'r', '1');
 INSERT INTO `cms_content_tag` VALUES ('69', 'vv', '1');
 INSERT INTO `cms_content_tag` VALUES ('70', 'rr', '1');
 INSERT INTO `cms_content_tag` VALUES ('71', 've', '1');
+INSERT INTO `cms_content_tag` VALUES ('72', 'b', '1');
+INSERT INTO `cms_content_tag` VALUES ('73', 'w', '1');
+INSERT INTO `cms_content_tag` VALUES ('74', 'q', '1');
+INSERT INTO `cms_content_tag` VALUES ('75', 'v', '1');
 
 -- ----------------------------
 -- Table structure for `cms_content_topic`
@@ -4473,7 +4488,7 @@ CREATE TABLE `cms_file` (
 -- ----------------------------
 -- Records of cms_file
 -- ----------------------------
-INSERT INTO `cms_file` VALUES ('/u/cms/www/201112/17095324wp2z.jpg', '', '0', null);
+INSERT INTO `cms_file` VALUES ('/u/cms/www/201112/17095324wp2z.jpg', '', '1', '618');
 INSERT INTO `cms_file` VALUES ('/u/cms/www/201112/171410455sqq.jpg', '', '1', null);
 INSERT INTO `cms_file` VALUES ('/u/cms/www/201112/17141056zbjl.jpg', '', '1', null);
 INSERT INTO `cms_file` VALUES ('/u/cms/www/201112/17141320s4xy.jpg', '', '1', null);
@@ -4963,7 +4978,7 @@ CREATE TABLE `cms_log` (
   KEY `fk_cms_log_user` (`user_id`),
   CONSTRAINT `fk_cms_log_site` FOREIGN KEY (`site_id`) REFERENCES `cms_site` (`site_id`),
   CONSTRAINT `fk_cms_log_user` FOREIGN KEY (`user_id`) REFERENCES `cms_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8 COMMENT='CMS日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=127 DEFAULT CHARSET=utf8 COMMENT='CMS日志表';
 
 -- ----------------------------
 -- Records of cms_log
@@ -5081,6 +5096,19 @@ INSERT INTO `cms_log` VALUES ('110', '1', null, '1', '2013-08-06 08:17:58', '127
 INSERT INTO `cms_log` VALUES ('111', '1', null, '1', '2013-08-06 08:22:22', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
 INSERT INTO `cms_log` VALUES ('112', '1', null, '1', '2013-08-06 08:27:16', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
 INSERT INTO `cms_log` VALUES ('113', '1', null, '1', '2013-08-06 08:30:15', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('114', '1', null, '1', '2013-08-06 20:02:57', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('115', '1', '1', '3', '2013-08-06 20:03:27', '127.0.0.1', '/cms/admin/cms/channel/o_update', '修改栏目', 'id=1;name=新闻');
+INSERT INTO `cms_log` VALUES ('116', '1', '1', '3', '2013-08-06 20:03:51', '127.0.0.1', '/cms/admin/cms/channel/o_update', '修改栏目', 'id=1;name=新闻1');
+INSERT INTO `cms_log` VALUES ('117', '1', '1', '3', '2013-08-06 20:04:02', '127.0.0.1', '/cms/admin/cms/channel/o_update', '修改栏目', 'id=1;name=新闻');
+INSERT INTO `cms_log` VALUES ('118', '1', '1', '3', '2013-08-06 20:04:40', '127.0.0.1', '/cms/admin/cms/content/o_save', '增加文章', 'id=618;title=dfbvgesrgresgdrfesgdres');
+INSERT INTO `cms_log` VALUES ('119', '1', null, '1', '2013-08-06 20:17:46', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('120', '1', '1', '3', '2013-08-06 20:37:18', '127.0.0.1', '/cms/admin/cms/site/o_update', '修改站点', 'id=1;name=YunKuo_CMS');
+INSERT INTO `cms_log` VALUES ('121', '1', '1', '3', '2013-08-06 20:38:58', '127.0.0.1', '/cms/admin/cms/site/o_update', '修改站点', 'id=1;name=YunKuo_CMS');
+INSERT INTO `cms_log` VALUES ('122', '1', null, '1', '2013-08-06 20:56:32', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('123', '1', null, '1', '2013-08-06 20:56:51', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('124', '1', null, '1', '2013-08-06 20:58:28', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('125', '1', '1', '3', '2013-08-06 20:59:06', '127.0.0.1', '/cms/admin/cms/site/o_update', '修改站点', 'id=1;name=YunKuo_CMS');
+INSERT INTO `cms_log` VALUES ('126', '1', null, '1', '2013-08-06 20:59:17', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
 
 -- ----------------------------
 -- Table structure for `cms_message`
@@ -5541,7 +5569,7 @@ CREATE TABLE `cms_site` (
 -- ----------------------------
 -- Records of cms_site
 -- ----------------------------
-INSERT INTO `cms_site` VALUES ('1', '1', null, 'localhost', 'www', 'YunKuoCMS', 'YunKuoCMS', 'http://', '.htm', '.html', '', '0', '0', 'zh_CN', 'zh_CN', 'red', '2', '2', '1', '1', '', '', '0');
+INSERT INTO `cms_site` VALUES ('1', '1', null, 'localhost', 'www', 'YunKuo_CMS', 'YunKuoCMS', 'http://', '.htm', '.html', '', '0', '0', 'zh_CN', 'zh_CN', 'red', '2', '2', '1', '1', '', '', '0');
 INSERT INTO `cms_site` VALUES ('2', '1', null, '111', '111', '111', '111', 'http://', '.htm', '.html', '', '0', '1', 'zh_CN', 'zh_CN', 'default', '2', '2', '1', '1', '', '', '0');
 
 -- ----------------------------
@@ -5595,7 +5623,7 @@ CREATE TABLE `cms_site_flow` (
   PRIMARY KEY (`flow_id`),
   KEY `fk_cms_flow_site` (`site_id`),
   CONSTRAINT `fk_cms_flow_site` FOREIGN KEY (`site_id`) REFERENCES `cms_site` (`site_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=183 DEFAULT CHARSET=utf8 COMMENT='站点流量统计表';
+) ENGINE=InnoDB AUTO_INCREMENT=184 DEFAULT CHARSET=utf8 COMMENT='站点流量统计表';
 
 -- ----------------------------
 -- Records of cms_site_flow
@@ -5782,6 +5810,7 @@ INSERT INTO `cms_site_flow` VALUES ('179', '1', '127.0.0.1', '2013-8-6', '2013-0
 INSERT INTO `cms_site_flow` VALUES ('180', '1', '127.0.0.1', '2013-8-6', '2013-08-06 07:05:38', 'http://localhost:8080/cms/tiankong/index.htm', 'http://localhost:8080', 'http://localhost:8080/cms/works/index.htm', '', '本机地址', '4846EC2AE5633EE370A22E4359FF3C1C');
 INSERT INTO `cms_site_flow` VALUES ('181', '1', '127.0.0.1', '2013-8-6', '2013-08-06 08:39:59', 'http://localhost:8080/cms/', '', '', '', '本机地址', '81620AE60F21A2AA2E04806924430D17');
 INSERT INTO `cms_site_flow` VALUES ('182', '1', '127.0.0.1', '2013-8-6', '2013-08-06 08:40:26', 'http://localhost:8080/cms/gnxw/617.htm', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '本机地址', '81620AE60F21A2AA2E04806924430D17');
+INSERT INTO `cms_site_flow` VALUES ('183', '1', '127.0.0.1', '2013-8-6', '2013-08-06 20:04:46', 'http://localhost:8080/cms/gnxw/618.htm', 'http://localhost:8080', 'http://localhost:8080/cms/admin/cms/content/v_list?cid=', '', '本机地址', 'C4770DD283DB232E5FD66838A2AC1BF2');
 
 -- ----------------------------
 -- Table structure for `cms_site_model`
@@ -5790,7 +5819,7 @@ DROP TABLE IF EXISTS `cms_site_model`;
 CREATE TABLE `cms_site_model` (
   `model_id` int(11) NOT NULL AUTO_INCREMENT,
   `field` varchar(50) NOT NULL COMMENT '字段',
-  `model_label` varchar(100) NOT NULL COMMENT '名称',
+  `label` varchar(100) NOT NULL COMMENT '名称',
   `priority` int(11) NOT NULL DEFAULT '10' COMMENT '排列顺序',
   `upload_path` varchar(100) DEFAULT NULL COMMENT '上传路径',
   `text_size` varchar(20) DEFAULT NULL COMMENT '长度',
@@ -5884,7 +5913,7 @@ CREATE TABLE `cms_user` (
 -- ----------------------------
 -- Records of cms_user
 -- ----------------------------
-INSERT INTO `cms_user` VALUES ('1', '1', 'admin', 'bettersaas@163.com', '2011-01-03 00:00:00', '127.0.0.1', '2013-08-06 08:30:15', '127.0.0.1', '229', '9', '0', '0', null, '1', '0', '0', '0');
+INSERT INTO `cms_user` VALUES ('1', '1', 'admin', 'bettersaas@163.com', '2011-01-03 00:00:00', '127.0.0.1', '2013-08-06 20:59:17', '127.0.0.1', '235', '9', '0', '0', null, '1', '0', '0', '0');
 INSERT INTO `cms_user` VALUES ('5', '1', 'test', 'test@163.com', '2011-12-19 15:26:02', '192.168.0.173', '2011-12-19 15:26:02', '192.168.0.173', '0', '0', '0', '0', '2011-12-19', '0', '0', '0', '0');
 INSERT INTO `cms_user` VALUES ('6', '1', 'bettersaas', 'bettersaas@163.com', '2013-01-23 23:48:52', '0:0:0:0:0:0:0:1', '2013-01-31 23:59:53', '0:0:0:0:0:0:0:1', '1', '0', '0', '0', '2013-01-23', '0', '0', '0', '0');
 INSERT INTO `cms_user` VALUES ('7', '1', 'aaa', 'aaa@aa.com', '2013-02-03 20:40:04', '0:0:0:0:0:0:0:1', '2013-02-03 20:40:04', '0:0:0:0:0:0:0:1', '0', '0', '0', '0', '2013-02-03', '0', '0', '0', '0');
@@ -6135,6 +6164,12 @@ INSERT INTO `yk_authentication` VALUES ('297e8b6e4050fbe0014050fcc6ad0000', '1',
 INSERT INTO `yk_authentication` VALUES ('297e8b6e4050ffd701405100d1360000', '1', 'admin', 'bettersaas@163.com', '2013-08-06 08:22:22', '127.0.0.1', '2013-08-06 08:22:28');
 INSERT INTO `yk_authentication` VALUES ('297e8b6e4051049d014051054dbe0000', '1', 'admin', 'bettersaas@163.com', '2013-08-06 08:27:16', '127.0.0.1', '2013-08-06 08:27:21');
 INSERT INTO `yk_authentication` VALUES ('297e8b6e405107a50140510808430000', '1', 'admin', 'bettersaas@163.com', '2013-08-06 08:30:15', '127.0.0.1', '2013-08-06 08:31:55');
+INSERT INTO `yk_authentication` VALUES ('297e8b6e4053817b0140538237600000', '1', 'admin', 'bettersaas@163.com', '2013-08-06 20:02:57', '127.0.0.1', '2013-08-06 20:12:57');
+INSERT INTO `yk_authentication` VALUES ('297e8b6e40538cf30140538fc6490000', '1', 'admin', 'bettersaas@163.com', '2013-08-06 20:17:46', '127.0.0.1', '2013-08-06 20:47:40');
+INSERT INTO `yk_authentication` VALUES ('297e8b6e4053b1fc014053b344610000', '1', 'admin', 'bettersaas@163.com', '2013-08-06 20:56:32', '127.0.0.1', '2013-08-06 20:56:51');
+INSERT INTO `yk_authentication` VALUES ('297e8b6e4053b1fc014053b391690001', '1', 'admin', 'bettersaas@163.com', '2013-08-06 20:56:51', '127.0.0.1', '2013-08-06 20:56:52');
+INSERT INTO `yk_authentication` VALUES ('297e8b6e4053b4a0014053b508830000', '1', 'admin', 'bettersaas@163.com', '2013-08-06 20:58:27', '127.0.0.1', '2013-08-06 20:59:06');
+INSERT INTO `yk_authentication` VALUES ('297e8b6e4053b4a0014053b5c8670001', '1', 'admin', 'bettersaas@163.com', '2013-08-06 20:59:16', '127.0.0.1', '2013-08-06 20:59:21');
 INSERT INTO `yk_authentication` VALUES ('2e22d4a8115f4029ab9a031ebd987e28', '1', 'admin', 'bettersaas@163.com', '2013-03-04 23:05:37', '0:0:0:0:0:0:0:1', '2013-03-04 23:05:50');
 INSERT INTO `yk_authentication` VALUES ('31233bdfeb6848d6b9fbd6012c305573', '1', 'admin', 'bettersaas@163.com', '2013-03-04 23:13:55', '0:0:0:0:0:0:0:1', '2013-03-04 23:33:56');
 INSERT INTO `yk_authentication` VALUES ('352776b1f5984c39aacfbd3ed6aa899e', '1', 'admin', 'bettersaas@163.com', '2013-02-12 21:14:13', '0:0:0:0:0:0:0:1', '2013-02-12 21:14:14');
@@ -6293,7 +6328,7 @@ CREATE TABLE `yk_user` (
 -- ----------------------------
 -- Records of yk_user
 -- ----------------------------
-INSERT INTO `yk_user` VALUES ('1', 'admin', 'bettersaas@163.com', '21232f297a57a5a743894a0e4a801fc3', '2011-01-03 00:00:00', '127.0.0.1', '2013-08-06 08:30:15', '127.0.0.1', '231', null, null, null, '0', null, '1', null);
+INSERT INTO `yk_user` VALUES ('1', 'admin', 'bettersaas@163.com', '21232f297a57a5a743894a0e4a801fc3', '2011-01-03 00:00:00', '127.0.0.1', '2013-08-06 20:59:16', '127.0.0.1', '237', null, null, null, '0', null, '1', null);
 INSERT INTO `yk_user` VALUES ('5', 'kevon', 'kevonz@163000.com', '098f6bcd4621d373cade4e832627b4f6', '2011-12-19 15:26:02', '192.168.0.173', '2011-12-19 15:26:02', '192.168.0.173', '0', null, null, null, '0', null, '1', null);
 INSERT INTO `yk_user` VALUES ('6', 'test', 'test@163.com', '098f6bcd4621d373cade4e832627b4f6', '2013-01-23 23:48:52', '0:0:0:0:0:0:0:1', '2013-01-31 23:59:53', '0:0:0:0:0:0:0:1', '1', null, null, null, '0', null, '1', null);
 INSERT INTO `yk_user` VALUES ('7', 'aaa', 'aaa@aa.com', '47bce5c74f589f4867dbd57e9ca9f808', '2013-02-03 20:40:04', '0:0:0:0:0:0:0:1', '2013-02-03 20:40:04', '0:0:0:0:0:0:0:1', '0', null, null, null, '0', null, '0', '657c0a90c3dc439185c1e80769c3a397');
