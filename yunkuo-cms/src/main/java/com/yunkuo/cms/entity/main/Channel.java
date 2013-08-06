@@ -1,28 +1,25 @@
 package com.yunkuo.cms.entity.main;
 
-import static com.yunkuo.common.web.Constants.INDEX;
-import static com.yunkuo.common.web.Constants.SPT;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
-
-import org.apache.commons.lang.StringUtils;
-
 import com.yunkuo.cms.entity.main.base.BaseChannel;
 import com.yunkuo.cms.utils.StaticPageUtils;
 import com.yunkuo.common.hibernate3.HibernateTree;
 import com.yunkuo.common.hibernate3.PriorityComparator;
 import com.yunkuo.common.hibernate3.PriorityInterface;
+import org.apache.commons.lang.StringUtils;
+import javax.persistence.*;
+
+import java.util.*;
+
+import static com.yunkuo.common.web.Constants.INDEX;
+import static com.yunkuo.common.web.Constants.SPT;
 
 /**
  * 栏目实体类
  * 
  * 
  */
+@Entity
+@Table(name="cms_channel")
 public class Channel extends BaseChannel implements HibernateTree<Integer>,
 		PriorityInterface {
 	private static final long serialVersionUID = 1L;
@@ -357,7 +354,8 @@ public class Channel extends BaseChannel implements HibernateTree<Integer>,
 	private static void addChildToList(List<Channel> list, Channel channel,
 			Set<Channel> rights, Channel exclude, boolean hasContentOnly) {
 		if ((rights != null && !rights.contains(channel))
-				|| (exclude != null && exclude.equals(channel))) {
+				|| (exclude != null && exclude.equals(channel))
+                || list.contains(channel)) {
 			return;
 		}
 		list.add(channel);

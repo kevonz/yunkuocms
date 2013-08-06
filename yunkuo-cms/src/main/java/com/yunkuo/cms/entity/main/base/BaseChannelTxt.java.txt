@@ -1,5 +1,6 @@
 package com.yunkuo.cms.entity.main.base;
 
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 
@@ -11,7 +12,7 @@ import java.io.Serializable;
  * @hibernate.class
  *  table="cms_channel_txt"
  */
-
+@MappedSuperclass
 public abstract class BaseChannelTxt  implements Serializable {
 
 	public static String REF = "ChannelTxt";

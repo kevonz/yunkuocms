@@ -25,7 +25,7 @@ public class ChannelTxtMngImpl implements ChannelTxtMng {
 		if (txt.isAllBlank()) {
 			return null;
 		} else {
-			txt.setChannel(channel);
+			txt.setCmsChannel(channel);
 			txt.init();
 			dao.save(txt);
 			return txt;

@@ -1,5 +1,8 @@
 package com.yunkuo.cms.entity.main.base;
 
+import com.yunkuo.cms.entity.main.Channel;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 
@@ -11,7 +14,7 @@ import java.io.Serializable;
  * @hibernate.class
  *  table="cms_channel_ext"
  */
-
+@MappedSuperclass
 public abstract class BaseChannelExt  implements Serializable {
 
 	public static String REF = "ChannelExt";
@@ -101,42 +104,69 @@ public abstract class BaseChannelExt  implements Serializable {
 
 
 
-	private int hashCode = Integer.MIN_VALUE;
+	//private int hashCode = Integer.MIN_VALUE;
 
 	// primary key
+    @Id
+    @Column(name="channel_id")
 	private java.lang.Integer id;
 
 	// fields
+    @Column(name="channel_name")
 	private java.lang.String name;
+    @Column(name="final_step")
 	private java.lang.Byte finalStep;
+    @Column(name="after_check")
 	private java.lang.Byte afterCheck;
+    @Column(name="is_static_channel")
 	private java.lang.Boolean staticChannel;
+    @Column(name="is_static_content")
 	private java.lang.Boolean staticContent;
+    @Column(name="is_access_by_dir")
 	private java.lang.Boolean accessByDir;
+    @Column(name="is_list_child")
 	private java.lang.Boolean listChild;
+    @Column(name="page_size")
 	private java.lang.Integer pageSize;
+    @Column(name="channel_rule")
 	private java.lang.String channelRule;
+    @Column(name="content_rule")
 	private java.lang.String contentRule;
 	private java.lang.String link;
+    @Column(name="tpl_channel")
 	private java.lang.String tplChannel;
+    @Column(name="tpl_content")
 	private java.lang.String tplContent;
+    @Column(name="title_img")
 	private java.lang.String titleImg;
+    @Column(name="content_img")
 	private java.lang.String contentImg;
+    @Column(name="has_title_img")
 	private java.lang.Boolean hasTitleImg;
+    @Column(name="has_content_img")
 	private java.lang.Boolean hasContentImg;
+    @Column(name="title_img_width")
 	private java.lang.Integer titleImgWidth;
+    @Column(name="title_img_height")
 	private java.lang.Integer titleImgHeight;
+    @Column(name="content_img_width")
 	private java.lang.Integer contentImgWidth;
-	private java.lang.Integer contentImgHeight;
+    @Column(name="content_img_height")
+    private java.lang.Integer contentImgHeight;
+    @Column(name="comment_control")
 	private java.lang.Integer commentControl;
+    @Column(name="allow_updown")
 	private java.lang.Boolean allowUpdown;
+    @Column(name="is_blank")
 	private java.lang.Boolean blank;
 	private java.lang.String title;
 	private java.lang.String keywords;
 	private java.lang.String description;
 
 	// one to one
-	private com.yunkuo.cms.entity.main.Channel channel;
+    @OneToOne
+    @JoinColumn(name="channel_id")
+	private Channel channel;
 
 
 
@@ -156,7 +186,7 @@ public abstract class BaseChannelExt  implements Serializable {
 	 */
 	public void setId (java.lang.Integer id) {
 		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+		//this.hashCode = Integer.MIN_VALUE;
 	}
 
 
@@ -620,7 +650,7 @@ public abstract class BaseChannelExt  implements Serializable {
 			else return (this.getId().equals(channelExt.getId()));
 		}
 	}
-
+/*
 	public int hashCode () {
 		if (Integer.MIN_VALUE == this.hashCode) {
 			if (null == this.getId()) return super.hashCode();
@@ -630,7 +660,7 @@ public abstract class BaseChannelExt  implements Serializable {
 			}
 		}
 		return this.hashCode;
-	}
+	}*/
 
 
 	public String toString () {

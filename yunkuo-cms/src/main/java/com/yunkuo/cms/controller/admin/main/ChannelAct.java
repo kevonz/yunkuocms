@@ -1,12 +1,13 @@
 package com.yunkuo.cms.controller.admin.main;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.yunkuo.cms.entity.main.*;
+import com.yunkuo.cms.manager.main.*;
+import com.yunkuo.cms.utils.CmsUtils;
+import com.yunkuo.cms.utils.WebErrors;
+import com.yunkuo.common.web.RequestUtils;
+import com.yunkuo.common.web.ResponseUtils;
+import com.yunkuo.core.tpl.TplManager;
+import com.yunkuo.core.web.CoreUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,26 +16,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.yunkuo.cms.entity.main.Channel;
-import com.yunkuo.cms.entity.main.ChannelExt;
-import com.yunkuo.cms.entity.main.ChannelTxt;
-import com.yunkuo.cms.entity.main.CmsGroup;
-import com.yunkuo.cms.entity.main.CmsModel;
-import com.yunkuo.cms.entity.main.CmsModelItem;
-import com.yunkuo.cms.entity.main.CmsSite;
-import com.yunkuo.cms.entity.main.CmsUser;
-import com.yunkuo.cms.manager.main.ChannelMng;
-import com.yunkuo.cms.manager.main.CmsGroupMng;
-import com.yunkuo.cms.manager.main.CmsLogMng;
-import com.yunkuo.cms.manager.main.CmsModelItemMng;
-import com.yunkuo.cms.manager.main.CmsModelMng;
-import com.yunkuo.cms.manager.main.CmsUserMng;
-import com.yunkuo.cms.utils.CmsUtils;
-import com.yunkuo.cms.utils.WebErrors;
-import com.yunkuo.common.web.RequestUtils;
-import com.yunkuo.common.web.ResponseUtils;
-import com.yunkuo.core.tpl.TplManager;
-import com.yunkuo.core.web.CoreUtils;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.*;
 
 @Controller
 public class ChannelAct {
@@ -238,7 +222,18 @@ public class ChannelAct {
 		if (!StringUtils.isBlank(ext.getTplContent())) {
 			ext.setTplContent(tplPath + ext.getTplContent());
 		}
-		bean.setAttr(RequestUtils.getRequestMap(request, "attr_"));
+        Map<String,String> map = RequestUtils.getRequestMap(request, "attr_");
+        List<CmsChannelAttr> attrList=new ArrayList<CmsChannelAttr>();
+        Set<Map.Entry<String, String>> set = map.entrySet();
+        for (Iterator<Map.Entry<String, String>> it = set.iterator(); it.hasNext();) {
+            Map.Entry<String, String> entry = it.next();
+            //System.out.println(entry.getKey() + "--->" + entry.getValue());
+            CmsChannelAttr attr = new CmsChannelAttr();
+            attr.setAttrName(entry.getKey());
+            attr.setAttrValue(entry.getValue());
+            attrList.add(attr);
+        }
+		bean.setAttr(attrList);
 		bean = manager.save(bean, ext, txt, viewGroupIds, contriGroupIds,
 				userIds, CmsUtils.getSiteId(request), root, modelId);
 		log.info("save Channel id={}, name={}", bean.getId(), bean.getName());

@@ -1,9 +1,12 @@
 package com.yunkuo.cms.entity.main;
 
+import com.yunkuo.cms.entity.main.base.BaseChannelExt;
 import org.apache.commons.lang.StringUtils;
 
-import com.yunkuo.cms.entity.main.base.BaseChannelExt;
+import javax.persistence.*;
 
+@Entity
+@Table(name="cms_channel_ext")
 public class ChannelExt extends BaseChannelExt {
 	private static final long serialVersionUID = 1L;
 	/**

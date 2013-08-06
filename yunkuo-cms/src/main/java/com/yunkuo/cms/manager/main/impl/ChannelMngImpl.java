@@ -1,30 +1,18 @@
 package com.yunkuo.cms.manager.main.impl;
 
-import java.util.List;
-import java.util.Map;
-
+import com.yunkuo.cms.dao.main.ChannelDao;
+import com.yunkuo.cms.entity.main.*;
+import com.yunkuo.cms.manager.main.*;
+import com.yunkuo.cms.service.ChannelDeleteChecker;
+import com.yunkuo.common.hibernate3.Updater;
+import com.yunkuo.common.page.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.yunkuo.cms.dao.main.ChannelDao;
-import com.yunkuo.cms.entity.main.Channel;
-import com.yunkuo.cms.entity.main.ChannelExt;
-import com.yunkuo.cms.entity.main.ChannelTxt;
-import com.yunkuo.cms.entity.main.CmsGroup;
-import com.yunkuo.cms.entity.main.CmsModel;
-import com.yunkuo.cms.entity.main.CmsUser;
-import com.yunkuo.cms.entity.main.CmsUserSite;
-import com.yunkuo.cms.manager.main.ChannelExtMng;
-import com.yunkuo.cms.manager.main.ChannelMng;
-import com.yunkuo.cms.manager.main.ChannelTxtMng;
-import com.yunkuo.cms.manager.main.CmsGroupMng;
-import com.yunkuo.cms.manager.main.CmsModelMng;
-import com.yunkuo.cms.manager.main.CmsSiteMng;
-import com.yunkuo.cms.manager.main.CmsUserMng;
-import com.yunkuo.cms.service.ChannelDeleteChecker;
-import com.yunkuo.common.hibernate3.Updater;
-import com.yunkuo.common.page.Pagination;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -159,10 +147,14 @@ public class ChannelMngImpl implements ChannelMng {
 		channelExtMng.update(ext);
 		// 更新文本表
 		channelTxtMng.update(txt, bean);
+        List<CmsChannelAttr> attrList = bean.getAttr();
 		// 更新属性表
-		Map<String, String> attrOrig = bean.getAttr();
-		attrOrig.clear();
-		attrOrig.putAll(attr);
+		Map<String, String> attrOrig = new HashMap<String, String>();
+        for(CmsChannelAttr ca:attrList){
+            attrOrig.put(ca.getAttrName(),ca.getAttrValue());
+        }
+		/*attrOrig.clear();
+		attrOrig.putAll(attr);*/
 		// 更新浏览会员组关联
 		for (CmsGroup g : bean.getViewGroups()) {
 			g.getViewChannels().remove(bean);

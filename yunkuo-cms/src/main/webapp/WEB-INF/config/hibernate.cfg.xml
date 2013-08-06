@@ -16,6 +16,10 @@
         <mapping class="com.yunkuo.cms.entity.main.ContentTxt" />
         <mapping class="com.yunkuo.cms.entity.main.ContentExt" />
         <mapping class="com.yunkuo.cms.entity.main.ContentTag" />
+        <mapping class="com.yunkuo.cms.entity.main.Channel" />
+        <mapping class="com.yunkuo.cms.entity.main.CmsChannelAttr" />
+        <mapping class="com.yunkuo.cms.entity.main.ChannelTxt" />
+        <mapping class="com.yunkuo.cms.entity.main.ChannelExt" />
     </session-factory>
 
          
