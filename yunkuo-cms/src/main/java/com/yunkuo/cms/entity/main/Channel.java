@@ -724,7 +724,7 @@ public class Channel extends BaseChannel implements HibernateTree<Integer>,
 			return null;
 		}
 	}
-
+/*
 	public ChannelTxt getChannelTxt() {
 		Set<ChannelTxt> set = getChannelTxtSet();
 		if (set != null && set.size() > 0) {
@@ -733,7 +733,7 @@ public class Channel extends BaseChannel implements HibernateTree<Integer>,
 			return null;
 		}
 	}
-
+*/
 	/**
 	 * 每个站点各自维护独立的树结构
 	 * 

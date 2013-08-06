@@ -1,7 +1,6 @@
 package com.yunkuo.cms.entity.main.base;
 
 import com.yunkuo.cms.entity.main.*;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -95,6 +94,12 @@ public abstract class BaseChannel  implements Serializable {
     @Column(name="is_display")
     private java.lang.Boolean display;
 
+
+    //bi-directional one-to-one association to CmsChannelTxt
+    @OneToOne//(mappedBy="cmsChannel")
+    @JoinColumn(name="channel_id")
+    private ChannelTxt channelTxt;
+
     // one to one
     @OneToOne
     @JoinColumn(name="channel_id")
@@ -162,9 +167,14 @@ public abstract class BaseChannel  implements Serializable {
     }
     )
     private java.util.Set<CmsUser> users;
-    //bi-directional one-to-one association to CmsChannelTxt
-    @OneToMany//(mappedBy="cmsChannel")
-    private java.util.Set<ChannelTxt> channelTxtSet;
+
+    public ChannelTxt getChannelTxt() {
+        return channelTxt;
+    }
+
+    public void setChannelTxt(ChannelTxt channelTxt) {
+        this.channelTxt = channelTxt;
+    }
 
     public List<CmsChannelAttr> getAttr() {
         return attr;
@@ -190,6 +200,16 @@ public abstract class BaseChannel  implements Serializable {
     private java.util.Map<java.lang.String, java.lang.String> attr;
     */
     @OneToMany//(mappedBy="cmsChannel")
+    @JoinColumn(name="channel_id")
+    /*@JoinTable(
+            name="cms_channel_attr"
+            , joinColumns={
+            @JoinColumn(name="channel_id")
+    }
+            , inverseJoinColumns={
+            @JoinColumn(name="channel_id")
+    }
+    )*/
     private List<CmsChannelAttr> attr;
 
     //bi-directional many-to-many association to CmsGroup
@@ -456,19 +476,19 @@ public abstract class BaseChannel  implements Serializable {
     /**
      * Return the value associated with the column: channelTxtSet
      */
-    public java.util.Set<com.yunkuo.cms.entity.main.ChannelTxt> getChannelTxtSet () {
+  /*  public java.util.Set<com.yunkuo.cms.entity.main.ChannelTxt> getChannelTxtSet () {
         return channelTxtSet;
     }
-
+*/
     /**
      * Set the value related to the column: channelTxtSet
      * @param channelTxtSet the channelTxtSet value
      */
-    public void setChannelTxtSet (java.util.Set<com.yunkuo.cms.entity.main.ChannelTxt> channelTxtSet) {
+  /*  public void setChannelTxtSet (java.util.Set<com.yunkuo.cms.entity.main.ChannelTxt> channelTxtSet) {
         this.channelTxtSet = channelTxtSet;
     }
 
-
+*/
     /**
      * Return the value associated with the column: attr
      */

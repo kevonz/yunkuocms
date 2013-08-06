@@ -39,11 +39,13 @@ public class ChannelTxtMngImpl implements ChannelTxtMng {
 		ChannelTxt entity = dao.findById(channel.getId());
 		if (entity == null) {
 			entity = save(txt, channel);
-			channel.getChannelTxtSet().add(entity);
+			//channel.getChannelTxtSet().add(entity);
+            //channel.setChannelTxt(txt);
+            channel.setChannelTxt(entity);
 			return entity;
 		} else {
 			if (txt.isAllBlank()) {
-				channel.getChannelTxtSet().clear();
+				//channel.getChannelTxtSet().clear();
 				return null;
 			} else {
 				Updater<ChannelTxt> updater = new Updater<ChannelTxt>(txt);

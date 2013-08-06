@@ -17,9 +17,9 @@ public class ChannelTxt implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-/*    @Column(name="channel_id")
-    @GenericGenerator(name="foreignKey", strategy="foreign", parameters=@Parameter(name="property", value="channel"))
-    @GeneratedValue(generator="foreignKey", strategy=GenerationType.IDENTITY)*/
+    @Column(name="channel_id")
+    //@GenericGenerator(name="foreignKey", strategy="foreign", parameters=@Parameter(name="property", value="channel"))
+    //@GeneratedValue(generator="foreignKey", strategy=GenerationType.IDENTITY)
 	private int channelId;
 
 	@Lob
@@ -39,7 +39,7 @@ public class ChannelTxt implements Serializable {
     }
 
     //bi-directional one-to-one association to BaseChannel
-	@ManyToOne
+    @OneToOne
 	@JoinColumn(name="channel_id")
 	private Channel cmsChannel;
 
