@@ -1,413 +1,261 @@
 package com.yunkuo.cms.entity.main.base;
 
+
+import com.yunkuo.cms.entity.main.CmsModel;
+import com.yunkuo.cms.entity.main.CmsModelItem;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 
 /**
- * This is an object that contains data related to the cms_model_item table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_model_item"
+ * The persistent class for the cms_model_item database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_model_item")*/
+@MappedSuperclass
+public class BaseCmsModelItem implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsModelItem  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="modelitem_id")
+	private Integer id;
 
-	public static String REF = "CmsModelItem";
-	public static String PROP_SINGLE = "single";
-	public static String PROP_DATA_TYPE = "dataType";
-	public static String PROP_CUSTOM = "custom";
-	public static String PROP_OPT_VALUE = "optValue";
-	public static String PROP_HELP = "help";
-	public static String PROP_PRIORITY = "priority";
-	public static String PROP_FIELD = "field";
-	public static String PROP_LABEL = "label";
-	public static String PROP_COLS = "cols";
-	public static String PROP_MODEL = "model";
-	public static String PROP_DEF_VALUE = "defValue";
-	public static String PROP_HELP_POSITION = "helpPosition";
-	public static String PROP_ROWS = "rows";
-	public static String PROP_SIZE = "size";
-	public static String PROP_DISPLAY = "display";
-	public static String PROP_CHANNEL = "channel";
-	public static String PROP_ID = "id";
+	@Column(name="area_cols")
+	private String cols;
 
+	@Column(name="area_rows")
+	private String rows;
 
-	// constructors
-	public BaseCmsModelItem () {
-		initialize();
-	}
+	@Column(name="data_type")
+	private Integer dataType;
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsModelItem (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+	@Column(name="def_value")
+	private String defValue;
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsModelItem (
-		java.lang.Integer id,
-		com.yunkuo.cms.entity.main.CmsModel model,
-		java.lang.String field,
-		java.lang.String label,
-		java.lang.Integer dataType,
-		java.lang.Boolean single,
-		java.lang.Boolean channel,
-		java.lang.Boolean custom,
-		java.lang.Boolean display) {
+	private String field;
 
-		this.setId(id);
-		this.setModel(model);
-		this.setField(field);
-		this.setLabel(label);
-		this.setDataType(dataType);
-		this.setSingle(single);
-		this.setChannel(channel);
-		this.setCustom(custom);
-		this.setDisplay(display);
-		initialize();
-	}
+	private String help;
 
-	protected void initialize () {}
+	@Column(name="help_position")
+	private String helpPosition;
+
+	@Column(name="is_channel")
+	private Boolean channel;
+
+	@Column(name="is_custom")
+	private Boolean custom;
+
+	@Column(name="is_display")
+	private Boolean display;
+
+	@Column(name="is_single")
+	private Boolean single;
+
+	@Column(name="item_label")
+	private String label;
+
+	@Column(name="opt_value")
+	private String optValue;
+
+	private int priority;
+
+	@Column(name="text_size")
+	private String size;
+
+	//bi-directional many-to-one association to CmsModel
+	@ManyToOne
+	@JoinColumn(name="model_id")
+	private CmsModel model;
 
 
+    // constructors
+    public BaseCmsModelItem () {
+        initialize();
+    }
 
-	private int hashCode = Integer.MIN_VALUE;
-
-	// primary key
-	private java.lang.Integer id;
-
-	// fields
-	private java.lang.String field;
-	private java.lang.String label;
-	private java.lang.Integer priority;
-	private java.lang.String defValue;
-	private java.lang.String optValue;
-	private java.lang.String size;
-	private java.lang.String rows;
-	private java.lang.String cols;
-	private java.lang.String help;
-	private java.lang.String helpPosition;
-	private java.lang.Integer dataType;
-	private java.lang.Boolean single;
-	private java.lang.Boolean channel;
-	private java.lang.Boolean custom;
-	private java.lang.Boolean display;
-
-	// many to one
-	private com.yunkuo.cms.entity.main.CmsModel model;
-
-
-
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="identity"
-     *  column="modelitem_id"
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsModelItem (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsModelItem (
+            java.lang.Integer id,
+            CmsModel model,
+            java.lang.String field,
+            java.lang.String label,
+            java.lang.Integer dataType,
+            java.lang.Boolean single,
+            java.lang.Boolean channel,
+            java.lang.Boolean custom,
+            java.lang.Boolean display) {
+
+        this.setId(id);
+        this.setModel(model);
+        this.setField(field);
+        this.setLabel(label);
+        this.setDataType(dataType);
+        this.setSingle(single);
+        this.setChannel(channel);
+        this.setCustom(custom);
+        this.setDisplay(display);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+    public boolean equals (Object obj) {
+        if (null == obj) return false;
+        if (!(obj instanceof CmsModelItem)) return false;
+        else {
+            CmsModelItem cmsModelItem = (CmsModelItem) obj;
+            if (null == this.getId() || null == cmsModelItem.getId()) return false;
+            else return (this.getId().equals(cmsModelItem.getId()));
+        }
+    }
+
+    public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: field
-	 */
-	public java.lang.String getField () {
-		return field;
+	public String getCols() {
+		return this.cols;
 	}
 
-	/**
-	 * Set the value related to the column: field
-	 * @param field the field value
-	 */
-	public void setField (java.lang.String field) {
-		this.field = field;
+	public void setCols(String areaCols) {
+		this.cols = areaCols;
 	}
 
-
-	/**
-	 * Return the value associated with the column: item_label
-	 */
-	public java.lang.String getLabel () {
-		return label;
+	public String getRows() {
+		return this.rows;
 	}
 
-	/**
-	 * Set the value related to the column: item_label
-	 * @param label the item_label value
-	 */
-	public void setLabel (java.lang.String label) {
-		this.label = label;
+	public void setRows(String areaRows) {
+		this.rows = areaRows;
 	}
 
-
-	/**
-	 * Return the value associated with the column: priority
-	 */
-	public java.lang.Integer getPriority () {
-		return priority;
+	public Integer getDataType() {
+		return this.dataType;
 	}
 
-	/**
-	 * Set the value related to the column: priority
-	 * @param priority the priority value
-	 */
-	public void setPriority (java.lang.Integer priority) {
-		this.priority = priority;
-	}
-
-
-	/**
-	 * Return the value associated with the column: def_value
-	 */
-	public java.lang.String getDefValue () {
-		return defValue;
-	}
-
-	/**
-	 * Set the value related to the column: def_value
-	 * @param defValue the def_value value
-	 */
-	public void setDefValue (java.lang.String defValue) {
-		this.defValue = defValue;
-	}
-
-
-	/**
-	 * Return the value associated with the column: opt_value
-	 */
-	public java.lang.String getOptValue () {
-		return optValue;
-	}
-
-	/**
-	 * Set the value related to the column: opt_value
-	 * @param optValue the opt_value value
-	 */
-	public void setOptValue (java.lang.String optValue) {
-		this.optValue = optValue;
-	}
-
-
-	/**
-	 * Return the value associated with the column: text_size
-	 */
-	public java.lang.String getSize () {
-		return size;
-	}
-
-	/**
-	 * Set the value related to the column: text_size
-	 * @param size the text_size value
-	 */
-	public void setSize (java.lang.String size) {
-		this.size = size;
-	}
-
-
-	/**
-	 * Return the value associated with the column: area_rows
-	 */
-	public java.lang.String getRows () {
-		return rows;
-	}
-
-	/**
-	 * Set the value related to the column: area_rows
-	 * @param rows the area_rows value
-	 */
-	public void setRows (java.lang.String rows) {
-		this.rows = rows;
-	}
-
-
-	/**
-	 * Return the value associated with the column: area_cols
-	 */
-	public java.lang.String getCols () {
-		return cols;
-	}
-
-	/**
-	 * Set the value related to the column: area_cols
-	 * @param cols the area_cols value
-	 */
-	public void setCols (java.lang.String cols) {
-		this.cols = cols;
-	}
-
-
-	/**
-	 * Return the value associated with the column: help
-	 */
-	public java.lang.String getHelp () {
-		return help;
-	}
-
-	/**
-	 * Set the value related to the column: help
-	 * @param help the help value
-	 */
-	public void setHelp (java.lang.String help) {
-		this.help = help;
-	}
-
-
-	/**
-	 * Return the value associated with the column: help_position
-	 */
-	public java.lang.String getHelpPosition () {
-		return helpPosition;
-	}
-
-	/**
-	 * Set the value related to the column: help_position
-	 * @param helpPosition the help_position value
-	 */
-	public void setHelpPosition (java.lang.String helpPosition) {
-		this.helpPosition = helpPosition;
-	}
-
-
-	/**
-	 * Return the value associated with the column: data_type
-	 */
-	public java.lang.Integer getDataType () {
-		return dataType;
-	}
-
-	/**
-	 * Set the value related to the column: data_type
-	 * @param dataType the data_type value
-	 */
-	public void setDataType (java.lang.Integer dataType) {
+	public void setDataType(Integer dataType) {
 		this.dataType = dataType;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_single
-	 */
-	public java.lang.Boolean getSingle () {
-		return single;
+	public String getDefValue() {
+		return this.defValue;
 	}
 
-	/**
-	 * Set the value related to the column: is_single
-	 * @param single the is_single value
-	 */
-	public void setSingle (java.lang.Boolean single) {
-		this.single = single;
+	public void setDefValue(String defValue) {
+		this.defValue = defValue;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_channel
-	 */
-	public java.lang.Boolean getChannel () {
-		return channel;
+	public String getField() {
+		return this.field;
 	}
 
-	/**
-	 * Set the value related to the column: is_channel
-	 * @param channel the is_channel value
-	 */
-	public void setChannel (java.lang.Boolean channel) {
-		this.channel = channel;
+	public void setField(String field) {
+		this.field = field;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_custom
-	 */
-	public java.lang.Boolean getCustom () {
-		return custom;
+	public String getHelp() {
+		return this.help;
 	}
 
-	/**
-	 * Set the value related to the column: is_custom
-	 * @param custom the is_custom value
-	 */
-	public void setCustom (java.lang.Boolean custom) {
-		this.custom = custom;
+	public void setHelp(String help) {
+		this.help = help;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_display
-	 */
-	public java.lang.Boolean getDisplay () {
-		return display;
+	public String getHelpPosition() {
+		return this.helpPosition;
 	}
 
-	/**
-	 * Set the value related to the column: is_display
-	 * @param display the is_display value
-	 */
-	public void setDisplay (java.lang.Boolean display) {
-		this.display = display;
+	public void setHelpPosition(String helpPosition) {
+		this.helpPosition = helpPosition;
 	}
 
-
-	/**
-	 * Return the value associated with the column: model_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsModel getModel () {
-		return model;
+	public Boolean getChannel() {
+		return this.channel;
 	}
 
-	/**
-	 * Set the value related to the column: model_id
-	 * @param model the model_id value
-	 */
-	public void setModel (com.yunkuo.cms.entity.main.CmsModel model) {
-		this.model = model;
+	public void setChannel(Boolean isChannel) {
+		this.channel = isChannel;
 	}
 
-
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.main.CmsModelItem)) return false;
-		else {
-			com.yunkuo.cms.entity.main.CmsModelItem cmsModelItem = (com.yunkuo.cms.entity.main.CmsModelItem) obj;
-			if (null == this.getId() || null == cmsModelItem.getId()) return false;
-			else return (this.getId().equals(cmsModelItem.getId()));
-		}
+	public Boolean getCustom() {
+		return this.custom;
 	}
 
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
+	public void setCustom(Boolean isCustom) {
+		this.custom = isCustom;
 	}
 
-
-	public String toString () {
-		return super.toString();
+	public Boolean getDisplay() {
+		return this.display;
 	}
 
+	public void setDisplay(Boolean isDisplay) {
+		this.display = isDisplay;
+	}
+
+	public Boolean getSingle() {
+		return this.single;
+	}
+
+	public void setSingle(Boolean isSingle) {
+		this.single = isSingle;
+	}
+
+	public String getLabel() {
+		return this.label;
+	}
+
+	public void setLabel(String itemLabel) {
+		this.label = itemLabel;
+	}
+
+	public String getOptValue() {
+		return this.optValue;
+	}
+
+	public void setOptValue(String optValue) {
+		this.optValue = optValue;
+	}
+
+	public Integer getPriority() {
+		return this.priority;
+	}
+
+	public void setPriority(Integer priority) {
+		this.priority = priority;
+	}
+
+	public String getSize() {
+		return this.size;
+	}
+
+	public void setSize(String textSize) {
+		this.size = textSize;
+	}
+
+	public CmsModel getModel() {
+		return this.model;
+	}
+
+	public void setModel(CmsModel cmsModel) {
+		this.model = cmsModel;
+	}
 
 }

@@ -9,7 +9,11 @@ import static com.yunkuo.common.web.Constants.DEFAULT;
 import org.apache.commons.lang.StringUtils;
 
 import com.yunkuo.cms.entity.main.base.BaseCmsModel;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="cms_model")
 public class CmsModel extends BaseCmsModel {
 	private static final long serialVersionUID = 1L;
 

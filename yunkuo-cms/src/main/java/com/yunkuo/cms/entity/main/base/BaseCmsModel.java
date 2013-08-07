@@ -1,362 +1,274 @@
 package com.yunkuo.cms.entity.main.base;
 
+import com.yunkuo.cms.entity.main.CmsModel;
+import com.yunkuo.cms.entity.main.CmsModelItem;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 /**
- * This is an object that contains data related to the cms_model table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_model"
+ * The persistent class for the cms_model database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_model")*/
+@MappedSuperclass
+public class BaseCmsModel implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsModel  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="model_id")
+	private Integer id;
 
-	public static String REF = "CmsModel";
-	public static String PROP_TPL_CHANNEL_PREFIX = "tplChannelPrefix";
-	public static String PROP_TITLE_IMG_HEIGHT = "titleImgHeight";
-	public static String PROP_DISABLED = "disabled";
-	public static String PROP_DEF = "def";
-	public static String PROP_PRIORITY = "priority";
-	public static String PROP_TITLE_IMG_WIDTH = "titleImgWidth";
-	public static String PROP_CONTENT_IMG_WIDTH = "contentImgWidth";
-	public static String PROP_PATH = "path";
-	public static String PROP_HAS_CONTENT = "hasContent";
-	public static String PROP_NAME = "name";
-	public static String PROP_CONTENT_IMG_HEIGHT = "contentImgHeight";
-	public static String PROP_TPL_CONTENT_PREFIX = "tplContentPrefix";
-	public static String PROP_ID = "id";
+	@Column(name="content_img_height")
+	private Integer contentImgHeight;
 
+	@Column(name="content_img_width")
+	private Integer contentImgWidth;
 
-	// constructors
-	public BaseCmsModel () {
-		initialize();
-	}
+	@Column(name="has_content")
+	private Boolean hasContent;
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsModel (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+	@Column(name="is_def")
+	private Boolean def;
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsModel (
-		java.lang.Integer id,
-		java.lang.String name,
-		java.lang.String path,
-		java.lang.Integer titleImgWidth,
-		java.lang.Integer titleImgHeight,
-		java.lang.Integer contentImgWidth,
-		java.lang.Integer contentImgHeight,
-		java.lang.Integer priority,
-		java.lang.Boolean hasContent,
-		java.lang.Boolean disabled,
-		java.lang.Boolean def) {
+	@Column(name="is_disabled")
+	private Boolean disabled;
 
-		this.setId(id);
-		this.setName(name);
-		this.setPath(path);
-		this.setTitleImgWidth(titleImgWidth);
-		this.setTitleImgHeight(titleImgHeight);
-		this.setContentImgWidth(contentImgWidth);
-		this.setContentImgHeight(contentImgHeight);
-		this.setPriority(priority);
-		this.setHasContent(hasContent);
-		this.setDisabled(disabled);
-		this.setDef(def);
-		initialize();
-	}
+	@Column(name="model_name")
+	private String name;
 
-	protected void initialize () {}
+	@Column(name="model_path")
+	private String path;
 
+	private Integer priority;
 
+	@Column(name="title_img_height")
+	private Integer titleImgHeight;
 
-	private int hashCode = Integer.MIN_VALUE;
+	@Column(name="title_img_width")
+	private Integer titleImgWidth;
 
-	// primary key
-	private java.lang.Integer id;
+	@Column(name="tpl_channel_prefix")
+	private String tplChannelPrefix;
 
-	// fields
-	private java.lang.String name;
-	private java.lang.String path;
-	private java.lang.String tplChannelPrefix;
-	private java.lang.String tplContentPrefix;
-	private java.lang.Integer titleImgWidth;
-	private java.lang.Integer titleImgHeight;
-	private java.lang.Integer contentImgWidth;
-	private java.lang.Integer contentImgHeight;
-	private java.lang.Integer priority;
-	private java.lang.Boolean hasContent;
-	private java.lang.Boolean disabled;
-	private java.lang.Boolean def;
+	@Column(name="tpl_content_prefix")
+	private String tplContentPrefix;
 
-	// collections
-	private java.util.Set<com.yunkuo.cms.entity.main.CmsModelItem> items;
+	//bi-directional many-to-one association to BaseChannel
 
+	/*@OneToMany(mappedBy="cmsModel")
+	private List<Channel> cmsChannels;*/
 
+	//bi-directional many-to-one association to CmsModelItem
+	@OneToMany(mappedBy= "model")
+	private List<CmsModelItem> cmsModelItems;
 
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="assigned"
-     *  column="model_id"
+    // constructors
+    public BaseCmsModel () {
+        initialize();
+    }
+
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsModel (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsModel (
+            java.lang.Integer id,
+            java.lang.String name,
+            java.lang.String path,
+            java.lang.Integer titleImgWidth,
+            java.lang.Integer titleImgHeight,
+            java.lang.Integer contentImgWidth,
+            java.lang.Integer contentImgHeight,
+            java.lang.Integer priority,
+            java.lang.Boolean hasContent,
+            java.lang.Boolean disabled,
+            java.lang.Boolean def) {
+
+        this.setId(id);
+        this.setName(name);
+        this.setPath(path);
+        this.setTitleImgWidth(titleImgWidth);
+        this.setTitleImgHeight(titleImgHeight);
+        this.setContentImgWidth(contentImgWidth);
+        this.setContentImgHeight(contentImgHeight);
+        this.setPriority(priority);
+        this.setHasContent(hasContent);
+        this.setDisabled(disabled);
+        this.setDef(def);
+        initialize();
+    }
+
+    protected void initialize () {}
+    public boolean equals (Object obj) {
+        if (null == obj) return false;
+        if (!(obj instanceof CmsModel)) return false;
+        else {
+            CmsModel cmsModel = (CmsModel) obj;
+            if (null == this.getId() || null == cmsModel.getId()) return false;
+            else return (this.getId().equals(cmsModel.getId()));
+        }
+    }
+
+
+
+    public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+	public void setId(Integer modelId) {
+		this.id = modelId;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: model_name
-	 */
-	public java.lang.String getName () {
-		return name;
+	public Integer getContentImgHeight() {
+		return this.contentImgHeight;
 	}
 
-	/**
-	 * Set the value related to the column: model_name
-	 * @param name the model_name value
-	 */
-	public void setName (java.lang.String name) {
-		this.name = name;
-	}
-
-
-	/**
-	 * Return the value associated with the column: model_path
-	 */
-	public java.lang.String getPath () {
-		return path;
-	}
-
-	/**
-	 * Set the value related to the column: model_path
-	 * @param path the model_path value
-	 */
-	public void setPath (java.lang.String path) {
-		this.path = path;
-	}
-
-
-	/**
-	 * Return the value associated with the column: tpl_channel_prefix
-	 */
-	public java.lang.String getTplChannelPrefix () {
-		return tplChannelPrefix;
-	}
-
-	/**
-	 * Set the value related to the column: tpl_channel_prefix
-	 * @param tplChannelPrefix the tpl_channel_prefix value
-	 */
-	public void setTplChannelPrefix (java.lang.String tplChannelPrefix) {
-		this.tplChannelPrefix = tplChannelPrefix;
-	}
-
-
-	/**
-	 * Return the value associated with the column: tpl_content_prefix
-	 */
-	public java.lang.String getTplContentPrefix () {
-		return tplContentPrefix;
-	}
-
-	/**
-	 * Set the value related to the column: tpl_content_prefix
-	 * @param tplContentPrefix the tpl_content_prefix value
-	 */
-	public void setTplContentPrefix (java.lang.String tplContentPrefix) {
-		this.tplContentPrefix = tplContentPrefix;
-	}
-
-
-	/**
-	 * Return the value associated with the column: title_img_width
-	 */
-	public java.lang.Integer getTitleImgWidth () {
-		return titleImgWidth;
-	}
-
-	/**
-	 * Set the value related to the column: title_img_width
-	 * @param titleImgWidth the title_img_width value
-	 */
-	public void setTitleImgWidth (java.lang.Integer titleImgWidth) {
-		this.titleImgWidth = titleImgWidth;
-	}
-
-
-	/**
-	 * Return the value associated with the column: title_img_height
-	 */
-	public java.lang.Integer getTitleImgHeight () {
-		return titleImgHeight;
-	}
-
-	/**
-	 * Set the value related to the column: title_img_height
-	 * @param titleImgHeight the title_img_height value
-	 */
-	public void setTitleImgHeight (java.lang.Integer titleImgHeight) {
-		this.titleImgHeight = titleImgHeight;
-	}
-
-
-	/**
-	 * Return the value associated with the column: content_img_width
-	 */
-	public java.lang.Integer getContentImgWidth () {
-		return contentImgWidth;
-	}
-
-	/**
-	 * Set the value related to the column: content_img_width
-	 * @param contentImgWidth the content_img_width value
-	 */
-	public void setContentImgWidth (java.lang.Integer contentImgWidth) {
-		this.contentImgWidth = contentImgWidth;
-	}
-
-
-	/**
-	 * Return the value associated with the column: content_img_height
-	 */
-	public java.lang.Integer getContentImgHeight () {
-		return contentImgHeight;
-	}
-
-	/**
-	 * Set the value related to the column: content_img_height
-	 * @param contentImgHeight the content_img_height value
-	 */
-	public void setContentImgHeight (java.lang.Integer contentImgHeight) {
+	public void setContentImgHeight(Integer contentImgHeight) {
 		this.contentImgHeight = contentImgHeight;
 	}
 
-
-	/**
-	 * Return the value associated with the column: priority
-	 */
-	public java.lang.Integer getPriority () {
-		return priority;
+	public Integer getContentImgWidth() {
+		return this.contentImgWidth;
 	}
 
-	/**
-	 * Set the value related to the column: priority
-	 * @param priority the priority value
-	 */
-	public void setPriority (java.lang.Integer priority) {
-		this.priority = priority;
+	public void setContentImgWidth(Integer contentImgWidth) {
+		this.contentImgWidth = contentImgWidth;
 	}
 
-
-	/**
-	 * Return the value associated with the column: has_content
-	 */
-	public java.lang.Boolean getHasContent () {
-		return hasContent;
+	public Boolean getHasContent() {
+		return this.hasContent;
 	}
 
-	/**
-	 * Set the value related to the column: has_content
-	 * @param hasContent the has_content value
-	 */
-	public void setHasContent (java.lang.Boolean hasContent) {
+	public void setHasContent(Boolean hasContent) {
 		this.hasContent = hasContent;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_disabled
-	 */
-	public java.lang.Boolean getDisabled () {
-		return disabled;
+	public Boolean getDef() {
+		return this.def;
 	}
 
-	/**
-	 * Set the value related to the column: is_disabled
-	 * @param disabled the is_disabled value
-	 */
-	public void setDisabled (java.lang.Boolean disabled) {
-		this.disabled = disabled;
+	public void setDef(Boolean isDef) {
+		this.def = isDef;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_def
-	 */
-	public java.lang.Boolean getDef () {
-		return def;
+	public Boolean getDisabled() {
+		return this.disabled;
 	}
 
-	/**
-	 * Set the value related to the column: is_def
-	 * @param def the is_def value
-	 */
-	public void setDef (java.lang.Boolean def) {
-		this.def = def;
+	public void setDisabled(Boolean isDisabled) {
+		this.disabled = isDisabled;
 	}
 
-
-	/**
-	 * Return the value associated with the column: items
-	 */
-	public java.util.Set<com.yunkuo.cms.entity.main.CmsModelItem> getItems () {
-		return items;
+	public String getName() {
+		return this.name;
 	}
 
-	/**
-	 * Set the value related to the column: items
-	 * @param items the items value
-	 */
-	public void setItems (java.util.Set<com.yunkuo.cms.entity.main.CmsModelItem> items) {
-		this.items = items;
+	public void setName(String modelName) {
+		this.name = modelName;
 	}
 
-
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.main.CmsModel)) return false;
-		else {
-			com.yunkuo.cms.entity.main.CmsModel cmsModel = (com.yunkuo.cms.entity.main.CmsModel) obj;
-			if (null == this.getId() || null == cmsModel.getId()) return false;
-			else return (this.getId().equals(cmsModel.getId()));
-		}
+	public String getPath() {
+		return this.path;
 	}
 
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
+	public void setPath(String modelPath) {
+		this.path = modelPath;
 	}
 
-
-	public String toString () {
-		return super.toString();
+	public Integer getPriority() {
+		return this.priority;
 	}
 
+	public void setPriority(Integer priority) {
+		this.priority = priority;
+	}
+
+	public Integer getTitleImgHeight() {
+		return this.titleImgHeight;
+	}
+
+	public void setTitleImgHeight(Integer titleImgHeight) {
+		this.titleImgHeight = titleImgHeight;
+	}
+
+	public Integer getTitleImgWidth() {
+		return this.titleImgWidth;
+	}
+
+	public void setTitleImgWidth(Integer titleImgWidth) {
+		this.titleImgWidth = titleImgWidth;
+	}
+
+	public String getTplChannelPrefix() {
+		return this.tplChannelPrefix;
+	}
+
+	public void setTplChannelPrefix(String tplChannelPrefix) {
+		this.tplChannelPrefix = tplChannelPrefix;
+	}
+
+	public String getTplContentPrefix() {
+		return this.tplContentPrefix;
+	}
+
+	public void setTplContentPrefix(String tplContentPrefix) {
+		this.tplContentPrefix = tplContentPrefix;
+	}
+
+	/*public List<Channel> getCmsChannels() {
+		return this.cmsChannels;
+	}
+
+	public void setCmsChannels(List<Channel> cmsChannels) {
+		this.cmsChannels = cmsChannels;
+	}
+
+	public BaseChannel addCmsChannel(BaseChannel cmsChannel) {
+		getCmsChannels().add((Channel)cmsChannel);
+		cmsChannel.setModel((CmsModel) this);
+
+		return cmsChannel;
+	}
+
+	public BaseChannel removeCmsChannel(BaseChannel cmsChannel) {
+		getCmsChannels().remove(cmsChannel);
+		cmsChannel.setModel(null);
+
+		return cmsChannel;
+	}*/
+
+	public List<CmsModelItem> getCmsModelItems() {
+		return this.cmsModelItems;
+	}
+
+	public void setCmsModelItems(List<CmsModelItem> cmsModelItems) {
+		this.cmsModelItems = cmsModelItems;
+	}
+
+	public CmsModelItem addCmsModelItem(CmsModelItem cmsModelItem) {
+		getCmsModelItems().add(cmsModelItem);
+		cmsModelItem.setModel((CmsModel) this);
+
+		return cmsModelItem;
+	}
+
+	public CmsModelItem removeCmsModelItem(CmsModelItem cmsModelItem) {
+		getCmsModelItems().remove(cmsModelItem);
+		cmsModelItem.setModel(null);
+
+		return cmsModelItem;
+	}
 
 }
