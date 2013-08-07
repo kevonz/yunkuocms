@@ -15,6 +15,14 @@ import java.io.Serializable;
 public class CmsRolePermission implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;

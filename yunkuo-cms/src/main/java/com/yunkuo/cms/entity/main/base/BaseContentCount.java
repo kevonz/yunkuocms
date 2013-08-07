@@ -1,6 +1,9 @@
 package com.yunkuo.cms.entity.main.base;
 
 import com.yunkuo.cms.entity.main.Content;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -18,6 +21,8 @@ public class BaseContentCount implements Serializable {
 	@Id
 	//@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="content_id")
+    @GenericGenerator(name="foreignKey", strategy="foreign", parameters=@Parameter(name="property", value="content"))
+    @GeneratedValue(generator="foreignKey", strategy=GenerationType.IDENTITY)
 	private Integer id;
 
 	private Integer comments;
