@@ -18,9 +18,9 @@ public class ChannelTxt implements Serializable {
 
 	@Id
     @Column(name="channel_id")
-    //@GenericGenerator(name="foreignKey", strategy="foreign", parameters=@Parameter(name="property", value="channel"))
-    //@GeneratedValue(generator="foreignKey", strategy=GenerationType.IDENTITY)
-	private int channelId;
+    @GenericGenerator(name="foreignKey", strategy="foreign", parameters=@Parameter(name="property", value="channel"))
+    @GeneratedValue(generator="foreignKey", strategy=GenerationType.IDENTITY)
+	private Integer id;
 
 	@Lob
 	private String txt;
@@ -46,12 +46,12 @@ public class ChannelTxt implements Serializable {
 	public ChannelTxt() {
 	}
 
-	public int getChannelId() {
-		return this.channelId;
+	public Integer getId() {
+		return this.id;
 	}
 
-	public void setChannelId(int channelId) {
-		this.channelId = channelId;
+	public void setId(Integer channelId) {
+		this.id = channelId;
 	}
 
 	public String getTxt() {
@@ -123,7 +123,7 @@ public class ChannelTxt implements Serializable {
                 && StringUtils.isBlank(getTxt3());
     }
 
-    public ChannelTxt(int id){
-        this.channelId = id;
+    public ChannelTxt(Integer id){
+        this.id = id;
     }
 }
