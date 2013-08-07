@@ -25,6 +25,8 @@
         <mapping class="com.yunkuo.cms.entity.main.ContentCheck" />
         <mapping class="com.yunkuo.cms.entity.main.CmsUserSite" />
         <mapping class="com.yunkuo.cms.entity.main.CmsUserExt" />
+        <mapping class="com.yunkuo.cms.entity.main.CmsRole" />
+        <mapping class="com.yunkuo.cms.entity.main.CmsRolePermission" />
     </session-factory>
 
          

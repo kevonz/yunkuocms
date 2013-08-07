@@ -1,11 +1,13 @@
 package com.yunkuo.cms.controller.admin.main;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.yunkuo.cms.entity.main.CmsRolePermission;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -132,13 +134,16 @@ public class CmsRoleAct {
 		return false;
 	}
 
-	private Set<String> splitPerms(String[] perms) {
-		Set<String> set = new HashSet<String>();
+	private List<CmsRolePermission> splitPerms(String[] perms) {
+		//Set<String> set = new HashSet<String>();
+        List<CmsRolePermission> set = new ArrayList<CmsRolePermission>();
 		if (perms != null) {
 			for (String perm : perms) {
 				for (String p : StringUtils.split(perm, ',')) {
 					if (!StringUtils.isBlank(p)) {
-						set.add(p);
+                        CmsRolePermission permission = new CmsRolePermission();
+                        permission.setUri(p);
+						set.add(permission);
 					}
 				}
 			}

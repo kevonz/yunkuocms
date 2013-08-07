@@ -1,9 +1,6 @@
 package com.yunkuo.cms.entity.main;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import com.yunkuo.cms.entity.main.base.BaseCmsUser;
 import com.yunkuo.common.hibernate3.PriorityInterface;
@@ -235,6 +232,7 @@ public class CmsUser extends BaseCmsUser implements PriorityInterface {
 
 	public boolean isSuper() {
 		Set<CmsRole> roles = getRoles();
+        //List<CmsRolePermission> roles = getRoles();
 		if (roles == null) {
 			return false;
 		}
@@ -246,12 +244,14 @@ public class CmsUser extends BaseCmsUser implements PriorityInterface {
 		return false;
 	}
 
-	public Set<String> getPerms() {
+	public List<CmsRolePermission> getPerms() {
 		Set<CmsRole> roles = getRoles();
+        //List<CmsRolePermission> roles = getRoles();
 		if (roles == null) {
 			return null;
 		}
-		Set<String> allPerms = new HashSet<String>();
+        //Set<String> allPerms = new HashSet<String>();
+        List<CmsRolePermission> allPerms = new ArrayList<CmsRolePermission>();
 		for (CmsRole role : getRoles()) {
 			allPerms.addAll(role.getPerms());
 		}

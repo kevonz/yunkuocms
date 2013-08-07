@@ -3,6 +3,7 @@ package com.yunkuo.cms.manager.main.impl;
 import java.util.List;
 import java.util.Set;
 
+import com.yunkuo.cms.entity.main.CmsRolePermission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,13 +27,13 @@ public class CmsRoleMngImpl implements CmsRoleMng {
 		return entity;
 	}
 
-	public CmsRole save(CmsRole bean, Set<String> perms) {
+	public CmsRole save(CmsRole bean, List<CmsRolePermission> perms) {
 		bean.setPerms(perms);
 		dao.save(bean);
 		return bean;
 	}
 
-	public CmsRole update(CmsRole bean, Set<String> perms) {
+	public CmsRole update(CmsRole bean, List<CmsRolePermission> perms) {
 		Updater<CmsRole> updater = new Updater<CmsRole>(bean);
 		bean = dao.updateByUpdater(updater);
 		bean.setPerms(perms);

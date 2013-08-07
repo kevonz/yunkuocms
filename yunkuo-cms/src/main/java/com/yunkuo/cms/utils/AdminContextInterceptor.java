@@ -11,6 +11,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yunkuo.cms.entity.main.CmsRolePermission;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -248,12 +249,12 @@ public class AdminContextInterceptor extends HandlerInterceptorAdapter {
 		return false;
 	}
 
-	private boolean permistionPass(String uri, Set<String> perms,
+	private boolean permistionPass(String uri, List<CmsRolePermission> perms,
 			boolean viewOnly) {
 		String u = null;
 		int i;
-		for (String perm : perms) {
-			if (uri.startsWith(perm)) {
+		for (CmsRolePermission perm : perms) {
+			if (uri.startsWith(perm.getUri())) {
 				// 只读管理员
 				if (viewOnly) {
 					// 获得最后一个 '/' 的URI地址。

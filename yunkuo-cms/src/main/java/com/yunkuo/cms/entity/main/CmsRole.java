@@ -4,6 +4,11 @@ import java.util.Collection;
 
 import com.yunkuo.cms.entity.main.base.BaseCmsRole;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="cms_role")
 public class CmsRole extends BaseCmsRole {
 	private static final long serialVersionUID = 1L;
 

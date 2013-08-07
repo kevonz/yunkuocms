@@ -1,206 +1,169 @@
 package com.yunkuo.cms.entity.main.base;
+import com.yunkuo.cms.entity.main.CmsRole;
+import com.yunkuo.cms.entity.main.CmsRolePermission;
+import com.yunkuo.cms.entity.main.CmsSite;
+import com.yunkuo.cms.entity.main.CmsUser;
 
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 /**
- * This is an object that contains data related to the cms_role table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_role"
+ * The persistent class for the cms_role database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_role")*/
+@MappedSuperclass
+public class BaseCmsRole implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsRole  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="role_id")
+	private Integer id;
 
-	public static String REF = "CmsRole";
-	public static String PROP_SITE = "site";
-	public static String PROP_SUPER = "super";
-	public static String PROP_PRIORITY = "priority";
-	public static String PROP_NAME = "name";
-	public static String PROP_ID = "id";
+	@Column(name="is_super")
+	private Boolean isSuper;
 
+	private Integer priority;
 
-	// constructors
-	public BaseCmsRole () {
-		initialize();
-	}
+	@Column(name="role_name")
+	private String name;
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsRole (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+	//bi-directional many-to-one association to CmsSite
+	@ManyToOne
+	@JoinColumn(name="site_id")
+	private CmsSite site;
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsRole (
-		java.lang.Integer id,
-		java.lang.String name,
-		java.lang.Integer priority,
-		java.lang.Boolean m_super) {
+	//bi-directional many-to-one association to CmsRolePermission
+	@OneToMany(mappedBy="cmsRole")
+	private List<CmsRolePermission> perms;
 
-		this.setId(id);
-		this.setName(name);
-		this.setPriority(priority);
-		this.setSuper(m_super);
-		initialize();
-	}
+	//bi-directional many-to-many association to CmsUser
+	@ManyToMany
+	@JoinTable(
+		name="cms_user_role"
+		, joinColumns={
+			@JoinColumn(name="role_id")
+			}
+		, inverseJoinColumns={
+			@JoinColumn(name="user_id")
+			}
+		)
+	private List<CmsUser> cmsUsers;
 
-	protected void initialize () {}
+    // constructors
+    public BaseCmsRole () {
+        initialize();
+    }
 
-
-
-	private int hashCode = Integer.MIN_VALUE;
-
-	// primary key
-	private java.lang.Integer id;
-
-	// fields
-	private java.lang.String name;
-	private java.lang.Integer priority;
-	private java.lang.Boolean m_super;
-
-	// many to one
-	private com.yunkuo.cms.entity.main.CmsSite site;
-
-	// collections
-	private java.util.Set<java.lang.String> perms;
-
-
-
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="identity"
-     *  column="role_id"
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsRole (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsRole (
+            java.lang.Integer id,
+            java.lang.String name,
+            java.lang.Integer priority,
+            java.lang.Boolean m_super) {
+
+        this.setId(id);
+        this.setName(name);
+        this.setPriority(priority);
+        this.setSuper(m_super);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+
+    public boolean equals (Object obj) {
+        if (null == obj) return false;
+        if (!(obj instanceof com.yunkuo.cms.entity.main.CmsRole)) return false;
+        else {
+            CmsRole cmsRole = (CmsRole) obj;
+            if (null == this.getId() || null == cmsRole.getId()) return false;
+            else return (this.getId().equals(cmsRole.getId()));
+        }
+    }
+
+	public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+	public void setId(Integer roleId) {
+		this.id = roleId;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: role_name
-	 */
-	public java.lang.String getName () {
-		return name;
+	public Boolean getSuper() {
+		return this.isSuper;
 	}
 
-	/**
-	 * Set the value related to the column: role_name
-	 * @param name the role_name value
-	 */
-	public void setName (java.lang.String name) {
-		this.name = name;
+	public void setSuper(Boolean isSuper) {
+		this.isSuper = isSuper;
 	}
 
-
-	/**
-	 * Return the value associated with the column: priority
-	 */
-	public java.lang.Integer getPriority () {
-		return priority;
+	public Integer getPriority() {
+		return this.priority;
 	}
 
-	/**
-	 * Set the value related to the column: priority
-	 * @param priority the priority value
-	 */
-	public void setPriority (java.lang.Integer priority) {
+	public void setPriority(Integer priority) {
 		this.priority = priority;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_super
-	 */
-	public java.lang.Boolean getSuper () {
-		return m_super;
+	public String getName() {
+		return this.name;
 	}
 
-	/**
-	 * Set the value related to the column: is_super
-	 * @param m_super the is_super value
-	 */
-	public void setSuper (java.lang.Boolean m_super) {
-		this.m_super = m_super;
+	public void setName(String roleName) {
+		this.name = roleName;
 	}
 
-
-	/**
-	 * Return the value associated with the column: site_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsSite getSite () {
-		return site;
+	public CmsSite getSite() {
+		return this.site;
 	}
 
-	/**
-	 * Set the value related to the column: site_id
-	 * @param site the site_id value
-	 */
-	public void setSite (com.yunkuo.cms.entity.main.CmsSite site) {
-		this.site = site;
+	public void setSite(CmsSite cmsSite) {
+		this.site = cmsSite;
 	}
 
-
-	/**
-	 * Return the value associated with the column: perms
-	 */
-	public java.util.Set<java.lang.String> getPerms () {
-		return perms;
+	public List<CmsRolePermission> getPerms() {
+		return this.perms;
 	}
 
-	/**
-	 * Set the value related to the column: perms
-	 * @param perms the perms value
-	 */
-	public void setPerms (java.util.Set<java.lang.String> perms) {
-		this.perms = perms;
+	public void setPerms(List<CmsRolePermission> cmsRolePermissions) {
+		this.perms = cmsRolePermissions;
 	}
 
+	public CmsRolePermission addCmsRolePermission(CmsRolePermission cmsRolePermission) {
+		getPerms().add(cmsRolePermission);
+		cmsRolePermission.setCmsRole((CmsRole) this);
 
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.main.CmsRole)) return false;
-		else {
-			com.yunkuo.cms.entity.main.CmsRole cmsRole = (com.yunkuo.cms.entity.main.CmsRole) obj;
-			if (null == this.getId() || null == cmsRole.getId()) return false;
-			else return (this.getId().equals(cmsRole.getId()));
-		}
+		return cmsRolePermission;
 	}
 
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
+	public CmsRolePermission removeCmsRolePermission(CmsRolePermission cmsRolePermission) {
+		getPerms().remove(cmsRolePermission);
+		cmsRolePermission.setCmsRole(null);
+
+		return cmsRolePermission;
 	}
 
-
-	public String toString () {
-		return super.toString();
+	public List<CmsUser> getCmsUsers() {
+		return this.cmsUsers;
 	}
 
+	public void setCmsUsers(List<CmsUser> cmsUsers) {
+		this.cmsUsers = cmsUsers;
+	}
 
 }
