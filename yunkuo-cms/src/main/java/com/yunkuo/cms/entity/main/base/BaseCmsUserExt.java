@@ -1,296 +1,189 @@
 package com.yunkuo.cms.entity.main.base;
 
+import com.yunkuo.cms.entity.main.CmsUser;
+import com.yunkuo.cms.entity.main.CmsUserExt;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 
 /**
- * This is an object that contains data related to the cms_user_ext table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_user_ext"
+ * The persistent class for the cms_user_ext database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_user_ext")*/
+@MappedSuperclass
+public class BaseCmsUserExt implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsUserExt  implements Serializable {
+	@Id
+	//@GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GenericGenerator(name="foreignKey", strategy="foreign", parameters=@Parameter(name="property", value="user"))
+    @GeneratedValue(generator="foreignKey", strategy=GenerationType.IDENTITY)
+	@Column(name="user_id")
+	private Integer id;
 
-	public static String REF = "CmsUserExt";
-	public static String PROP_MSN = "msn";
-	public static String PROP_BIRTHDAY = "birthday";
-	public static String PROP_GENDER = "gender";
-	public static String PROP_MOBILE = "mobile";
-	public static String PROP_COMEFROM = "comefrom";
-	public static String PROP_USER = "user";
-	public static String PROP_INTRO = "intro";
-	public static String PROP_REALNAME = "realname";
-	public static String PROP_QQ = "qq";
-	public static String PROP_ID = "id";
-	public static String PROP_PHONE = "phone";
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date birthday;
 
+	private String comefrom;
 
-	// constructors
-	public BaseCmsUserExt () {
-		initialize();
-	}
+	private Boolean gender;
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsUserExt (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+	private String intro;
 
-	protected void initialize () {}
+	private String mobile;
 
+	private String msn;
 
+	private String phone;
 
-	private int hashCode = Integer.MIN_VALUE;
+	private String qq;
 
-	// primary key
-	private java.lang.Integer id;
+	private String realname;
 
-	// fields
-	private java.lang.String realname;
-	private java.lang.Boolean gender;
-	private java.util.Date birthday;
-	private java.lang.String intro;
-	private java.lang.String comefrom;
-	private java.lang.String qq;
-	private java.lang.String msn;
-	private java.lang.String phone;
-	private java.lang.String mobile;
-	private java.lang.String userImg;
-	private java.lang.String userSignature;
+	@Column(name="user_img")
+	private String userImg;
 
-	// one to one
-	private com.yunkuo.cms.entity.main.CmsUser user;
+	@Column(name="user_signature")
+	private String userSignature;
 
+	//bi-directional one-to-one association to CmsUser
+	@OneToOne
+	@JoinColumn(name="user_id")
+	private CmsUser user;
 
+    // constructors
+    public BaseCmsUserExt () {
+        initialize();
+    }
 
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="foreign"
-     *  column="user_id"
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsUserExt (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    protected void initialize () {}
+    public boolean equals (Object obj) {
+        if (null == obj) return false;
+        if (!(obj instanceof com.yunkuo.cms.entity.main.CmsUserExt)) return false;
+        else {
+            CmsUserExt cmsUserExt = (CmsUserExt) obj;
+            if (null == this.getId() || null == cmsUserExt.getId()) return false;
+            else return (this.getId().equals(cmsUserExt.getId()));
+        }
+    }
+
+
+	public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+	public void setId(Integer userId) {
+		this.id = userId;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: realname
-	 */
-	public java.lang.String getRealname () {
-		return realname;
+	public Date getBirthday() {
+		return this.birthday;
 	}
 
-	/**
-	 * Set the value related to the column: realname
-	 * @param realname the realname value
-	 */
-	public void setRealname (java.lang.String realname) {
-		this.realname = realname;
-	}
-
-
-	/**
-	 * Return the value associated with the column: gender
-	 */
-	public java.lang.Boolean getGender () {
-		return gender;
-	}
-
-	/**
-	 * Set the value related to the column: gender
-	 * @param gender the gender value
-	 */
-	public void setGender (java.lang.Boolean gender) {
-		this.gender = gender;
-	}
-
-
-	/**
-	 * Return the value associated with the column: birthday
-	 */
-	public java.util.Date getBirthday () {
-		return birthday;
-	}
-
-	/**
-	 * Set the value related to the column: birthday
-	 * @param birthday the birthday value
-	 */
-	public void setBirthday (java.util.Date birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 
-
-	/**
-	 * Return the value associated with the column: intro
-	 */
-	public java.lang.String getIntro () {
-		return intro;
+	public String getComefrom() {
+		return this.comefrom;
 	}
 
-	/**
-	 * Set the value related to the column: intro
-	 * @param intro the intro value
-	 */
-	public void setIntro (java.lang.String intro) {
-		this.intro = intro;
-	}
-
-
-	/**
-	 * Return the value associated with the column: comefrom
-	 */
-	public java.lang.String getComefrom () {
-		return comefrom;
-	}
-
-	/**
-	 * Set the value related to the column: comefrom
-	 * @param comefrom the comefrom value
-	 */
-	public void setComefrom (java.lang.String comefrom) {
+	public void setComefrom(String comefrom) {
 		this.comefrom = comefrom;
 	}
 
-
-	/**
-	 * Return the value associated with the column: qq
-	 */
-	public java.lang.String getQq () {
-		return qq;
+	public Boolean getGender() {
+		return this.gender;
 	}
 
-	/**
-	 * Set the value related to the column: qq
-	 * @param qq the qq value
-	 */
-	public void setQq (java.lang.String qq) {
-		this.qq = qq;
+	public void setGender(Boolean gender) {
+		this.gender = gender;
 	}
 
-
-	/**
-	 * Return the value associated with the column: msn
-	 */
-	public java.lang.String getMsn () {
-		return msn;
+	public String getIntro() {
+		return this.intro;
 	}
 
-	/**
-	 * Set the value related to the column: msn
-	 * @param msn the msn value
-	 */
-	public void setMsn (java.lang.String msn) {
+	public void setIntro(String intro) {
+		this.intro = intro;
+	}
+
+	public String getMobile() {
+		return this.mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getMsn() {
+		return this.msn;
+	}
+
+	public void setMsn(String msn) {
 		this.msn = msn;
 	}
 
-
-	/**
-	 * Return the value associated with the column: phone
-	 */
-	public java.lang.String getPhone () {
-		return phone;
+	public String getPhone() {
+		return this.phone;
 	}
 
-	/**
-	 * Set the value related to the column: phone
-	 * @param phone the phone value
-	 */
-	public void setPhone (java.lang.String phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
-
-	/**
-	 * Return the value associated with the column: mobile
-	 */
-	public java.lang.String getMobile () {
-		return mobile;
+	public String getQq() {
+		return this.qq;
 	}
 
-	/**
-	 * Set the value related to the column: mobile
-	 * @param mobile the mobile value
-	 */
-	public void setMobile (java.lang.String mobile) {
-		this.mobile = mobile;
-	}
-	public java.lang.String getUserImg() {
-		return userImg;
+	public void setQq(String qq) {
+		this.qq = qq;
 	}
 
-	public void setUserImg(java.lang.String userImg) {
+	public String getRealname() {
+		return this.realname;
+	}
+
+	public void setRealname(String realname) {
+		this.realname = realname;
+	}
+
+	public String getUserImg() {
+		return this.userImg;
+	}
+
+	public void setUserImg(String userImg) {
 		this.userImg = userImg;
 	}
 
-	public java.lang.String getUserSignature() {
-		return userSignature;
+	public String getUserSignature() {
+		return this.userSignature;
 	}
 
-	public void setUserSignature(java.lang.String userSignature) {
+	public void setUserSignature(String userSignature) {
 		this.userSignature = userSignature;
 	}
 
-
-	/**
-	 * Return the value associated with the column: user
-	 */
-	public com.yunkuo.cms.entity.main.CmsUser getUser () {
-		return user;
+	public CmsUser getUser() {
+		return this.user;
 	}
 
-	/**
-	 * Set the value related to the column: user
-	 * @param user the user value
-	 */
-	public void setUser (com.yunkuo.cms.entity.main.CmsUser user) {
-		this.user = user;
+	public void setUser(CmsUser cmsUser) {
+		this.user = cmsUser;
 	}
-
-
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.main.CmsUserExt)) return false;
-		else {
-			com.yunkuo.cms.entity.main.CmsUserExt cmsUserExt = (com.yunkuo.cms.entity.main.CmsUserExt) obj;
-			if (null == this.getId() || null == cmsUserExt.getId()) return false;
-			else return (this.getId().equals(cmsUserExt.getId()));
-		}
-	}
-
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
-	}
-
-
-	public String toString () {
-		return super.toString();
-	}
-
 
 }

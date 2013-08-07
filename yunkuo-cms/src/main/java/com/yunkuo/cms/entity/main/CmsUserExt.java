@@ -3,7 +3,11 @@ package com.yunkuo.cms.entity.main;
 import org.apache.commons.lang.StringUtils;
 
 import com.yunkuo.cms.entity.main.base.BaseCmsUserExt;
+import javax.persistence.*;
 
+
+@Entity
+@Table(name="cms_user_ext")
 public class CmsUserExt extends BaseCmsUserExt {
 	private static final long serialVersionUID = 1L;
 
