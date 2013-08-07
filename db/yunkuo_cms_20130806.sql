@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50527
+Source Server         : local
+Source Server Version : 50524
 Source Host           : localhost:3306
 Source Database       : yunkuo_cms_2013
 
 Target Server Type    : MYSQL
-Target Server Version : 50527
+Target Server Version : 50524
 File Encoding         : 65001
 
-Date: 2013-08-06 21:14:06
+Date: 2013-08-07 12:21:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -933,29 +933,6 @@ CREATE TABLE `cms_chnl_group_contri` (
 -- ----------------------------
 -- Records of cms_chnl_group_contri
 -- ----------------------------
-INSERT INTO `cms_chnl_group_contri` VALUES ('1', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('11', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('12', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('13', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('14', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('15', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('40', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('41', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('42', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('43', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('44', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('45', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('46', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('47', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('48', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('49', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('50', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('51', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('52', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('53', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('54', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('55', '1');
-INSERT INTO `cms_chnl_group_contri` VALUES ('56', '1');
 INSERT INTO `cms_chnl_group_contri` VALUES ('42', '2');
 INSERT INTO `cms_chnl_group_contri` VALUES ('43', '2');
 INSERT INTO `cms_chnl_group_contri` VALUES ('44', '2');
@@ -971,6 +948,8 @@ INSERT INTO `cms_chnl_group_contri` VALUES ('53', '2');
 INSERT INTO `cms_chnl_group_contri` VALUES ('54', '2');
 INSERT INTO `cms_chnl_group_contri` VALUES ('55', '2');
 INSERT INTO `cms_chnl_group_contri` VALUES ('56', '2');
+INSERT INTO `cms_chnl_group_contri` VALUES ('11', '3');
+INSERT INTO `cms_chnl_group_contri` VALUES ('41', '3');
 
 -- ----------------------------
 -- Table structure for `cms_chnl_group_view`
@@ -988,6 +967,8 @@ CREATE TABLE `cms_chnl_group_view` (
 -- ----------------------------
 -- Records of cms_chnl_group_view
 -- ----------------------------
+INSERT INTO `cms_chnl_group_view` VALUES ('11', '3');
+INSERT INTO `cms_chnl_group_view` VALUES ('15', '3');
 
 -- ----------------------------
 -- Table structure for `cms_comment`
@@ -4828,13 +4809,14 @@ CREATE TABLE `cms_group` (
   `allow_suffix` varchar(255) DEFAULT 'jpg,jpeg,gif,png,bmp' COMMENT '允许上传的后缀',
   `is_reg_def` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否默认会员组',
   PRIMARY KEY (`group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='CMS会员组表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='CMS会员组表';
 
 -- ----------------------------
 -- Records of cms_group
 -- ----------------------------
 INSERT INTO `cms_group` VALUES ('1', '普通会员', '10', '1', '1', '4096', '1024', 'jpg,jpeg,gif,png,bmp', '1');
 INSERT INTO `cms_group` VALUES ('2', '高级组', '10', '1', '1', '0', '0', '', '0');
+INSERT INTO `cms_group` VALUES ('3', 'test', '10', '1', '1', '0', '0', '', '0');
 
 -- ----------------------------
 -- Table structure for `cms_guestbook`
@@ -4978,7 +4960,7 @@ CREATE TABLE `cms_log` (
   KEY `fk_cms_log_user` (`user_id`),
   CONSTRAINT `fk_cms_log_site` FOREIGN KEY (`site_id`) REFERENCES `cms_site` (`site_id`),
   CONSTRAINT `fk_cms_log_user` FOREIGN KEY (`user_id`) REFERENCES `cms_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=127 DEFAULT CHARSET=utf8 COMMENT='CMS日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=133 DEFAULT CHARSET=utf8 COMMENT='CMS日志表';
 
 -- ----------------------------
 -- Records of cms_log
@@ -5109,6 +5091,12 @@ INSERT INTO `cms_log` VALUES ('123', '1', null, '1', '2013-08-06 20:56:51', '127
 INSERT INTO `cms_log` VALUES ('124', '1', null, '1', '2013-08-06 20:58:28', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
 INSERT INTO `cms_log` VALUES ('125', '1', '1', '3', '2013-08-06 20:59:06', '127.0.0.1', '/cms/admin/cms/site/o_update', '修改站点', 'id=1;name=YunKuo_CMS');
 INSERT INTO `cms_log` VALUES ('126', '1', null, '1', '2013-08-06 20:59:17', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('127', '1', null, '1', '2013-08-07 11:29:52', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('128', '1', null, '1', '2013-08-07 12:14:50', '127.0.0.1', '/cms/admin/cms/login', '登录成功', null);
+INSERT INTO `cms_log` VALUES ('129', '1', '1', '3', '2013-08-07 12:15:02', '127.0.0.1', '/cms/admin/cms/group/o_update', '修改会员组', 'id=1;name=普通会员');
+INSERT INTO `cms_log` VALUES ('130', '1', '1', '3', '2013-08-07 12:15:08', '127.0.0.1', '/cms/admin/cms/member/o_update', '更新会员', 'id=12;username=111');
+INSERT INTO `cms_log` VALUES ('131', '1', '1', '3', '2013-08-07 12:16:26', '127.0.0.1', '/cms/admin/cms/group/o_save', '增加会员组', 'id=3;name=test');
+INSERT INTO `cms_log` VALUES ('132', '1', '1', '3', '2013-08-07 12:16:47', '127.0.0.1', '/cms/admin/cms/group/o_update', '修改会员组', 'id=3;name=test');
 
 -- ----------------------------
 -- Table structure for `cms_message`
@@ -5504,8 +5492,10 @@ INSERT INTO `cms_role` VALUES ('1', null, '管理员', '10', '1');
 -- ----------------------------
 DROP TABLE IF EXISTS `cms_role_permission`;
 CREATE TABLE `cms_role_permission` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `role_id` int(11) NOT NULL,
   `uri` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
   KEY `fk_cms_permission_role` (`role_id`),
   CONSTRAINT `fk_cms_permission_role` FOREIGN KEY (`role_id`) REFERENCES `cms_role` (`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CMS角色授权表';
@@ -5623,7 +5613,7 @@ CREATE TABLE `cms_site_flow` (
   PRIMARY KEY (`flow_id`),
   KEY `fk_cms_flow_site` (`site_id`),
   CONSTRAINT `fk_cms_flow_site` FOREIGN KEY (`site_id`) REFERENCES `cms_site` (`site_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=184 DEFAULT CHARSET=utf8 COMMENT='站点流量统计表';
+) ENGINE=InnoDB AUTO_INCREMENT=187 DEFAULT CHARSET=utf8 COMMENT='站点流量统计表';
 
 -- ----------------------------
 -- Records of cms_site_flow
@@ -5811,6 +5801,9 @@ INSERT INTO `cms_site_flow` VALUES ('180', '1', '127.0.0.1', '2013-8-6', '2013-0
 INSERT INTO `cms_site_flow` VALUES ('181', '1', '127.0.0.1', '2013-8-6', '2013-08-06 08:39:59', 'http://localhost:8080/cms/', '', '', '', '本机地址', '81620AE60F21A2AA2E04806924430D17');
 INSERT INTO `cms_site_flow` VALUES ('182', '1', '127.0.0.1', '2013-8-6', '2013-08-06 08:40:26', 'http://localhost:8080/cms/gnxw/617.htm', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '本机地址', '81620AE60F21A2AA2E04806924430D17');
 INSERT INTO `cms_site_flow` VALUES ('183', '1', '127.0.0.1', '2013-8-6', '2013-08-06 20:04:46', 'http://localhost:8080/cms/gnxw/618.htm', 'http://localhost:8080', 'http://localhost:8080/cms/admin/cms/content/v_list?cid=', '', '本机地址', 'C4770DD283DB232E5FD66838A2AC1BF2');
+INSERT INTO `cms_site_flow` VALUES ('184', '1', '127.0.0.1', 'Aug 7, 2013', '2013-08-07 12:14:37', 'http://localhost:8080/cms/', '', '', '', '本机地址', 'DDADC669DEC837D1517F18E04B035E88');
+INSERT INTO `cms_site_flow` VALUES ('185', '1', '127.0.0.1', 'Aug 7, 2013', '2013-08-07 12:15:54', 'http://localhost:8080/cms/', '', '', '', '本机地址', 'D4E34ADC771228BC56975ACE00946C7F');
+INSERT INTO `cms_site_flow` VALUES ('186', '1', '127.0.0.1', 'Aug 7, 2013', '2013-08-07 12:14:40', 'http://localhost:8080/cms/gnxw/617.htm', 'http://localhost:8080', 'http://localhost:8080/cms/', '', '本机地址', 'DDADC669DEC837D1517F18E04B035E88');
 
 -- ----------------------------
 -- Table structure for `cms_site_model`
@@ -5913,7 +5906,7 @@ CREATE TABLE `cms_user` (
 -- ----------------------------
 -- Records of cms_user
 -- ----------------------------
-INSERT INTO `cms_user` VALUES ('1', '1', 'admin', 'bettersaas@163.com', '2011-01-03 00:00:00', '127.0.0.1', '2013-08-06 20:59:17', '127.0.0.1', '235', '9', '0', '0', null, '1', '0', '0', '0');
+INSERT INTO `cms_user` VALUES ('1', '1', 'admin', 'bettersaas@163.com', '2011-01-03 00:00:00', '127.0.0.1', '2013-08-07 12:14:50', '127.0.0.1', '237', '9', '0', '0', null, '1', '0', '0', '0');
 INSERT INTO `cms_user` VALUES ('5', '1', 'test', 'test@163.com', '2011-12-19 15:26:02', '192.168.0.173', '2011-12-19 15:26:02', '192.168.0.173', '0', '0', '0', '0', '2011-12-19', '0', '0', '0', '0');
 INSERT INTO `cms_user` VALUES ('6', '1', 'bettersaas', 'bettersaas@163.com', '2013-01-23 23:48:52', '0:0:0:0:0:0:0:1', '2013-01-31 23:59:53', '0:0:0:0:0:0:0:1', '1', '0', '0', '0', '2013-01-23', '0', '0', '0', '0');
 INSERT INTO `cms_user` VALUES ('7', '1', 'aaa', 'aaa@aa.com', '2013-02-03 20:40:04', '0:0:0:0:0:0:0:1', '2013-02-03 20:40:04', '0:0:0:0:0:0:0:1', '0', '0', '0', '0', '2013-02-03', '0', '0', '0', '0');
@@ -5982,7 +5975,7 @@ CREATE TABLE `cms_user_ext` (
 -- ----------------------------
 -- Records of cms_user_ext
 -- ----------------------------
-INSERT INTO `cms_user_ext` VALUES ('1', 'cms', '1', null, '2348985t999', null, null, null, null, null, '/cms-ui/user/images/201302/012108334utw.png', '');
+INSERT INTO `cms_user_ext` VALUES ('1', 'cms', '1', null, '2348985t999', 'ewfwef', null, null, null, null, '/cms-ui/user/images/201302/012108334utw.png', '');
 INSERT INTO `cms_user_ext` VALUES ('5', null, null, null, null, ',', null, null, null, null, null, null);
 INSERT INTO `cms_user_ext` VALUES ('6', null, null, null, null, null, null, null, null, null, null, null);
 INSERT INTO `cms_user_ext` VALUES ('7', null, null, null, null, null, null, null, null, null, null, null);
@@ -5990,7 +5983,7 @@ INSERT INTO `cms_user_ext` VALUES ('8', null, null, null, null, null, null, null
 INSERT INTO `cms_user_ext` VALUES ('9', null, null, null, null, null, null, null, null, null, null, null);
 INSERT INTO `cms_user_ext` VALUES ('10', null, null, null, null, null, null, null, null, null, null, null);
 INSERT INTO `cms_user_ext` VALUES ('11', null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `cms_user_ext` VALUES ('12', null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `cms_user_ext` VALUES ('12', null, null, null, '6676767', null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `cms_user_role`
@@ -6192,6 +6185,8 @@ INSERT INTO `yk_authentication` VALUES ('7babb53822884826b4d08c9ed98ab7e3', '1',
 INSERT INTO `yk_authentication` VALUES ('827720530dc443d7aa4d4553eef6fb2d', '1', 'admin', 'bettersaas@163.com', '2013-02-12 21:49:40', '0:0:0:0:0:0:0:1', '2013-02-12 22:51:35');
 INSERT INTO `yk_authentication` VALUES ('8577b099560f4d84b1096cfdb7b6d454', '1', 'admin', 'bettersaas@163.com', '2013-02-12 21:36:12', '0:0:0:0:0:0:0:1', '2013-02-12 21:36:12');
 INSERT INTO `yk_authentication` VALUES ('88187040027548bc87c1ebcc26a70cbb', '1', 'admin', 'bettersaas@163.com', '2013-02-12 21:46:28', '0:0:0:0:0:0:0:1', '2013-02-12 21:46:30');
+INSERT INTO `yk_authentication` VALUES ('8ad8b01e4056ceba014056d2d3c60000', '1', 'admin', 'bettersaas@163.com', '2013-08-07 11:29:52', '127.0.0.1', '2013-08-07 11:30:20');
+INSERT INTO `yk_authentication` VALUES ('8ad8b01e4056fbb4014056fc00260000', '1', 'admin', 'bettersaas@163.com', '2013-08-07 12:14:50', '127.0.0.1', '2013-08-07 12:16:57');
 INSERT INTO `yk_authentication` VALUES ('94bbc14c14df465f8aedde6ce257107d', '1', 'admin', 'bettersaas@163.com', '2013-02-06 00:31:03', '0:0:0:0:0:0:0:1', '2013-02-06 00:57:12');
 INSERT INTO `yk_authentication` VALUES ('98171c86c610434b87174d69d6bdad68', '1', 'admin', 'bettersaas@163.com', '2013-02-12 23:32:11', '0:0:0:0:0:0:0:1', '2013-02-13 00:11:35');
 INSERT INTO `yk_authentication` VALUES ('9d6ea2189910475687ec67b6bbb8e624', '6', 'test', 'test@163.com', '2013-01-31 23:59:53', '0:0:0:0:0:0:0:1', '2013-01-31 23:59:54');
@@ -6328,7 +6323,7 @@ CREATE TABLE `yk_user` (
 -- ----------------------------
 -- Records of yk_user
 -- ----------------------------
-INSERT INTO `yk_user` VALUES ('1', 'admin', 'bettersaas@163.com', '21232f297a57a5a743894a0e4a801fc3', '2011-01-03 00:00:00', '127.0.0.1', '2013-08-06 20:59:16', '127.0.0.1', '237', null, null, null, '0', null, '1', null);
+INSERT INTO `yk_user` VALUES ('1', 'admin', 'bettersaas@163.com', '21232f297a57a5a743894a0e4a801fc3', '2011-01-03 00:00:00', '127.0.0.1', '2013-08-07 12:14:50', '127.0.0.1', '239', null, null, null, '0', null, '1', null);
 INSERT INTO `yk_user` VALUES ('5', 'kevon', 'kevonz@163000.com', '098f6bcd4621d373cade4e832627b4f6', '2011-12-19 15:26:02', '192.168.0.173', '2011-12-19 15:26:02', '192.168.0.173', '0', null, null, null, '0', null, '1', null);
 INSERT INTO `yk_user` VALUES ('6', 'test', 'test@163.com', '098f6bcd4621d373cade4e832627b4f6', '2013-01-23 23:48:52', '0:0:0:0:0:0:0:1', '2013-01-31 23:59:53', '0:0:0:0:0:0:0:1', '1', null, null, null, '0', null, '1', null);
 INSERT INTO `yk_user` VALUES ('7', 'aaa', 'aaa@aa.com', '47bce5c74f589f4867dbd57e9ca9f808', '2013-02-03 20:40:04', '0:0:0:0:0:0:0:1', '2013-02-03 20:40:04', '0:0:0:0:0:0:0:1', '0', null, null, null, '0', null, '0', '657c0a90c3dc439185c1e80769c3a397');
