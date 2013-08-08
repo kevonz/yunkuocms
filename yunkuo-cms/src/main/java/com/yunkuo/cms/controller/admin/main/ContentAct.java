@@ -1,56 +1,10 @@
 package com.yunkuo.cms.controller.admin.main;
 
-import static com.yunkuo.common.page.SimplePage.cpn;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-
-
-import com.yunkuo.cms.entity.main.Channel;
-import com.yunkuo.cms.entity.main.CmsGroup;
-import com.yunkuo.cms.entity.main.CmsModel;
-import com.yunkuo.cms.entity.main.CmsModelItem;
-import com.yunkuo.cms.entity.main.CmsSite;
-import com.yunkuo.cms.entity.main.CmsTopic;
-import com.yunkuo.cms.entity.main.CmsUser;
-import com.yunkuo.cms.entity.main.Content;
-import com.yunkuo.cms.entity.main.ContentExt;
-import com.yunkuo.cms.entity.main.ContentTxt;
-import com.yunkuo.cms.entity.main.ContentType;
+import com.yunkuo.cms.entity.main.*;
 import com.yunkuo.cms.entity.main.Content.ContentStatus;
 import com.yunkuo.cms.manager.assist.CmsFileMng;
-import com.yunkuo.cms.manager.main.ChannelMng;
-import com.yunkuo.cms.manager.main.CmsGroupMng;
-import com.yunkuo.cms.manager.main.CmsLogMng;
-import com.yunkuo.cms.manager.main.CmsModelItemMng;
-import com.yunkuo.cms.manager.main.CmsModelMng;
-import com.yunkuo.cms.manager.main.CmsTopicMng;
-import com.yunkuo.cms.manager.main.CmsUserMng;
-import com.yunkuo.cms.manager.main.ContentMng;
-import com.yunkuo.cms.manager.main.ContentTypeMng;
-import com.yunkuo.cms.staticpage.exception.ContentNotCheckedException;
-import com.yunkuo.cms.staticpage.exception.GeneratedZeroStaticPageException;
-import com.yunkuo.cms.staticpage.exception.StaticPageNotOpenException;
-import com.yunkuo.cms.staticpage.exception.TemplateNotFoundException;
-import com.yunkuo.cms.staticpage.exception.TemplateParseException;
+import com.yunkuo.cms.manager.main.*;
+import com.yunkuo.cms.staticpage.exception.*;
 import com.yunkuo.cms.utils.CmsUtils;
 import com.yunkuo.cms.utils.WebErrors;
 import com.yunkuo.common.page.Pagination;
@@ -64,6 +18,23 @@ import com.yunkuo.core.entity.Ftp;
 import com.yunkuo.core.manager.DbFileMng;
 import com.yunkuo.core.tpl.TplManager;
 import com.yunkuo.core.web.CoreUtils;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.*;
+
+import static com.yunkuo.common.page.SimplePage.cpn;
 
 @Controller
 public class ContentAct {
@@ -469,7 +440,7 @@ public class ContentAct {
 		}
 		Content[] beans;
 		// 是否开启回收站
-		if (site.getResycleOn()) {
+		if (site.getRecycleOn()) {
 			beans = manager.cycle(ids);
 			for (Content bean : beans) {
 				log.info("delete to cycle, Content id={}", bean.getId());

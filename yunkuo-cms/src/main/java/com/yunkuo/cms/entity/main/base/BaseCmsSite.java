@@ -1,572 +1,994 @@
 package com.yunkuo.cms.entity.main.base;
 
+import com.yunkuo.cms.entity.main.CmsConfig;
+import com.yunkuo.core.entity.Ftp;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
- * This is an object that contains data related to the cms_site table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_site"
+ * The persistent class for the cms_site database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_site")*/
+@MappedSuperclass
+public class BaseCmsSite implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsSite  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="site_id")
+	private Integer id;
 
-	public static String REF = "CmsSite";
-	public static String PROP_INDEX_TO_ROOT = "indexToRoot";
-	public static String PROP_DOMAIN = "domain";
-	public static String PROP_PROTOCOL = "protocol";
-	public static String PROP_LOCALE_ADMIN = "localeAdmin";
-	public static String PROP_DOMAIN_REDIRECT = "domainRedirect";
-	public static String PROP_UPLOAD_FTP = "uploadFtp";
-	public static String PROP_RESYCLE_ON = "resycleOn";
-	public static String PROP_TPL_SOLUTION = "tplSolution";
-	public static String PROP_STATIC_SUFFIX = "staticSuffix";
-	public static String PROP_CONFIG = "config";
-	public static String PROP_STATIC_INDEX = "staticIndex";
-	public static String PROP_DYNAMIC_SUFFIX = "dynamicSuffix";
-	public static String PROP_FINAL_STEP = "finalStep";
-	public static String PROP_SHORT_NAME = "shortName";
-	public static String PROP_STATIC_DIR = "staticDir";
-	public static String PROP_DOMAIN_ALIAS = "domainAlias";
-	public static String PROP_PATH = "path";
-	public static String PROP_AFTER_CHECK = "afterCheck";
-	public static String PROP_LOCALE_FRONT = "localeFront";
-	public static String PROP_NAME = "name";
-	public static String PROP_ID = "id";
-	public static String PROP_RELATIVE_PATH = "relativePath";
+	@Column(name="after_check")
+	private byte afterCheck;
 
+	private String domain;
 
-	// constructors
-	public BaseCmsSite () {
-		initialize();
-	}
+	@Column(name="domain_alias")
+	private String domainAlias;
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsSite (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+	@Column(name="domain_redirect")
+	private String domainRedirect;
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsSite (
-		java.lang.Integer id,
-		com.yunkuo.cms.entity.main.CmsConfig config,
-		java.lang.String domain,
-		java.lang.String path,
-		java.lang.String name,
-		java.lang.String protocol,
-		java.lang.String dynamicSuffix,
-		java.lang.String staticSuffix,
-		java.lang.Boolean indexToRoot,
-		java.lang.Boolean staticIndex,
-		java.lang.String localeAdmin,
-		java.lang.String localeFront,
-		java.lang.String tplSolution,
-		java.lang.Byte finalStep,
-		java.lang.Byte afterCheck,
-		java.lang.Boolean relativePath,
-		java.lang.Boolean resycleOn) {
+	@Column(name="dynamic_suffix")
+	private String dynamicSuffix;
 
-		this.setId(id);
-		this.setConfig(config);
-		this.setDomain(domain);
-		this.setPath(path);
-		this.setName(name);
-		this.setProtocol(protocol);
-		this.setDynamicSuffix(dynamicSuffix);
-		this.setStaticSuffix(staticSuffix);
-		this.setIndexToRoot(indexToRoot);
-		this.setStaticIndex(staticIndex);
-		this.setLocaleAdmin(localeAdmin);
-		this.setLocaleFront(localeFront);
-		this.setTplSolution(tplSolution);
-		this.setFinalStep(finalStep);
-		this.setAfterCheck(afterCheck);
-		this.setRelativePath(relativePath);
-		this.setResycleOn(resycleOn);
-		initialize();
-	}
+	@Column(name="final_step")
+	private Byte finalStep;
 
-	protected void initialize () {}
+    public Ftp getUploadFtp() {
+        return uploadFtp;
+    }
 
+    public void setUploadFtp(Ftp uploadFtp) {
+        this.uploadFtp = uploadFtp;
+    }
 
+    public Boolean getMaster() {
+        return isMaster;
+    }
 
-	private int hashCode = Integer.MIN_VALUE;
+    public void setMaster(Boolean master) {
+        isMaster = master;
+    }
 
-	// primary key
-	private java.lang.Integer id;
+    //@Column(name="ftp_upload_id")
+    @ManyToOne
+    @JoinColumn(name="ftp_upload_id")
+	private Ftp uploadFtp;
 
-	// fields
-	private java.lang.String domain;
-	private java.lang.String path;
-	private java.lang.String name;
-	private java.lang.String shortName;
-	private java.lang.String protocol;
-	private java.lang.String dynamicSuffix;
-	private java.lang.String staticSuffix;
-	private java.lang.String staticDir;
-	private java.lang.Boolean indexToRoot;
-	private java.lang.Boolean staticIndex;
-	private java.lang.String localeAdmin;
-	private java.lang.String localeFront;
-	private java.lang.String tplSolution;
-	private java.lang.Byte finalStep;
-	private java.lang.Byte afterCheck;
-	private java.lang.Boolean relativePath;
-	private java.lang.Boolean resycleOn;
-	private java.lang.String domainAlias;
-	private java.lang.String domainRedirect;
+	@Column(name="is_index_to_root")
+	private Boolean indexToRoot;
 
-	// many to one
-	private com.yunkuo.core.entity.Ftp uploadFtp;
-	private com.yunkuo.cms.entity.main.CmsConfig config;
+	@Column(name="is_master")
+	private Boolean isMaster;
 
-	// collections
-	private java.util.Map<java.lang.String, java.lang.String> attr;
-	private java.util.Map<java.lang.String, java.lang.String> txt;
-	private java.util.Map<java.lang.String, java.lang.String> cfg;
+	@Column(name="is_recycle_on")
+	private Boolean recycleOn;
+
+	@Column(name="is_relative_path")
+	private Boolean relativePath;
+
+	@Column(name="is_static_index")
+	private Boolean staticIndex;
+
+	@Column(name="locale_admin")
+	private String localeAdmin;
+
+	@Column(name="locale_front")
+	private String localeFront;
+
+	private String protocol;
+
+	@Column(name="short_name")
+	private String shortName;
+
+	@Column(name="site_name")
+	private String name;
+
+	@Column(name="site_path")
+	private String path;
+
+	@Column(name="static_dir")
+	private String staticDir;
+
+	@Column(name="static_suffix")
+	private String staticSuffix;
+
+	@Column(name="tpl_solution")
+	private String tplSolution;
 
 
+    //bi-directional many-to-one association to CmsConfig
+    @ManyToOne
+    @JoinColumn(name="config_id")
+    private CmsConfig config;
 
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="identity"
-     *  column="site_id"
+
+    public Map<String, String> getAttr() {
+        return attr;
+    }
+
+    public void setAttr(Map<String, String> attr) {
+        this.attr = attr;
+    }
+
+    public Map<String, String> getTxt() {
+        return txt;
+    }
+
+    public void setTxt(Map<String, String> txt) {
+        this.txt = txt;
+    }
+
+    public Map<String, String> getCfg() {
+        return cfg;
+    }
+
+    public void setCfg(Map<String, String> cfg) {
+        this.cfg = cfg;
+    }
+
+    @ElementCollection
+    @CollectionTable(name="cms_site_attr" , joinColumns = @JoinColumn(name="site_id"))
+    @MapKeyColumn(name="attr_name")
+    @Column(name="attr_value")
+    private Map<String,String> attr = new HashMap<String, String>();
+
+
+
+    @ElementCollection
+    @CollectionTable(name="cms_site_txt" , joinColumns = @JoinColumn(name="site_id"))
+    @MapKeyColumn(name="txt_name")
+    @Column(name="txt_value")
+    private Map<String,String> txt = new HashMap<String, String>();
+
+
+    @ElementCollection
+    @CollectionTable(name="cms_site_cfg" , joinColumns = @JoinColumn(name="site_id"))
+    @MapKeyColumn(name="cfg_name")
+    @Column(name="cfg_value")
+    private Map<String,String> cfg = new HashMap<String, String>();
+
+
+/*
+
+	//bi-directional many-to-one association to BaseChannel
+	@OneToMany(mappedBy="cmsSite")
+	private List<BaseChannel> cmsChannels;
+
+	//bi-directional many-to-one association to CmsLog
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsLog> cmsLogs;
+
+	//bi-directional many-to-one association to CmsAcquisition
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsAcquisition> cmsAcquisitions;
+
+	//bi-directional many-to-one association to CmsAcquisitionTemp
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsAcquisitionTemp> cmsAcquisitionTemps;
+
+	//bi-directional many-to-one association to CmsAdvertising
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsAdvertising> cmsAdvertisings;
+
+	//bi-directional many-to-one association to CmsAdvertisingSpace
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsAdvertisingSpace> cmsAdvertisingSpaces;
+
+	//bi-directional many-to-one association to CmsComment
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsComment> cmsComments;
+
+	//bi-directional many-to-one association to CmsContent
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsContent> cmsContents;
+
+	//bi-directional many-to-one association to CmsDepartment
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsDepartment> cmsDepartments;
+
+	//bi-directional many-to-one association to CmsFriendlink
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsFriendlink> cmsFriendlinks;
+
+	//bi-directional many-to-one association to CmsFriendlinkCtg
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsFriendlinkCtg> cmsFriendlinkCtgs;
+
+	//bi-directional many-to-one association to CmsGuestbook
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsGuestbook> cmsGuestbooks;
+
+	//bi-directional many-to-one association to CmsGuestbookCtg
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsGuestbookCtg> cmsGuestbookCtgs;
+
+	//bi-directional many-to-one association to CmsKeyword
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsKeyword> cmsKeywords;
+
+	//bi-directional many-to-one association to CmsMessage
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsMessage> cmsMessages;
+
+	//bi-directional many-to-one association to CmsReceiverMessage
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsReceiverMessage> cmsReceiverMessages;
+
+	//bi-directional many-to-one association to CmsRole
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsRole> cmsRoles;
+
+
+	//bi-directional many-to-one association to CmsSiteAttr
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsSiteAttr> cmsSiteAttrs;
+
+	//bi-directional many-to-one association to CmsSiteCfg
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsSiteCfg> cmsSiteCfgs;
+
+	//bi-directional many-to-one association to CmsSiteFlow
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsSiteFlow> cmsSiteFlows;
+
+	//bi-directional many-to-one association to CmsSiteTxt
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsSiteTxt> cmsSiteTxts;
+
+	//bi-directional many-to-one association to CmsUserSite
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsUserSite> cmsUserSites;
+
+	//bi-directional many-to-one association to CmsVoteTopic
+	@OneToMany(mappedBy="cmsSite")
+	private List<CmsVoteTopic> cmsVoteTopics;
+*/
+
+    // constructors
+    public BaseCmsSite () {
+        initialize();
+    }
+
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsSite (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsSite (
+            java.lang.Integer id,
+            com.yunkuo.cms.entity.main.CmsConfig config,
+            java.lang.String domain,
+            java.lang.String path,
+            java.lang.String name,
+            java.lang.String protocol,
+            java.lang.String dynamicSuffix,
+            java.lang.String staticSuffix,
+            java.lang.Boolean indexToRoot,
+            java.lang.Boolean staticIndex,
+            java.lang.String localeAdmin,
+            java.lang.String localeFront,
+            java.lang.String tplSolution,
+            java.lang.Byte finalStep,
+            java.lang.Byte afterCheck,
+            java.lang.Boolean relativePath,
+            java.lang.Boolean recycleOn) {
+
+        this.setId(id);
+        this.setConfig(config);
+        this.setDomain(domain);
+        this.setPath(path);
+        this.setName(name);
+        this.setProtocol(protocol);
+        this.setDynamicSuffix(dynamicSuffix);
+        this.setStaticSuffix(staticSuffix);
+        this.setIndexToRoot(indexToRoot);
+        this.setStaticIndex(staticIndex);
+        this.setLocaleAdmin(localeAdmin);
+        this.setLocaleFront(localeFront);
+        this.setTplSolution(tplSolution);
+        this.setFinalStep(finalStep);
+        this.setAfterCheck(afterCheck);
+        this.setRelativePath(relativePath);
+        this.setRecycleOn(recycleOn);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+	public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+	public void setId(Integer siteId) {
+		this.id = siteId;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: domain
-	 */
-	public java.lang.String getDomain () {
-		return domain;
+	public Byte getAfterCheck() {
+		return this.afterCheck;
 	}
 
-	/**
-	 * Set the value related to the column: domain
-	 * @param domain the domain value
-	 */
-	public void setDomain (java.lang.String domain) {
-		this.domain = domain;
-	}
-
-
-	/**
-	 * Return the value associated with the column: site_path
-	 */
-	public java.lang.String getPath () {
-		return path;
-	}
-
-	/**
-	 * Set the value related to the column: site_path
-	 * @param path the site_path value
-	 */
-	public void setPath (java.lang.String path) {
-		this.path = path;
-	}
-
-
-	/**
-	 * Return the value associated with the column: site_name
-	 */
-	public java.lang.String getName () {
-		return name;
-	}
-
-	/**
-	 * Set the value related to the column: site_name
-	 * @param name the site_name value
-	 */
-	public void setName (java.lang.String name) {
-		this.name = name;
-	}
-
-
-	/**
-	 * Return the value associated with the column: short_name
-	 */
-	public java.lang.String getShortName () {
-		return shortName;
-	}
-
-	/**
-	 * Set the value related to the column: short_name
-	 * @param shortName the short_name value
-	 */
-	public void setShortName (java.lang.String shortName) {
-		this.shortName = shortName;
-	}
-
-
-	/**
-	 * Return the value associated with the column: protocol
-	 */
-	public java.lang.String getProtocol () {
-		return protocol;
-	}
-
-	/**
-	 * Set the value related to the column: protocol
-	 * @param protocol the protocol value
-	 */
-	public void setProtocol (java.lang.String protocol) {
-		this.protocol = protocol;
-	}
-
-
-	/**
-	 * Return the value associated with the column: dynamic_suffix
-	 */
-	public java.lang.String getDynamicSuffix () {
-		return dynamicSuffix;
-	}
-
-	/**
-	 * Set the value related to the column: dynamic_suffix
-	 * @param dynamicSuffix the dynamic_suffix value
-	 */
-	public void setDynamicSuffix (java.lang.String dynamicSuffix) {
-		this.dynamicSuffix = dynamicSuffix;
-	}
-
-
-	/**
-	 * Return the value associated with the column: static_suffix
-	 */
-	public java.lang.String getStaticSuffix () {
-		return staticSuffix;
-	}
-
-	/**
-	 * Set the value related to the column: static_suffix
-	 * @param staticSuffix the static_suffix value
-	 */
-	public void setStaticSuffix (java.lang.String staticSuffix) {
-		this.staticSuffix = staticSuffix;
-	}
-
-
-	/**
-	 * Return the value associated with the column: static_dir
-	 */
-	public java.lang.String getStaticDir () {
-		return staticDir;
-	}
-
-	/**
-	 * Set the value related to the column: static_dir
-	 * @param staticDir the static_dir value
-	 */
-	public void setStaticDir (java.lang.String staticDir) {
-		this.staticDir = staticDir;
-	}
-
-
-	/**
-	 * Return the value associated with the column: is_index_to_root
-	 */
-	public java.lang.Boolean getIndexToRoot () {
-		return indexToRoot;
-	}
-
-	/**
-	 * Set the value related to the column: is_index_to_root
-	 * @param indexToRoot the is_index_to_root value
-	 */
-	public void setIndexToRoot (java.lang.Boolean indexToRoot) {
-		this.indexToRoot = indexToRoot;
-	}
-
-
-	/**
-	 * Return the value associated with the column: is_static_index
-	 */
-	public java.lang.Boolean getStaticIndex () {
-		return staticIndex;
-	}
-
-	/**
-	 * Set the value related to the column: is_static_index
-	 * @param staticIndex the is_static_index value
-	 */
-	public void setStaticIndex (java.lang.Boolean staticIndex) {
-		this.staticIndex = staticIndex;
-	}
-
-
-	/**
-	 * Return the value associated with the column: locale_admin
-	 */
-	public java.lang.String getLocaleAdmin () {
-		return localeAdmin;
-	}
-
-	/**
-	 * Set the value related to the column: locale_admin
-	 * @param localeAdmin the locale_admin value
-	 */
-	public void setLocaleAdmin (java.lang.String localeAdmin) {
-		this.localeAdmin = localeAdmin;
-	}
-
-
-	/**
-	 * Return the value associated with the column: locale_front
-	 */
-	public java.lang.String getLocaleFront () {
-		return localeFront;
-	}
-
-	/**
-	 * Set the value related to the column: locale_front
-	 * @param localeFront the locale_front value
-	 */
-	public void setLocaleFront (java.lang.String localeFront) {
-		this.localeFront = localeFront;
-	}
-
-
-	/**
-	 * Return the value associated with the column: tpl_solution
-	 */
-	public java.lang.String getTplSolution () {
-		return tplSolution;
-	}
-
-	/**
-	 * Set the value related to the column: tpl_solution
-	 * @param tplSolution the tpl_solution value
-	 */
-	public void setTplSolution (java.lang.String tplSolution) {
-		this.tplSolution = tplSolution;
-	}
-
-
-	/**
-	 * Return the value associated with the column: final_step
-	 */
-	public java.lang.Byte getFinalStep () {
-		return finalStep;
-	}
-
-	/**
-	 * Set the value related to the column: final_step
-	 * @param finalStep the final_step value
-	 */
-	public void setFinalStep (java.lang.Byte finalStep) {
-		this.finalStep = finalStep;
-	}
-
-
-	/**
-	 * Return the value associated with the column: after_check
-	 */
-	public java.lang.Byte getAfterCheck () {
-		return afterCheck;
-	}
-
-	/**
-	 * Set the value related to the column: after_check
-	 * @param afterCheck the after_check value
-	 */
-	public void setAfterCheck (java.lang.Byte afterCheck) {
+	public void setAfterCheck(Byte afterCheck) {
 		this.afterCheck = afterCheck;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_relative_path
-	 */
-	public java.lang.Boolean getRelativePath () {
-		return relativePath;
+	public String getDomain() {
+		return this.domain;
 	}
 
-	/**
-	 * Set the value related to the column: is_relative_path
-	 * @param relativePath the is_relative_path value
-	 */
-	public void setRelativePath (java.lang.Boolean relativePath) {
-		this.relativePath = relativePath;
+	public void setDomain(String domain) {
+		this.domain = domain;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_recycle_on
-	 */
-	public java.lang.Boolean getResycleOn () {
-		return resycleOn;
+	public String getDomainAlias() {
+		return this.domainAlias;
 	}
 
-	/**
-	 * Set the value related to the column: is_recycle_on
-	 * @param resycleOn the is_recycle_on value
-	 */
-	public void setResycleOn (java.lang.Boolean resycleOn) {
-		this.resycleOn = resycleOn;
-	}
-
-
-	/**
-	 * Return the value associated with the column: domain_alias
-	 */
-	public java.lang.String getDomainAlias () {
-		return domainAlias;
-	}
-
-	/**
-	 * Set the value related to the column: domain_alias
-	 * @param domainAlias the domain_alias value
-	 */
-	public void setDomainAlias (java.lang.String domainAlias) {
+	public void setDomainAlias(String domainAlias) {
 		this.domainAlias = domainAlias;
 	}
 
-
-	/**
-	 * Return the value associated with the column: domain_redirect
-	 */
-	public java.lang.String getDomainRedirect () {
-		return domainRedirect;
+	public String getDomainRedirect() {
+		return this.domainRedirect;
 	}
 
-	/**
-	 * Set the value related to the column: domain_redirect
-	 * @param domainRedirect the domain_redirect value
-	 */
-	public void setDomainRedirect (java.lang.String domainRedirect) {
+	public void setDomainRedirect(String domainRedirect) {
 		this.domainRedirect = domainRedirect;
 	}
 
-
-	/**
-	 * Return the value associated with the column: ftp_upload_id
-	 */
-	public com.yunkuo.core.entity.Ftp getUploadFtp () {
-		return uploadFtp;
+	public String getDynamicSuffix() {
+		return this.dynamicSuffix;
 	}
 
-	/**
-	 * Set the value related to the column: ftp_upload_id
-	 * @param uploadFtp the ftp_upload_id value
-	 */
-	public void setUploadFtp (com.yunkuo.core.entity.Ftp uploadFtp) {
-		this.uploadFtp = uploadFtp;
+	public void setDynamicSuffix(String dynamicSuffix) {
+		this.dynamicSuffix = dynamicSuffix;
 	}
 
-
-	/**
-	 * Return the value associated with the column: config_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsConfig getConfig () {
-		return config;
+	public Byte getFinalStep() {
+		return this.finalStep;
 	}
 
-	/**
-	 * Set the value related to the column: config_id
-	 * @param config the config_id value
-	 */
-	public void setConfig (com.yunkuo.cms.entity.main.CmsConfig config) {
-		this.config = config;
+	public void setFinalStep(Byte finalStep) {
+		this.finalStep = finalStep;
 	}
 
-
-	/**
-	 * Return the value associated with the column: attr
-	 */
-	public java.util.Map<java.lang.String, java.lang.String> getAttr () {
-		return attr;
+	public Boolean getIndexToRoot() {
+		return this.indexToRoot;
 	}
 
-	/**
-	 * Set the value related to the column: attr
-	 * @param attr the attr value
-	 */
-	public void setAttr (java.util.Map<java.lang.String, java.lang.String> attr) {
-		this.attr = attr;
+	public void setIndexToRoot(Boolean isIndexToRoot) {
+		this.indexToRoot = isIndexToRoot;
 	}
 
-
-	/**
-	 * Return the value associated with the column: txt
-	 */
-	public java.util.Map<java.lang.String, java.lang.String> getTxt () {
-		return txt;
+	public Boolean getIsMaster() {
+		return this.isMaster;
 	}
 
-	/**
-	 * Set the value related to the column: txt
-	 * @param txt the txt value
-	 */
-	public void setTxt (java.util.Map<java.lang.String, java.lang.String> txt) {
-		this.txt = txt;
+	public void setIsMaster(Boolean isMaster) {
+		this.isMaster = isMaster;
 	}
 
-
-	/**
-	 * Return the value associated with the column: cfg
-	 */
-	public java.util.Map<java.lang.String, java.lang.String> getCfg () {
-		return cfg;
+	public Boolean getRecycleOn() {
+		return this.recycleOn;
 	}
 
-	/**
-	 * Set the value related to the column: cfg
-	 * @param cfg the cfg value
-	 */
-	public void setCfg (java.util.Map<java.lang.String, java.lang.String> cfg) {
-		this.cfg = cfg;
+	public void setRecycleOn(Boolean isRecycleOn) {
+		this.recycleOn = isRecycleOn;
 	}
 
-
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.main.CmsSite)) return false;
-		else {
-			com.yunkuo.cms.entity.main.CmsSite cmsSite = (com.yunkuo.cms.entity.main.CmsSite) obj;
-			if (null == this.getId() || null == cmsSite.getId()) return false;
-			else return (this.getId().equals(cmsSite.getId()));
-		}
+	public Boolean getRelativePath() {
+		return this.relativePath;
 	}
 
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
+	public void setRelativePath(Boolean isRelativePath) {
+		this.relativePath = isRelativePath;
 	}
 
-
-	public String toString () {
-		return super.toString();
+	public Boolean getStaticIndex() {
+		return this.staticIndex;
 	}
 
+	public void setStaticIndex(Boolean isStaticIndex) {
+		this.staticIndex = isStaticIndex;
+	}
+
+	public String getLocaleAdmin() {
+		return this.localeAdmin;
+	}
+
+	public void setLocaleAdmin(String localeAdmin) {
+		this.localeAdmin = localeAdmin;
+	}
+
+	public String getLocaleFront() {
+		return this.localeFront;
+	}
+
+	public void setLocaleFront(String localeFront) {
+		this.localeFront = localeFront;
+	}
+
+	public String getProtocol() {
+		return this.protocol;
+	}
+
+	public void setProtocol(String protocol) {
+		this.protocol = protocol;
+	}
+
+	public String getShortName() {
+		return this.shortName;
+	}
+
+	public void setShortName(String shortName) {
+		this.shortName = shortName;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String siteName) {
+		this.name = siteName;
+	}
+
+	public String getPath() {
+		return this.path;
+	}
+
+	public void setPath(String sitePath) {
+		this.path = sitePath;
+	}
+
+	public String getStaticDir() {
+		return this.staticDir;
+	}
+
+	public void setStaticDir(String staticDir) {
+		this.staticDir = staticDir;
+	}
+
+	public String getStaticSuffix() {
+		return this.staticSuffix;
+	}
+
+	public void setStaticSuffix(String staticSuffix) {
+		this.staticSuffix = staticSuffix;
+	}
+
+	public String getTplSolution() {
+		return this.tplSolution;
+	}
+
+	public void setTplSolution(String tplSolution) {
+		this.tplSolution = tplSolution;
+	}
+
+	/*public List<BaseChannel> getCmsChannels() {
+		return this.cmsChannels;
+	}
+
+	public void setCmsChannels(List<BaseChannel> cmsChannels) {
+		this.cmsChannels = cmsChannels;
+	}
+
+	public BaseChannel addCmsChannel(BaseChannel cmsChannel) {
+		getCmsChannels().add(cmsChannel);
+		cmsChannel.setCmsSite(this);
+
+		return cmsChannel;
+	}
+
+	public BaseChannel removeCmsChannel(BaseChannel cmsChannel) {
+		getCmsChannels().remove(cmsChannel);
+		cmsChannel.setCmsSite(null);
+
+		return cmsChannel;
+	}
+
+	public List<CmsLog> getCmsLogs() {
+		return this.cmsLogs;
+	}
+
+	public void setCmsLogs(List<CmsLog> cmsLogs) {
+		this.cmsLogs = cmsLogs;
+	}
+
+	public CmsLog addCmsLog(CmsLog cmsLog) {
+		getCmsLogs().add(cmsLog);
+		cmsLog.setCmsSite(this);
+
+		return cmsLog;
+	}
+
+	public CmsLog removeCmsLog(CmsLog cmsLog) {
+		getCmsLogs().remove(cmsLog);
+		cmsLog.setCmsSite(null);
+
+		return cmsLog;
+	}
+
+	public List<CmsAcquisition> getCmsAcquisitions() {
+		return this.cmsAcquisitions;
+	}
+
+	public void setCmsAcquisitions(List<CmsAcquisition> cmsAcquisitions) {
+		this.cmsAcquisitions = cmsAcquisitions;
+	}
+
+	public CmsAcquisition addCmsAcquisition(CmsAcquisition cmsAcquisition) {
+		getCmsAcquisitions().add(cmsAcquisition);
+		cmsAcquisition.setCmsSite(this);
+
+		return cmsAcquisition;
+	}
+
+	public CmsAcquisition removeCmsAcquisition(CmsAcquisition cmsAcquisition) {
+		getCmsAcquisitions().remove(cmsAcquisition);
+		cmsAcquisition.setCmsSite(null);
+
+		return cmsAcquisition;
+	}
+
+	public List<CmsAcquisitionTemp> getCmsAcquisitionTemps() {
+		return this.cmsAcquisitionTemps;
+	}
+
+	public void setCmsAcquisitionTemps(List<CmsAcquisitionTemp> cmsAcquisitionTemps) {
+		this.cmsAcquisitionTemps = cmsAcquisitionTemps;
+	}
+
+	public CmsAcquisitionTemp addCmsAcquisitionTemp(CmsAcquisitionTemp cmsAcquisitionTemp) {
+		getCmsAcquisitionTemps().add(cmsAcquisitionTemp);
+		cmsAcquisitionTemp.setCmsSite(this);
+
+		return cmsAcquisitionTemp;
+	}
+
+	public CmsAcquisitionTemp removeCmsAcquisitionTemp(CmsAcquisitionTemp cmsAcquisitionTemp) {
+		getCmsAcquisitionTemps().remove(cmsAcquisitionTemp);
+		cmsAcquisitionTemp.setCmsSite(null);
+
+		return cmsAcquisitionTemp;
+	}
+
+	public List<CmsAdvertising> getCmsAdvertisings() {
+		return this.cmsAdvertisings;
+	}
+
+	public void setCmsAdvertisings(List<CmsAdvertising> cmsAdvertisings) {
+		this.cmsAdvertisings = cmsAdvertisings;
+	}
+
+	public CmsAdvertising addCmsAdvertising(CmsAdvertising cmsAdvertising) {
+		getCmsAdvertisings().add(cmsAdvertising);
+		cmsAdvertising.setCmsSite(this);
+
+		return cmsAdvertising;
+	}
+
+	public CmsAdvertising removeCmsAdvertising(CmsAdvertising cmsAdvertising) {
+		getCmsAdvertisings().remove(cmsAdvertising);
+		cmsAdvertising.setCmsSite(null);
+
+		return cmsAdvertising;
+	}
+
+	public List<CmsAdvertisingSpace> getCmsAdvertisingSpaces() {
+		return this.cmsAdvertisingSpaces;
+	}
+
+	public void setCmsAdvertisingSpaces(List<CmsAdvertisingSpace> cmsAdvertisingSpaces) {
+		this.cmsAdvertisingSpaces = cmsAdvertisingSpaces;
+	}
+
+	public CmsAdvertisingSpace addCmsAdvertisingSpace(CmsAdvertisingSpace cmsAdvertisingSpace) {
+		getCmsAdvertisingSpaces().add(cmsAdvertisingSpace);
+		cmsAdvertisingSpace.setCmsSite(this);
+
+		return cmsAdvertisingSpace;
+	}
+
+	public CmsAdvertisingSpace removeCmsAdvertisingSpace(CmsAdvertisingSpace cmsAdvertisingSpace) {
+		getCmsAdvertisingSpaces().remove(cmsAdvertisingSpace);
+		cmsAdvertisingSpace.setCmsSite(null);
+
+		return cmsAdvertisingSpace;
+	}
+
+	public List<CmsComment> getCmsComments() {
+		return this.cmsComments;
+	}
+
+	public void setCmsComments(List<CmsComment> cmsComments) {
+		this.cmsComments = cmsComments;
+	}
+
+	public CmsComment addCmsComment(CmsComment cmsComment) {
+		getCmsComments().add(cmsComment);
+		cmsComment.setCmsSite(this);
+
+		return cmsComment;
+	}
+
+	public CmsComment removeCmsComment(CmsComment cmsComment) {
+		getCmsComments().remove(cmsComment);
+		cmsComment.setCmsSite(null);
+
+		return cmsComment;
+	}
+
+	public List<CmsContent> getCmsContents() {
+		return this.cmsContents;
+	}
+
+	public void setCmsContents(List<CmsContent> cmsContents) {
+		this.cmsContents = cmsContents;
+	}
+
+	public CmsContent addCmsContent(CmsContent cmsContent) {
+		getCmsContents().add(cmsContent);
+		cmsContent.setCmsSite(this);
+
+		return cmsContent;
+	}
+
+	public CmsContent removeCmsContent(CmsContent cmsContent) {
+		getCmsContents().remove(cmsContent);
+		cmsContent.setCmsSite(null);
+
+		return cmsContent;
+	}
+
+	public List<CmsDepartment> getCmsDepartments() {
+		return this.cmsDepartments;
+	}
+
+	public void setCmsDepartments(List<CmsDepartment> cmsDepartments) {
+		this.cmsDepartments = cmsDepartments;
+	}
+
+	public CmsDepartment addCmsDepartment(CmsDepartment cmsDepartment) {
+		getCmsDepartments().add(cmsDepartment);
+		cmsDepartment.setCmsSite(this);
+
+		return cmsDepartment;
+	}
+
+	public CmsDepartment removeCmsDepartment(CmsDepartment cmsDepartment) {
+		getCmsDepartments().remove(cmsDepartment);
+		cmsDepartment.setCmsSite(null);
+
+		return cmsDepartment;
+	}
+
+	public List<CmsFriendlink> getCmsFriendlinks() {
+		return this.cmsFriendlinks;
+	}
+
+	public void setCmsFriendlinks(List<CmsFriendlink> cmsFriendlinks) {
+		this.cmsFriendlinks = cmsFriendlinks;
+	}
+
+	public CmsFriendlink addCmsFriendlink(CmsFriendlink cmsFriendlink) {
+		getCmsFriendlinks().add(cmsFriendlink);
+		cmsFriendlink.setCmsSite(this);
+
+		return cmsFriendlink;
+	}
+
+	public CmsFriendlink removeCmsFriendlink(CmsFriendlink cmsFriendlink) {
+		getCmsFriendlinks().remove(cmsFriendlink);
+		cmsFriendlink.setCmsSite(null);
+
+		return cmsFriendlink;
+	}
+
+	public List<CmsFriendlinkCtg> getCmsFriendlinkCtgs() {
+		return this.cmsFriendlinkCtgs;
+	}
+
+	public void setCmsFriendlinkCtgs(List<CmsFriendlinkCtg> cmsFriendlinkCtgs) {
+		this.cmsFriendlinkCtgs = cmsFriendlinkCtgs;
+	}
+
+	public CmsFriendlinkCtg addCmsFriendlinkCtg(CmsFriendlinkCtg cmsFriendlinkCtg) {
+		getCmsFriendlinkCtgs().add(cmsFriendlinkCtg);
+		cmsFriendlinkCtg.setCmsSite(this);
+
+		return cmsFriendlinkCtg;
+	}
+
+	public CmsFriendlinkCtg removeCmsFriendlinkCtg(CmsFriendlinkCtg cmsFriendlinkCtg) {
+		getCmsFriendlinkCtgs().remove(cmsFriendlinkCtg);
+		cmsFriendlinkCtg.setCmsSite(null);
+
+		return cmsFriendlinkCtg;
+	}
+
+	public List<CmsGuestbook> getCmsGuestbooks() {
+		return this.cmsGuestbooks;
+	}
+
+	public void setCmsGuestbooks(List<CmsGuestbook> cmsGuestbooks) {
+		this.cmsGuestbooks = cmsGuestbooks;
+	}
+
+	public CmsGuestbook addCmsGuestbook(CmsGuestbook cmsGuestbook) {
+		getCmsGuestbooks().add(cmsGuestbook);
+		cmsGuestbook.setCmsSite(this);
+
+		return cmsGuestbook;
+	}
+
+	public CmsGuestbook removeCmsGuestbook(CmsGuestbook cmsGuestbook) {
+		getCmsGuestbooks().remove(cmsGuestbook);
+		cmsGuestbook.setCmsSite(null);
+
+		return cmsGuestbook;
+	}
+
+	public List<CmsGuestbookCtg> getCmsGuestbookCtgs() {
+		return this.cmsGuestbookCtgs;
+	}
+
+	public void setCmsGuestbookCtgs(List<CmsGuestbookCtg> cmsGuestbookCtgs) {
+		this.cmsGuestbookCtgs = cmsGuestbookCtgs;
+	}
+
+	public CmsGuestbookCtg addCmsGuestbookCtg(CmsGuestbookCtg cmsGuestbookCtg) {
+		getCmsGuestbookCtgs().add(cmsGuestbookCtg);
+		cmsGuestbookCtg.setCmsSite(this);
+
+		return cmsGuestbookCtg;
+	}
+
+	public CmsGuestbookCtg removeCmsGuestbookCtg(CmsGuestbookCtg cmsGuestbookCtg) {
+		getCmsGuestbookCtgs().remove(cmsGuestbookCtg);
+		cmsGuestbookCtg.setCmsSite(null);
+
+		return cmsGuestbookCtg;
+	}
+
+	public List<CmsKeyword> getCmsKeywords() {
+		return this.cmsKeywords;
+	}
+
+	public void setCmsKeywords(List<CmsKeyword> cmsKeywords) {
+		this.cmsKeywords = cmsKeywords;
+	}
+
+	public CmsKeyword addCmsKeyword(CmsKeyword cmsKeyword) {
+		getCmsKeywords().add(cmsKeyword);
+		cmsKeyword.setCmsSite(this);
+
+		return cmsKeyword;
+	}
+
+	public CmsKeyword removeCmsKeyword(CmsKeyword cmsKeyword) {
+		getCmsKeywords().remove(cmsKeyword);
+		cmsKeyword.setCmsSite(null);
+
+		return cmsKeyword;
+	}
+
+	public List<CmsMessage> getCmsMessages() {
+		return this.cmsMessages;
+	}
+
+	public void setCmsMessages(List<CmsMessage> cmsMessages) {
+		this.cmsMessages = cmsMessages;
+	}
+
+	public CmsMessage addCmsMessage(CmsMessage cmsMessage) {
+		getCmsMessages().add(cmsMessage);
+		cmsMessage.setCmsSite(this);
+
+		return cmsMessage;
+	}
+
+	public CmsMessage removeCmsMessage(CmsMessage cmsMessage) {
+		getCmsMessages().remove(cmsMessage);
+		cmsMessage.setCmsSite(null);
+
+		return cmsMessage;
+	}
+
+	public List<CmsReceiverMessage> getCmsReceiverMessages() {
+		return this.cmsReceiverMessages;
+	}
+
+	public void setCmsReceiverMessages(List<CmsReceiverMessage> cmsReceiverMessages) {
+		this.cmsReceiverMessages = cmsReceiverMessages;
+	}
+
+	public CmsReceiverMessage addCmsReceiverMessage(CmsReceiverMessage cmsReceiverMessage) {
+		getCmsReceiverMessages().add(cmsReceiverMessage);
+		cmsReceiverMessage.setCmsSite(this);
+
+		return cmsReceiverMessage;
+	}
+
+	public CmsReceiverMessage removeCmsReceiverMessage(CmsReceiverMessage cmsReceiverMessage) {
+		getCmsReceiverMessages().remove(cmsReceiverMessage);
+		cmsReceiverMessage.setCmsSite(null);
+
+		return cmsReceiverMessage;
+	}
+
+	public List<CmsRole> getCmsRoles() {
+		return this.cmsRoles;
+	}
+
+	public void setCmsRoles(List<CmsRole> cmsRoles) {
+		this.cmsRoles = cmsRoles;
+	}
+
+	public CmsRole addCmsRole(CmsRole cmsRole) {
+		getCmsRoles().add(cmsRole);
+		cmsRole.setCmsSite(this);
+
+		return cmsRole;
+	}
+
+	public CmsRole removeCmsRole(CmsRole cmsRole) {
+		getCmsRoles().remove(cmsRole);
+		cmsRole.setCmsSite(null);
+
+		return cmsRole;
+	}*/
+
+	public CmsConfig getConfig() {
+		return this.config;
+	}
+
+	public void setConfig(CmsConfig cmsConfig) {
+		this.config = cmsConfig;
+	}
+
+	/*public List<CmsSiteAttr> getCmsSiteAttrs() {
+		return this.cmsSiteAttrs;
+	}
+
+	public void setCmsSiteAttrs(List<CmsSiteAttr> cmsSiteAttrs) {
+		this.cmsSiteAttrs = cmsSiteAttrs;
+	}
+
+	public CmsSiteAttr addCmsSiteAttr(CmsSiteAttr cmsSiteAttr) {
+		getCmsSiteAttrs().add(cmsSiteAttr);
+		cmsSiteAttr.setCmsSite(this);
+
+		return cmsSiteAttr;
+	}
+
+	public CmsSiteAttr removeCmsSiteAttr(CmsSiteAttr cmsSiteAttr) {
+		getCmsSiteAttrs().remove(cmsSiteAttr);
+		cmsSiteAttr.setCmsSite(null);
+
+		return cmsSiteAttr;
+	}
+
+	public List<CmsSiteCfg> getCmsSiteCfgs() {
+		return this.cmsSiteCfgs;
+	}
+
+	public void setCmsSiteCfgs(List<CmsSiteCfg> cmsSiteCfgs) {
+		this.cmsSiteCfgs = cmsSiteCfgs;
+	}
+
+	public CmsSiteCfg addCmsSiteCfg(CmsSiteCfg cmsSiteCfg) {
+		getCmsSiteCfgs().add(cmsSiteCfg);
+		cmsSiteCfg.setCmsSite(this);
+
+		return cmsSiteCfg;
+	}
+
+	public CmsSiteCfg removeCmsSiteCfg(CmsSiteCfg cmsSiteCfg) {
+		getCmsSiteCfgs().remove(cmsSiteCfg);
+		cmsSiteCfg.setCmsSite(null);
+
+		return cmsSiteCfg;
+	}
+
+	public List<CmsSiteFlow> getCmsSiteFlows() {
+		return this.cmsSiteFlows;
+	}
+
+	public void setCmsSiteFlows(List<CmsSiteFlow> cmsSiteFlows) {
+		this.cmsSiteFlows = cmsSiteFlows;
+	}
+
+	public CmsSiteFlow addCmsSiteFlow(CmsSiteFlow cmsSiteFlow) {
+		getCmsSiteFlows().add(cmsSiteFlow);
+		cmsSiteFlow.setCmsSite(this);
+
+		return cmsSiteFlow;
+	}
+
+	public CmsSiteFlow removeCmsSiteFlow(CmsSiteFlow cmsSiteFlow) {
+		getCmsSiteFlows().remove(cmsSiteFlow);
+		cmsSiteFlow.setCmsSite(null);
+
+		return cmsSiteFlow;
+	}
+
+	public List<CmsSiteTxt> getCmsSiteTxts() {
+		return this.cmsSiteTxts;
+	}
+
+	public void setCmsSiteTxts(List<CmsSiteTxt> cmsSiteTxts) {
+		this.cmsSiteTxts = cmsSiteTxts;
+	}
+
+	public CmsSiteTxt addCmsSiteTxt(CmsSiteTxt cmsSiteTxt) {
+		getCmsSiteTxts().add(cmsSiteTxt);
+		cmsSiteTxt.setCmsSite(this);
+
+		return cmsSiteTxt;
+	}
+
+	public CmsSiteTxt removeCmsSiteTxt(CmsSiteTxt cmsSiteTxt) {
+		getCmsSiteTxts().remove(cmsSiteTxt);
+		cmsSiteTxt.setCmsSite(null);
+
+		return cmsSiteTxt;
+	}
+
+	public List<CmsUserSite> getCmsUserSites() {
+		return this.cmsUserSites;
+	}
+
+	public void setCmsUserSites(List<CmsUserSite> cmsUserSites) {
+		this.cmsUserSites = cmsUserSites;
+	}
+
+	public CmsUserSite addCmsUserSite(CmsUserSite cmsUserSite) {
+		getCmsUserSites().add(cmsUserSite);
+		cmsUserSite.setCmsSite(this);
+
+		return cmsUserSite;
+	}
+
+	public CmsUserSite removeCmsUserSite(CmsUserSite cmsUserSite) {
+		getCmsUserSites().remove(cmsUserSite);
+		cmsUserSite.setCmsSite(null);
+
+		return cmsUserSite;
+	}
+
+	public List<CmsVoteTopic> getCmsVoteTopics() {
+		return this.cmsVoteTopics;
+	}
+
+	public void setCmsVoteTopics(List<CmsVoteTopic> cmsVoteTopics) {
+		this.cmsVoteTopics = cmsVoteTopics;
+	}
+
+	public CmsVoteTopic addCmsVoteTopic(CmsVoteTopic cmsVoteTopic) {
+		getCmsVoteTopics().add(cmsVoteTopic);
+		cmsVoteTopic.setCmsSite(this);
+
+		return cmsVoteTopic;
+	}
+
+	public CmsVoteTopic removeCmsVoteTopic(CmsVoteTopic cmsVoteTopic) {
+		getCmsVoteTopics().remove(cmsVoteTopic);
+		cmsVoteTopic.setCmsSite(null);
+
+		return cmsVoteTopic;
+	}*/
 
 }

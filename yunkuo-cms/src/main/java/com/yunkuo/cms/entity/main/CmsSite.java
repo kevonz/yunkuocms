@@ -1,16 +1,17 @@
 package com.yunkuo.cms.entity.main;
 
-import static com.yunkuo.cms.constant.Constants.RES_PATH;
-import static com.yunkuo.cms.constant.Constants.TPL_BASE;
-import static com.yunkuo.cms.constant.Constants.UPLOAD_PATH;
-import static com.yunkuo.common.web.Constants.DEFAULT;
-
-import java.util.Collection;
-
+import com.yunkuo.cms.entity.main.base.BaseCmsSite;
 import org.apache.commons.lang.StringUtils;
 
-import com.yunkuo.cms.entity.main.base.BaseCmsSite;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.util.Collection;
 
+import static com.yunkuo.cms.constant.Constants.*;
+import static com.yunkuo.common.web.Constants.DEFAULT;
+
+@Entity
+@Table(name="cms_site")
 public class CmsSite extends BaseCmsSite {
 	private static final long serialVersionUID = 1L;
 
