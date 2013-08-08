@@ -1,19 +1,19 @@
 package com.yunkuo.cms.manager.main.impl;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.yunkuo.cms.dao.main.CmsTopicDao;
 import com.yunkuo.cms.entity.main.Channel;
 import com.yunkuo.cms.entity.main.CmsTopic;
+import com.yunkuo.cms.entity.main.Content;
 import com.yunkuo.cms.manager.main.ChannelMng;
 import com.yunkuo.cms.manager.main.CmsTopicMng;
 import com.yunkuo.cms.service.ChannelDeleteChecker;
 import com.yunkuo.common.hibernate3.Updater;
 import com.yunkuo.common.page.Pagination;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -72,9 +72,14 @@ public class CmsTopicMngImpl implements CmsTopicMng, ChannelDeleteChecker {
 	}
 
 	public CmsTopic deleteById(Integer id) {
-		dao.deleteContentRef(id);
-		CmsTopic bean = dao.deleteById(id);
-		return bean;
+        CmsTopic tp = dao.findById(id);
+        for(Content content : tp.getContents()){
+            content.getTopics().remove(tp);
+        }
+        return dao.deleteById(id);
+	    //	dao.deleteContentRef(id);
+		//CmsTopic bean = dao.deleteById(id);
+		//return bean;
 	}
 
 	public CmsTopic[] deleteByIds(Integer[] ids) {

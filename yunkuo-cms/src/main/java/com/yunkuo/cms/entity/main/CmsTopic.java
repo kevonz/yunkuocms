@@ -1,11 +1,14 @@
 package com.yunkuo.cms.entity.main;
 
-import java.util.Collection;
-
+import com.yunkuo.cms.entity.main.base.BaseCmsTopic;
 import org.apache.commons.lang.StringUtils;
 
-import com.yunkuo.cms.entity.main.base.BaseCmsTopic;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.util.Collection;
 
+@Entity
+@Table(name="cms_topic")
 public class CmsTopic extends BaseCmsTopic {
 	private static final long serialVersionUID = 1L;
 

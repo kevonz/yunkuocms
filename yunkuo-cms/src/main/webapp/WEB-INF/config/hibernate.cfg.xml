@@ -29,6 +29,7 @@
         <mapping class="com.yunkuo.cms.entity.main.CmsRolePermission" />
         <mapping class="com.yunkuo.cms.entity.main.CmsModel" />
         <mapping class="com.yunkuo.cms.entity.main.CmsModelItem" />
+        <mapping class="com.yunkuo.cms.entity.main.CmsTopic" />
     </session-factory>
 
          

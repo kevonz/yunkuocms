@@ -1,295 +1,196 @@
 package com.yunkuo.cms.entity.main.base;
 
+import com.yunkuo.cms.entity.main.Channel;
+import com.yunkuo.cms.entity.main.CmsTopic;
+import com.yunkuo.cms.entity.main.Content;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 /**
- * This is an object that contains data related to the cms_topic table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_topic"
+ * The persistent class for the cms_topic database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_topic")*/
+@MappedSuperclass
+public class BaseCmsTopic implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsTopic  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="topic_id")
+	private Integer id;
 
-	public static String REF = "CmsTopic";
-	public static String PROP_RECOMMEND = "recommend";
-	public static String PROP_DESCRIPTION = "description";
-	public static String PROP_TITLE_IMG = "titleImg";
-	public static String PROP_SHORT_NAME = "shortName";
-	public static String PROP_KEYWORDS = "keywords";
-	public static String PROP_CHANNEL = "channel";
-	public static String PROP_PRIORITY = "priority";
-	public static String PROP_NAME = "name";
-	public static String PROP_ID = "id";
-	public static String PROP_TPL_CONTENT = "tplContent";
-	public static String PROP_CONTENT_IMG = "contentImg";
+	@Column(name="content_img")
+	private String contentImg;
 
+	private String description;
+
+	@Column(name="is_recommend")
+	private Boolean recommend;
+
+	private String keywords;
+
+	private Integer priority;
+
+	@Column(name="short_name")
+	private String shortName;
+
+	@Column(name="title_img")
+	private String titleImg;
+
+	@Column(name="topic_name")
+	private String name;
+
+	@Column(name="tpl_content")
+	private String tplContent;
+
+	//bi-directional many-to-many association to CmsContent
+	@ManyToMany(mappedBy="topics")
+	private List<Content> contents;
+
+	//bi-directional many-to-one association to BaseChannel
+	@ManyToOne
+	@JoinColumn(name="channel_id")
+	private Channel channel;
 
 	// constructors
-	public BaseCmsTopic () {
-		initialize();
-	}
+    public BaseCmsTopic () {
+        initialize();
+    }
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsTopic (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
-
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsTopic (
-		java.lang.Integer id,
-		java.lang.String name,
-		java.lang.Integer priority,
-		java.lang.Boolean recommend) {
-
-		this.setId(id);
-		this.setName(name);
-		this.setPriority(priority);
-		this.setRecommend(recommend);
-		initialize();
-	}
-
-	protected void initialize () {}
-
-
-
-	private int hashCode = Integer.MIN_VALUE;
-
-	// primary key
-	private java.lang.Integer id;
-
-	// fields
-	private java.lang.String name;
-	private java.lang.String shortName;
-	private java.lang.String keywords;
-	private java.lang.String description;
-	private java.lang.String titleImg;
-	private java.lang.String contentImg;
-	private java.lang.String tplContent;
-	private java.lang.Integer priority;
-	private java.lang.Boolean recommend;
-
-	// many to one
-	private com.yunkuo.cms.entity.main.Channel channel;
-
-
-
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="identity"
-     *  column="topic_id"
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsTopic (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsTopic (
+            java.lang.Integer id,
+            java.lang.String name,
+            java.lang.Integer priority,
+            java.lang.Boolean recommend) {
+
+        this.setId(id);
+        this.setName(name);
+        this.setPriority(priority);
+        this.setRecommend(recommend);
+        initialize();
+    }
+
+    protected void initialize () {}
+    public boolean equals (Object obj) {
+        if (null == obj) return false;
+        if (!(obj instanceof CmsTopic)) return false;
+        else {
+            CmsTopic cmsTopic = (CmsTopic) obj;
+            if (null == this.getId() || null == cmsTopic.getId()) return false;
+            else return (this.getId().equals(cmsTopic.getId()));
+        }
+    }
+
+	public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+	public void setId(Integer topicId) {
+		this.id = topicId;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: topic_name
-	 */
-	public java.lang.String getName () {
-		return name;
+	public String getContentImg() {
+		return this.contentImg;
 	}
 
-	/**
-	 * Set the value related to the column: topic_name
-	 * @param name the topic_name value
-	 */
-	public void setName (java.lang.String name) {
-		this.name = name;
-	}
-
-
-	/**
-	 * Return the value associated with the column: short_name
-	 */
-	public java.lang.String getShortName () {
-		return shortName;
-	}
-
-	/**
-	 * Set the value related to the column: short_name
-	 * @param shortName the short_name value
-	 */
-	public void setShortName (java.lang.String shortName) {
-		this.shortName = shortName;
-	}
-
-
-	/**
-	 * Return the value associated with the column: keywords
-	 */
-	public java.lang.String getKeywords () {
-		return keywords;
-	}
-
-	/**
-	 * Set the value related to the column: keywords
-	 * @param keywords the keywords value
-	 */
-	public void setKeywords (java.lang.String keywords) {
-		this.keywords = keywords;
-	}
-
-
-	/**
-	 * Return the value associated with the column: description
-	 */
-	public java.lang.String getDescription () {
-		return description;
-	}
-
-	/**
-	 * Set the value related to the column: description
-	 * @param description the description value
-	 */
-	public void setDescription (java.lang.String description) {
-		this.description = description;
-	}
-
-
-	/**
-	 * Return the value associated with the column: title_img
-	 */
-	public java.lang.String getTitleImg () {
-		return titleImg;
-	}
-
-	/**
-	 * Set the value related to the column: title_img
-	 * @param titleImg the title_img value
-	 */
-	public void setTitleImg (java.lang.String titleImg) {
-		this.titleImg = titleImg;
-	}
-
-
-	/**
-	 * Return the value associated with the column: content_img
-	 */
-	public java.lang.String getContentImg () {
-		return contentImg;
-	}
-
-	/**
-	 * Set the value related to the column: content_img
-	 * @param contentImg the content_img value
-	 */
-	public void setContentImg (java.lang.String contentImg) {
+	public void setContentImg(String contentImg) {
 		this.contentImg = contentImg;
 	}
 
-
-	/**
-	 * Return the value associated with the column: tpl_content
-	 */
-	public java.lang.String getTplContent () {
-		return tplContent;
+	public String getDescription() {
+		return this.description;
 	}
 
-	/**
-	 * Set the value related to the column: tpl_content
-	 * @param tplContent the tpl_content value
-	 */
-	public void setTplContent (java.lang.String tplContent) {
-		this.tplContent = tplContent;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-
-	/**
-	 * Return the value associated with the column: priority
-	 */
-	public java.lang.Integer getPriority () {
-		return priority;
+	public Boolean getRecommend() {
+		return this.recommend;
 	}
 
-	/**
-	 * Set the value related to the column: priority
-	 * @param priority the priority value
-	 */
-	public void setPriority (java.lang.Integer priority) {
+	public void setRecommend(Boolean isRecommend) {
+		this.recommend = isRecommend;
+	}
+
+	public String getKeywords() {
+		return this.keywords;
+	}
+
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+	}
+
+	public Integer getPriority() {
+		return this.priority;
+	}
+
+	public void setPriority(Integer priority) {
 		this.priority = priority;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_recommend
-	 */
-	public java.lang.Boolean getRecommend () {
-		return recommend;
+	public String getShortName() {
+		return this.shortName;
 	}
 
-	/**
-	 * Set the value related to the column: is_recommend
-	 * @param recommend the is_recommend value
-	 */
-	public void setRecommend (java.lang.Boolean recommend) {
-		this.recommend = recommend;
+	public void setShortName(String shortName) {
+		this.shortName = shortName;
 	}
 
-
-	/**
-	 * Return the value associated with the column: channel_id
-	 */
-	public com.yunkuo.cms.entity.main.Channel getChannel () {
-		return channel;
+	public String getTitleImg() {
+		return this.titleImg;
 	}
 
-	/**
-	 * Set the value related to the column: channel_id
-	 * @param channel the channel_id value
-	 */
-	public void setChannel (com.yunkuo.cms.entity.main.Channel channel) {
-		this.channel = channel;
+	public void setTitleImg(String titleImg) {
+		this.titleImg = titleImg;
 	}
 
-
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.main.CmsTopic)) return false;
-		else {
-			com.yunkuo.cms.entity.main.CmsTopic cmsTopic = (com.yunkuo.cms.entity.main.CmsTopic) obj;
-			if (null == this.getId() || null == cmsTopic.getId()) return false;
-			else return (this.getId().equals(cmsTopic.getId()));
-		}
+	public String getName() {
+		return this.name;
 	}
 
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
+	public void setName(String topicName) {
+		this.name = topicName;
 	}
 
-
-	public String toString () {
-		return super.toString();
+	public String getTplContent() {
+		return this.tplContent;
 	}
 
+	public void setTplContent(String tplContent) {
+		this.tplContent = tplContent;
+	}
+
+	public List<Content> getContents() {
+		return this.contents;
+	}
+
+	public void setContents(List<Content> cmsContents) {
+		this.contents = cmsContents;
+	}
+
+	public Channel getChannel() {
+		return this.channel;
+	}
+
+	public void setChannel(Channel cmsChannel) {
+		this.channel = cmsChannel;
+	}
 
 }
