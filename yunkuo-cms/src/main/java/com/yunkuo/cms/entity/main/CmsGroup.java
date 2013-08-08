@@ -13,6 +13,11 @@ import com.yunkuo.cms.entity.main.base.BaseCmsGroup;
 import com.yunkuo.common.hibernate3.PriorityComparator;
 import com.yunkuo.common.hibernate3.PriorityInterface;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="cms_group")
 public class CmsGroup extends BaseCmsGroup implements PriorityInterface {
 	private static final long serialVersionUID = 1L;
 
