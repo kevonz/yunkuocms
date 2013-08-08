@@ -1,413 +1,488 @@
 package com.yunkuo.cms.entity.main.base;
 
+import com.yunkuo.cms.entity.main.CmsSite;
+import com.yunkuo.cms.entity.main.EmailConfig;
+import com.yunkuo.cms.entity.main.MarkConfig;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.hql.ast.tree.MapValueNode;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**
- * This is an object that contains data related to the cms_config table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_config"
+ * The persistent class for the cms_config database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_config")*/
+@MappedSuperclass
+public class BaseCmsConfig implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsConfig  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="config_id")
+	private Integer id;
 
-	public static String REF = "CmsConfig";
-	public static String PROP_LOGIN_URL = "loginUrl";
-	public static String PROP_COLOR = "color";
-	public static String PROP_PROCESS_URL = "processUrl";
-	public static String PROP_ALPHA = "alpha";
-	public static String PROP_DEF_IMG = "defImg";
-	public static String PROP_COUNT_CLEAR_TIME = "countClearTime";
-	public static String PROP_COUNT_COPY_TIME = "countCopyTime";
-	public static String PROP_PORT = "port";
-	public static String PROP_DB_FILE_URI = "dbFileUri";
-	public static String PROP_CONTEXT_PATH = "contextPath";
-	public static String PROP_PASSWORD = "password";
-	public static String PROP_OFFSET_X = "offsetX";
-	public static String PROP_SERVLET_POINT = "servletPoint";
-	public static String PROP_MIN_HEIGHT = "minHeight";
-	public static String PROP_CONTENT = "content";
-	public static String PROP_ON = "on";
-	public static String PROP_DOWNLOAD_CODE = "downloadCode";
-	public static String PROP_DOWNLOAD_TIME = "downloadTime";
-	public static String PROP_HOST = "host";
-	public static String PROP_POS = "pos";
-	public static String PROP_MIN_WIDTH = "minWidth";
-	public static String PROP_OFFSET_Y = "offsetY";
-	public static String PROP_ENCODING = "encoding";
-	public static String PROP_SIZE = "size";
-	public static String PROP_IMAGE_PATH = "imagePath";
-	public static String PROP_PERSONAL = "personal";
-	public static String PROP_UPLOAD_TO_DB = "uploadToDb";
-	public static String PROP_ID = "id";
-	public static String PROP_USERNAME = "username";
+	@Column(name="context_path")
+	private String contextPath;
 
+	@Temporal(TemporalType.DATE)
+	@Column(name="count_clear_time")
+	private Date countClearTime;
 
-	// constructors
-	public BaseCmsConfig () {
-		initialize();
-	}
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="count_copy_time")
+	private Date countCopyTime;
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsConfig (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+	@Column(name="db_file_uri")
+	private String dbFileUri;
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsConfig (
-		java.lang.Integer id,
-		java.lang.String dbFileUri,
-		java.lang.Boolean uploadToDb,
-		java.lang.String defImg,
-		java.lang.String loginUrl,
-		java.util.Date countClearTime,
-		java.util.Date countCopyTime,
-		java.lang.String downloadCode,
-		java.lang.Integer downloadTime) {
+	@Column(name="def_img")
+	private String defImg;
 
-		this.setId(id);
-		this.setDbFileUri(dbFileUri);
-		this.setUploadToDb(uploadToDb);
-		this.setDefImg(defImg);
-		this.setLoginUrl(loginUrl);
-		this.setCountClearTime(countClearTime);
-		this.setCountCopyTime(countCopyTime);
-		this.setDownloadCode(downloadCode);
-		this.setDownloadTime(downloadTime);
-		initialize();
-	}
+	@Column(name="download_code")
+	private String downloadCode;
 
-	protected void initialize () {}
+	@Column(name="download_time")
+	private Integer downloadTime;
 
+	@Column(name="email_encoding")
+	private String emailEncoding;
 
+	@Column(name="email_host")
+	private String host;
 
-	private int hashCode = Integer.MIN_VALUE;
+	@Column(name="email_password")
+	private String password;
 
-	// primary key
-	private java.lang.Integer id;
+	@Column(name="email_personal")
+	private String personal;
 
-	// fields
-	private java.lang.String contextPath;
-	private java.lang.String servletPoint;
-	private java.lang.Integer port;
-	private java.lang.String dbFileUri;
-	private java.lang.Boolean uploadToDb;
-	private java.lang.String defImg;
-	private java.lang.String loginUrl;
-	private java.lang.String processUrl;
-	private java.util.Date countClearTime;
-	private java.util.Date countCopyTime;
-	private java.lang.String downloadCode;
-	private java.lang.Integer downloadTime;
-	private java.lang.Boolean emailValidate;
+	@Column(name="email_username")
+	private String username;
 
-	// components
-	 com.yunkuo.cms.entity.main.MarkConfig m_markConfig;
-	 com.yunkuo.cms.entity.main.EmailConfig m_emailConfig;
+	@Column(name="email_validate")
+	private Boolean emailValidate;
 
-	// collections
-	private java.util.Map<java.lang.String, java.lang.String> attr;
+	@Column(name="is_upload_to_db")
+	private Boolean uploadToDb;
 
+	@Column(name="login_url")
+	private String loginUrl;
 
+	@Column(name="mark_alpha")
+	private Integer alpha;
 
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="assigned"
-     *  column="config_id"
+	@Column(name="mark_color")
+	private String color;
+
+	@Column(name="mark_content")
+	private String content;
+
+	@Column(name="mark_height")
+	private Integer minHeight;
+
+	@Column(name="mark_image")
+	private String imagePath;
+
+	@Column(name="mark_offset_x")
+	private Integer offsetX;
+
+	@Column(name="mark_offset_y")
+	private Integer offsetY;
+
+	@Column(name="mark_on")
+	private Boolean on;
+
+	@Column(name="mark_position")
+	private Integer pos;
+
+	@Column(name="mark_size")
+	private Integer size;
+
+	@Column(name="mark_width")
+	private Integer minWidth;
+
+	private Integer port;
+
+	@Column(name="process_url")
+	private String processUrl;
+
+	@Column(name="servlet_point")
+	private String servletPoint;
+
+	//bi-directional many-to-one association to CmsConfigAttr
+	//@OneToMany(mappedBy="cmsConfig")
+	//private List<CmsConfigAttr> cmsConfigAttrs;
+
+	//bi-directional many-to-one association to CmsSite
+	@OneToMany
+	private List<CmsSite> cmsSites;
+
+    @ElementCollection
+    @CollectionTable(name="cms_config_attr" , joinColumns = @JoinColumn(name="config_id"))
+    @MapKeyColumn(name="attr_name")
+    @Column(name="attr_value")
+    private Map<String,String> attr = new HashMap<String, String>();
+
+    public MarkConfig getMarkConfig() {
+        return markConfig;
+    }
+
+    public void setMarkConfig(MarkConfig m_markConfig) {
+        this.markConfig = m_markConfig;
+    }
+
+    public EmailConfig getEmailConfig() {
+        return emailConfig;
+    }
+
+    public void setEmailConfig(EmailConfig m_emailConfig) {
+        this.emailConfig = m_emailConfig;
+    }
+
+    @Embedded
+    MarkConfig markConfig;
+    @Embedded
+    EmailConfig emailConfig;
+
+    // constructors
+    public BaseCmsConfig () {
+        initialize();
+    }
+
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsConfig (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsConfig (
+            java.lang.Integer id,
+            java.lang.String dbFileUri,
+            java.lang.Boolean uploadToDb,
+            java.lang.String defImg,
+            java.lang.String loginUrl,
+            java.util.Date countClearTime,
+            java.util.Date countCopyTime,
+            java.lang.String downloadCode,
+            java.lang.Integer downloadTime) {
+
+        this.setId(id);
+        this.setDbFileUri(dbFileUri);
+        this.setUploadToDb(uploadToDb);
+        this.setDefImg(defImg);
+        this.setLoginUrl(loginUrl);
+        this.setCountClearTime(countClearTime);
+        this.setCountCopyTime(countCopyTime);
+        this.setDownloadCode(downloadCode);
+        this.setDownloadTime(downloadTime);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+	public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+	public void setId(Integer configId) {
+		this.id = configId;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: context_path
-	 */
-	public java.lang.String getContextPath () {
-		return contextPath;
+	public String getContextPath() {
+		return this.contextPath;
 	}
 
-	/**
-	 * Set the value related to the column: context_path
-	 * @param contextPath the context_path value
-	 */
-	public void setContextPath (java.lang.String contextPath) {
+	public void setContextPath(String contextPath) {
 		this.contextPath = contextPath;
 	}
 
-
-	/**
-	 * Return the value associated with the column: servlet_point
-	 */
-	public java.lang.String getServletPoint () {
-		return servletPoint;
+	public Date getCountClearTime() {
+		return this.countClearTime;
 	}
 
-	/**
-	 * Set the value related to the column: servlet_point
-	 * @param servletPoint the servlet_point value
-	 */
-	public void setServletPoint (java.lang.String servletPoint) {
-		this.servletPoint = servletPoint;
-	}
-
-
-	/**
-	 * Return the value associated with the column: port
-	 */
-	public java.lang.Integer getPort () {
-		return port;
-	}
-
-	/**
-	 * Set the value related to the column: port
-	 * @param port the port value
-	 */
-	public void setPort (java.lang.Integer port) {
-		this.port = port;
-	}
-
-
-	/**
-	 * Return the value associated with the column: db_file_uri
-	 */
-	public java.lang.String getDbFileUri () {
-		return dbFileUri;
-	}
-
-	/**
-	 * Set the value related to the column: db_file_uri
-	 * @param dbFileUri the db_file_uri value
-	 */
-	public void setDbFileUri (java.lang.String dbFileUri) {
-		this.dbFileUri = dbFileUri;
-	}
-
-
-	/**
-	 * Return the value associated with the column: is_upload_to_db
-	 */
-	public java.lang.Boolean getUploadToDb () {
-		return uploadToDb;
-	}
-
-	/**
-	 * Set the value related to the column: is_upload_to_db
-	 * @param uploadToDb the is_upload_to_db value
-	 */
-	public void setUploadToDb (java.lang.Boolean uploadToDb) {
-		this.uploadToDb = uploadToDb;
-	}
-
-
-	/**
-	 * Return the value associated with the column: def_img
-	 */
-	public java.lang.String getDefImg () {
-		return defImg;
-	}
-
-	/**
-	 * Set the value related to the column: def_img
-	 * @param defImg the def_img value
-	 */
-	public void setDefImg (java.lang.String defImg) {
-		this.defImg = defImg;
-	}
-
-
-	/**
-	 * Return the value associated with the column: login_url
-	 */
-	public java.lang.String getLoginUrl () {
-		return loginUrl;
-	}
-
-	/**
-	 * Set the value related to the column: login_url
-	 * @param loginUrl the login_url value
-	 */
-	public void setLoginUrl (java.lang.String loginUrl) {
-		this.loginUrl = loginUrl;
-	}
-
-
-	/**
-	 * Return the value associated with the column: process_url
-	 */
-	public java.lang.String getProcessUrl () {
-		return processUrl;
-	}
-
-	/**
-	 * Set the value related to the column: process_url
-	 * @param processUrl the process_url value
-	 */
-	public void setProcessUrl (java.lang.String processUrl) {
-		this.processUrl = processUrl;
-	}
-
-
-	/**
-	 * Return the value associated with the column: count_clear_time
-	 */
-	public java.util.Date getCountClearTime () {
-		return countClearTime;
-	}
-
-	/**
-	 * Set the value related to the column: count_clear_time
-	 * @param countClearTime the count_clear_time value
-	 */
-	public void setCountClearTime (java.util.Date countClearTime) {
+	public void setCountClearTime(Date countClearTime) {
 		this.countClearTime = countClearTime;
 	}
 
-
-	/**
-	 * Return the value associated with the column: count_copy_time
-	 */
-	public java.util.Date getCountCopyTime () {
-		return countCopyTime;
+	public Date getCountCopyTime() {
+		return this.countCopyTime;
 	}
 
-	/**
-	 * Set the value related to the column: count_copy_time
-	 * @param countCopyTime the count_copy_time value
-	 */
-	public void setCountCopyTime (java.util.Date countCopyTime) {
+	public void setCountCopyTime(Date countCopyTime) {
 		this.countCopyTime = countCopyTime;
 	}
 
-
-	/**
-	 * Return the value associated with the column: download_code
-	 */
-	public java.lang.String getDownloadCode () {
-		return downloadCode;
+	public String getDbFileUri() {
+		return this.dbFileUri;
 	}
 
-	/**
-	 * Set the value related to the column: download_code
-	 * @param downloadCode the download_code value
-	 */
-	public void setDownloadCode (java.lang.String downloadCode) {
+	public void setDbFileUri(String dbFileUri) {
+		this.dbFileUri = dbFileUri;
+	}
+
+	public String getDefImg() {
+		return this.defImg;
+	}
+
+	public void setDefImg(String defImg) {
+		this.defImg = defImg;
+	}
+
+	public String getDownloadCode() {
+		return this.downloadCode;
+	}
+
+	public void setDownloadCode(String downloadCode) {
 		this.downloadCode = downloadCode;
 	}
 
-
-	/**
-	 * Return the value associated with the column: download_time
-	 */
-	public java.lang.Integer getDownloadTime () {
-		return downloadTime;
+	public Integer getDownloadTime() {
+		return this.downloadTime;
 	}
 
-	/**
-	 * Set the value related to the column: download_time
-	 * @param downloadTime the download_time value
-	 */
-	public void setDownloadTime (java.lang.Integer downloadTime) {
+	public void setDownloadTime(Integer downloadTime) {
 		this.downloadTime = downloadTime;
 	}
-	
 
-	public java.lang.Boolean getEmailValidate() {
-		return emailValidate;
+	public String getEmailEncoding() {
+		return this.emailEncoding;
 	}
 
-	public void setEmailValidate(java.lang.Boolean emailValidate) {
+	public void setEmailEncoding(String emailEncoding) {
+		this.emailEncoding = emailEncoding;
+	}
+
+	public String getHost() {
+		return this.host;
+	}
+
+	public void setHost(String emailHost) {
+		this.host = emailHost;
+	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String emailPassword) {
+		this.password = emailPassword;
+	}
+
+	public String getPersonal() {
+		return this.personal;
+	}
+
+	public void setPersonal(String emailPersonal) {
+		this.personal = emailPersonal;
+	}
+
+	public String getUsername() {
+		return this.username;
+	}
+
+	public void setUsername(String emailUsername) {
+		this.username = emailUsername;
+	}
+
+	public Boolean getEmailValidate() {
+		return this.emailValidate;
+	}
+
+	public void setEmailValidate(Boolean emailValidate) {
 		this.emailValidate = emailValidate;
 	}
 
-	public com.yunkuo.cms.entity.main.MarkConfig getMarkConfig () {
-		return m_markConfig;
+	public Boolean getUploadToDb() {
+		return this.uploadToDb;
 	}
 
-	/**
-	 * Set the value related to the column: ${prop.Column}
-	 * @param m_markConfig the ${prop.Column} value
-	 */
-	public void setMarkConfig (com.yunkuo.cms.entity.main.MarkConfig m_markConfig) {
-		this.m_markConfig = m_markConfig;
+	public void setUploadToDb(Boolean isUploadToDb) {
+		this.uploadToDb = isUploadToDb;
 	}
 
-
-	public com.yunkuo.cms.entity.main.EmailConfig getEmailConfig () {
-		return m_emailConfig;
+	public String getLoginUrl() {
+		return this.loginUrl;
 	}
 
-	/**
-	 * Set the value related to the column: ${prop.Column}
-	 * @param m_emailConfig the ${prop.Column} value
-	 */
-	public void setEmailConfig (com.yunkuo.cms.entity.main.EmailConfig m_emailConfig) {
-		this.m_emailConfig = m_emailConfig;
+	public void setLoginUrl(String loginUrl) {
+		this.loginUrl = loginUrl;
 	}
 
-
-	/**
-	 * Return the value associated with the column: attr
-	 */
-	public java.util.Map<java.lang.String, java.lang.String> getAttr () {
-		return attr;
+	public Integer getAlpha() {
+		return this.alpha;
 	}
 
-	/**
-	 * Set the value related to the column: attr
-	 * @param attr the attr value
-	 */
-	public void setAttr (java.util.Map<java.lang.String, java.lang.String> attr) {
-		this.attr = attr;
+	public void setAlpha(Integer markAlpha) {
+		this.alpha = markAlpha;
 	}
 
-
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.main.CmsConfig)) return false;
-		else {
-			com.yunkuo.cms.entity.main.CmsConfig cmsConfig = (com.yunkuo.cms.entity.main.CmsConfig) obj;
-			if (null == this.getId() || null == cmsConfig.getId()) return false;
-			else return (this.getId().equals(cmsConfig.getId()));
-		}
+	public String getColor() {
+		return this.color;
 	}
 
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
+	public void setColor(String markColor) {
+		this.color = markColor;
 	}
 
-
-	public String toString () {
-		return super.toString();
+	public String getContent() {
+		return this.content;
 	}
 
+	public void setContent(String markContent) {
+		this.content = markContent;
+	}
 
+	public Integer getMinHeight() {
+		return this.minHeight;
+	}
+
+	public void setMinHeight(Integer markHeight) {
+		this.minHeight = markHeight;
+	}
+
+	public String getImagePath() {
+		return this.imagePath;
+	}
+
+	public void setImagePath(String markImage) {
+		this.imagePath = markImage;
+	}
+
+	public Integer getOffsetX() {
+		return this.offsetX;
+	}
+
+	public void setOffsetX(Integer markOffsetX) {
+		this.offsetX = markOffsetX;
+	}
+
+	public Integer getOffsetY() {
+		return this.offsetY;
+	}
+
+	public void setOffsetY(Integer markOffsetY) {
+		this.offsetY = markOffsetY;
+	}
+
+	public Boolean getOn() {
+		return this.on;
+	}
+
+	public void setOn(Boolean markOn) {
+		this.on = markOn;
+	}
+
+	public Integer getPos() {
+		return this.pos;
+	}
+
+	public void setPos(Integer markPosition) {
+		this.pos = markPosition;
+	}
+
+	public Integer getSize() {
+		return this.size;
+	}
+
+	public void setSize(Integer markSize) {
+		this.size = markSize;
+	}
+
+	public Integer getMinWidth() {
+		return this.minWidth;
+	}
+
+	public void setMinWidth(Integer markWidth) {
+		this.minWidth = markWidth;
+	}
+
+	public Integer getPort() {
+		return this.port;
+	}
+
+	public void setPort(Integer port) {
+		this.port = port;
+	}
+
+	public String getProcessUrl() {
+		return this.processUrl;
+	}
+
+	public void setProcessUrl(String processUrl) {
+		this.processUrl = processUrl;
+	}
+
+	public String getServletPoint() {
+		return this.servletPoint;
+	}
+
+	public void setServletPoint(String servletPoint) {
+		this.servletPoint = servletPoint;
+	}
+
+	/*public List<CmsConfigAttr> getCmsConfigAttrs() {
+		return this.cmsConfigAttrs;
+	}
+
+	public void setCmsConfigAttrs(List<CmsConfigAttr> cmsConfigAttrs) {
+		this.cmsConfigAttrs = cmsConfigAttrs;
+	}
+
+	public CmsConfigAttr addCmsConfigAttr(CmsConfigAttr cmsConfigAttr) {
+		getCmsConfigAttrs().add(cmsConfigAttr);
+		cmsConfigAttr.setCmsConfig(this);
+
+		return cmsConfigAttr;
+	}
+
+	public CmsConfigAttr removeCmsConfigAttr(CmsConfigAttr cmsConfigAttr) {
+		getCmsConfigAttrs().remove(cmsConfigAttr);
+		cmsConfigAttr.setCmsConfig(null);
+
+		return cmsConfigAttr;
+	}
+
+	public List<CmsSite> getCmsSites() {
+		return this.cmsSites;
+	}
+
+	public void setCmsSites(List<CmsSite> cmsSites) {
+		this.cmsSites = cmsSites;
+	}
+
+	public CmsSite addCmsSite(CmsSite cmsSite) {
+		getCmsSites().add(cmsSite);
+		cmsSite.setCmsConfig(this);
+
+		return cmsSite;
+	}
+
+	public CmsSite removeCmsSite(CmsSite cmsSite) {
+		getCmsSites().remove(cmsSite);
+		cmsSite.setCmsConfig(null);
+
+		return cmsSite;
+	}*/
+
+    public Map<String,String> getAttr() {
+        return attr;
+    }
+
+    public void setAttr(Map<String,String> attr) {
+        this.attr = attr;
+    }
 }

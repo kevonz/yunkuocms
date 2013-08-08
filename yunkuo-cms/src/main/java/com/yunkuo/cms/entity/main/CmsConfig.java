@@ -4,6 +4,11 @@ import org.apache.commons.lang.StringUtils;
 
 import com.yunkuo.cms.entity.main.base.BaseCmsConfig;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="cms_config")
 public class CmsConfig extends BaseCmsConfig {
 	private static final long serialVersionUID = 1L;
 	public static final String VERSION = "version";

@@ -31,6 +31,7 @@
         <mapping class="com.yunkuo.cms.entity.main.CmsModelItem" />
         <mapping class="com.yunkuo.cms.entity.main.CmsTopic" />
         <mapping class="com.yunkuo.cms.entity.main.CmsGroup" />
+        <mapping class="com.yunkuo.cms.entity.main.CmsConfig" />
     </session-factory>
 
          
