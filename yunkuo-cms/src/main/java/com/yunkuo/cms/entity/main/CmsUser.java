@@ -1,11 +1,15 @@
 package com.yunkuo.cms.entity.main;
 
-import java.util.*;
-
 import com.yunkuo.cms.entity.main.base.BaseCmsUser;
 import com.yunkuo.common.hibernate3.PriorityInterface;
 import com.yunkuo.core.entity.UnifiedUser;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.util.*;
+
+@Entity
+@Table(name="cms_user")
 public class CmsUser extends BaseCmsUser implements PriorityInterface {
 	private static final long serialVersionUID = 1L;
 

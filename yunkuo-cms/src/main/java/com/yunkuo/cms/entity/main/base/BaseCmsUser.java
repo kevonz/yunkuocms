@@ -1,542 +1,758 @@
 package com.yunkuo.cms.entity.main.base;
 
+import com.yunkuo.cms.entity.assist.CmsMessage;
+import com.yunkuo.cms.entity.assist.CmsReceiverMessage;
+import com.yunkuo.cms.entity.main.*;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 
 /**
- * This is an object that contains data related to the cms_user table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_user"
+ * The persistent class for the cms_user database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_user")*/
+@MappedSuperclass
+public class BaseCmsUser implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsUser  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="user_id")
+	private Integer id;
 
-	public static String REF = "CmsUser";
-	public static String PROP_REGISTER_TIME = "registerTime";
-	public static String PROP_LOGIN_COUNT = "loginCount";
-	public static String PROP_SELF_ADMIN = "selfAdmin";
-	public static String PROP_UPLOAD_TOTAL = "uploadTotal";
-	public static String PROP_LAST_LOGIN_IP = "lastLoginIp";
-	public static String PROP_DISABLED = "disabled";
-	public static String PROP_LAST_LOGIN_TIME = "lastLoginTime";
-	public static String PROP_UPLOAD_DATE = "uploadDate";
-	public static String PROP_GROUP = "group";
-	public static String PROP_EMAIL = "email";
-	public static String PROP_UPLOAD_SIZE = "uploadSize";
-	public static String PROP_RANK = "rank";
-	public static String PROP_VIEWONLY_ADMIN = "viewonlyAdmin";
-	public static String PROP_ADMIN = "admin";
-	public static String PROP_ID = "id";
-	public static String PROP_REGISTER_IP = "registerIp";
-	public static String PROP_USERNAME = "username";
+	private String email;
 
+    public Boolean getAdmin() {
+        return admin;
+    }
 
-	// constructors
-	public BaseCmsUser () {
-		initialize();
-	}
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
+    }
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsUser (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+    public Boolean getDisabled() {
+        return disabled;
+    }
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsUser (
-		java.lang.Integer id,
-		com.yunkuo.cms.entity.main.CmsGroup group,
-		java.lang.String username,
-		java.util.Date registerTime,
-		java.lang.String registerIp,
-		java.lang.Integer loginCount,
-		java.lang.Integer rank,
-		java.lang.Long uploadTotal,
-		java.lang.Integer uploadSize,
-		java.lang.Boolean admin,
-		java.lang.Boolean viewonlyAdmin,
-		java.lang.Boolean selfAdmin,
-		java.lang.Boolean disabled) {
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
+    }
 
-		this.setId(id);
-		this.setGroup(group);
-		this.setUsername(username);
-		this.setRegisterTime(registerTime);
-		this.setRegisterIp(registerIp);
-		this.setLoginCount(loginCount);
-		this.setRank(rank);
-		this.setUploadTotal(uploadTotal);
-		this.setUploadSize(uploadSize);
-		this.setAdmin(admin);
-		this.setViewonlyAdmin(viewonlyAdmin);
-		this.setSelfAdmin(selfAdmin);
-		this.setDisabled(disabled);
-		initialize();
-	}
+    public Boolean getSelfAdmin() {
+        return selfAdmin;
+    }
 
-	protected void initialize () {}
+    public void setSelfAdmin(Boolean selfAdmin) {
+        this.selfAdmin = selfAdmin;
+    }
 
+    public Boolean getViewonlyAdmin() {
+        return viewonlyAdmin;
+    }
 
+    public void setViewonlyAdmin(Boolean viewonlyAdmin) {
+        this.viewonlyAdmin = viewonlyAdmin;
+    }
 
-	private int hashCode = Integer.MIN_VALUE;
+    public Set<Channel> getChannels() {
+        return channels;
+    }
 
-	// primary key
-	private java.lang.Integer id;
+    public void setChannels(Set<Channel> channels) {
+        this.channels = channels;
+    }
 
-	// fields
-	private java.lang.String username;
-	private java.lang.String email;
-	private java.util.Date registerTime;
-	private java.lang.String registerIp;
-	private java.util.Date lastLoginTime;
-	private java.lang.String lastLoginIp;
-	private java.lang.Integer loginCount;
-	private java.lang.Integer rank;
-	private java.lang.Long uploadTotal;
-	private java.lang.Integer uploadSize;
-	private java.sql.Date uploadDate;
-	private java.lang.Boolean admin;
-	private java.lang.Boolean viewonlyAdmin;
-	private java.lang.Boolean selfAdmin;
-	private java.lang.Boolean disabled;
+    @Column(name="is_admin")
+	private Boolean admin;
 
-	// many to one
-	private com.yunkuo.cms.entity.main.CmsGroup group;
+	@Column(name="is_disabled")
+	private Boolean disabled;
 
-	// collections
-	private java.util.Set<com.yunkuo.cms.entity.main.CmsUserExt> userExtSet;
-	private java.util.Set<com.yunkuo.cms.entity.main.CmsUserSite> userSites;
-	private java.util.Set<com.yunkuo.cms.entity.main.CmsRole> roles;
-	private java.util.Set<com.yunkuo.cms.entity.main.Channel> channels;
-	private java.util.Set<com.yunkuo.cms.entity.main.Content> collectContents;
-	
-	private java.util.Set<com.yunkuo.cms.entity.assist.CmsMessage> sendMessages;
-	private java.util.Set<com.yunkuo.cms.entity.assist.CmsMessage> receivMessages;
-	private java.util.Set<com.yunkuo.cms.entity.assist.CmsReceiverMessage> sendReceiverMessages;
-	private java.util.Set<com.yunkuo.cms.entity.assist.CmsReceiverMessage> receivReceiverMessages;
+	@Column(name="is_self_admin")
+	private Boolean selfAdmin;
+
+	@Column(name="is_viewonly_admin")
+	private Boolean viewonlyAdmin;
+
+	@Column(name="last_login_ip")
+	private String lastLoginIp;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="last_login_time")
+	private Date lastLoginTime;
+
+	@Column(name="login_count")
+	private Integer loginCount;
+
+	private Integer rank;
+
+	@Column(name="register_ip")
+	private String registerIp;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="register_time")
+	private Date registerTime;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name="upload_date")
+	private Date uploadDate;
+
+	@Column(name="upload_size")
+	private Integer uploadSize;
+
+	@Column(name="upload_total")
+	private Long uploadTotal;
+
+	private String username;
 
 
 
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="assigned"
-     *  column="user_id"
+    //bi-directional many-to-one association to CmsGroup
+    @ManyToOne
+    @JoinColumn(name="group_id")
+    private CmsGroup group;
+
+    //bi-directional one-to-one association to CmsUserExt
+    @OneToMany
+    @JoinColumn(name="user_id")
+    private Set<CmsUserExt> userExtSet;
+
+    //bi-directional many-to-one association to CmsUserSite
+    @OneToMany
+    @JoinColumn(name="user_id")
+    private Set<CmsUserSite> userSites;
+
+    //bi-directional many-to-many association to CmsRole
+    @ManyToMany
+    @JoinTable(
+            name="cms_user_role"
+            , joinColumns={
+            @JoinColumn(name="user_id")
+    }
+            , inverseJoinColumns={
+            @JoinColumn(name="role_id")
+    }
+    )
+    private Set<CmsRole> roles;
+
+
+    //bi-directional many-to-many association to Channel
+    @ManyToMany
+    @JoinTable(
+            name="cms_channel_user"
+            , joinColumns={
+            @JoinColumn(name="user_id")
+    }
+            , inverseJoinColumns={
+            @JoinColumn(name="channel_id")
+    }
+    )
+    private Set<Channel> channels;
+
+
+
+    //bi-directional many-to-many association to CmsContent
+    @ManyToMany
+    @JoinTable(
+            name="cms_user_collection"
+            , joinColumns={
+            @JoinColumn(name="user_id")
+    }
+            , inverseJoinColumns={
+            @JoinColumn(name="content_id")
+    }
+    )
+    private Set<Content> collectContents;
+
+
+    //bi-directional many-to-one association to CmsMessage
+    @OneToMany
+    @JoinColumn(name = "msg_send_user")
+    private List<CmsMessage> sendMessages;
+
+    //bi-directional many-to-one association to CmsMessage
+    @OneToMany
+    @JoinColumn(name = "msg_receiver_user")
+    private List<CmsMessage> receivMessages;
+
+
+    //bi-directional many-to-one association to CmsReceiverMessage
+    @OneToMany
+    @JoinColumn(name = "msg_send_user")
+    private List<CmsReceiverMessage> sendReceiverMessages;
+
+    //bi-directional many-to-one association to CmsReceiverMessage
+    @OneToMany
+    @JoinColumn(name = "msg_receiver_user")
+    private List<CmsReceiverMessage> receivReceiverMessages;
+
+
+
+
+
+
+
+
+/*
+
+
+    //bi-directional many-to-one association to CmsLog
+	@OneToMany(mappedBy="cmsUser")
+	private List<CmsLog> cmsLogs;
+
+	//bi-directional many-to-one association to CmsAcquisition
+	@OneToMany(mappedBy="cmsUser")
+	private List<CmsAcquisition> cmsAcquisitions;
+
+	//bi-directional many-to-many association to BaseChannel
+	@ManyToMany(mappedBy="cmsUsers")
+	private List<BaseChannel> cmsChannels;
+
+	//bi-directional many-to-one association to CmsComment
+	@OneToMany(mappedBy="cmsUser1")
+	private List<CmsComment> cmsComments1;
+
+	//bi-directional many-to-one association to CmsComment
+	@OneToMany(mappedBy="cmsUser2")
+	private List<CmsComment> cmsComments2;
+
+	//bi-directional many-to-one association to Content
+	@OneToMany(mappedBy="cmsUser")
+	private List<Content> cmsContents1;
+
+	//bi-directional many-to-one association to ContentCheck
+	@OneToMany(mappedBy="cmsUser")
+	private List<CmsContentCheck> cmsContentChecks;
+
+	//bi-directional many-to-one association to CmsGuestbook
+	@OneToMany(mappedBy="cmsUser1")
+	private List<CmsGuestbook> cmsGuestbooks1;
+
+	//bi-directional many-to-one association to CmsGuestbook
+	@OneToMany(mappedBy="cmsUser2")
+	private List<CmsGuestbook> cmsGuestbooks2;
+
+
+
+	//bi-directional many-to-many association to CmsDepartment
+	@ManyToMany(mappedBy="cmsUsers")
+	private List<CmsDepartment> cmsDepartments;
+
+
+	//bi-directional many-to-one association to CmsVoteRecord
+	@OneToMany(mappedBy="cmsUser")
+	private List<CmsVoteRecord> cmsVoteRecords;
+*/
+
+    // constructors
+    public BaseCmsUser () {
+        initialize();
+    }
+
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsUser (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsUser (
+            java.lang.Integer id,
+            com.yunkuo.cms.entity.main.CmsGroup group,
+            java.lang.String username,
+            java.util.Date registerTime,
+            java.lang.String registerIp,
+            java.lang.Integer loginCount,
+            java.lang.Integer rank,
+            java.lang.Long uploadTotal,
+            java.lang.Integer uploadSize,
+            java.lang.Boolean admin,
+            java.lang.Boolean viewonlyAdmin,
+            java.lang.Boolean selfAdmin,
+            java.lang.Boolean disabled) {
+
+        this.setId(id);
+        this.setGroup(group);
+        this.setUsername(username);
+        this.setRegisterTime(registerTime);
+        this.setRegisterIp(registerIp);
+        this.setLoginCount(loginCount);
+        this.setRank(rank);
+        this.setUploadTotal(uploadTotal);
+        this.setUploadSize(uploadSize);
+        this.setAdmin(admin);
+        this.setViewonlyAdmin(viewonlyAdmin);
+        this.setSelfAdmin(selfAdmin);
+        this.setDisabled(disabled);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+	public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+	public void setId(Integer userId) {
+		this.id = userId;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: username
-	 */
-	public java.lang.String getUsername () {
-		return username;
+	public String getEmail() {
+		return this.email;
 	}
 
-	/**
-	 * Set the value related to the column: username
-	 * @param username the username value
-	 */
-	public void setUsername (java.lang.String username) {
-		this.username = username;
-	}
-
-
-	/**
-	 * Return the value associated with the column: email
-	 */
-	public java.lang.String getEmail () {
-		return email;
-	}
-
-	/**
-	 * Set the value related to the column: email
-	 * @param email the email value
-	 */
-	public void setEmail (java.lang.String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
 
-	/**
-	 * Return the value associated with the column: register_time
-	 */
-	public java.util.Date getRegisterTime () {
-		return registerTime;
+	public String getLastLoginIp() {
+		return this.lastLoginIp;
 	}
 
-	/**
-	 * Set the value related to the column: register_time
-	 * @param registerTime the register_time value
-	 */
-	public void setRegisterTime (java.util.Date registerTime) {
-		this.registerTime = registerTime;
-	}
-
-
-	/**
-	 * Return the value associated with the column: register_ip
-	 */
-	public java.lang.String getRegisterIp () {
-		return registerIp;
-	}
-
-	/**
-	 * Set the value related to the column: register_ip
-	 * @param registerIp the register_ip value
-	 */
-	public void setRegisterIp (java.lang.String registerIp) {
-		this.registerIp = registerIp;
-	}
-
-
-	/**
-	 * Return the value associated with the column: last_login_time
-	 */
-	public java.util.Date getLastLoginTime () {
-		return lastLoginTime;
-	}
-
-	/**
-	 * Set the value related to the column: last_login_time
-	 * @param lastLoginTime the last_login_time value
-	 */
-	public void setLastLoginTime (java.util.Date lastLoginTime) {
-		this.lastLoginTime = lastLoginTime;
-	}
-
-
-	/**
-	 * Return the value associated with the column: last_login_ip
-	 */
-	public java.lang.String getLastLoginIp () {
-		return lastLoginIp;
-	}
-
-	/**
-	 * Set the value related to the column: last_login_ip
-	 * @param lastLoginIp the last_login_ip value
-	 */
-	public void setLastLoginIp (java.lang.String lastLoginIp) {
+	public void setLastLoginIp(String lastLoginIp) {
 		this.lastLoginIp = lastLoginIp;
 	}
 
-
-	/**
-	 * Return the value associated with the column: login_count
-	 */
-	public java.lang.Integer getLoginCount () {
-		return loginCount;
+	public Date getLastLoginTime() {
+		return this.lastLoginTime;
 	}
 
-	/**
-	 * Set the value related to the column: login_count
-	 * @param loginCount the login_count value
-	 */
-	public void setLoginCount (java.lang.Integer loginCount) {
+	public void setLastLoginTime(Date lastLoginTime) {
+		this.lastLoginTime = lastLoginTime;
+	}
+
+	public Integer getLoginCount() {
+		return this.loginCount;
+	}
+
+	public void setLoginCount(Integer loginCount) {
 		this.loginCount = loginCount;
 	}
 
-
-	/**
-	 * Return the value associated with the column: rank
-	 */
-	public java.lang.Integer getRank () {
-		return rank;
+	public Integer getRank() {
+		return this.rank;
 	}
 
-	/**
-	 * Set the value related to the column: rank
-	 * @param rank the rank value
-	 */
-	public void setRank (java.lang.Integer rank) {
+	public void setRank(Integer rank) {
 		this.rank = rank;
 	}
 
-
-	/**
-	 * Return the value associated with the column: upload_total
-	 */
-	public java.lang.Long getUploadTotal () {
-		return uploadTotal;
+	public String getRegisterIp() {
+		return this.registerIp;
 	}
 
-	/**
-	 * Set the value related to the column: upload_total
-	 * @param uploadTotal the upload_total value
-	 */
-	public void setUploadTotal (java.lang.Long uploadTotal) {
-		this.uploadTotal = uploadTotal;
+	public void setRegisterIp(String registerIp) {
+		this.registerIp = registerIp;
 	}
 
-
-	/**
-	 * Return the value associated with the column: upload_size
-	 */
-	public java.lang.Integer getUploadSize () {
-		return uploadSize;
+	public Date getRegisterTime() {
+		return this.registerTime;
 	}
 
-	/**
-	 * Set the value related to the column: upload_size
-	 * @param uploadSize the upload_size value
-	 */
-	public void setUploadSize (java.lang.Integer uploadSize) {
-		this.uploadSize = uploadSize;
+	public void setRegisterTime(Date registerTime) {
+		this.registerTime = registerTime;
 	}
 
-
-	/**
-	 * Return the value associated with the column: upload_date
-	 */
-	public java.sql.Date getUploadDate () {
-		return uploadDate;
+	public Date getUploadDate() {
+		return this.uploadDate;
 	}
 
-	/**
-	 * Set the value related to the column: upload_date
-	 * @param uploadDate the upload_date value
-	 */
-	public void setUploadDate (java.sql.Date uploadDate) {
+	public void setUploadDate(Date uploadDate) {
 		this.uploadDate = uploadDate;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_admin
-	 */
-	public java.lang.Boolean getAdmin () {
-		return admin;
+	public Integer getUploadSize() {
+		return this.uploadSize;
 	}
 
-	/**
-	 * Set the value related to the column: is_admin
-	 * @param admin the is_admin value
-	 */
-	public void setAdmin (java.lang.Boolean admin) {
-		this.admin = admin;
+	public void setUploadSize(Integer uploadSize) {
+		this.uploadSize = uploadSize;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_viewonly_admin
-	 */
-	public java.lang.Boolean getViewonlyAdmin () {
-		return viewonlyAdmin;
+	public Long getUploadTotal() {
+		return this.uploadTotal;
 	}
 
-	/**
-	 * Set the value related to the column: is_viewonly_admin
-	 * @param viewonlyAdmin the is_viewonly_admin value
-	 */
-	public void setViewonlyAdmin (java.lang.Boolean viewonlyAdmin) {
-		this.viewonlyAdmin = viewonlyAdmin;
+	public void setUploadTotal(Long uploadTotal) {
+		this.uploadTotal = uploadTotal;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_self_admin
-	 */
-	public java.lang.Boolean getSelfAdmin () {
-		return selfAdmin;
+	public String getUsername() {
+		return this.username;
 	}
 
-	/**
-	 * Set the value related to the column: is_self_admin
-	 * @param selfAdmin the is_self_admin value
-	 */
-	public void setSelfAdmin (java.lang.Boolean selfAdmin) {
-		this.selfAdmin = selfAdmin;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+/*
+	public List<CmsLog> getCmsLogs() {
+		return this.cmsLogs;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_disabled
-	 */
-	public java.lang.Boolean getDisabled () {
-		return disabled;
+	public void setCmsLogs(List<CmsLog> cmsLogs) {
+		this.cmsLogs = cmsLogs;
 	}
 
-	/**
-	 * Set the value related to the column: is_disabled
-	 * @param disabled the is_disabled value
-	 */
-	public void setDisabled (java.lang.Boolean disabled) {
-		this.disabled = disabled;
-	}
-	
+	public CmsLog addCmsLog(CmsLog cmsLog) {
+		getCmsLogs().add(cmsLog);
+		cmsLog.setCmsUser(this);
 
-
-	/**
-	 * Return the value associated with the column: group_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsGroup getGroup () {
-		return group;
+		return cmsLog;
 	}
 
-	/**
-	 * Set the value related to the column: group_id
-	 * @param group the group_id value
-	 */
-	public void setGroup (com.yunkuo.cms.entity.main.CmsGroup group) {
-		this.group = group;
+	public CmsLog removeCmsLog(CmsLog cmsLog) {
+		getCmsLogs().remove(cmsLog);
+		cmsLog.setCmsUser(null);
+
+		return cmsLog;
 	}
 
 
-	/**
-	 * Return the value associated with the column: userExtSet
-	 */
-	public java.util.Set<com.yunkuo.cms.entity.main.CmsUserExt> getUserExtSet () {
-		return userExtSet;
+	public List<CmsAcquisition> getCmsAcquisitions() {
+		return this.cmsAcquisitions;
 	}
 
-	/**
-	 * Set the value related to the column: userExtSet
-	 * @param userExtSet the userExtSet value
-	 */
-	public void setUserExtSet (java.util.Set<com.yunkuo.cms.entity.main.CmsUserExt> userExtSet) {
-		this.userExtSet = userExtSet;
+	public void setCmsAcquisitions(List<CmsAcquisition> cmsAcquisitions) {
+		this.cmsAcquisitions = cmsAcquisitions;
 	}
 
+	public CmsAcquisition addCmsAcquisition(CmsAcquisition cmsAcquisition) {
+		getCmsAcquisitions().add(cmsAcquisition);
+		cmsAcquisition.setCmsUser(this);
 
-	/**
-	 * Return the value associated with the column: userSites
-	 */
-	public java.util.Set<com.yunkuo.cms.entity.main.CmsUserSite> getUserSites () {
-		return userSites;
+		return cmsAcquisition;
 	}
 
-	/**
-	 * Set the value related to the column: userSites
-	 * @param userSites the userSites value
-	 */
-	public void setUserSites (java.util.Set<com.yunkuo.cms.entity.main.CmsUserSite> userSites) {
-		this.userSites = userSites;
+	public CmsAcquisition removeCmsAcquisition(CmsAcquisition cmsAcquisition) {
+		getCmsAcquisitions().remove(cmsAcquisition);
+		cmsAcquisition.setCmsUser(null);
+
+		return cmsAcquisition;
 	}
 
-
-	/**
-	 * Return the value associated with the column: roles
-	 */
-	public java.util.Set<com.yunkuo.cms.entity.main.CmsRole> getRoles () {
-		return roles;
+	public List<BaseChannel> getCmsChannels() {
+		return this.cmsChannels;
 	}
 
-	/**
-	 * Set the value related to the column: roles
-	 * @param roles the roles value
-	 */
-	public void setRoles (java.util.Set<com.yunkuo.cms.entity.main.CmsRole> roles) {
-		this.roles = roles;
+	public void setCmsChannels(List<BaseChannel> cmsChannels) {
+		this.cmsChannels = cmsChannels;
 	}
 
-
-	/**
-	 * Return the value associated with the column: channels
-	 */
-	public java.util.Set<com.yunkuo.cms.entity.main.Channel> getChannels () {
-		return channels;
+	public List<CmsComment> getCmsComments1() {
+		return this.cmsComments1;
 	}
 
-	/**
-	 * Set the value related to the column: channels
-	 * @param channels the channels value
-	 */
-	public void setChannels (java.util.Set<com.yunkuo.cms.entity.main.Channel> channels) {
-		this.channels = channels;
-	}
-	
-
-	public java.util.Set<com.yunkuo.cms.entity.main.Content> getCollectContents() {
-		return collectContents;
+	public void setCmsComments1(List<CmsComment> cmsComments1) {
+		this.cmsComments1 = cmsComments1;
 	}
 
-	public void setCollectContents(
-			java.util.Set<com.yunkuo.cms.entity.main.Content> collectContents) {
-		this.collectContents = collectContents;
-	}
-	
-	public java.util.Set<com.yunkuo.cms.entity.assist.CmsMessage> getSendMessages() {
-		return sendMessages;
+	public CmsComment addCmsComments1(CmsComment cmsComments1) {
+		getCmsComments1().add(cmsComments1);
+		cmsComments1.setCmsUser1(this);
+
+		return cmsComments1;
 	}
 
-	public void setSendMessages(
-			java.util.Set<com.yunkuo.cms.entity.assist.CmsMessage> sendMessages) {
-		this.sendMessages = sendMessages;
+	public CmsComment removeCmsComments1(CmsComment cmsComments1) {
+		getCmsComments1().remove(cmsComments1);
+		cmsComments1.setCmsUser1(null);
+
+		return cmsComments1;
 	}
 
-	public java.util.Set<com.yunkuo.cms.entity.assist.CmsMessage> getReceivMessages() {
-		return receivMessages;
+	public List<CmsComment> getCmsComments2() {
+		return this.cmsComments2;
 	}
 
-	public void setReceivMessages(
-			java.util.Set<com.yunkuo.cms.entity.assist.CmsMessage> receivMessages) {
-		this.receivMessages = receivMessages;
+	public void setCmsComments2(List<CmsComment> cmsComments2) {
+		this.cmsComments2 = cmsComments2;
 	}
 
-	public java.util.Set<com.yunkuo.cms.entity.assist.CmsReceiverMessage> getSendReceiverMessages() {
-		return sendReceiverMessages;
+	public CmsComment addCmsComments2(CmsComment cmsComments2) {
+		getCmsComments2().add(cmsComments2);
+		cmsComments2.setCmsUser2(this);
+
+		return cmsComments2;
 	}
 
-	public void setSendReceiverMessages(
-			java.util.Set<com.yunkuo.cms.entity.assist.CmsReceiverMessage> sendReceiverMessages) {
-		this.sendReceiverMessages = sendReceiverMessages;
+	public CmsComment removeCmsComments2(CmsComment cmsComments2) {
+		getCmsComments2().remove(cmsComments2);
+		cmsComments2.setCmsUser2(null);
+
+		return cmsComments2;
 	}
 
-	public java.util.Set<com.yunkuo.cms.entity.assist.CmsReceiverMessage> getReceivReceiverMessages() {
-		return receivReceiverMessages;
+	public List<CmsContent> getCmsContents1() {
+		return this.cmsContents1;
 	}
 
-	public void setReceivReceiverMessages(
-			java.util.Set<com.yunkuo.cms.entity.assist.CmsReceiverMessage> receivReceiverMessages) {
-		this.receivReceiverMessages = receivReceiverMessages;
+	public void setCmsContents1(List<CmsContent> cmsContents1) {
+		this.cmsContents1 = cmsContents1;
 	}
 
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.main.CmsUser)) return false;
-		else {
-			com.yunkuo.cms.entity.main.CmsUser cmsUser = (com.yunkuo.cms.entity.main.CmsUser) obj;
-			if (null == this.getId() || null == cmsUser.getId()) return false;
-			else return (this.getId().equals(cmsUser.getId()));
-		}
+	public CmsContent addCmsContents1(CmsContent cmsContents1) {
+		getCmsContents1().add(cmsContents1);
+		cmsContents1.setCmsUser(this);
+
+		return cmsContents1;
 	}
 
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
+	public CmsContent removeCmsContents1(CmsContent cmsContents1) {
+		getCmsContents1().remove(cmsContents1);
+		cmsContents1.setCmsUser(null);
+
+		return cmsContents1;
 	}
 
-
-	public String toString () {
-		return super.toString();
+	public List<CmsContentCheck> getCmsContentChecks() {
+		return this.cmsContentChecks;
 	}
 
+	public void setCmsContentChecks(List<CmsContentCheck> cmsContentChecks) {
+		this.cmsContentChecks = cmsContentChecks;
+	}
 
+	public CmsContentCheck addCmsContentCheck(CmsContentCheck cmsContentCheck) {
+		getCmsContentChecks().add(cmsContentCheck);
+		cmsContentCheck.setCmsUser(this);
+
+		return cmsContentCheck;
+	}
+
+	public CmsContentCheck removeCmsContentCheck(CmsContentCheck cmsContentCheck) {
+		getCmsContentChecks().remove(cmsContentCheck);
+		cmsContentCheck.setCmsUser(null);
+
+		return cmsContentCheck;
+	}
+
+	public List<CmsGuestbook> getCmsGuestbooks1() {
+		return this.cmsGuestbooks1;
+	}
+
+	public void setCmsGuestbooks1(List<CmsGuestbook> cmsGuestbooks1) {
+		this.cmsGuestbooks1 = cmsGuestbooks1;
+	}
+
+	public CmsGuestbook addCmsGuestbooks1(CmsGuestbook cmsGuestbooks1) {
+		getCmsGuestbooks1().add(cmsGuestbooks1);
+		cmsGuestbooks1.setCmsUser1(this);
+
+		return cmsGuestbooks1;
+	}
+
+	public CmsGuestbook removeCmsGuestbooks1(CmsGuestbook cmsGuestbooks1) {
+		getCmsGuestbooks1().remove(cmsGuestbooks1);
+		cmsGuestbooks1.setCmsUser1(null);
+
+		return cmsGuestbooks1;
+	}
+
+	public List<CmsGuestbook> getCmsGuestbooks2() {
+		return this.cmsGuestbooks2;
+	}
+
+	public void setCmsGuestbooks2(List<CmsGuestbook> cmsGuestbooks2) {
+		this.cmsGuestbooks2 = cmsGuestbooks2;
+	}
+
+	public CmsGuestbook addCmsGuestbooks2(CmsGuestbook cmsGuestbooks2) {
+		getCmsGuestbooks2().add(cmsGuestbooks2);
+		cmsGuestbooks2.setCmsUser2(this);
+
+		return cmsGuestbooks2;
+	}
+
+	public CmsGuestbook removeCmsGuestbooks2(CmsGuestbook cmsGuestbooks2) {
+		getCmsGuestbooks2().remove(cmsGuestbooks2);
+		cmsGuestbooks2.setCmsUser2(null);
+
+		return cmsGuestbooks2;
+	}
+*/
+
+	public List<CmsMessage> getSendMessages() {
+		return this.sendMessages;
+	}
+
+	public void setSendMessages(List<CmsMessage> cmsMessages1) {
+		this.sendMessages = cmsMessages1;
+	}
+/*
+
+	public CmsMessage addCmsMessages1(CmsMessage cmsMessages1) {
+		getSendMessages().add(cmsMessages1);
+		cmsMessages1.setCmsUser1(this);
+
+		return cmsMessages1;
+	}
+
+	public CmsMessage removeCmsMessages1(CmsMessage cmsMessages1) {
+		getSendMessages().remove(cmsMessages1);
+		cmsMessages1.setCmsUser1(null);
+
+		return cmsMessages1;
+	}
+*/
+
+	public List<CmsMessage> getReceivMessages() {
+		return this.receivMessages;
+	}
+
+	public void setReceivMessages(List<CmsMessage> cmsMessages2) {
+		this.receivMessages = cmsMessages2;
+	}
+
+	/*public CmsMessage addCmsMessages2(CmsMessage cmsMessages2) {
+		getReceivMessages().add(cmsMessages2);
+		cmsMessages2.setCmsUser2(this);
+
+		return cmsMessages2;
+	}
+
+	public CmsMessage removeCmsMessages2(CmsMessage cmsMessages2) {
+		getReceivMessages().remove(cmsMessages2);
+		cmsMessages2.setCmsUser2(null);
+
+		return cmsMessages2;
+	}
+*/
+	public List<CmsReceiverMessage> getSendReceiverMessages() {
+		return this.sendReceiverMessages;
+	}
+
+	public void setSendReceiverMessages(List<CmsReceiverMessage> cmsReceiverMessages1) {
+		this.sendReceiverMessages = cmsReceiverMessages1;
+	}
+
+	/*public CmsReceiverMessage addCmsReceiverMessages1(CmsReceiverMessage cmsReceiverMessages1) {
+		getSendReceiverMessages().add(cmsReceiverMessages1);
+		cmsReceiverMessages1.setCmsUser1(this);
+
+		return cmsReceiverMessages1;
+	}
+
+	public CmsReceiverMessage removeCmsReceiverMessages1(CmsReceiverMessage cmsReceiverMessages1) {
+		getSendReceiverMessages().remove(cmsReceiverMessages1);
+		cmsReceiverMessages1.setCmsUser1(null);
+
+		return cmsReceiverMessages1;
+	}
+*/
+	public List<CmsReceiverMessage> getReceivReceiverMessages() {
+		return this.receivReceiverMessages;
+	}
+
+	public void setReceivReceiverMessages(List<CmsReceiverMessage> cmsReceiverMessages2) {
+		this.receivReceiverMessages = cmsReceiverMessages2;
+	}
+
+	/*public CmsReceiverMessage addCmsReceiverMessages2(CmsReceiverMessage cmsReceiverMessages2) {
+		getReceivReceiverMessages().add(cmsReceiverMessages2);
+		cmsReceiverMessages2.setCmsUser2(this);
+
+		return cmsReceiverMessages2;
+	}
+
+	public CmsReceiverMessage removeCmsReceiverMessages2(CmsReceiverMessage cmsReceiverMessages2) {
+		getReceivReceiverMessages().remove(cmsReceiverMessages2);
+		cmsReceiverMessages2.setCmsUser2(null);
+
+		return cmsReceiverMessages2;
+	}
+*/
+	public CmsGroup getGroup() {
+		return this.group;
+	}
+
+	public void setGroup(CmsGroup cmsGroup) {
+		this.group = cmsGroup;
+	}
+
+	public Set<Content> getCollectContents() {
+		return this.collectContents;
+	}
+
+	public void setCollectContents(Set<Content> cmsContents2) {
+		this.collectContents = cmsContents2;
+	}
+
+/*	public List<CmsDepartment> getCmsDepartments() {
+		return this.cmsDepartments;
+	}
+
+	public void setCmsDepartments(List<CmsDepartment> cmsDepartments) {
+		this.cmsDepartments = cmsDepartments;
+	}*/
+
+	public Set<CmsUserExt> getUserExtSet() {
+		return this.userExtSet;
+	}
+
+	public void setUserExtSet(Set<CmsUserExt> cmsUserExt) {
+		this.userExtSet = cmsUserExt;
+	}
+
+	public Set<CmsRole> getRoles() {
+		return this.roles;
+	}
+
+	public void setRoles(Set<CmsRole> cmsRoles) {
+		this.roles = cmsRoles;
+	}
+
+	public Set<CmsUserSite> getUserSites() {
+		return this.userSites;
+	}
+
+	public void setUserSites(Set<CmsUserSite> cmsUserSites) {
+		this.userSites = cmsUserSites;
+	}
+
+	/*public CmsUserSite addCmsUserSite(CmsUserSite cmsUserSite) {
+		getUserSites().add(cmsUserSite);
+		cmsUserSite.setCmsUser(this);
+
+		return cmsUserSite;
+	}
+
+	public CmsUserSite removeCmsUserSite(CmsUserSite cmsUserSite) {
+		getUserSites().remove(cmsUserSite);
+		cmsUserSite.setCmsUser(null);
+
+		return cmsUserSite;
+	}
+
+	public List<CmsVoteRecord> getCmsVoteRecords() {
+		return this.cmsVoteRecords;
+	}
+
+	public void setCmsVoteRecords(List<CmsVoteRecord> cmsVoteRecords) {
+		this.cmsVoteRecords = cmsVoteRecords;
+	}
+
+	public CmsVoteRecord addCmsVoteRecord(CmsVoteRecord cmsVoteRecord) {
+		getCmsVoteRecords().add(cmsVoteRecord);
+		cmsVoteRecord.setCmsUser(this);
+
+		return cmsVoteRecord;
+	}
+
+	public CmsVoteRecord removeCmsVoteRecord(CmsVoteRecord cmsVoteRecord) {
+		getCmsVoteRecords().remove(cmsVoteRecord);
+		cmsVoteRecord.setCmsUser(null);
+
+		return cmsVoteRecord;
+	}
+*/
 }
