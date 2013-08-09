@@ -229,7 +229,8 @@ public class Content extends BaseContent implements ContentInterface {
 	}
 
 	public void setContentCheck(ContentCheck check) {
-		Set<ContentCheck> set = getContentCheckSet();
+        setContentCheckSet(check);
+		/*Set<ContentCheck> set = getContentCheckSet();
 		if (set == null) {
 			set = new HashSet<ContentCheck>();
 			setContentCheckSet(set);
@@ -237,7 +238,7 @@ public class Content extends BaseContent implements ContentInterface {
 		if (!set.isEmpty()) {
 			set.clear();
 		}
-		set.add(check);
+		set.add(check);*/
 	}
 
 	public void addToChannels(Channel channel) {
@@ -819,12 +820,13 @@ public class Content extends BaseContent implements ContentInterface {
 	}
 
 	public ContentCheck getContentCheck() {
-		Set<ContentCheck> set = getContentCheckSet();
+        return getContentCheckSet();
+		/*Set<ContentCheck> set = getContentCheckSet();
 		if (set != null && set.size() > 0) {
 			return set.iterator().next();
 		} else {
 			return null;
-		}
+		}*/
 	}
 
 	public String getDesc() {

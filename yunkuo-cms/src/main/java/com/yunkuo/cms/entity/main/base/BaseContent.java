@@ -206,8 +206,14 @@ public class BaseContent implements Serializable {
 
 
     //bi-directional one-to-one association to CmsContentCheck
-    @OneToMany
-    private Set<ContentCheck> contentCheckSet;
+    @OneToOne
+    @JoinTable(name = "cms_content_check"
+            , joinColumns = {
+            @JoinColumn(name = "content_id")
+    }, inverseJoinColumns = {
+            @JoinColumn(name = "content_id")
+    })
+    private ContentCheck contentCheckSet;
 
 
 
@@ -533,11 +539,11 @@ public class BaseContent implements Serializable {
 		this.channels = cmsChannels;
 	}
 
-	public Set<ContentCheck> getContentCheckSet() {
+	public ContentCheck getContentCheckSet() {
 		return this.contentCheckSet;
 	}
 
-	public void setContentCheckSet(Set<ContentCheck> cmsContentCheck) {
+	public void setContentCheckSet(ContentCheck cmsContentCheck) {
 		this.contentCheckSet = cmsContentCheck;
 	}
 

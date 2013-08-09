@@ -43,7 +43,13 @@ public class BaseContentCheck implements Serializable {
 
 	//bi-directional one-to-one association to CmsContent
 	@OneToOne
-	@JoinColumn(name="content_id")
+	//@JoinColumn(name="content_id")
+    @JoinTable(name = "cms_content"
+            , joinColumns = {
+            @JoinColumn(name = "content_id")
+    }, inverseJoinColumns = {
+            @JoinColumn(name = "content_id")
+    })
 	private Content content;
 
 	//bi-directional many-to-one association to CmsUser
