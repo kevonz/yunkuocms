@@ -1,90 +1,89 @@
 package com.yunkuo.cms.entity.main.base;
 
+import com.yunkuo.cms.entity.main.Content;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 
 /**
- * This is an object that contains data related to the cms_content table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_content"
+ * The persistent class for the cms_content_picture database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_content_picture")*/
+@MappedSuperclass
+public class BaseContentPicture implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseContentPicture  implements Serializable {
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer id;
+    /*@Id
+    @Column(name="content_id")
+    @GenericGenerator(name="foreignKey", strategy="foreign", parameters=@Parameter(name="property", value="content"))
+    @GeneratedValue(generator="foreignKey", strategy=GenerationType.IDENTITY)
+    private Integer id;*/
 
-	public static String REF = "ContentPicture";
-	public static String PROP_DESCRIPTION = "description";
-	public static String PROP_IMG_PATH = "imgPath";
+	private String description;
 
+	@Column(name="img_path")
+	private String imgPath;
 
-	// constructors
-	public BaseContentPicture () {
-		initialize();
+	//bi-directional many-to-one association to CmsContent
+
+   /* @JoinTable(name = "cms_content"
+            , joinColumns = {
+            @JoinColumn(name = "content_id")
+    })*/
+    @ManyToOne
+    @JoinColumn(name="content_id")
+    private Content cmsContent;
+
+	public BaseContentPicture() {
+	}
+    /**
+     * Constructor for required fields
+     */
+    public BaseContentPicture (
+            java.lang.String imgPath) {
+
+        this.setImgPath(imgPath);
+        initialize();
+    }
+
+    protected void initialize () {}
+	public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseContentPicture (
-		java.lang.String imgPath) {
-
-		this.setImgPath(imgPath);
-		initialize();
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	protected void initialize () {}
-
-
-
-	// fields
-	private java.lang.String imgPath;
-	private java.lang.String description;
-
-
-
-
-
-
-	/**
-	 * Return the value associated with the column: img_path
-	 */
-	public java.lang.String getImgPath () {
-		return imgPath;
+	public String getDescription() {
+		return this.description;
 	}
 
-	/**
-	 * Set the value related to the column: img_path
-	 * @param imgPath the img_path value
-	 */
-	public void setImgPath (java.lang.String imgPath) {
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getImgPath() {
+		return this.imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
 
 
-	/**
-	 * Return the value associated with the column: description
-	 */
-	public java.lang.String getDescription () {
-		return description;
+	public Content getCmsContent() {
+		return this.cmsContent;
 	}
 
-	/**
-	 * Set the value related to the column: description
-	 * @param description the description value
-	 */
-	public void setDescription (java.lang.String description) {
-		this.description = description;
-	}
-
-
-
-
-
-
-	public String toString () {
-		return super.toString();
+	public void setCmsContent(Content cmsContent) {
+		this.cmsContent = cmsContent;
 	}
 
 

@@ -1,131 +1,117 @@
 package com.yunkuo.cms.entity.main.base;
 
+import com.yunkuo.cms.entity.main.Content;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 
 /**
- * This is an object that contains data related to the cms_content table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_content"
+ * The persistent class for the cms_content_attachment database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_content_attachment")*/
+@MappedSuperclass
+public class BaseContentAttachment implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseContentAttachment  implements Serializable {
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer id;
+	@Column(name="attachment_name")
+	private String name;
 
-	public static String REF = "ContentAttachment";
-	public static String PROP_PATH = "path";
-	public static String PROP_FILENAME = "filename";
-	public static String PROP_NAME = "name";
-	public static String PROP_COUNT = "count";
+	@Column(name="attachment_path")
+	private String path;
+
+	@Column(name="download_count")
+	private Integer count;
+
+	private String filename;
+
+	private Integer priority;
+
+	//bi-directional many-to-one association to CmsContent
+	@ManyToOne
+	@JoinColumn(name="content_id")
+	private Content cmsContent;
+
+	public BaseContentAttachment() {
+	}
+    /**
+     * Constructor for required fields
+     */
+    public BaseContentAttachment (
+            java.lang.String path,
+            java.lang.String name,
+            java.lang.Integer count) {
+
+        this.setPath(path);
+        this.setName(name);
+        this.setCount(count);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
 
-	// constructors
-	public BaseContentAttachment () {
-		initialize();
+
+
+	public String getName() {
+		return this.name;
 	}
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseContentAttachment (
-		java.lang.String path,
-		java.lang.String name,
-		java.lang.Integer count) {
-
-		this.setPath(path);
-		this.setName(name);
-		this.setCount(count);
-		initialize();
+	public void setName(String attachmentName) {
+		this.name = attachmentName;
 	}
 
-	protected void initialize () {}
-
-
-
-	// fields
-	private java.lang.String path;
-	private java.lang.String name;
-	private java.lang.String filename;
-	private java.lang.Integer count;
-
-
-
-
-
-
-	/**
-	 * Return the value associated with the column: attachment_path
-	 */
-	public java.lang.String getPath () {
-		return path;
+	public String getPath() {
+		return this.path;
 	}
 
-	/**
-	 * Set the value related to the column: attachment_path
-	 * @param path the attachment_path value
-	 */
-	public void setPath (java.lang.String path) {
-		this.path = path;
+	public void setPath(String attachmentPath) {
+		this.path = attachmentPath;
 	}
 
-
-	/**
-	 * Return the value associated with the column: attachment_name
-	 */
-	public java.lang.String getName () {
-		return name;
+	public Integer getCount() {
+		return this.count;
 	}
 
-	/**
-	 * Set the value related to the column: attachment_name
-	 * @param name the attachment_name value
-	 */
-	public void setName (java.lang.String name) {
-		this.name = name;
+	public void setCount(Integer downloadCount) {
+		this.count = downloadCount;
 	}
 
-
-	/**
-	 * Return the value associated with the column: filename
-	 */
-	public java.lang.String getFilename () {
-		return filename;
+	public String getFilename() {
+		return this.filename;
 	}
 
-	/**
-	 * Set the value related to the column: filename
-	 * @param filename the filename value
-	 */
-	public void setFilename (java.lang.String filename) {
+	public void setFilename(String filename) {
 		this.filename = filename;
 	}
 
-
-	/**
-	 * Return the value associated with the column: download_count
-	 */
-	public java.lang.Integer getCount () {
-		return count;
+	public Integer getPriority() {
+		return this.priority;
 	}
 
-	/**
-	 * Set the value related to the column: download_count
-	 * @param count the download_count value
-	 */
-	public void setCount (java.lang.Integer count) {
-		this.count = count;
+	public void setPriority(Integer priority) {
+		this.priority = priority;
 	}
 
-
-
-
-
-
-	public String toString () {
-		return super.toString();
+	public Content getCmsContent() {
+		return this.cmsContent;
 	}
 
+	public void setCmsContent(Content cmsContent) {
+		this.cmsContent = cmsContent;
+	}
 
 }

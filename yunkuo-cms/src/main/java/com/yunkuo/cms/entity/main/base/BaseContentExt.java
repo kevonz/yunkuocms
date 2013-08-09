@@ -21,7 +21,6 @@ public class BaseContentExt implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    //TODO update id
 	//@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="content_id")
     @GenericGenerator(name="foreignKey", strategy="foreign", parameters=@Parameter(name="property", value="content"))

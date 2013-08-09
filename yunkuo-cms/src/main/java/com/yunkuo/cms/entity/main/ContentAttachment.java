@@ -2,6 +2,11 @@ package com.yunkuo.cms.entity.main;
 
 import com.yunkuo.cms.entity.main.base.BaseContentAttachment;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="cms_content_attachment")
 public class ContentAttachment extends BaseContentAttachment {
 	private static final long serialVersionUID = 1L;
 

@@ -20,6 +20,12 @@ import com.yunkuo.cms.utils.CmsThreadVariable;
 import com.yunkuo.cms.utils.StaticPageUtils;
 import com.yunkuo.core.web.ContentInterface;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name="cms_content")
 public class Content extends BaseContent implements ContentInterface {
 	private static final long serialVersionUID = 1L;
 
@@ -59,6 +65,7 @@ public class Content extends BaseContent implements ContentInterface {
 		recycle
 	};
 
+    @Transient
 	private DateFormat df = new SimpleDateFormat("/yyyyMMdd");
 
 	public Boolean getStaticContent() {
@@ -209,7 +216,8 @@ public class Content extends BaseContent implements ContentInterface {
 	}
 
 	public void setContentTxt(ContentTxt txt) {
-		Set<ContentTxt> set = getContentTxtSet();
+        setContentTxtSet(txt);
+		/*Set<ContentTxt> set = getContentTxtSet();
 		if (set == null) {
 			set = new HashSet<ContentTxt>();
 			setContentTxtSet(set);
@@ -217,7 +225,7 @@ public class Content extends BaseContent implements ContentInterface {
 		if (!set.isEmpty()) {
 			set.clear();
 		}
-		set.add(txt);
+		set.add(txt);*/
 	}
 
 	public void setContentCheck(ContentCheck check) {
@@ -800,12 +808,14 @@ public class Content extends BaseContent implements ContentInterface {
 	}
 
 	public ContentTxt getContentTxt() {
-		Set<ContentTxt> set = getContentTxtSet();
+        return this.getContentTxtSet();
+		/*Set<ContentTxt> set = getContentTxtSet();
 		if (set != null && set.size() > 0) {
 			return set.iterator().next();
 		} else {
 			return null;
 		}
+        */
 	}
 
 	public ContentCheck getContentCheck() {

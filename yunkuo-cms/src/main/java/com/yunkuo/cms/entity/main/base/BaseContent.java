@@ -1,588 +1,658 @@
 package com.yunkuo.cms.entity.main.base;
 
+import com.yunkuo.cms.entity.assist.CmsComment;
+import com.yunkuo.cms.entity.assist.CmsFile;
+import com.yunkuo.cms.entity.main.*;
+import org.hibernate.annotations.IndexColumn;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.*;
 
 
 /**
- * This is an object that contains data related to the cms_content table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_content"
+ * The persistent class for the cms_content database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_content")*/
+@MappedSuperclass
+public class BaseContent implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseContent  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="content_id")
+	private Integer id;
 
-	public static String REF = "Content";
-	public static String PROP_STATUS = "status";
-	public static String PROP_TYPE = "type";
-	public static String PROP_RECOMMEND = "recommend";
-	public static String PROP_SITE = "site";
-	public static String PROP_USER = "user";
-	public static String PROP_HAS_TITLE_IMG = "hasTitleImg";
-	public static String PROP_SORT_DATE = "sortDate";
-	public static String PROP_TOP_LEVEL = "topLevel";
-	public static String PROP_COMMENTS_DAY = "commentsDay";
-	public static String PROP_CONTENT_EXT = "contentExt";
-	public static String PROP_VIEWS_DAY = "viewsDay";
-	public static String PROP_UPS_DAY = "upsDay";
-	public static String PROP_CHANNEL = "channel";
-	public static String PROP_CONTENT_COUNT = "contentCount";
-	public static String PROP_ID = "id";
-	public static String PROP_DOWNLOADS_DAY = "downloadsDay";
+	@Column(name="comments_day")
+	private Short commentsDay;
 
+	@Column(name="downloads_day")
+	private Short downloadsDay;
 
-	// constructors
-	public BaseContent () {
-		initialize();
-	}
+	@Column(name="has_title_img")
+	private Boolean hasTitleImg;
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseContent (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+	@Column(name="is_recommend")
+	private Boolean recommend;
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseContent (
-		java.lang.Integer id,
-		com.yunkuo.cms.entity.main.CmsSite site,
-		java.util.Date sortDate,
-		java.lang.Byte topLevel,
-		java.lang.Boolean hasTitleImg,
-		java.lang.Boolean recommend,
-		java.lang.Byte status,
-		java.lang.Integer viewsDay,
-		java.lang.Short commentsDay,
-		java.lang.Short downloadsDay,
-		java.lang.Short upsDay) {
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="sort_date")
+	private Date sortDate;
 
-		this.setId(id);
-		this.setSite(site);
-		this.setSortDate(sortDate);
-		this.setTopLevel(topLevel);
-		this.setHasTitleImg(hasTitleImg);
-		this.setRecommend(recommend);
-		this.setStatus(status);
-		this.setViewsDay(viewsDay);
-		this.setCommentsDay(commentsDay);
-		this.setDownloadsDay(downloadsDay);
-		this.setUpsDay(upsDay);
-		initialize();
-	}
+	private Byte status;
 
-	protected void initialize () {}
+	@Column(name="top_level")
+	private Byte topLevel;
+
+	@Column(name="ups_day")
+	private Short upsDay;
 
 
+    //bi-directional one-to-one association to CmsContentCount
+    @OneToOne
+    @JoinColumn(name="content_id")
+    private ContentCount contentCount;
 
-	private int hashCode = Integer.MIN_VALUE;
+    //bi-directional one-to-one association to CmsContentExt
+    @OneToOne
+    @JoinColumn(name="content_id")
+    private ContentExt contentExt;
 
-	// primary key
-	private java.lang.Integer id;
+    //bi-directional many-to-one association to BaseChannel
+    @ManyToOne
+    @JoinColumn(name="channel_id")
+    private Channel channel;
 
-	// fields
-	private java.util.Date sortDate;
-	private java.lang.Byte topLevel;
-	private java.lang.Boolean hasTitleImg;
-	private java.lang.Boolean recommend;
-	private java.lang.Byte status;
-	private java.lang.Integer viewsDay;
-	private java.lang.Short commentsDay;
-	private java.lang.Short downloadsDay;
-	private java.lang.Short upsDay;
+    //bi-directional many-to-one association to CmsSite
+    @ManyToOne
+    @JoinColumn(name="site_id")
+    private CmsSite site;
 
-	// one to one
-	private com.yunkuo.cms.entity.main.ContentExt contentExt;
-	private com.yunkuo.cms.entity.main.ContentCount contentCount;
+    //bi-directional many-to-one association to CmsContentType
+    @ManyToOne
+    @JoinColumn(name="type_id")
+    private ContentType type;
 
-	// many to one
-	private com.yunkuo.cms.entity.main.ContentType type;
-	private com.yunkuo.cms.entity.main.CmsSite site;
-	private com.yunkuo.cms.entity.main.CmsUser user;
-	private com.yunkuo.cms.entity.main.Channel channel;
-
-	// collections
-	private java.util.Set<com.yunkuo.cms.entity.main.Channel> channels;
-	private java.util.Set<com.yunkuo.cms.entity.main.CmsTopic> topics;
-	private java.util.Set<com.yunkuo.cms.entity.main.CmsGroup> viewGroups;
-	private java.util.List<com.yunkuo.cms.entity.main.ContentTag> tags;
-	private java.util.List<com.yunkuo.cms.entity.main.ContentPicture> pictures;
-	private java.util.List<com.yunkuo.cms.entity.main.ContentAttachment> attachments;
-	private java.util.Set<com.yunkuo.cms.entity.main.ContentTxt> contentTxtSet;
-	private java.util.Set<com.yunkuo.cms.entity.main.ContentCheck> contentCheckSet;
-	private java.util.Map<java.lang.String, java.lang.String> attr;
-	private java.util.Set<com.yunkuo.cms.entity.main.CmsUser> collectUsers;
-	private java.util.Set<com.yunkuo.cms.entity.assist.CmsComment> comments;
-	private java.util.Set<com.yunkuo.cms.entity.assist.CmsFile> files;
+    //bi-directional many-to-one association to CmsUser
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private CmsUser user;
 
 
+    //bi-directional many-to-many association to BaseChannel
+    @ManyToMany
+    @JoinTable(
+            name="cms_content_channel"
+            , joinColumns={
+            @JoinColumn(name="content_id")
+    }
+            , inverseJoinColumns={
+            @JoinColumn(name="channel_id")
+    }
+    )
+    private Set<Channel> channels;
 
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="identity"
-     *  column="content_id"
+    //bi-directional many-to-many association to CmsTopic
+    @ManyToMany
+    @JoinTable(
+            name="cms_content_topic"
+            , joinColumns={
+            @JoinColumn(name="content_id")
+    }
+            , inverseJoinColumns={
+            @JoinColumn(name="topic_id")
+    }
+    )
+    private Set<CmsTopic> topics;
+
+    //bi-directional many-to-many association to CmsGroup
+    @ManyToMany
+    @JoinTable(
+            name="cms_content_group_view"
+            , joinColumns={
+            @JoinColumn(name="content_id")
+    }
+            , inverseJoinColumns={
+            @JoinColumn(name="group_id")
+    }
+    )
+    private Set<CmsGroup> viewGroups;
+
+
+    @ManyToMany
+    @JoinTable(
+            name="cms_user_collection"
+            , joinColumns={
+            @JoinColumn(name="content_id")
+    }
+            , inverseJoinColumns={
+            @JoinColumn(name="user_id")
+    }
+    )
+    private Set<CmsUser> collectUsers;
+
+
+    //bi-directional many-to-many association to CmsContentTag
+    @ManyToMany
+    @JoinTable(
+            name="cms_contenttag"
+            , joinColumns={
+            @JoinColumn(name="content_id")
+    }
+            , inverseJoinColumns={
+            @JoinColumn(name="tag_id")
+    }
+    )
+    private List<ContentTag> tags;
+
+
+   /* @CollectionTable
+    @JoinTable(name = "cms_content_picture"
+            , joinColumns = {
+            @JoinColumn(name = "content_id")
+    }, inverseJoinColumns = {@JoinColumn(name = "img_path", referencedColumnName = "imgPath")
+            , @JoinColumn(name = "description")})
+    @IndexColumn(name = "priority")
+    private List<ContentPicture> pictures;*/
+
+
+    @OneToMany
+    //@JoinTable(name = "cms_content_picture")
+   // @JoinColumn(name="content_id")
+    @JoinTable(name = "cms_content_picture"
+            , joinColumns = {
+            @JoinColumn(name = "content_id")
+    },inverseJoinColumns=@JoinColumn(name="id"))
+    private List<ContentPicture> pictures;
+/*    @ManyToMany
+    @JoinTable(name = "cms_content_picture"
+            , joinColumns = {
+            @JoinColumn(name = "content_id")
+    }, inverseJoinColumns = {@JoinColumn(name = "img_path", referencedColumnName = "imgPath")
+            , @JoinColumn(name = "description")})
+
+    /*@CollectionTable
+    @JoinTable(name = "cms_content_attachment"
+            , joinColumns = {
+            @JoinColumn(name = "content_id")
+    }, inverseJoinColumns = {@JoinColumn(name = "attachment_path", referencedColumnName = "path")
+            , @JoinColumn(name = "attachment_name", referencedColumnName = "name")
+            , @JoinColumn(name = "filename"), @JoinColumn(name = "download_count", referencedColumnName = "count")})
+    @IndexColumn(name = "priority")
+    private List<ContentAttachment> attachments;*/
+    @OneToMany
+    @JoinTable(name = "cms_content_attachment"
+            , joinColumns = {
+            @JoinColumn(name = "content_id")
+    },inverseJoinColumns=@JoinColumn(name="id"))
+    private List<ContentAttachment> attachments;
+    //bi-directional many-to-one association to CmsContentAttachment
+/*    @OneToMany
+    @JoinTable(name = "cms_content_attachment"
+            , joinColumns = {
+            @JoinColumn(name = "content_id")
+    }, inverseJoinColumns = {@JoinColumn(name = "attachment_path", referencedColumnName = "path")
+            , @JoinColumn(name = "attachment_name", referencedColumnName = "name")
+            , @JoinColumn(name = "filename"), @JoinColumn(name = "download_count", referencedColumnName = "count")})
+    private List<ContentAttachment> attachments;*/
+
+    //bi-directional one-to-one association to CmsContentTxt
+    @OneToOne
+    @JoinColumn(name="content_id")
+    private ContentTxt contentTxtSet;
+
+
+
+    //bi-directional one-to-one association to CmsContentCheck
+    @OneToMany
+    private Set<ContentCheck> contentCheckSet;
+
+
+
+    @ElementCollection
+    @CollectionTable(name="cms_content_attr" , joinColumns = @JoinColumn(name="content_id"))
+    @MapKeyColumn(name="attr_name")
+    @Column(name="attr_value")
+    private Map<String,String> attr = new HashMap<String, String>();
+
+    //bi-directional many-to-one association to CmsComment
+    @OneToMany
+/*    @JoinTable(name = "cms_comment"
+            , joinColumns = {
+            @JoinColumn(name = "content_id")
+    },inverseJoinColumns=@JoinColumn(name="comment_id"))*/
+    private Set<CmsComment> comments;
+
+
+	@Column(name="views_day")
+	private Integer viewsDay;
+
+    public Set<CmsUser> getCollectUsers() {
+        return collectUsers;
+    }
+
+    public void setCollectUsers(Set<CmsUser> collectUsers) {
+        this.collectUsers = collectUsers;
+    }
+
+    public List<ContentTag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<ContentTag> tags) {
+        this.tags = tags;
+    }
+
+    public List<ContentPicture> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(List<ContentPicture> pictures) {
+        this.pictures = pictures;
+    }
+
+    public Map<String, String> getAttr() {
+        return attr;
+    }
+
+    public void setAttr(Map<String, String> attr) {
+        this.attr = attr;
+    }
+
+    public Set<CmsComment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<CmsComment> comments) {
+        this.comments = comments;
+    }
+
+    //bi-directional many-to-one association to CmsFile
+    @OneToMany
+    private Set<CmsFile> files;
+
+
+
+
+
+/*
+
+	//bi-directional many-to-one association to CmsContentPicture
+	@OneToMany(mappedBy="cmsContent")
+	private List<CmsContentPicture> cmsContentPictures;
+
+	//bi-directional many-to-one association to CmsContentShareCheck
+	@OneToMany(mappedBy="cmsContent")
+	private List<CmsContentShareCheck> cmsContentShareChecks;
+
+
+
+	//bi-directional many-to-many association to CmsUser
+	@ManyToMany(mappedBy="cmsContents2")
+	private List<CmsUser> cmsUsers;
+*/
+
+    // constructors
+    public BaseContent () {
+        initialize();
+    }
+
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseContent (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseContent (
+            java.lang.Integer id,
+            com.yunkuo.cms.entity.main.CmsSite site,
+            java.util.Date sortDate,
+            java.lang.Byte topLevel,
+            java.lang.Boolean hasTitleImg,
+            java.lang.Boolean recommend,
+            java.lang.Byte status,
+            java.lang.Integer viewsDay,
+            java.lang.Short commentsDay,
+            java.lang.Short downloadsDay,
+            java.lang.Short upsDay) {
+
+        this.setId(id);
+        this.setSite(site);
+        this.setSortDate(sortDate);
+        this.setTopLevel(topLevel);
+        this.setHasTitleImg(hasTitleImg);
+        this.setRecommend(recommend);
+        this.setStatus(status);
+        this.setViewsDay(viewsDay);
+        this.setCommentsDay(commentsDay);
+        this.setDownloadsDay(downloadsDay);
+        this.setUpsDay(upsDay);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+	public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+	public void setId(Integer contentId) {
+		this.id = contentId;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: sort_date
-	 */
-	public java.util.Date getSortDate () {
-		return sortDate;
+	public Short getCommentsDay() {
+		return this.commentsDay;
 	}
 
-	/**
-	 * Set the value related to the column: sort_date
-	 * @param sortDate the sort_date value
-	 */
-	public void setSortDate (java.util.Date sortDate) {
-		this.sortDate = sortDate;
-	}
-
-
-	/**
-	 * Return the value associated with the column: top_level
-	 */
-	public java.lang.Byte getTopLevel () {
-		return topLevel;
-	}
-
-	/**
-	 * Set the value related to the column: top_level
-	 * @param topLevel the top_level value
-	 */
-	public void setTopLevel (java.lang.Byte topLevel) {
-		this.topLevel = topLevel;
-	}
-
-
-	/**
-	 * Return the value associated with the column: has_title_img
-	 */
-	public java.lang.Boolean getHasTitleImg () {
-		return hasTitleImg;
-	}
-
-	/**
-	 * Set the value related to the column: has_title_img
-	 * @param hasTitleImg the has_title_img value
-	 */
-	public void setHasTitleImg (java.lang.Boolean hasTitleImg) {
-		this.hasTitleImg = hasTitleImg;
-	}
-
-
-	/**
-	 * Return the value associated with the column: is_recommend
-	 */
-	public java.lang.Boolean getRecommend () {
-		return recommend;
-	}
-
-	/**
-	 * Set the value related to the column: is_recommend
-	 * @param recommend the is_recommend value
-	 */
-	public void setRecommend (java.lang.Boolean recommend) {
-		this.recommend = recommend;
-	}
-
-
-	/**
-	 * Return the value associated with the column: status
-	 */
-	public java.lang.Byte getStatus () {
-		return status;
-	}
-
-	/**
-	 * Set the value related to the column: status
-	 * @param status the status value
-	 */
-	public void setStatus (java.lang.Byte status) {
-		this.status = status;
-	}
-
-
-	/**
-	 * Return the value associated with the column: views_day
-	 */
-	public java.lang.Integer getViewsDay () {
-		return viewsDay;
-	}
-
-	/**
-	 * Set the value related to the column: views_day
-	 * @param viewsDay the views_day value
-	 */
-	public void setViewsDay (java.lang.Integer viewsDay) {
-		this.viewsDay = viewsDay;
-	}
-
-
-	/**
-	 * Return the value associated with the column: comments_day
-	 */
-	public java.lang.Short getCommentsDay () {
-		return commentsDay;
-	}
-
-	/**
-	 * Set the value related to the column: comments_day
-	 * @param commentsDay the comments_day value
-	 */
-	public void setCommentsDay (java.lang.Short commentsDay) {
+	public void setCommentsDay(Short commentsDay) {
 		this.commentsDay = commentsDay;
 	}
-	
 
-
-	public java.util.Set<com.yunkuo.cms.entity.assist.CmsFile> getFiles() {
-		return files;
+	public Short getDownloadsDay() {
+		return this.downloadsDay;
 	}
 
-	public void setFiles(java.util.Set<com.yunkuo.cms.entity.assist.CmsFile> files) {
-		this.files = files;
-	}
-
-	/**
-	 * Return the value associated with the column: downloads_day
-	 */
-	public java.lang.Short getDownloadsDay () {
-		return downloadsDay;
-	}
-
-	/**
-	 * Set the value related to the column: downloads_day
-	 * @param downloadsDay the downloads_day value
-	 */
-	public void setDownloadsDay (java.lang.Short downloadsDay) {
+	public void setDownloadsDay(Short downloadsDay) {
 		this.downloadsDay = downloadsDay;
 	}
 
-
-	/**
-	 * Return the value associated with the column: ups_day
-	 */
-	public java.lang.Short getUpsDay () {
-		return upsDay;
+	public Boolean getHasTitleImg() {
+		return this.hasTitleImg;
 	}
 
-	/**
-	 * Set the value related to the column: ups_day
-	 * @param upsDay the ups_day value
-	 */
-	public void setUpsDay (java.lang.Short upsDay) {
+	public void setHasTitleImg(Boolean hasTitleImg) {
+		this.hasTitleImg = hasTitleImg;
+	}
+
+	public Boolean getRecommend() {
+		return this.recommend;
+	}
+
+	public void setRecommend(Boolean isRecommend) {
+		this.recommend = isRecommend;
+	}
+
+	public Date getSortDate() {
+		return this.sortDate;
+	}
+
+	public void setSortDate(Date sortDate) {
+		this.sortDate = sortDate;
+	}
+
+	public Byte getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(Byte status) {
+		this.status = status;
+	}
+
+	public Byte getTopLevel() {
+		return this.topLevel;
+	}
+
+	public void setTopLevel(Byte topLevel) {
+		this.topLevel = topLevel;
+	}
+
+	public Short getUpsDay() {
+		return this.upsDay;
+	}
+
+	public void setUpsDay(Short upsDay) {
 		this.upsDay = upsDay;
 	}
 
-
-	/**
-	 * Return the value associated with the column: contentExt
-	 */
-	public com.yunkuo.cms.entity.main.ContentExt getContentExt () {
-		return contentExt;
+	public Integer getViewsDay() {
+		return this.viewsDay;
 	}
 
-	/**
-	 * Set the value related to the column: contentExt
-	 * @param contentExt the contentExt value
-	 */
-	public void setContentExt (com.yunkuo.cms.entity.main.ContentExt contentExt) {
-		this.contentExt = contentExt;
+	public void setViewsDay(Integer viewsDay) {
+		this.viewsDay = viewsDay;
 	}
 
-
-	/**
-	 * Return the value associated with the column: contentCount
-	 */
-	public com.yunkuo.cms.entity.main.ContentCount getContentCount () {
-		return contentCount;
+	/*public List<CmsContentTag> getTags() {
+		return this.tags;
 	}
 
-	/**
-	 * Set the value related to the column: contentCount
-	 * @param contentCount the contentCount value
-	 */
-	public void setContentCount (com.yunkuo.cms.entity.main.ContentCount contentCount) {
-		this.contentCount = contentCount;
+	public void setTags(List<CmsContentTag> cmsContentTags) {
+		this.tags = cmsContentTags;
 	}
 
-
-	/**
-	 * Return the value associated with the column: type_id
-	 */
-	public com.yunkuo.cms.entity.main.ContentType getType () {
-		return type;
+	public List<CmsComment> getCmsComment() {
+		return this.comments;
 	}
 
-	/**
-	 * Set the value related to the column: type_id
-	 * @param type the type_id value
-	 */
-	public void setType (com.yunkuo.cms.entity.main.ContentType type) {
-		this.type = type;
+	public void setCmsComment(List<CmsComment> cmsComments) {
+		this.comments = cmsComments;
 	}
 
+	public CmsComment addCmsComment(CmsComment cmsComment) {
+		getCmsComment().add(cmsComment);
+		cmsComment.setCmsContent(this);
 
-	/**
-	 * Return the value associated with the column: site_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsSite getSite () {
-		return site;
+		return cmsComment;
 	}
 
-	/**
-	 * Set the value related to the column: site_id
-	 * @param site the site_id value
-	 */
-	public void setSite (com.yunkuo.cms.entity.main.CmsSite site) {
-		this.site = site;
+	public CmsComment removeCmsComment(CmsComment cmsComment) {
+		getCmsComment().remove(cmsComment);
+		cmsComment.setCmsContent(null);
+
+		return cmsComment;
+	}*/
+
+	public Channel getChannel() {
+		return this.channel;
 	}
 
-
-	/**
-	 * Return the value associated with the column: user_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsUser getUser () {
-		return user;
+	public void setChannel(Channel cmsChannel) {
+		this.channel = cmsChannel;
 	}
 
-	/**
-	 * Set the value related to the column: user_id
-	 * @param user the user_id value
-	 */
-	public void setUser (com.yunkuo.cms.entity.main.CmsUser user) {
-		this.user = user;
+	public CmsSite getSite() {
+		return this.site;
 	}
 
-
-	/**
-	 * Return the value associated with the column: channel_id
-	 */
-	public com.yunkuo.cms.entity.main.Channel getChannel () {
-		return channel;
+	public void setSite(CmsSite cmsSite) {
+		this.site = cmsSite;
 	}
 
-	/**
-	 * Set the value related to the column: channel_id
-	 * @param channel the channel_id value
-	 */
-	public void setChannel (com.yunkuo.cms.entity.main.Channel channel) {
-		this.channel = channel;
+	public ContentType getType() {
+		return this.type;
 	}
 
-
-	/**
-	 * Return the value associated with the column: channels
-	 */
-	public java.util.Set<com.yunkuo.cms.entity.main.Channel> getChannels () {
-		return channels;
+	public void setType(ContentType cmsContentType) {
+		this.type = cmsContentType;
 	}
 
-	/**
-	 * Set the value related to the column: channels
-	 * @param channels the channels value
-	 */
-	public void setChannels (java.util.Set<com.yunkuo.cms.entity.main.Channel> channels) {
-		this.channels = channels;
+	public CmsUser getUser() {
+		return this.user;
 	}
 
-
-	/**
-	 * Return the value associated with the column: topics
-	 */
-	public java.util.Set<com.yunkuo.cms.entity.main.CmsTopic> getTopics () {
-		return topics;
+	public void setUser(CmsUser cmsUser) {
+		this.user = cmsUser;
 	}
 
-	/**
-	 * Set the value related to the column: topics
-	 * @param topics the topics value
-	 */
-	public void setTopics (java.util.Set<com.yunkuo.cms.entity.main.CmsTopic> topics) {
-		this.topics = topics;
+	public List<ContentAttachment> getAttachments() {
+		return this.attachments;
 	}
 
+	public void setAttachments(List<ContentAttachment> cmsContentAttachments) {
+		this.attachments = cmsContentAttachments;
+	}
+/*
+	public ContentAttachment addCmsContentAttachment(ContentAttachment cmsContentAttachment) {
+		getAttachments().add(cmsContentAttachment);
+		cmsContentAttachment.setCmsContent(this);
 
-	/**
-	 * Return the value associated with the column: viewGroups
-	 */
-	public java.util.Set<com.yunkuo.cms.entity.main.CmsGroup> getViewGroups () {
-		return viewGroups;
+		return cmsContentAttachment;
 	}
 
-	/**
-	 * Set the value related to the column: viewGroups
-	 * @param viewGroups the viewGroups value
-	 */
-	public void setViewGroups (java.util.Set<com.yunkuo.cms.entity.main.CmsGroup> viewGroups) {
-		this.viewGroups = viewGroups;
+	public ContentAttachment removeCmsContentAttachment(ContentAttachment cmsContentAttachment) {
+		getAttachments().remove(cmsContentAttachment);
+		cmsContentAttachment.setContent(null);
+
+		return cmsContentAttachment;
+	}*/
+
+	/*public List<CmsContentAttr> getCmsContentAttrs() {
+		return this.cmsContentAttrs;
 	}
 
-
-	/**
-	 * Return the value associated with the column: tags
-	 */
-	public java.util.List<com.yunkuo.cms.entity.main.ContentTag> getTags () {
-		return tags;
+	public void setCmsContentAttrs(List<CmsContentAttr> cmsContentAttrs) {
+		this.cmsContentAttrs = cmsContentAttrs;
 	}
 
-	/**
-	 * Set the value related to the column: tags
-	 * @param tags the tags value
-	 */
-	public void setTags (java.util.List<com.yunkuo.cms.entity.main.ContentTag> tags) {
-		this.tags = tags;
+	public CmsContentAttr addCmsContentAttr(CmsContentAttr cmsContentAttr) {
+		getCmsContentAttrs().add(cmsContentAttr);
+		cmsContentAttr.setCmsContent(this);
+
+		return cmsContentAttr;
 	}
 
+	public CmsContentAttr removeCmsContentAttr(CmsContentAttr cmsContentAttr) {
+		getCmsContentAttrs().remove(cmsContentAttr);
+		cmsContentAttr.setCmsContent(null);
 
-	/**
-	 * Return the value associated with the column: pictures
-	 */
-	public java.util.List<com.yunkuo.cms.entity.main.ContentPicture> getPictures () {
-		return pictures;
+		return cmsContentAttr;
+	}
+*/
+	public Set<Channel> getChannels() {
+		return this.channels;
 	}
 
-	/**
-	 * Set the value related to the column: pictures
-	 * @param pictures the pictures value
-	 */
-	public void setPictures (java.util.List<com.yunkuo.cms.entity.main.ContentPicture> pictures) {
-		this.pictures = pictures;
+	public void setChannels(Set<Channel> cmsChannels) {
+		this.channels = cmsChannels;
 	}
 
-
-	/**
-	 * Return the value associated with the column: attachments
-	 */
-	public java.util.List<com.yunkuo.cms.entity.main.ContentAttachment> getAttachments () {
-		return attachments;
+	public Set<ContentCheck> getContentCheckSet() {
+		return this.contentCheckSet;
 	}
 
-	/**
-	 * Set the value related to the column: attachments
-	 * @param attachments the attachments value
-	 */
-	public void setAttachments (java.util.List<com.yunkuo.cms.entity.main.ContentAttachment> attachments) {
-		this.attachments = attachments;
+	public void setContentCheckSet(Set<ContentCheck> cmsContentCheck) {
+		this.contentCheckSet = cmsContentCheck;
 	}
 
-
-	/**
-	 * Return the value associated with the column: contentTxtSet
-	 */
-	public java.util.Set<com.yunkuo.cms.entity.main.ContentTxt> getContentTxtSet () {
-		return contentTxtSet;
+	public ContentCount getContentCount() {
+		return this.contentCount;
 	}
 
-	/**
-	 * Set the value related to the column: contentTxtSet
-	 * @param contentTxtSet the contentTxtSet value
-	 */
-	public void setContentTxtSet (java.util.Set<com.yunkuo.cms.entity.main.ContentTxt> contentTxtSet) {
-		this.contentTxtSet = contentTxtSet;
+	public void setContentCount(ContentCount cmsContentCount) {
+		this.contentCount = cmsContentCount;
 	}
 
-
-	/**
-	 * Return the value associated with the column: contentCheckSet
-	 */
-	public java.util.Set<com.yunkuo.cms.entity.main.ContentCheck> getContentCheckSet () {
-		return contentCheckSet;
+	public ContentExt getContentExt() {
+		return this.contentExt;
 	}
 
-	/**
-	 * Set the value related to the column: contentCheckSet
-	 * @param contentCheckSet the contentCheckSet value
-	 */
-	public void setContentCheckSet (java.util.Set<com.yunkuo.cms.entity.main.ContentCheck> contentCheckSet) {
-		this.contentCheckSet = contentCheckSet;
+	public void setContentExt(ContentExt cmsContentExt) {
+		this.contentExt = cmsContentExt;
 	}
 
-
-	/**
-	 * Return the value associated with the column: attr
-	 */
-	public java.util.Map<java.lang.String, java.lang.String> getAttr () {
-		return attr;
-	}
-	
-
-	public java.util.Set<com.yunkuo.cms.entity.main.CmsUser> getCollectUsers() {
-		return collectUsers;
+	public Set<CmsGroup> getViewGroups() {
+		return this.viewGroups;
 	}
 
-	public void setCollectUsers(
-			java.util.Set<com.yunkuo.cms.entity.main.CmsUser> collectUsers) {
-		this.collectUsers = collectUsers;
-	}
-	
-
-	public java.util.Set<com.yunkuo.cms.entity.assist.CmsComment> getComments() {
-		return comments;
+	public void setViewGroups(Set<CmsGroup> cmsGroups) {
+		this.viewGroups = cmsGroups;
 	}
 
-	public void setComments(
-			java.util.Set<com.yunkuo.cms.entity.assist.CmsComment> comments) {
-		this.comments = comments;
+	/*public List<CmsContentPicture> getCmsContentPictures() {
+		return this.cmsContentPictures;
 	}
 
-	/**
-	 * Set the value related to the column: attr
-	 * @param attr the attr value
-	 */
-	public void setAttr (java.util.Map<java.lang.String, java.lang.String> attr) {
-		this.attr = attr;
+	public void setCmsContentPictures(List<CmsContentPicture> cmsContentPictures) {
+		this.cmsContentPictures = cmsContentPictures;
 	}
 
+	public CmsContentPicture addCmsContentPicture(CmsContentPicture cmsContentPicture) {
+		getCmsContentPictures().add(cmsContentPicture);
+		cmsContentPicture.setCmsContent(this);
 
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.main.Content)) return false;
-		else {
-			com.yunkuo.cms.entity.main.Content content = (com.yunkuo.cms.entity.main.Content) obj;
-			if (null == this.getId() || null == content.getId()) return false;
-			else return (this.getId().equals(content.getId()));
-		}
+		return cmsContentPicture;
 	}
 
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
+	public CmsContentPicture removeCmsContentPicture(CmsContentPicture cmsContentPicture) {
+		getCmsContentPictures().remove(cmsContentPicture);
+		cmsContentPicture.setCmsContent(null);
+
+		return cmsContentPicture;
 	}
 
-
-	public String toString () {
-		return super.toString();
+	public List<CmsContentShareCheck> getCmsContentShareChecks() {
+		return this.cmsContentShareChecks;
 	}
 
+	public void setCmsContentShareChecks(List<CmsContentShareCheck> cmsContentShareChecks) {
+		this.cmsContentShareChecks = cmsContentShareChecks;
+	}
 
+	public CmsContentShareCheck addCmsContentShareCheck(CmsContentShareCheck cmsContentShareCheck) {
+		getCmsContentShareChecks().add(cmsContentShareCheck);
+		cmsContentShareCheck.setCmsContent(this);
+
+		return cmsContentShareCheck;
+	}
+
+	public CmsContentShareCheck removeCmsContentShareCheck(CmsContentShareCheck cmsContentShareCheck) {
+		getCmsContentShareChecks().remove(cmsContentShareCheck);
+		cmsContentShareCheck.setCmsContent(null);
+
+		return cmsContentShareCheck;
+	}*/
+
+	public Set<CmsTopic> getTopics() {
+		return this.topics;
+	}
+
+	public void setTopics(Set<CmsTopic> cmsTopics) {
+		this.topics = cmsTopics;
+	}
+
+	public ContentTxt getContentTxtSet() {
+		return this.contentTxtSet;
+	}
+
+	public void setContentTxtSet(ContentTxt cmsContentTxt) {
+		this.contentTxtSet = cmsContentTxt;
+	}
+
+	public Set<CmsFile> getFiles() {
+		return this.files;
+	}
+
+	public void setFiles(Set<CmsFile> cmsFiles) {
+		this.files = cmsFiles;
+	}
+
+	/*public CmsFile addCmsFile(CmsFile cmsFile) {
+		getFiles().add(cmsFile);
+		cmsFile.setCmsContent(this);
+
+		return cmsFile;
+	}
+
+	public CmsFile removeCmsFile(CmsFile cmsFile) {
+		getFiles().remove(cmsFile);
+		cmsFile.setCmsContent(null);
+
+		return cmsFile;
+	}
+
+	public List<CmsUser> getCmsUsers() {
+		return this.cmsUsers;
+	}
+
+	public void setCmsUsers(List<CmsUser> cmsUsers) {
+		this.cmsUsers = cmsUsers;
+	}
+*/
 }

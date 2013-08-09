@@ -29,11 +29,13 @@ public class ContentTxtMngImpl implements ContentTxtMng {
 		ContentTxt entity = dao.findById(content.getId());
 		if (entity == null) {
 			entity = save(txt, content);
-			content.getContentTxtSet().add(entity);
+			//content.getContentTxtSet().add(entity);
+            content.setContentTxt(txt);//
 			return entity;
 		} else {
 			if (txt.isAllBlank()) {
-				content.getContentTxtSet().clear();
+				//content.getContentTxtSet().clear();
+                content.setContentTxt(null);
 				return null;
 			} else {
 				Updater<ContentTxt> updater = new Updater<ContentTxt>(txt);

@@ -12,17 +12,11 @@
         <mapping class="com.yunkuo.core.entity.DbFile" />
         <mapping class="com.yunkuo.core.entity.DbTpl" />
         <mapping class="com.yunkuo.cms.entity.main.CmsLog" />
-        <mapping class="com.yunkuo.cms.entity.main.ContentType" />
-        <mapping class="com.yunkuo.cms.entity.main.ContentTxt" />
-        <mapping class="com.yunkuo.cms.entity.main.ContentExt" />
-        <mapping class="com.yunkuo.cms.entity.main.ContentTag" />
         <mapping class="com.yunkuo.cms.entity.main.Channel" />
         <mapping class="com.yunkuo.cms.entity.main.CmsChannelAttr" />
         <mapping class="com.yunkuo.cms.entity.main.ChannelTxt" />
         <mapping class="com.yunkuo.cms.entity.main.ChannelExt" />
         <mapping class="com.yunkuo.cms.entity.main.CmsSiteModel" />
-        <mapping class="com.yunkuo.cms.entity.main.ContentCount" />
-        <mapping class="com.yunkuo.cms.entity.main.ContentCheck" />
         <mapping class="com.yunkuo.cms.entity.main.CmsUserSite" />
         <mapping class="com.yunkuo.cms.entity.main.CmsUserExt" />
         <mapping class="com.yunkuo.cms.entity.main.CmsRole" />
@@ -34,6 +28,15 @@
         <mapping class="com.yunkuo.cms.entity.main.CmsConfig" />
         <mapping class="com.yunkuo.cms.entity.main.CmsSite" />
         <mapping class="com.yunkuo.cms.entity.main.CmsUser" />
+        <mapping class="com.yunkuo.cms.entity.main.ContentAttachment" />
+        <mapping class="com.yunkuo.cms.entity.main.ContentPicture" />
+        <mapping class="com.yunkuo.cms.entity.main.ContentCount" />
+        <mapping class="com.yunkuo.cms.entity.main.ContentCheck" />
+        <mapping class="com.yunkuo.cms.entity.main.ContentType" />
+        <mapping class="com.yunkuo.cms.entity.main.ContentTxt" />
+        <mapping class="com.yunkuo.cms.entity.main.ContentExt" />
+        <mapping class="com.yunkuo.cms.entity.main.ContentTag" />
+        <mapping class="com.yunkuo.cms.entity.main.Content" />
     </session-factory>
 
          
