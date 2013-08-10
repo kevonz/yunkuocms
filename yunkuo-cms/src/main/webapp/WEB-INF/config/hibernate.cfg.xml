@@ -43,6 +43,7 @@
         <mapping class="com.yunkuo.cms.entity.assist.CmsSensitivity" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsSiteFlow" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsKeyword" />
+        <mapping class="com.yunkuo.cms.entity.assist.CmsAdvertisingSpace" />
     </session-factory>
 
          
