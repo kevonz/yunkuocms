@@ -1,19 +1,5 @@
 package com.yunkuo.cms.controller.admin.assist;
 
-import static com.yunkuo.common.page.SimplePage.cpn;
-
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.yunkuo.cms.entity.assist.CmsComment;
 import com.yunkuo.cms.entity.assist.CmsCommentExt;
 import com.yunkuo.cms.entity.main.CmsSite;
@@ -23,6 +9,18 @@ import com.yunkuo.cms.utils.CmsUtils;
 import com.yunkuo.cms.utils.WebErrors;
 import com.yunkuo.common.page.Pagination;
 import com.yunkuo.common.web.CookieUtils;
+import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
+
+import static com.yunkuo.common.page.SimplePage.cpn;
 
 @Controller
 public class CmsCommentAct {
@@ -69,7 +67,7 @@ public class CmsCommentAct {
 		}
 		//若回复内容不为空而且回复更新，则设置回复时间，已最新回复时间为准
 		if(StringUtils.isNotBlank(ext.getReply())&&!reply.equals(ext.getReply())){
-			bean.setReplayTime(new Date());
+			bean.setReplyTime(new Date());
 		}
 		bean = manager.update(bean, ext);
 		log.info("update CmsComment id={}.", bean.getId());

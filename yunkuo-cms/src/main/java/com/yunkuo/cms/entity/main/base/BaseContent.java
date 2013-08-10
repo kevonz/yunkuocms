@@ -225,10 +225,12 @@ public class BaseContent implements Serializable {
 
     //bi-directional many-to-one association to CmsComment
     @OneToMany
-/*    @JoinTable(name = "cms_comment"
+//    @JoinTable(name = "cms_comment")
+    /*@JoinTable(name = "cms_comment"
             , joinColumns = {
             @JoinColumn(name = "content_id")
-    },inverseJoinColumns=@JoinColumn(name="comment_id"))*/
+    },inverseJoinColumns={@JoinColumn(name="content_id")})*/
+    //@MapKeyColumn(name = "content_id")
     private Set<CmsComment> comments;
 
 

@@ -1,11 +1,5 @@
 package com.yunkuo.cms.manager.assist.impl;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.yunkuo.cms.dao.assist.CmsCommentDao;
 import com.yunkuo.cms.entity.assist.CmsComment;
 import com.yunkuo.cms.entity.assist.CmsCommentExt;
@@ -18,6 +12,11 @@ import com.yunkuo.cms.manager.main.ContentCountMng;
 import com.yunkuo.cms.manager.main.ContentMng;
 import com.yunkuo.common.hibernate3.Updater;
 import com.yunkuo.common.page.Pagination;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -69,7 +68,7 @@ public class CmsCommentMngImpl implements CmsCommentMng {
 	public CmsComment comment(String text, String ip, Integer contentId,
 			Integer siteId, Integer userId, boolean checked, boolean recommend) {
 		CmsComment comment = new CmsComment();
-		comment.setContent(contentMng.findById(contentId));
+		//comment.setContent(contentMng.findById(contentId));
 		comment.setSite(cmsSiteMng.findById(siteId));
 		if (userId != null) {
 			comment.setCommentUser(cmsUserMng.findById(userId));

@@ -1,10 +1,14 @@
 package com.yunkuo.cms.entity.assist;
 
-import java.sql.Timestamp;
-
 import com.yunkuo.cms.entity.assist.base.BaseCmsComment;
 import com.yunkuo.common.util.StrUtils;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.sql.Timestamp;
+
+@Entity
+@Table(name="cms_comment")
 public class CmsComment extends BaseCmsComment {
 	private static final long serialVersionUID = 1L;
 
