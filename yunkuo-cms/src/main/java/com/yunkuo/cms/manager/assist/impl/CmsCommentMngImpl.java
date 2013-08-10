@@ -68,18 +68,16 @@ public class CmsCommentMngImpl implements CmsCommentMng {
 	public CmsComment comment(String text, String ip, Integer contentId,
 			Integer siteId, Integer userId, boolean checked, boolean recommend) {
 		CmsComment comment = new CmsComment();
-		//comment.setContent(contentMng.findById(contentId));
+		comment.setContent(contentMng.findById(contentId));
 		comment.setSite(cmsSiteMng.findById(siteId));
 		if (userId != null) {
 			comment.setCommentUser(cmsUserMng.findById(userId));
 		}
 		comment.setChecked(checked);
 		comment.setRecommend(recommend);
-/*        Content content = contentMng.findById(contentId);
-        comment.setContent(content);*/
 		comment.init();
-		dao.save(comment);
-		text = cmsSensitivityMng.replaceSensitivity(text);
+        text = cmsSensitivityMng.replaceSensitivity(text);
+	    dao.save(comment);
 		cmsCommentExtMng.save(ip, text, comment);
 		contentCountMng.commentCount(contentId);
 		return comment;
