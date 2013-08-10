@@ -2,8 +2,12 @@ package com.yunkuo.cms.entity.assist;
 
 import com.yunkuo.cms.entity.assist.base.BaseCmsSensitivity;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
+@Entity
+@Table(name="cms_sensitivity")
 public class CmsSensitivity extends BaseCmsSensitivity {
 	private static final long serialVersionUID = 1L;
 

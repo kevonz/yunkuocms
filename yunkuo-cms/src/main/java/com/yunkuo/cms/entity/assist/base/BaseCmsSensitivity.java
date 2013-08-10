@@ -1,147 +1,79 @@
 package com.yunkuo.cms.entity.assist.base;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
 
 /**
- * This is an object that contains data related to the cms_sensitivity table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_sensitivity"
+ * The persistent class for the cms_sensitivity database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_sensitivity")*/
+@MappedSuperclass
+public class BaseCmsSensitivity implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsSensitivity  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="sensitivity_id")
+	private int id;
 
-	public static String REF = "CmsSensitivity";
-	public static String PROP_SEARCH = "search";
-	public static String PROP_ID = "id";
-	public static String PROP_REPLACEMENT = "replacement";
+	private String replacement;
 
+	private String search;
 
-	// constructors
-	public BaseCmsSensitivity () {
-		initialize();
-	}
+    // constructors
+    public BaseCmsSensitivity () {
+        initialize();
+    }
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsSensitivity (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
-
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsSensitivity (
-		java.lang.Integer id,
-		java.lang.String search,
-		java.lang.String replacement) {
-
-		this.setId(id);
-		this.setSearch(search);
-		this.setReplacement(replacement);
-		initialize();
-	}
-
-	protected void initialize () {}
-
-
-
-	private int hashCode = Integer.MIN_VALUE;
-
-	// primary key
-	private java.lang.Integer id;
-
-	// fields
-	private java.lang.String search;
-	private java.lang.String replacement;
-
-
-
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="identity"
-     *  column="sensitivity_id"
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsSensitivity (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsSensitivity (
+            java.lang.Integer id,
+            java.lang.String search,
+            java.lang.String replacement) {
+
+        this.setId(id);
+        this.setSearch(search);
+        this.setReplacement(replacement);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+	public int getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+	public void setId(int sensitivityId) {
+		this.id = sensitivityId;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: search
-	 */
-	public java.lang.String getSearch () {
-		return search;
+	public String getReplacement() {
+		return this.replacement;
 	}
 
-	/**
-	 * Set the value related to the column: search
-	 * @param search the search value
-	 */
-	public void setSearch (java.lang.String search) {
-		this.search = search;
-	}
-
-
-	/**
-	 * Return the value associated with the column: replacement
-	 */
-	public java.lang.String getReplacement () {
-		return replacement;
-	}
-
-	/**
-	 * Set the value related to the column: replacement
-	 * @param replacement the replacement value
-	 */
-	public void setReplacement (java.lang.String replacement) {
+	public void setReplacement(String replacement) {
 		this.replacement = replacement;
 	}
 
-
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.assist.CmsSensitivity)) return false;
-		else {
-			com.yunkuo.cms.entity.assist.CmsSensitivity cmsSensitivity = (com.yunkuo.cms.entity.assist.CmsSensitivity) obj;
-			if (null == this.getId() || null == cmsSensitivity.getId()) return false;
-			else return (this.getId().equals(cmsSensitivity.getId()));
-		}
+	public String getSearch() {
+		return this.search;
 	}
 
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
+	public void setSearch(String search) {
+		this.search = search;
 	}
-
-
-	public String toString () {
-		return super.toString();
-	}
-
 
 }
