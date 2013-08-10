@@ -1,171 +1,96 @@
 package com.yunkuo.cms.entity.assist.base;
 
+
+import com.yunkuo.cms.entity.assist.CmsComment;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 
 /**
- * This is an object that contains data related to the cms_comment_ext table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_comment_ext"
+ * The persistent class for the cms_comment_ext database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_comment_ext")*/
+@MappedSuperclass
+public class BaseCmsCommentExt implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsCommentExt  implements Serializable {
+    public Integer getId() {
+        return id;
+    }
 
-	public static String REF = "CmsCommentExt";
-	public static String PROP_COMMENT = "comment";
-	public static String PROP_IP = "ip";
-	public static String PROP_TEXT = "text";
-	public static String PROP_REPLY = "reply";
-	public static String PROP_ID = "id";
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
+    @Id
+    @Column(name = "comment_id")
+    @GenericGenerator(name="foreignKey", strategy="foreign", parameters=@Parameter(name="property", value="user"))
+    @GeneratedValue(generator="foreignKey", strategy=GenerationType.IDENTITY)
+    private Integer id;
 
-	// constructors
-	public BaseCmsCommentExt () {
-		initialize();
-	}
+	private String ip;
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsCommentExt (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+	@Lob
+	private String reply;
 
-	protected void initialize () {}
+	@Lob
+	private String text;
 
+	//bi-directional many-to-one association to CmsComment
+	@OneToOne
+	@JoinColumn(name="comment_id")
+	private CmsComment comment;
 
+    // constructors
+    public BaseCmsCommentExt () {
+        initialize();
+    }
 
-	private int hashCode = Integer.MIN_VALUE;
-
-	// primary key
-	private java.lang.Integer id;
-
-	// fields
-	private java.lang.String ip;
-	private java.lang.String text;
-	private java.lang.String reply;
-
-	// one to one
-	private com.yunkuo.cms.entity.assist.CmsComment comment;
-
-
-
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="foreign"
-     *  column="comment_id"
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsCommentExt (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+	public String getIp() {
+		return this.ip;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
-	}
-
-
-
-
-	/**
-	 * Return the value associated with the column: ip
-	 */
-	public java.lang.String getIp () {
-		return ip;
-	}
-
-	/**
-	 * Set the value related to the column: ip
-	 * @param ip the ip value
-	 */
-	public void setIp (java.lang.String ip) {
+	public void setIp(String ip) {
 		this.ip = ip;
 	}
 
-
-	/**
-	 * Return the value associated with the column: text
-	 */
-	public java.lang.String getText () {
-		return text;
+	public String getReply() {
+		return this.reply;
 	}
 
-	/**
-	 * Set the value related to the column: text
-	 * @param text the text value
-	 */
-	public void setText (java.lang.String text) {
-		this.text = text;
-	}
-
-
-	/**
-	 * Return the value associated with the column: reply
-	 */
-	public java.lang.String getReply () {
-		return reply;
-	}
-
-	/**
-	 * Set the value related to the column: reply
-	 * @param reply the reply value
-	 */
-	public void setReply (java.lang.String reply) {
+	public void setReply(String reply) {
 		this.reply = reply;
 	}
 
-
-	/**
-	 * Return the value associated with the column: comment
-	 */
-	public com.yunkuo.cms.entity.assist.CmsComment getComment () {
-		return comment;
+	public String getText() {
+		return this.text;
 	}
 
-	/**
-	 * Set the value related to the column: comment
-	 * @param comment the comment value
-	 */
-	public void setComment (com.yunkuo.cms.entity.assist.CmsComment comment) {
-		this.comment = comment;
+	public void setText(String text) {
+		this.text = text;
 	}
 
-
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.assist.CmsCommentExt)) return false;
-		else {
-			com.yunkuo.cms.entity.assist.CmsCommentExt cmsCommentExt = (com.yunkuo.cms.entity.assist.CmsCommentExt) obj;
-			if (null == this.getId() || null == cmsCommentExt.getId()) return false;
-			else return (this.getId().equals(cmsCommentExt.getId()));
-		}
+	public CmsComment getComment() {
+		return this.comment;
 	}
 
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
+	public void setComment(CmsComment cmsComment) {
+		this.comment = cmsComment;
 	}
-
-
-	public String toString () {
-		return super.toString();
-	}
-
 
 }

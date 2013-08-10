@@ -37,6 +37,9 @@
         <mapping class="com.yunkuo.cms.entity.main.ContentExt" />
         <mapping class="com.yunkuo.cms.entity.main.ContentTag" />
         <mapping class="com.yunkuo.cms.entity.main.Content" />
+
+        <mapping class="com.yunkuo.cms.entity.assist.CmsComment" />
+        <mapping class="com.yunkuo.cms.entity.assist.CmsCommentExt" />
     </session-factory>
 
          
