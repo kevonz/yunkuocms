@@ -3,7 +3,11 @@ package com.yunkuo.cms.entity.assist;
 import org.apache.commons.lang.StringUtils;
 
 import com.yunkuo.cms.entity.assist.base.BaseCmsAdvertising;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="cms_advertising")
 public class CmsAdvertising extends BaseCmsAdvertising {
 	private static final long serialVersionUID = 1L;
 
