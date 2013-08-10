@@ -2,8 +2,12 @@ package com.yunkuo.cms.entity.assist;
 
 import com.yunkuo.cms.entity.assist.base.BaseCmsSiteFlow;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
+@Entity
+@Table(name="cms_site_flow")
 public class CmsSiteFlow extends BaseCmsSiteFlow {
 	private static final long serialVersionUID = 1L;
 

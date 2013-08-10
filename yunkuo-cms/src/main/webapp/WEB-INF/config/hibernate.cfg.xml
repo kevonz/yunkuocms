@@ -41,6 +41,7 @@
         <mapping class="com.yunkuo.cms.entity.assist.CmsComment" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsCommentExt" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsSensitivity" />
+        <mapping class="com.yunkuo.cms.entity.assist.CmsSiteFlow" />
     </session-factory>
 
          

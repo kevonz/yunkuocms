@@ -1,299 +1,180 @@
 package com.yunkuo.cms.entity.assist.base;
 
+import com.yunkuo.cms.entity.main.CmsSite;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 
 /**
- * This is an object that contains data related to the cms_site_flow table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_site_flow"
+ * The persistent class for the cms_site_flow database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_site_flow")*/
+@MappedSuperclass
+public class BaseCmsSiteFlow implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsSiteFlow  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="flow_id")
+	private Integer id;
 
-	public static String REF = "CmsSiteFlow";
-	public static String PROP_SESSION_ID = "sessionId";
-	public static String PROP_SITE = "site";
-	public static String PROP_REFERER_PAGE = "refererPage";
-	public static String PROP_AREA = "area";
-	public static String PROP_ID = "id";
-	public static String PROP_ACCESS_TIME = "accessTime";
-	public static String PROP_ACCESS_PAGE = "accessPage";
-	public static String PROP_ACCESS_DATE = "accessDate";
-	public static String PROP_ACCESS_IP = "accessIp";
-	public static String PROP_REFERER_WEB_SITE = "refererWebSite";
-	public static String PROP_REFERER_KEYWORD = "refererKeyword";
+	@Column(name="access_date")
+	private String accessDate;
 
+	@Column(name="access_ip")
+	private String accessIp;
 
-	// constructors
-	public BaseCmsSiteFlow () {
-		initialize();
-	}
+	@Column(name="access_page")
+	private String accessPage;
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsSiteFlow (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="access_time")
+	private Date accessTime;
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsSiteFlow (
-		java.lang.Integer id,
-		com.yunkuo.cms.entity.main.CmsSite site,
-		java.lang.String accessIp,
-		java.lang.String accessDate,
-		java.lang.String accessPage,
-		java.lang.String sessionId) {
+	private String area;
 
-		this.setId(id);
-		this.setSite(site);
-		this.setAccessIp(accessIp);
-		this.setAccessDate(accessDate);
-		this.setAccessPage(accessPage);
-		this.setSessionId(sessionId);
-		initialize();
-	}
+	@Column(name="referer_keyword")
+	private String refererKeyword;
 
-	protected void initialize () {}
+	@Column(name="referer_page")
+	private String refererPage;
 
+	@Column(name="referer_website")
+	private String refererWebSite;
 
+	@Column(name="session_id")
+	private String sessionId;
 
-	private int hashCode = Integer.MIN_VALUE;
+	//bi-directional many-to-one association to CmsSite
+	@ManyToOne
+	@JoinColumn(name="site_id")
+	private CmsSite site;
 
-	// primary key
-	private java.lang.Integer id;
+    // constructors
+    public BaseCmsSiteFlow () {
+        initialize();
+    }
 
-	// fields
-	private java.lang.String accessIp;
-	private java.lang.String accessDate;
-	private java.util.Date accessTime;
-	private java.lang.String accessPage;
-	private java.lang.String refererWebSite;
-	private java.lang.String refererPage;
-	private java.lang.String refererKeyword;
-	private java.lang.String area;
-	private java.lang.String sessionId;
-
-	// many to one
-	private com.yunkuo.cms.entity.main.CmsSite site;
-
-
-
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="identity"
-     *  column="flow_id"
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsSiteFlow (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsSiteFlow (
+            java.lang.Integer id,
+            com.yunkuo.cms.entity.main.CmsSite site,
+            java.lang.String accessIp,
+            java.lang.String accessDate,
+            java.lang.String accessPage,
+            java.lang.String sessionId) {
+
+        this.setId(id);
+        this.setSite(site);
+        this.setAccessIp(accessIp);
+        this.setAccessDate(accessDate);
+        this.setAccessPage(accessPage);
+        this.setSessionId(sessionId);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+	public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+	public void setId(Integer flowId) {
+		this.id = flowId;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: access_ip
-	 */
-	public java.lang.String getAccessIp () {
-		return accessIp;
+	public String getAccessDate() {
+		return this.accessDate;
 	}
 
-	/**
-	 * Set the value related to the column: access_ip
-	 * @param accessIp the access_ip value
-	 */
-	public void setAccessIp (java.lang.String accessIp) {
-		this.accessIp = accessIp;
-	}
-
-
-	/**
-	 * Return the value associated with the column: access_date
-	 */
-	public java.lang.String getAccessDate () {
-		return accessDate;
-	}
-
-	/**
-	 * Set the value related to the column: access_date
-	 * @param accessDate the access_date value
-	 */
-	public void setAccessDate (java.lang.String accessDate) {
+	public void setAccessDate(String accessDate) {
 		this.accessDate = accessDate;
 	}
 
-
-	/**
-	 * Return the value associated with the column: access_time
-	 */
-	public java.util.Date getAccessTime () {
-		return accessTime;
+	public String getAccessIp() {
+		return this.accessIp;
 	}
 
-	/**
-	 * Set the value related to the column: access_time
-	 * @param accessTime the access_time value
-	 */
-	public void setAccessTime (java.util.Date accessTime) {
-		this.accessTime = accessTime;
+	public void setAccessIp(String accessIp) {
+		this.accessIp = accessIp;
 	}
 
-
-	/**
-	 * Return the value associated with the column: access_page
-	 */
-	public java.lang.String getAccessPage () {
-		return accessPage;
+	public String getAccessPage() {
+		return this.accessPage;
 	}
 
-	/**
-	 * Set the value related to the column: access_page
-	 * @param accessPage the access_page value
-	 */
-	public void setAccessPage (java.lang.String accessPage) {
+	public void setAccessPage(String accessPage) {
 		this.accessPage = accessPage;
 	}
 
-
-	/**
-	 * Return the value associated with the column: referer_website
-	 */
-	public java.lang.String getRefererWebSite () {
-		return refererWebSite;
+	public Date getAccessTime() {
+		return this.accessTime;
 	}
 
-	/**
-	 * Set the value related to the column: referer_website
-	 * @param refererWebSite the referer_website value
-	 */
-	public void setRefererWebSite (java.lang.String refererWebSite) {
-		this.refererWebSite = refererWebSite;
+	public void setAccessTime(Date accessTime) {
+		this.accessTime = accessTime;
 	}
 
-
-	/**
-	 * Return the value associated with the column: referer_page
-	 */
-	public java.lang.String getRefererPage () {
-		return refererPage;
+	public String getArea() {
+		return this.area;
 	}
 
-	/**
-	 * Set the value related to the column: referer_page
-	 * @param refererPage the referer_page value
-	 */
-	public void setRefererPage (java.lang.String refererPage) {
-		this.refererPage = refererPage;
-	}
-
-
-	/**
-	 * Return the value associated with the column: referer_keyword
-	 */
-	public java.lang.String getRefererKeyword () {
-		return refererKeyword;
-	}
-
-	/**
-	 * Set the value related to the column: referer_keyword
-	 * @param refererKeyword the referer_keyword value
-	 */
-	public void setRefererKeyword (java.lang.String refererKeyword) {
-		this.refererKeyword = refererKeyword;
-	}
-
-
-	/**
-	 * Return the value associated with the column: area
-	 */
-	public java.lang.String getArea () {
-		return area;
-	}
-
-	/**
-	 * Set the value related to the column: area
-	 * @param area the area value
-	 */
-	public void setArea (java.lang.String area) {
+	public void setArea(String area) {
 		this.area = area;
 	}
 
-
-	/**
-	 * Return the value associated with the column: session_id
-	 */
-	public java.lang.String getSessionId () {
-		return sessionId;
+	public String getRefererKeyword() {
+		return this.refererKeyword;
 	}
 
-	/**
-	 * Set the value related to the column: session_id
-	 * @param sessionId the session_id value
-	 */
-	public void setSessionId (java.lang.String sessionId) {
+	public void setRefererKeyword(String refererKeyword) {
+		this.refererKeyword = refererKeyword;
+	}
+
+	public String getRefererPage() {
+		return this.refererPage;
+	}
+
+	public void setRefererPage(String refererPage) {
+		this.refererPage = refererPage;
+	}
+
+	public String getRefererWebSite() {
+		return this.refererWebSite;
+	}
+
+	public void setRefererWebSite(String refererWebsite) {
+		this.refererWebSite = refererWebsite;
+	}
+
+	public String getSessionId() {
+		return this.sessionId;
+	}
+
+	public void setSessionId(String sessionId) {
 		this.sessionId = sessionId;
 	}
 
-
-	/**
-	 * Return the value associated with the column: site_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsSite getSite () {
-		return site;
+	public CmsSite getSite() {
+		return this.site;
 	}
 
-	/**
-	 * Set the value related to the column: site_id
-	 * @param site the site_id value
-	 */
-	public void setSite (com.yunkuo.cms.entity.main.CmsSite site) {
-		this.site = site;
+	public void setSite(CmsSite cmsSite) {
+		this.site = cmsSite;
 	}
-
-
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.assist.CmsSiteFlow)) return false;
-		else {
-			com.yunkuo.cms.entity.assist.CmsSiteFlow cmsSiteFlow = (com.yunkuo.cms.entity.assist.CmsSiteFlow) obj;
-			if (null == this.getId() || null == cmsSiteFlow.getId()) return false;
-			else return (this.getId().equals(cmsSiteFlow.getId()));
-		}
-	}
-
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
-	}
-
-
-	public String toString () {
-		return super.toString();
-	}
-
 
 }
