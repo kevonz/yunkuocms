@@ -45,7 +45,7 @@ public class BaseCmsComment implements Serializable {
 
 	//bi-directional many-to-one association to CmsContent
 	@ManyToOne
-	//@JoinColumn(name="content_id")
+	@JoinColumn(name="content_id")
 /*    @JoinTable(
             name="cms_content"
             , joinColumns={
@@ -74,6 +74,13 @@ public class BaseCmsComment implements Serializable {
 
 	//bi-directional many-to-one association to CmsCommentExt
 	@OneToOne
+    @JoinColumn(name="comment_id")
+  /* @JoinTable(name = "cms_comment_ext"
+            *//*, joinColumns = {
+            @JoinColumn(name = "comment_id")
+    }*//*, inverseJoinColumns = {
+            @JoinColumn(name = "comment_id")
+    })*/
 	private CmsCommentExt commentExt;
 
     // constructors

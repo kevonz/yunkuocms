@@ -28,9 +28,10 @@ public class BaseCmsCommentExt implements Serializable {
     }
 
     @Id
-    @Column(name = "comment_id")
-    @GenericGenerator(name="foreignKey", strategy="foreign", parameters=@Parameter(name="property", value="user"))
+   @Column(name = "comment_id")
+   @GenericGenerator(name="foreignKey", strategy="foreign", parameters=@Parameter(name="property", value="user"))
     @GeneratedValue(generator="foreignKey", strategy=GenerationType.IDENTITY)
+//  @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
 	private String ip;

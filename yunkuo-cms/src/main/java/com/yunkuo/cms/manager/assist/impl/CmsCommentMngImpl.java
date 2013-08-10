@@ -75,6 +75,8 @@ public class CmsCommentMngImpl implements CmsCommentMng {
 		}
 		comment.setChecked(checked);
 		comment.setRecommend(recommend);
+/*        Content content = contentMng.findById(contentId);
+        comment.setContent(content);*/
 		comment.init();
 		dao.save(comment);
 		text = cmsSensitivityMng.replaceSensitivity(text);

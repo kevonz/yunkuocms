@@ -225,6 +225,7 @@ public class BaseContent implements Serializable {
 
     //bi-directional many-to-one association to CmsComment
     @OneToMany
+    @JoinColumn(name="content_id")
 //    @JoinTable(name = "cms_comment")
     /*@JoinTable(name = "cms_comment"
             , joinColumns = {
