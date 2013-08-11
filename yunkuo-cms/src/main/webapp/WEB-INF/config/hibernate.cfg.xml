@@ -55,6 +55,7 @@
         <mapping class="com.yunkuo.cms.entity.assist.CmsVoteItem" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsVoteRecord" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsVoteTopic" />
+        <mapping class="com.yunkuo.cms.entity.assist.CmsFile" />
     </session-factory>
 
          

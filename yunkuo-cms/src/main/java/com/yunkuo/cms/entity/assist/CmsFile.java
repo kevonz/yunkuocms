@@ -2,8 +2,12 @@ package com.yunkuo.cms.entity.assist;
 
 import com.yunkuo.cms.entity.assist.base.BaseCmsFile;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
+@Entity
+@Table(name="cms_file")
 public class CmsFile extends BaseCmsFile {
 	private static final long serialVersionUID = 1L;
 
@@ -32,7 +36,7 @@ public class CmsFile extends BaseCmsFile {
 	}
 	
 	public Boolean getFileIsvalid(){
-		return super.isFileIsvalid();
+		return super.getFileIsvalid();
 	}
 
 /*[CONSTRUCTOR MARKER END]*/

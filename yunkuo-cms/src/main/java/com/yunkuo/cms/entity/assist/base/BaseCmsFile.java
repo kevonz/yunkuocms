@@ -1,165 +1,94 @@
 package com.yunkuo.cms.entity.assist.base;
 
+import com.yunkuo.cms.entity.main.Content;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 
 /**
- * This is an object that contains data related to the cms_file table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_file"
+ * The persistent class for the cms_file database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_file")*/
+@MappedSuperclass
+public class BaseCmsFile implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsFile  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="file_path")
+	private String filePath;
 
-	public static String REF = "CmsFile";
-	public static String PROP_FILE_ISVALID = "fileIsvalid";
-	public static String PROP_FILE_NAME = "fileName";
-	public static String PROP_FILE_PATH = "filePath";
-	public static String PROP_CONTENT = "content";
+	@Column(name="file_isvalid")
+	private Boolean fileIsvalid;
 
+	@Column(name="file_name")
+	private String fileName;
 
-	// constructors
-	public BaseCmsFile () {
-		initialize();
-	}
+	//bi-directional many-to-one association to CmsContent
+	@ManyToOne
+	@JoinColumn(name="content_id")
+	private Content content;
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsFile (java.lang.String filePath) {
-		this.setFilePath(filePath);
-		initialize();
-	}
+    // constructors
+    public BaseCmsFile () {
+        initialize();
+    }
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsFile (
-		java.lang.String filePath,
-		boolean fileIsvalid) {
-
-		this.setFilePath(filePath);
-		this.setFileIsvalid(fileIsvalid);
-		initialize();
-	}
-
-	protected void initialize () {}
-
-
-
-	private int hashCode = Integer.MIN_VALUE;
-
-	// primary key
-	private java.lang.String filePath;
-
-	// fields
-	private java.lang.String fileName;
-	private boolean fileIsvalid;
-
-	// many to one
-	private com.yunkuo.cms.entity.main.Content content;
-
-
-
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="assigned"
-     *  column="file_path"
+    /**
+     * Constructor for primary key
      */
-	public java.lang.String getFilePath () {
-		return filePath;
+    public BaseCmsFile (java.lang.String filePath) {
+        this.setFilePath(filePath);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsFile (
+            java.lang.String filePath,
+            boolean fileIsvalid) {
+
+        this.setFilePath(filePath);
+        this.setFileIsvalid(fileIsvalid);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+	public String getFilePath() {
+		return this.filePath;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param filePath the new ID
-	 */
-	public void setFilePath (java.lang.String filePath) {
+	public void setFilePath(String filePath) {
 		this.filePath = filePath;
-		this.hashCode = Integer.MIN_VALUE;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: file_name
-	 */
-	public java.lang.String getFileName () {
-		return fileName;
+	public Boolean getFileIsvalid() {
+		return this.fileIsvalid;
 	}
 
-	/**
-	 * Set the value related to the column: file_name
-	 * @param fileName the file_name value
-	 */
-	public void setFileName (java.lang.String fileName) {
-		this.fileName = fileName;
-	}
-
-
-	/**
-	 * Return the value associated with the column: file_isvalid
-	 */
-	public boolean isFileIsvalid () {
-		return fileIsvalid;
-	}
-
-	/**
-	 * Set the value related to the column: file_isvalid
-	 * @param fileIsvalid the file_isvalid value
-	 */
-	public void setFileIsvalid (boolean fileIsvalid) {
+	public void setFileIsvalid(Boolean fileIsvalid) {
 		this.fileIsvalid = fileIsvalid;
 	}
 
-
-	/**
-	 * Return the value associated with the column: content_id
-	 */
-	public com.yunkuo.cms.entity.main.Content getContent () {
-		return content;
+	public String getFileName() {
+		return this.fileName;
 	}
 
-	/**
-	 * Set the value related to the column: content_id
-	 * @param content the content_id value
-	 */
-	public void setContent (com.yunkuo.cms.entity.main.Content content) {
-		this.content = content;
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
-
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.assist.CmsFile)) return false;
-		else {
-			com.yunkuo.cms.entity.assist.CmsFile cmsFile = (com.yunkuo.cms.entity.assist.CmsFile) obj;
-			if (null == this.getFilePath() || null == cmsFile.getFilePath()) return false;
-			else return (this.getFilePath().equals(cmsFile.getFilePath()));
-		}
+	public Content getContent() {
+		return this.content;
 	}
 
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getFilePath()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getFilePath().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
+	public void setContent(Content cmsContent) {
+		this.content = cmsContent;
 	}
-
-
-	public String toString () {
-		return super.toString();
-	}
-
 
 }
