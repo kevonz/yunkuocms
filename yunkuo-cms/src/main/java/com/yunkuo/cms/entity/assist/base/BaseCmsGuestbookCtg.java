@@ -1,187 +1,144 @@
 package com.yunkuo.cms.entity.assist.base;
 
+import com.yunkuo.cms.entity.main.CmsSite;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 
 /**
- * This is an object that contains data related to the cms_guestbook_ctg table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_guestbook_ctg"
+ * The persistent class for the cms_guestbook_ctg database table.
+ * 
  */
 
-public abstract class BaseCmsGuestbookCtg  implements Serializable {
+@MappedSuperclass
+public class BaseCmsGuestbookCtg implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-	public static String REF = "CmsGuestbookCtg";
-	public static String PROP_DESCRIPTION = "description";
-	public static String PROP_SITE = "site";
-	public static String PROP_PRIORITY = "priority";
-	public static String PROP_NAME = "name";
-	public static String PROP_ID = "id";
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="guestbookctg_id")
+	private Integer id;
 
+	@Column(name="ctg_name")
+	private String name;
 
-	// constructors
-	public BaseCmsGuestbookCtg () {
-		initialize();
-	}
+	private String description;
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsGuestbookCtg (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+	private int priority;
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsGuestbookCtg (
-		java.lang.Integer id,
-		com.yunkuo.cms.entity.main.CmsSite site,
-		java.lang.String name,
-		java.lang.Integer priority) {
+	/*//bi-directional many-to-one association to CmsGuestbook
+	@OneToMany(mappedBy="cmsGuestbookCtg")
+	private List<CmsGuestbook> cmsGuestbooks;
+*/
+	//bi-directional many-to-one association to CmsSite
+	@ManyToOne
+	@JoinColumn(name="site_id")
+	private CmsSite site;
 
-		this.setId(id);
-		this.setSite(site);
-		this.setName(name);
-		this.setPriority(priority);
-		initialize();
-	}
+	/*//bi-directional many-to-many association to CmsDepartment
+	@ManyToMany(mappedBy="cmsGuestbookCtgs")
+	private List<CmsDepartment> cmsDepartments;
+*/
+    // constructors
+    public BaseCmsGuestbookCtg () {
+        initialize();
+    }
 
-	protected void initialize () {}
-
-
-
-	private int hashCode = Integer.MIN_VALUE;
-
-	// primary key
-	private java.lang.Integer id;
-
-	// fields
-	private java.lang.String name;
-	private java.lang.Integer priority;
-	private java.lang.String description;
-
-	// many to one
-	private com.yunkuo.cms.entity.main.CmsSite site;
-
-
-
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="identity"
-     *  column="guestbookctg_id"
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsGuestbookCtg (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsGuestbookCtg (
+            java.lang.Integer id,
+            com.yunkuo.cms.entity.main.CmsSite site,
+            java.lang.String name,
+            java.lang.Integer priority) {
+
+        this.setId(id);
+        this.setSite(site);
+        this.setName(name);
+        this.setPriority(priority);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+	public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+	public void setId(Integer guestbookctgId) {
+		this.id = guestbookctgId;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: ctg_name
-	 */
-	public java.lang.String getName () {
-		return name;
+	public String getName() {
+		return this.name;
 	}
 
-	/**
-	 * Set the value related to the column: ctg_name
-	 * @param name the ctg_name value
-	 */
-	public void setName (java.lang.String name) {
-		this.name = name;
+	public void setName(String ctgName) {
+		this.name = ctgName;
 	}
 
-
-	/**
-	 * Return the value associated with the column: priority
-	 */
-	public java.lang.Integer getPriority () {
-		return priority;
+	public String getDescription() {
+		return this.description;
 	}
 
-	/**
-	 * Set the value related to the column: priority
-	 * @param priority the priority value
-	 */
-	public void setPriority (java.lang.Integer priority) {
-		this.priority = priority;
-	}
-
-
-	/**
-	 * Return the value associated with the column: description
-	 */
-	public java.lang.String getDescription () {
-		return description;
-	}
-
-	/**
-	 * Set the value related to the column: description
-	 * @param description the description value
-	 */
-	public void setDescription (java.lang.String description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
-
-	/**
-	 * Return the value associated with the column: site_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsSite getSite () {
-		return site;
+	public Integer getPriority() {
+		return this.priority;
 	}
 
-	/**
-	 * Set the value related to the column: site_id
-	 * @param site the site_id value
-	 */
-	public void setSite (com.yunkuo.cms.entity.main.CmsSite site) {
-		this.site = site;
+	public void setPriority(Integer priority) {
+		this.priority = priority;
 	}
 
-
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.assist.CmsGuestbookCtg)) return false;
-		else {
-			com.yunkuo.cms.entity.assist.CmsGuestbookCtg cmsGuestbookCtg = (com.yunkuo.cms.entity.assist.CmsGuestbookCtg) obj;
-			if (null == this.getId() || null == cmsGuestbookCtg.getId()) return false;
-			else return (this.getId().equals(cmsGuestbookCtg.getId()));
-		}
+	/*public List<CmsGuestbook> getCmsGuestbooks() {
+		return this.cmsGuestbooks;
 	}
 
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
+	public void setCmsGuestbooks(List<CmsGuestbook> cmsGuestbooks) {
+		this.cmsGuestbooks = cmsGuestbooks;
 	}
 
+	public CmsGuestbook addCmsGuestbook(CmsGuestbook cmsGuestbook) {
+		getCmsGuestbooks().add(cmsGuestbook);
+		cmsGuestbook.setCmsGuestbookCtg(this);
 
-	public String toString () {
-		return super.toString();
+		return cmsGuestbook;
 	}
 
+	public CmsGuestbook removeCmsGuestbook(CmsGuestbook cmsGuestbook) {
+		getCmsGuestbooks().remove(cmsGuestbook);
+		cmsGuestbook.setCmsGuestbookCtg(null);
+
+		return cmsGuestbook;
+	}
+*/
+	public CmsSite getSite() {
+		return this.site;
+	}
+
+	public void setSite(CmsSite cmsSite) {
+		this.site = cmsSite;
+	}
+
+/*	public List<CmsDepartment> getCmsDepartments() {
+		return this.cmsDepartments;
+	}
+
+	public void setCmsDepartments(List<CmsDepartment> cmsDepartments) {
+		this.cmsDepartments = cmsDepartments;
+	}*/
 
 }

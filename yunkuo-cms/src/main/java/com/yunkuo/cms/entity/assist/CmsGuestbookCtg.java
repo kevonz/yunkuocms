@@ -2,8 +2,12 @@ package com.yunkuo.cms.entity.assist;
 
 import com.yunkuo.cms.entity.assist.base.BaseCmsGuestbookCtg;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
+@Entity
+@Table(name="cms_guestbook_ctg")
 public class CmsGuestbookCtg extends BaseCmsGuestbookCtg {
 	private static final long serialVersionUID = 1L;
 
