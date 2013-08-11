@@ -3,8 +3,11 @@ package com.yunkuo.cms.entity.assist;
 import com.yunkuo.cms.entity.assist.base.BaseCmsMessage;
 import com.yunkuo.common.util.StrUtils;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-
+@Entity
+@Table(name="cms_message")
 public class CmsMessage extends BaseCmsMessage {
 	private static final long serialVersionUID = 1L;
 
