@@ -1,709 +1,483 @@
 package com.yunkuo.cms.entity.assist.base;
 
+import com.yunkuo.cms.entity.main.Channel;
+import com.yunkuo.cms.entity.main.CmsSite;
+import com.yunkuo.cms.entity.main.CmsUser;
+import com.yunkuo.cms.entity.main.ContentType;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 
 /**
- * This is an object that contains data related to the cms_acquisition table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_acquisition"
+ * The persistent class for the cms_acquisition database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_acquisition")*/
+@MappedSuperclass
+public class BaseCmsAcquisition implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsAcquisition  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="acquisition_id")
+	private Integer id;
 
-	public static String REF = "CmsAcquisition";
-	public static String PROP_USER = "user";
-	public static String PROP_LINK_START = "linkStart";
-	public static String PROP_DESCRIPTION_END = "descriptionEnd";
-	public static String PROP_CHANNEL = "channel";
-	public static String PROP_DYNAMIC_START = "dynamicStart";
-	public static String PROP_CONTENT_START = "contentStart";
-	public static String PROP_TYPE = "type";
-	public static String PROP_PAGINATION_END = "paginationEnd";
-	public static String PROP_LINKSET_START = "linksetStart";
-	public static String PROP_DYNAMIC_ADDR = "dynamicAddr";
-	public static String PROP_LINKSET_END = "linksetEnd";
-	public static String PROP_KEYWORDS_END = "keywordsEnd";
-	public static String PROP_CURR_NUM = "currNum";
-	public static String PROP_QUEUE = "queue";
-	public static String PROP_LINK_END = "linkEnd";
-	public static String PROP_START_TIME = "startTime";
-	public static String PROP_PAGINATION_START = "paginationStart";
-	public static String PROP_SITE = "site";
-	public static String PROP_TOTAL_ITEM = "totalItem";
-	public static String PROP_CURR_ITEM = "currItem";
-	public static String PROP_NAME = "name";
-	public static String PROP_STATUS = "status";
-	public static String PROP_PAUSE_TIME = "pauseTime";
-	public static String PROP_TITLE_START = "titleStart";
-	public static String PROP_TITLE_END = "titleEnd";
-	public static String PROP_CONTENT_END = "contentEnd";
-	public static String PROP_PAGE_ENCODING = "pageEncoding";
-	public static String PROP_ID = "id";
-	public static String PROP_PLAN_LIST = "planList";
-	public static String PROP_END_TIME = "endTime";
-	public static String PROP_KEYWORDS_START = "keywordsStart";
-	public static String PROP_DESCRIPTION_START = "descriptionStart";
-	public static String PROP_DYNAMIC_END = "dynamicEnd";
+	@Column(name="acq_name")
+	private String name;
 
+	@Column(name="content_end")
+	private String contentEnd;
 
-	// constructors
-	public BaseCmsAcquisition () {
-		initialize();
-	}
+	@Column(name="content_start")
+	private String contentStart;
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsAcquisition (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+	@Column(name="curr_item")
+	private Integer currItem;
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsAcquisition (
-		java.lang.Integer id,
-		com.yunkuo.cms.entity.main.CmsUser user,
-		com.yunkuo.cms.entity.main.ContentType type,
-		com.yunkuo.cms.entity.main.CmsSite site,
-		com.yunkuo.cms.entity.main.Channel channel,
-		java.lang.String name,
-		java.lang.Integer status,
-		java.lang.Integer currNum,
-		java.lang.Integer currItem,
-		java.lang.Integer totalItem,
-		java.lang.Integer pauseTime,
-		java.lang.String pageEncoding,
-		java.lang.Integer queue) {
+	@Column(name="curr_num")
+	private Integer currNum;
 
-		this.setId(id);
-		this.setUser(user);
-		this.setType(type);
-		this.setSite(site);
-		this.setChannel(channel);
-		this.setName(name);
-		this.setStatus(status);
-		this.setCurrNum(currNum);
-		this.setCurrItem(currItem);
-		this.setTotalItem(totalItem);
-		this.setPauseTime(pauseTime);
-		this.setPageEncoding(pageEncoding);
-		this.setQueue(queue);
-		initialize();
-	}
+	@Column(name="description_end")
+	private String descriptionEnd;
 
-	protected void initialize () {}
+	@Column(name="description_start")
+	private String descriptionStart;
 
+	@Column(name="dynamic_addr")
+	private String dynamicAddr;
 
+	@Column(name="dynamic_end")
+	private Integer dynamicEnd;
 
-	private int hashCode = Integer.MIN_VALUE;
+	@Column(name="dynamic_start")
+	private Integer dynamicStart;
 
-	// primary key
-	private java.lang.Integer id;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="end_time")
+	private Date endTime;
 
-	// fields
-	private java.lang.String name;
-	private java.util.Date startTime;
-	private java.util.Date endTime;
-	private java.lang.Integer status;
-	private java.lang.Integer currNum;
-	private java.lang.Integer currItem;
-	private java.lang.Integer totalItem;
-	private java.lang.Integer pauseTime;
-	private java.lang.String pageEncoding;
-	private java.lang.String planList;
-	private java.lang.String dynamicAddr;
-	private java.lang.Integer dynamicStart;
-	private java.lang.Integer dynamicEnd;
-	private java.lang.String linksetStart;
-	private java.lang.String linksetEnd;
-	private java.lang.String linkStart;
-	private java.lang.String linkEnd;
-	private java.lang.String titleStart;
-	private java.lang.String titleEnd;
-	private java.lang.String keywordsStart;
-	private java.lang.String keywordsEnd;
-	private java.lang.String descriptionStart;
-	private java.lang.String descriptionEnd;
-	private java.lang.String contentStart;
-	private java.lang.String contentEnd;
-	private java.lang.String paginationStart;
-	private java.lang.String paginationEnd;
-	private java.lang.Integer queue;
+	@Column(name="keywords_end")
+	private String keywordsEnd;
 
-	// many to one
-	private com.yunkuo.cms.entity.main.CmsUser user;
-	private com.yunkuo.cms.entity.main.ContentType type;
-	private com.yunkuo.cms.entity.main.CmsSite site;
-	private com.yunkuo.cms.entity.main.Channel channel;
+	@Column(name="keywords_start")
+	private String keywordsStart;
 
+	@Column(name="link_end")
+	private String linkEnd;
 
+	@Column(name="link_start")
+	private String linkStart;
 
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="identity"
-     *  column="acquisition_id"
+	@Column(name="linkset_end")
+	private String linksetEnd;
+
+	@Column(name="linkset_start")
+	private String linksetStart;
+
+	@Column(name="page_encoding")
+	private String pageEncoding;
+
+	@Column(name="pagination_end")
+	private String paginationEnd;
+
+	@Column(name="pagination_start")
+	private String paginationStart;
+
+	@Column(name="pause_time")
+	private Integer pauseTime;
+
+	@Lob
+	@Column(name="plan_list")
+	private String planList;
+
+	private Integer queue;
+
+	@Column(name="repeat_check_type")
+	private String repeatCheckType;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="start_time")
+	private Date startTime;
+
+	private Integer status;
+
+	@Column(name="title_end")
+	private String titleEnd;
+
+	@Column(name="title_start")
+	private String titleStart;
+
+	@Column(name="total_item")
+	private Integer totalItem;
+
+	//bi-directional many-to-one association to BaseChannel
+	@ManyToOne
+	@JoinColumn(name="channel_id")
+	private Channel channel;
+
+	//bi-directional many-to-one association to CmsContentType
+	@ManyToOne
+	@JoinColumn(name="type_id")
+	private ContentType type;
+
+	//bi-directional many-to-one association to CmsSite
+	@ManyToOne
+	@JoinColumn(name="site_id")
+	private CmsSite site;
+
+	//bi-directional many-to-one association to CmsUser
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private CmsUser user;
+
+	//bi-directional many-to-one association to CmsAcquisitionHistory
+/*	@OneToMany(mappedBy="cmsAcquisition")
+	private List<CmsAcquisitionHistory> cmsAcquisitionHistories;*/
+
+    // constructors
+    public BaseCmsAcquisition () {
+        initialize();
+    }
+
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsAcquisition (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsAcquisition (
+            java.lang.Integer id,
+            com.yunkuo.cms.entity.main.CmsUser user,
+            com.yunkuo.cms.entity.main.ContentType type,
+            com.yunkuo.cms.entity.main.CmsSite site,
+            com.yunkuo.cms.entity.main.Channel channel,
+            java.lang.String name,
+            java.lang.Integer status,
+            java.lang.Integer currNum,
+            java.lang.Integer currItem,
+            java.lang.Integer totalItem,
+            java.lang.Integer pauseTime,
+            java.lang.String pageEncoding,
+            java.lang.Integer queue) {
+
+        this.setId(id);
+        this.setUser(user);
+        this.setType(type);
+        this.setSite(site);
+        this.setChannel(channel);
+        this.setName(name);
+        this.setStatus(status);
+        this.setCurrNum(currNum);
+        this.setCurrItem(currItem);
+        this.setTotalItem(totalItem);
+        this.setPauseTime(pauseTime);
+        this.setPageEncoding(pageEncoding);
+        this.setQueue(queue);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+	public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+	public void setId(Integer acquisitionId) {
+		this.id = acquisitionId;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: acq_name
-	 */
-	public java.lang.String getName () {
-		return name;
+	public String getName() {
+		return this.name;
 	}
 
-	/**
-	 * Set the value related to the column: acq_name
-	 * @param name the acq_name value
-	 */
-	public void setName (java.lang.String name) {
-		this.name = name;
+	public void setName(String acqName) {
+		this.name = acqName;
 	}
 
-
-	/**
-	 * Return the value associated with the column: start_time
-	 */
-	public java.util.Date getStartTime () {
-		return startTime;
+	public String getContentEnd() {
+		return this.contentEnd;
 	}
 
-	/**
-	 * Set the value related to the column: start_time
-	 * @param startTime the start_time value
-	 */
-	public void setStartTime (java.util.Date startTime) {
-		this.startTime = startTime;
-	}
-
-
-	/**
-	 * Return the value associated with the column: end_time
-	 */
-	public java.util.Date getEndTime () {
-		return endTime;
-	}
-
-	/**
-	 * Set the value related to the column: end_time
-	 * @param endTime the end_time value
-	 */
-	public void setEndTime (java.util.Date endTime) {
-		this.endTime = endTime;
-	}
-
-
-	/**
-	 * Return the value associated with the column: status
-	 */
-	public java.lang.Integer getStatus () {
-		return status;
-	}
-
-	/**
-	 * Set the value related to the column: status
-	 * @param status the status value
-	 */
-	public void setStatus (java.lang.Integer status) {
-		this.status = status;
-	}
-
-
-	/**
-	 * Return the value associated with the column: curr_num
-	 */
-	public java.lang.Integer getCurrNum () {
-		return currNum;
-	}
-
-	/**
-	 * Set the value related to the column: curr_num
-	 * @param currNum the curr_num value
-	 */
-	public void setCurrNum (java.lang.Integer currNum) {
-		this.currNum = currNum;
-	}
-
-
-	/**
-	 * Return the value associated with the column: curr_item
-	 */
-	public java.lang.Integer getCurrItem () {
-		return currItem;
-	}
-
-	/**
-	 * Set the value related to the column: curr_item
-	 * @param currItem the curr_item value
-	 */
-	public void setCurrItem (java.lang.Integer currItem) {
-		this.currItem = currItem;
-	}
-
-
-	/**
-	 * Return the value associated with the column: total_item
-	 */
-	public java.lang.Integer getTotalItem () {
-		return totalItem;
-	}
-
-	/**
-	 * Set the value related to the column: total_item
-	 * @param totalItem the total_item value
-	 */
-	public void setTotalItem (java.lang.Integer totalItem) {
-		this.totalItem = totalItem;
-	}
-
-
-	/**
-	 * Return the value associated with the column: pause_time
-	 */
-	public java.lang.Integer getPauseTime () {
-		return pauseTime;
-	}
-
-	/**
-	 * Set the value related to the column: pause_time
-	 * @param pauseTime the pause_time value
-	 */
-	public void setPauseTime (java.lang.Integer pauseTime) {
-		this.pauseTime = pauseTime;
-	}
-
-
-	/**
-	 * Return the value associated with the column: page_encoding
-	 */
-	public java.lang.String getPageEncoding () {
-		return pageEncoding;
-	}
-
-	/**
-	 * Set the value related to the column: page_encoding
-	 * @param pageEncoding the page_encoding value
-	 */
-	public void setPageEncoding (java.lang.String pageEncoding) {
-		this.pageEncoding = pageEncoding;
-	}
-
-
-	/**
-	 * Return the value associated with the column: plan_list
-	 */
-	public java.lang.String getPlanList () {
-		return planList;
-	}
-
-	/**
-	 * Set the value related to the column: plan_list
-	 * @param planList the plan_list value
-	 */
-	public void setPlanList (java.lang.String planList) {
-		this.planList = planList;
-	}
-
-
-	/**
-	 * Return the value associated with the column: dynamic_addr
-	 */
-	public java.lang.String getDynamicAddr () {
-		return dynamicAddr;
-	}
-
-	/**
-	 * Set the value related to the column: dynamic_addr
-	 * @param dynamicAddr the dynamic_addr value
-	 */
-	public void setDynamicAddr (java.lang.String dynamicAddr) {
-		this.dynamicAddr = dynamicAddr;
-	}
-
-
-	/**
-	 * Return the value associated with the column: dynamic_start
-	 */
-	public java.lang.Integer getDynamicStart () {
-		return dynamicStart;
-	}
-
-	/**
-	 * Set the value related to the column: dynamic_start
-	 * @param dynamicStart the dynamic_start value
-	 */
-	public void setDynamicStart (java.lang.Integer dynamicStart) {
-		this.dynamicStart = dynamicStart;
-	}
-
-
-	/**
-	 * Return the value associated with the column: dynamic_end
-	 */
-	public java.lang.Integer getDynamicEnd () {
-		return dynamicEnd;
-	}
-
-	/**
-	 * Set the value related to the column: dynamic_end
-	 * @param dynamicEnd the dynamic_end value
-	 */
-	public void setDynamicEnd (java.lang.Integer dynamicEnd) {
-		this.dynamicEnd = dynamicEnd;
-	}
-
-
-	/**
-	 * Return the value associated with the column: linkset_start
-	 */
-	public java.lang.String getLinksetStart () {
-		return linksetStart;
-	}
-
-	/**
-	 * Set the value related to the column: linkset_start
-	 * @param linksetStart the linkset_start value
-	 */
-	public void setLinksetStart (java.lang.String linksetStart) {
-		this.linksetStart = linksetStart;
-	}
-
-
-	/**
-	 * Return the value associated with the column: linkset_end
-	 */
-	public java.lang.String getLinksetEnd () {
-		return linksetEnd;
-	}
-
-	/**
-	 * Set the value related to the column: linkset_end
-	 * @param linksetEnd the linkset_end value
-	 */
-	public void setLinksetEnd (java.lang.String linksetEnd) {
-		this.linksetEnd = linksetEnd;
-	}
-
-
-	/**
-	 * Return the value associated with the column: link_start
-	 */
-	public java.lang.String getLinkStart () {
-		return linkStart;
-	}
-
-	/**
-	 * Set the value related to the column: link_start
-	 * @param linkStart the link_start value
-	 */
-	public void setLinkStart (java.lang.String linkStart) {
-		this.linkStart = linkStart;
-	}
-
-
-	/**
-	 * Return the value associated with the column: link_end
-	 */
-	public java.lang.String getLinkEnd () {
-		return linkEnd;
-	}
-
-	/**
-	 * Set the value related to the column: link_end
-	 * @param linkEnd the link_end value
-	 */
-	public void setLinkEnd (java.lang.String linkEnd) {
-		this.linkEnd = linkEnd;
-	}
-
-
-	/**
-	 * Return the value associated with the column: title_start
-	 */
-	public java.lang.String getTitleStart () {
-		return titleStart;
-	}
-
-	/**
-	 * Set the value related to the column: title_start
-	 * @param titleStart the title_start value
-	 */
-	public void setTitleStart (java.lang.String titleStart) {
-		this.titleStart = titleStart;
-	}
-
-
-	/**
-	 * Return the value associated with the column: title_end
-	 */
-	public java.lang.String getTitleEnd () {
-		return titleEnd;
-	}
-
-	/**
-	 * Set the value related to the column: title_end
-	 * @param titleEnd the title_end value
-	 */
-	public void setTitleEnd (java.lang.String titleEnd) {
-		this.titleEnd = titleEnd;
-	}
-
-
-	/**
-	 * Return the value associated with the column: keywords_start
-	 */
-	public java.lang.String getKeywordsStart () {
-		return keywordsStart;
-	}
-
-	/**
-	 * Set the value related to the column: keywords_start
-	 * @param keywordsStart the keywords_start value
-	 */
-	public void setKeywordsStart (java.lang.String keywordsStart) {
-		this.keywordsStart = keywordsStart;
-	}
-
-
-	/**
-	 * Return the value associated with the column: keywords_end
-	 */
-	public java.lang.String getKeywordsEnd () {
-		return keywordsEnd;
-	}
-
-	/**
-	 * Set the value related to the column: keywords_end
-	 * @param keywordsEnd the keywords_end value
-	 */
-	public void setKeywordsEnd (java.lang.String keywordsEnd) {
-		this.keywordsEnd = keywordsEnd;
-	}
-
-
-	/**
-	 * Return the value associated with the column: description_start
-	 */
-	public java.lang.String getDescriptionStart () {
-		return descriptionStart;
-	}
-
-	/**
-	 * Set the value related to the column: description_start
-	 * @param descriptionStart the description_start value
-	 */
-	public void setDescriptionStart (java.lang.String descriptionStart) {
-		this.descriptionStart = descriptionStart;
-	}
-
-
-	/**
-	 * Return the value associated with the column: description_end
-	 */
-	public java.lang.String getDescriptionEnd () {
-		return descriptionEnd;
-	}
-
-	/**
-	 * Set the value related to the column: description_end
-	 * @param descriptionEnd the description_end value
-	 */
-	public void setDescriptionEnd (java.lang.String descriptionEnd) {
-		this.descriptionEnd = descriptionEnd;
-	}
-
-
-	/**
-	 * Return the value associated with the column: content_start
-	 */
-	public java.lang.String getContentStart () {
-		return contentStart;
-	}
-
-	/**
-	 * Set the value related to the column: content_start
-	 * @param contentStart the content_start value
-	 */
-	public void setContentStart (java.lang.String contentStart) {
-		this.contentStart = contentStart;
-	}
-
-
-	/**
-	 * Return the value associated with the column: content_end
-	 */
-	public java.lang.String getContentEnd () {
-		return contentEnd;
-	}
-
-	/**
-	 * Set the value related to the column: content_end
-	 * @param contentEnd the content_end value
-	 */
-	public void setContentEnd (java.lang.String contentEnd) {
+	public void setContentEnd(String contentEnd) {
 		this.contentEnd = contentEnd;
 	}
 
-
-	/**
-	 * Return the value associated with the column: pagination_start
-	 */
-	public java.lang.String getPaginationStart () {
-		return paginationStart;
+	public String getContentStart() {
+		return this.contentStart;
 	}
 
-	/**
-	 * Set the value related to the column: pagination_start
-	 * @param paginationStart the pagination_start value
-	 */
-	public void setPaginationStart (java.lang.String paginationStart) {
-		this.paginationStart = paginationStart;
+	public void setContentStart(String contentStart) {
+		this.contentStart = contentStart;
 	}
 
-
-	/**
-	 * Return the value associated with the column: pagination_end
-	 */
-	public java.lang.String getPaginationEnd () {
-		return paginationEnd;
+	public Integer getCurrItem() {
+		return this.currItem;
 	}
 
-	/**
-	 * Set the value related to the column: pagination_end
-	 * @param paginationEnd the pagination_end value
-	 */
-	public void setPaginationEnd (java.lang.String paginationEnd) {
+	public void setCurrItem(Integer currItem) {
+		this.currItem = currItem;
+	}
+
+	public Integer getCurrNum() {
+		return this.currNum;
+	}
+
+	public void setCurrNum(Integer currNum) {
+		this.currNum = currNum;
+	}
+
+	public String getDescriptionEnd() {
+		return this.descriptionEnd;
+	}
+
+	public void setDescriptionEnd(String descriptionEnd) {
+		this.descriptionEnd = descriptionEnd;
+	}
+
+	public String getDescriptionStart() {
+		return this.descriptionStart;
+	}
+
+	public void setDescriptionStart(String descriptionStart) {
+		this.descriptionStart = descriptionStart;
+	}
+
+	public String getDynamicAddr() {
+		return this.dynamicAddr;
+	}
+
+	public void setDynamicAddr(String dynamicAddr) {
+		this.dynamicAddr = dynamicAddr;
+	}
+
+	public Integer getDynamicEnd() {
+		return this.dynamicEnd;
+	}
+
+	public void setDynamicEnd(Integer dynamicEnd) {
+		this.dynamicEnd = dynamicEnd;
+	}
+
+	public Integer getDynamicStart() {
+		return this.dynamicStart;
+	}
+
+	public void setDynamicStart(Integer dynamicStart) {
+		this.dynamicStart = dynamicStart;
+	}
+
+	public Date getEndTime() {
+		return this.endTime;
+	}
+
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+
+	public String getKeywordsEnd() {
+		return this.keywordsEnd;
+	}
+
+	public void setKeywordsEnd(String keywordsEnd) {
+		this.keywordsEnd = keywordsEnd;
+	}
+
+	public String getKeywordsStart() {
+		return this.keywordsStart;
+	}
+
+	public void setKeywordsStart(String keywordsStart) {
+		this.keywordsStart = keywordsStart;
+	}
+
+	public String getLinkEnd() {
+		return this.linkEnd;
+	}
+
+	public void setLinkEnd(String linkEnd) {
+		this.linkEnd = linkEnd;
+	}
+
+	public String getLinkStart() {
+		return this.linkStart;
+	}
+
+	public void setLinkStart(String linkStart) {
+		this.linkStart = linkStart;
+	}
+
+	public String getLinksetEnd() {
+		return this.linksetEnd;
+	}
+
+	public void setLinksetEnd(String linksetEnd) {
+		this.linksetEnd = linksetEnd;
+	}
+
+	public String getLinksetStart() {
+		return this.linksetStart;
+	}
+
+	public void setLinksetStart(String linksetStart) {
+		this.linksetStart = linksetStart;
+	}
+
+	public String getPageEncoding() {
+		return this.pageEncoding;
+	}
+
+	public void setPageEncoding(String pageEncoding) {
+		this.pageEncoding = pageEncoding;
+	}
+
+	public String getPaginationEnd() {
+		return this.paginationEnd;
+	}
+
+	public void setPaginationEnd(String paginationEnd) {
 		this.paginationEnd = paginationEnd;
 	}
 
-
-	/**
-	 * Return the value associated with the column: queue
-	 */
-	public java.lang.Integer getQueue () {
-		return queue;
+	public String getPaginationStart() {
+		return this.paginationStart;
 	}
 
-	/**
-	 * Set the value related to the column: queue
-	 * @param queue the queue value
-	 */
-	public void setQueue (java.lang.Integer queue) {
+	public void setPaginationStart(String paginationStart) {
+		this.paginationStart = paginationStart;
+	}
+
+	public Integer getPauseTime() {
+		return this.pauseTime;
+	}
+
+	public void setPauseTime(Integer pauseTime) {
+		this.pauseTime = pauseTime;
+	}
+
+	public String getPlanList() {
+		return this.planList;
+	}
+
+	public void setPlanList(String planList) {
+		this.planList = planList;
+	}
+
+	public Integer getQueue() {
+		return this.queue;
+	}
+
+	public void setQueue(Integer queue) {
 		this.queue = queue;
 	}
 
-
-	/**
-	 * Return the value associated with the column: user_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsUser getUser () {
-		return user;
+	public String getRepeatCheckType() {
+		return this.repeatCheckType;
 	}
 
-	/**
-	 * Set the value related to the column: user_id
-	 * @param user the user_id value
-	 */
-	public void setUser (com.yunkuo.cms.entity.main.CmsUser user) {
-		this.user = user;
+	public void setRepeatCheckType(String repeatCheckType) {
+		this.repeatCheckType = repeatCheckType;
 	}
 
-
-	/**
-	 * Return the value associated with the column: type_id
-	 */
-	public com.yunkuo.cms.entity.main.ContentType getType () {
-		return type;
+	public Date getStartTime() {
+		return this.startTime;
 	}
 
-	/**
-	 * Set the value related to the column: type_id
-	 * @param type the type_id value
-	 */
-	public void setType (com.yunkuo.cms.entity.main.ContentType type) {
-		this.type = type;
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
 	}
 
-
-	/**
-	 * Return the value associated with the column: site_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsSite getSite () {
-		return site;
+	public Integer getStatus() {
+		return this.status;
 	}
 
-	/**
-	 * Set the value related to the column: site_id
-	 * @param site the site_id value
-	 */
-	public void setSite (com.yunkuo.cms.entity.main.CmsSite site) {
-		this.site = site;
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 
-
-	/**
-	 * Return the value associated with the column: channel_id
-	 */
-	public com.yunkuo.cms.entity.main.Channel getChannel () {
-		return channel;
+	public String getTitleEnd() {
+		return this.titleEnd;
 	}
 
-	/**
-	 * Set the value related to the column: channel_id
-	 * @param channel the channel_id value
-	 */
-	public void setChannel (com.yunkuo.cms.entity.main.Channel channel) {
-		this.channel = channel;
+	public void setTitleEnd(String titleEnd) {
+		this.titleEnd = titleEnd;
 	}
 
-
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.assist.CmsAcquisition)) return false;
-		else {
-			com.yunkuo.cms.entity.assist.CmsAcquisition cmsAcquisition = (com.yunkuo.cms.entity.assist.CmsAcquisition) obj;
-			if (null == this.getId() || null == cmsAcquisition.getId()) return false;
-			else return (this.getId().equals(cmsAcquisition.getId()));
-		}
+	public String getTitleStart() {
+		return this.titleStart;
 	}
 
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
+	public void setTitleStart(String titleStart) {
+		this.titleStart = titleStart;
 	}
 
-
-	public String toString () {
-		return super.toString();
+	public Integer getTotalItem() {
+		return this.totalItem;
 	}
 
+	public void setTotalItem(Integer totalItem) {
+		this.totalItem = totalItem;
+	}
+
+	public Channel getChannel() {
+		return this.channel;
+	}
+
+	public void setChannel(Channel cmsChannel) {
+		this.channel = cmsChannel;
+	}
+
+	public ContentType getType() {
+		return this.type;
+	}
+
+	public void setType(ContentType cmsContentType) {
+		this.type = cmsContentType;
+	}
+
+	public CmsSite getSite() {
+		return this.site;
+	}
+
+	public void setSite(CmsSite cmsSite) {
+		this.site = cmsSite;
+	}
+
+	public CmsUser getUser() {
+		return this.user;
+	}
+
+	public void setUser(CmsUser cmsUser) {
+		this.user = cmsUser;
+	}
+/*
+	public List<CmsAcquisitionHistory> getCmsAcquisitionHistories() {
+		return this.cmsAcquisitionHistories;
+	}
+
+	public void setCmsAcquisitionHistories(List<CmsAcquisitionHistory> cmsAcquisitionHistories) {
+		this.cmsAcquisitionHistories = cmsAcquisitionHistories;
+	}
+
+	public CmsAcquisitionHistory addCmsAcquisitionHistory(CmsAcquisitionHistory cmsAcquisitionHistory) {
+		getCmsAcquisitionHistories().add(cmsAcquisitionHistory);
+		cmsAcquisitionHistory.setCmsAcquisition(this);
+
+		return cmsAcquisitionHistory;
+	}
+
+	public CmsAcquisitionHistory removeCmsAcquisitionHistory(CmsAcquisitionHistory cmsAcquisitionHistory) {
+		getCmsAcquisitionHistories().remove(cmsAcquisitionHistory);
+		cmsAcquisitionHistory.setCmsAcquisition(null);
+
+		return cmsAcquisitionHistory;
+	}*/
 
 }

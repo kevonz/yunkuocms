@@ -1,9 +1,13 @@
 package com.yunkuo.cms.entity.assist;
 
+import com.yunkuo.cms.entity.assist.base.BaseCmsAcquisition;
 import org.apache.commons.lang.StringUtils;
 
-import com.yunkuo.cms.entity.assist.base.BaseCmsAcquisition;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="cms_acquisition")
 public class CmsAcquisition extends BaseCmsAcquisition {
 	private static final long serialVersionUID = 1L;
 	/**
