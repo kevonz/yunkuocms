@@ -52,6 +52,7 @@
         <mapping class="com.yunkuo.cms.entity.assist.CmsGuestbook" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsGuestbookCtg" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsGuestbookExt" />
+        <mapping class="com.yunkuo.cms.entity.assist.CmsVoteItem" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsVoteRecord" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsVoteTopic" />
     </session-factory>

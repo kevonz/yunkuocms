@@ -3,6 +3,11 @@ package com.yunkuo.cms.entity.assist;
 import com.yunkuo.cms.entity.assist.base.BaseCmsVoteItem;
 import com.yunkuo.common.hibernate3.PriorityInterface;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="cms_vote_item")
 public class CmsVoteItem extends BaseCmsVoteItem implements PriorityInterface {
 	private static final long serialVersionUID = 1L;
 

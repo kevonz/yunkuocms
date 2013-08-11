@@ -1,189 +1,111 @@
 package com.yunkuo.cms.entity.assist.base;
 
+import com.yunkuo.cms.entity.assist.CmsVoteTopic;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 
 /**
- * This is an object that contains data related to the cms_vote_item table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_vote_item"
+ * The persistent class for the cms_vote_item database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_vote_item")*/
+@MappedSuperclass
+public class BaseCmsVoteItem implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsVoteItem  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="voteitem_id")
+	private Integer id;
 
-	public static String REF = "CmsVoteItem";
-	public static String PROP_TOPIC = "topic";
-	public static String PROP_PRIORITY = "priority";
-	public static String PROP_TITLE = "title";
-	public static String PROP_VOTE_COUNT = "voteCount";
-	public static String PROP_ID = "id";
+	private Integer priority;
 
+	private String title;
 
-	// constructors
-	public BaseCmsVoteItem () {
-		initialize();
-	}
+	@Column(name="vote_count")
+	private Integer voteCount;
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsVoteItem (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+	//bi-directional many-to-one association to CmsVoteTopic
+    //TODO: an update bug in here
+	@ManyToOne
+	@JoinColumn(name="votetopic_id")
+	private CmsVoteTopic topic;
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsVoteItem (
-		java.lang.Integer id,
-		com.yunkuo.cms.entity.assist.CmsVoteTopic topic,
-		java.lang.String title,
-		java.lang.Integer voteCount,
-		java.lang.Integer priority) {
+    // constructors
+    public BaseCmsVoteItem () {
+        initialize();
+    }
 
-		this.setId(id);
-		this.setTopic(topic);
-		this.setTitle(title);
-		this.setVoteCount(voteCount);
-		this.setPriority(priority);
-		initialize();
-	}
-
-	protected void initialize () {}
-
-
-
-	private int hashCode = Integer.MIN_VALUE;
-
-	// primary key
-	private java.lang.Integer id;
-
-	// fields
-	private java.lang.String title;
-	private java.lang.Integer voteCount;
-	private java.lang.Integer priority;
-
-	// many to one
-	private com.yunkuo.cms.entity.assist.CmsVoteTopic topic;
-
-
-
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="identity"
-     *  column="voteitem_id"
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsVoteItem (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsVoteItem (
+            java.lang.Integer id,
+            com.yunkuo.cms.entity.assist.CmsVoteTopic topic,
+            java.lang.String title,
+            java.lang.Integer voteCount,
+            java.lang.Integer priority) {
+
+        this.setId(id);
+        this.setTopic(topic);
+        this.setTitle(title);
+        this.setVoteCount(voteCount);
+        this.setPriority(priority);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+
+    public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+	public void setId(Integer voteitemId) {
+		this.id = voteitemId;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: title
-	 */
-	public java.lang.String getTitle () {
-		return title;
+	public Integer getPriority() {
+		return this.priority;
 	}
 
-	/**
-	 * Set the value related to the column: title
-	 * @param title the title value
-	 */
-	public void setTitle (java.lang.String title) {
-		this.title = title;
-	}
-
-
-	/**
-	 * Return the value associated with the column: vote_count
-	 */
-	public java.lang.Integer getVoteCount () {
-		return voteCount;
-	}
-
-	/**
-	 * Set the value related to the column: vote_count
-	 * @param voteCount the vote_count value
-	 */
-	public void setVoteCount (java.lang.Integer voteCount) {
-		this.voteCount = voteCount;
-	}
-
-
-	/**
-	 * Return the value associated with the column: priority
-	 */
-	public java.lang.Integer getPriority () {
-		return priority;
-	}
-
-	/**
-	 * Set the value related to the column: priority
-	 * @param priority the priority value
-	 */
-	public void setPriority (java.lang.Integer priority) {
+	public void setPriority(Integer priority) {
 		this.priority = priority;
 	}
 
-
-	/**
-	 * Return the value associated with the column: votetopic_id
-	 */
-	public com.yunkuo.cms.entity.assist.CmsVoteTopic getTopic () {
-		return topic;
+	public String getTitle() {
+		return this.title;
 	}
 
-	/**
-	 * Set the value related to the column: votetopic_id
-	 * @param topic the votetopic_id value
-	 */
-	public void setTopic (com.yunkuo.cms.entity.assist.CmsVoteTopic topic) {
-		this.topic = topic;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.assist.CmsVoteItem)) return false;
-		else {
-			com.yunkuo.cms.entity.assist.CmsVoteItem cmsVoteItem = (com.yunkuo.cms.entity.assist.CmsVoteItem) obj;
-			if (null == this.getId() || null == cmsVoteItem.getId()) return false;
-			else return (this.getId().equals(cmsVoteItem.getId()));
-		}
+	public Integer getVoteCount() {
+		return this.voteCount;
 	}
 
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
+	public void setVoteCount(Integer voteCount) {
+		this.voteCount = voteCount;
 	}
 
-
-	public String toString () {
-		return super.toString();
+	public CmsVoteTopic getTopic() {
+		return this.topic;
 	}
 
+	public void setTopic(CmsVoteTopic cmsVoteTopic) {
+		this.topic = cmsVoteTopic;
+	}
 
 }
