@@ -58,6 +58,7 @@
         <mapping class="com.yunkuo.cms.entity.assist.CmsFile" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsMessage" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsReceiverMessage" />
+        <mapping class="com.yunkuo.cms.entity.assist.CmsFriendlink" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsFriendlinkCtg" />
     </session-factory>
 

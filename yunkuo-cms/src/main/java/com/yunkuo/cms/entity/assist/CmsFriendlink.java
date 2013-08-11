@@ -1,9 +1,13 @@
 package com.yunkuo.cms.entity.assist;
 
+import com.yunkuo.cms.entity.assist.base.BaseCmsFriendlink;
 import org.apache.commons.lang.StringUtils;
 
-import com.yunkuo.cms.entity.assist.base.BaseCmsFriendlink;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="cms_friendlink")
 public class CmsFriendlink extends BaseCmsFriendlink {
 	private static final long serialVersionUID = 1L;
 
