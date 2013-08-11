@@ -11,6 +11,7 @@
         <mapping class="com.yunkuo.core.entity.Config" />
         <mapping class="com.yunkuo.core.entity.DbFile" />
         <mapping class="com.yunkuo.core.entity.DbTpl" />
+
         <mapping class="com.yunkuo.cms.entity.main.CmsLog" />
         <mapping class="com.yunkuo.cms.entity.main.Channel" />
         <mapping class="com.yunkuo.cms.entity.main.CmsChannelAttr" />
@@ -43,9 +44,6 @@
         <mapping class="com.yunkuo.cms.entity.assist.CmsSensitivity" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsSiteFlow" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsKeyword" />
-        <mapping class="com.yunkuo.cms.entity.assist.CmsAdvertising" />
-        <!--<mapping class="com.yunkuo.cms.entity.assist.CmsAdvertisingAttr" />-->
-        <mapping class="com.yunkuo.cms.entity.assist.CmsAdvertisingSpace" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsAcquisition" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsAcquisitionHistory" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsAcquisitionTemp" />
@@ -60,6 +58,9 @@
         <mapping class="com.yunkuo.cms.entity.assist.CmsReceiverMessage" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsFriendlink" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsFriendlinkCtg" />
+        <mapping class="com.yunkuo.cms.entity.assist.CmsAdvertising" />
+        <mapping class="com.yunkuo.cms.entity.assist.CmsAdvertisingSpace" />
+        <!--<mapping class="com.yunkuo.cms.entity.assist.CmsAdvertisingAttr" />-->
     </session-factory>
 
          
