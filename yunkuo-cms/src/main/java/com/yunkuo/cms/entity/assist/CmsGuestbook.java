@@ -1,10 +1,14 @@
 package com.yunkuo.cms.entity.assist;
 
-import java.sql.Timestamp;
-
 import com.yunkuo.cms.entity.assist.base.BaseCmsGuestbook;
 import com.yunkuo.common.util.StrUtils;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.sql.Timestamp;
+
+@Entity
+@Table(name="cms_guestbook")
 public class CmsGuestbook extends BaseCmsGuestbook {
 	private static final long serialVersionUID = 1L;
 

@@ -49,6 +49,7 @@
         <mapping class="com.yunkuo.cms.entity.assist.CmsAcquisition" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsAcquisitionHistory" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsAcquisitionTemp" />
+        <mapping class="com.yunkuo.cms.entity.assist.CmsGuestbook" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsGuestbookCtg" />
         <mapping class="com.yunkuo.cms.entity.assist.CmsGuestbookExt" />
     </session-factory>

@@ -1,303 +1,210 @@
 package com.yunkuo.cms.entity.assist.base;
 
-import java.io.Serializable;
+import com.yunkuo.cms.entity.assist.CmsGuestbookCtg;
+import com.yunkuo.cms.entity.assist.CmsGuestbookExt;
+import com.yunkuo.cms.entity.main.CmsSite;
+import com.yunkuo.cms.entity.main.CmsUser;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
- * This is an object that contains data related to the cms_guestbook table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_guestbook"
+ * The persistent class for the cms_guestbook database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_guestbook")*/
+@MappedSuperclass
+public class BaseCmsGuestbook implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsGuestbook  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="guestbook_id")
+	private Integer id;
 
-	public static String REF = "CmsGuestbook";
-	public static String PROP_RECOMMEND = "recommend";
-	public static String PROP_SITE = "site";
-	public static String PROP_REPLAY_TIME = "replayTime";
-	public static String PROP_CREATE_TIME = "createTime";
-	public static String PROP_IP = "ip";
-	public static String PROP_CHECKED = "checked";
-	public static String PROP_EXT = "ext";
-	public static String PROP_CTG = "ctg";
-	public static String PROP_ADMIN = "admin";
-	public static String PROP_MEMBER = "member";
-	public static String PROP_ID = "id";
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="create_time")
+	private Date createTime;
 
+	private String ip;
 
-	// constructors
-	public BaseCmsGuestbook () {
-		initialize();
-	}
+	@Column(name="is_checked")
+	private Boolean checked;
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsGuestbook (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+	@Column(name="is_recommend")
+	private Boolean recommend;
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsGuestbook (
-		java.lang.Integer id,
-		com.yunkuo.cms.entity.main.CmsSite site,
-		com.yunkuo.cms.entity.assist.CmsGuestbookCtg ctg,
-		java.lang.String ip,
-		java.util.Date createTime,
-		java.lang.Boolean checked,
-		java.lang.Boolean recommend) {
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="replay_time")
+	private Date replayTime;
 
-		this.setId(id);
-		this.setSite(site);
-		this.setCtg(ctg);
-		this.setIp(ip);
-		this.setCreateTime(createTime);
-		this.setChecked(checked);
-		this.setRecommend(recommend);
-		initialize();
-	}
+	//bi-directional many-to-one association to CmsGuestbookCtg
+	@ManyToOne
+	@JoinColumn(name="guestbookctg_id")
+	private CmsGuestbookCtg ctg;
 
-	protected void initialize () {}
+	//bi-directional many-to-one association to CmsUser
+	@ManyToOne
+	@JoinColumn(name="admin_id")
+	private CmsUser admin;
 
+	//bi-directional many-to-one association to CmsUser
+	@ManyToOne
+	@JoinColumn(name="member_id")
+	private CmsUser member;
 
+	//bi-directional many-to-one association to CmsSite
+	@ManyToOne
+	@JoinColumn(name="site_id")
+	private CmsSite site;
 
-	private int hashCode = Integer.MIN_VALUE;
+	//bi-directional many-to-one association to CmsGuestbookExt
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name="guestbook_id")
+    //@OnDelete(action= OnDeleteAction.CASCADE)
+	private CmsGuestbookExt ext;
 
-	// primary key
-	private java.lang.Integer id;
+    // constructors
+    public BaseCmsGuestbook () {
+        initialize();
+    }
 
-	// fields
-	private java.lang.String ip;
-	private java.util.Date createTime;
-	private java.util.Date replayTime;
-	private java.lang.Boolean checked;
-	private java.lang.Boolean recommend;
-
-	// one to one
-	private com.yunkuo.cms.entity.assist.CmsGuestbookExt ext;
-
-	// many to one
-	private com.yunkuo.cms.entity.main.CmsUser member;
-	private com.yunkuo.cms.entity.main.CmsUser admin;
-	private com.yunkuo.cms.entity.main.CmsSite site;
-	private com.yunkuo.cms.entity.assist.CmsGuestbookCtg ctg;
-
-
-
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="identity"
-     *  column="guestbook_id"
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsGuestbook (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsGuestbook (
+            java.lang.Integer id,
+            com.yunkuo.cms.entity.main.CmsSite site,
+            com.yunkuo.cms.entity.assist.CmsGuestbookCtg ctg,
+            java.lang.String ip,
+            java.util.Date createTime,
+            java.lang.Boolean checked,
+            java.lang.Boolean recommend) {
+
+        this.setId(id);
+        this.setSite(site);
+        this.setCtg(ctg);
+        this.setIp(ip);
+        this.setCreateTime(createTime);
+        this.setChecked(checked);
+        this.setRecommend(recommend);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+	public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+	public void setId(Integer guestbookId) {
+		this.id = guestbookId;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: ip
-	 */
-	public java.lang.String getIp () {
-		return ip;
+	public Date getCreateTime() {
+		return this.createTime;
 	}
 
-	/**
-	 * Set the value related to the column: ip
-	 * @param ip the ip value
-	 */
-	public void setIp (java.lang.String ip) {
-		this.ip = ip;
-	}
-
-
-	/**
-	 * Return the value associated with the column: create_time
-	 */
-	public java.util.Date getCreateTime () {
-		return createTime;
-	}
-
-	/**
-	 * Set the value related to the column: create_time
-	 * @param createTime the create_time value
-	 */
-	public void setCreateTime (java.util.Date createTime) {
+	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 
-
-	/**
-	 * Return the value associated with the column: replay_time
-	 */
-	public java.util.Date getReplayTime () {
-		return replayTime;
+	public String getIp() {
+		return this.ip;
 	}
 
-	/**
-	 * Set the value related to the column: replay_time
-	 * @param replayTime the replay_time value
-	 */
-	public void setReplayTime (java.util.Date replayTime) {
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+	public Boolean getChecked() {
+		return this.checked;
+	}
+
+	public void setChecked(Boolean isChecked) {
+		this.checked = isChecked;
+	}
+
+	public Boolean getRecommend() {
+		return this.recommend;
+	}
+
+	public void setRecommend(Boolean isRecommend) {
+		this.recommend = isRecommend;
+	}
+
+	public Date getReplayTime() {
+		return this.replayTime;
+	}
+
+	public void setReplayTime(Date replayTime) {
 		this.replayTime = replayTime;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_checked
-	 */
-	public java.lang.Boolean getChecked () {
-		return checked;
+	public CmsGuestbookCtg getCtg() {
+		return this.ctg;
 	}
 
-	/**
-	 * Set the value related to the column: is_checked
-	 * @param checked the is_checked value
-	 */
-	public void setChecked (java.lang.Boolean checked) {
-		this.checked = checked;
+	public void setCtg(CmsGuestbookCtg cmsGuestbookCtg) {
+		this.ctg = cmsGuestbookCtg;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_recommend
-	 */
-	public java.lang.Boolean getRecommend () {
-		return recommend;
+	public CmsUser getAdmin() {
+		return this.admin;
 	}
 
-	/**
-	 * Set the value related to the column: is_recommend
-	 * @param recommend the is_recommend value
-	 */
-	public void setRecommend (java.lang.Boolean recommend) {
-		this.recommend = recommend;
-	}
-
-
-	/**
-	 * Return the value associated with the column: ext
-	 */
-	public com.yunkuo.cms.entity.assist.CmsGuestbookExt getExt () {
-		return ext;
-	}
-
-	/**
-	 * Set the value related to the column: ext
-	 * @param ext the ext value
-	 */
-	public void setExt (com.yunkuo.cms.entity.assist.CmsGuestbookExt ext) {
-		this.ext = ext;
-	}
-
-
-	/**
-	 * Return the value associated with the column: member_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsUser getMember () {
-		return member;
-	}
-
-	/**
-	 * Set the value related to the column: member_id
-	 * @param member the member_id value
-	 */
-	public void setMember (com.yunkuo.cms.entity.main.CmsUser member) {
-		this.member = member;
-	}
-
-
-	/**
-	 * Return the value associated with the column: admin_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsUser getAdmin () {
-		return admin;
-	}
-
-	/**
-	 * Set the value related to the column: admin_id
-	 * @param admin the admin_id value
-	 */
-	public void setAdmin (com.yunkuo.cms.entity.main.CmsUser admin) {
+	public void setAdmin(CmsUser admin) {
 		this.admin = admin;
 	}
 
-
-	/**
-	 * Return the value associated with the column: site_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsSite getSite () {
-		return site;
+	public CmsUser getMember() {
+		return this.member;
 	}
 
-	/**
-	 * Set the value related to the column: site_id
-	 * @param site the site_id value
-	 */
-	public void setSite (com.yunkuo.cms.entity.main.CmsSite site) {
-		this.site = site;
+	public void setMember(CmsUser member) {
+		this.member = member;
 	}
 
-
-	/**
-	 * Return the value associated with the column: guestbookctg_id
-	 */
-	public com.yunkuo.cms.entity.assist.CmsGuestbookCtg getCtg () {
-		return ctg;
+	public CmsSite getSite() {
+		return this.site;
 	}
 
-	/**
-	 * Set the value related to the column: guestbookctg_id
-	 * @param ctg the guestbookctg_id value
-	 */
-	public void setCtg (com.yunkuo.cms.entity.assist.CmsGuestbookCtg ctg) {
-		this.ctg = ctg;
+	public void setSite(CmsSite cmsSite) {
+		this.site = cmsSite;
 	}
 
-
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.assist.CmsGuestbook)) return false;
-		else {
-			com.yunkuo.cms.entity.assist.CmsGuestbook cmsGuestbook = (com.yunkuo.cms.entity.assist.CmsGuestbook) obj;
-			if (null == this.getId() || null == cmsGuestbook.getId()) return false;
-			else return (this.getId().equals(cmsGuestbook.getId()));
-		}
+	public CmsGuestbookExt getExt() {
+		return this.ext;
 	}
 
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
+	public void setExt(CmsGuestbookExt ext) {
+		this.ext = ext;
 	}
 
+	/*public CmsGuestbookExt addCmsGuestbookExt(CmsGuestbookExt cmsGuestbookExt) {
+		getExt().add(cmsGuestbookExt);
+		cmsGuestbookExt.setCmsGuestbook(this);
 
-	public String toString () {
-		return super.toString();
+		return cmsGuestbookExt;
 	}
 
+	public CmsGuestbookExt removeCmsGuestbookExt(CmsGuestbookExt cmsGuestbookExt) {
+		getExt().remove(cmsGuestbookExt);
+		cmsGuestbookExt.setCmsGuestbook(null);
+
+		return cmsGuestbookExt;
+	}*/
 
 }
