@@ -1,9 +1,13 @@
 package com.yunkuo.cms.entity.assist;
 
+import com.yunkuo.cms.entity.assist.base.BaseCmsGuestbookExt;
 import org.apache.commons.lang.StringUtils;
 
-import com.yunkuo.cms.entity.assist.base.BaseCmsGuestbookExt;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="cms_guestbook_ext")
 public class CmsGuestbookExt extends BaseCmsGuestbookExt {
 	private static final long serialVersionUID = 1L;
 
