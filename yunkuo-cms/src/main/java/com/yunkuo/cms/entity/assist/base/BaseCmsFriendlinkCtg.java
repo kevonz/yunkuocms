@@ -1,169 +1,122 @@
 package com.yunkuo.cms.entity.assist.base;
 
+import com.yunkuo.cms.entity.main.CmsSite;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
-
 /**
- * This is an object that contains data related to the cms_friendlink_ctg table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_friendlink_ctg"
+ * The persistent class for the cms_friendlink_ctg database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_friendlink_ctg")*/
+@MappedSuperclass
+public class BaseCmsFriendlinkCtg implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsFriendlinkCtg  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="friendlinkctg_id")
+	private Integer id;
 
-	public static String REF = "CmsFriendlinkCtg";
-	public static String PROP_SITE = "site";
-	public static String PROP_PRIORITY = "priority";
-	public static String PROP_NAME = "name";
-	public static String PROP_ID = "id";
+	@Column(name="friendlinkctg_name")
+	private String name;
 
+	private Integer priority;
 
-	// constructors
-	public BaseCmsFriendlinkCtg () {
-		initialize();
-	}
+	//bi-directional many-to-one association to CmsFriendlink
+/*	@OneToMany(mappedBy="cmsFriendlinkCtg")
+	private List<CmsFriendlink> cmsFriendlinks;*/
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsFriendlinkCtg (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+	//bi-directional many-to-one association to CmsSite
+	@ManyToOne
+	@JoinColumn(name="site_id")
+	private CmsSite site;
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsFriendlinkCtg (
-		java.lang.Integer id,
-		com.yunkuo.cms.entity.main.CmsSite site,
-		java.lang.String name,
-		java.lang.Integer priority) {
+    // constructors
+    public BaseCmsFriendlinkCtg () {
+        initialize();
+    }
 
-		this.setId(id);
-		this.setSite(site);
-		this.setName(name);
-		this.setPriority(priority);
-		initialize();
-	}
-
-	protected void initialize () {}
-
-
-
-	private int hashCode = Integer.MIN_VALUE;
-
-	// primary key
-	private java.lang.Integer id;
-
-	// fields
-	private java.lang.String name;
-	private java.lang.Integer priority;
-
-	// many to one
-	private com.yunkuo.cms.entity.main.CmsSite site;
-
-
-
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="identity"
-     *  column="friendlinkctg_id"
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsFriendlinkCtg (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsFriendlinkCtg (
+            java.lang.Integer id,
+            com.yunkuo.cms.entity.main.CmsSite site,
+            java.lang.String name,
+            java.lang.Integer priority) {
+
+        this.setId(id);
+        this.setSite(site);
+        this.setName(name);
+        this.setPriority(priority);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+	public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: friendlinkctg_name
-	 */
-	public java.lang.String getName () {
-		return name;
+	public String getName() {
+		return this.name;
 	}
 
-	/**
-	 * Set the value related to the column: friendlinkctg_name
-	 * @param name the friendlinkctg_name value
-	 */
-	public void setName (java.lang.String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
-
-	/**
-	 * Return the value associated with the column: priority
-	 */
-	public java.lang.Integer getPriority () {
-		return priority;
+	public Integer getPriority() {
+		return this.priority;
 	}
 
-	/**
-	 * Set the value related to the column: priority
-	 * @param priority the priority value
-	 */
-	public void setPriority (java.lang.Integer priority) {
+	public void setPriority(Integer priority) {
 		this.priority = priority;
 	}
 
-
-	/**
-	 * Return the value associated with the column: site_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsSite getSite () {
-		return site;
+	/*public List<CmsFriendlink> getCmsFriendlinks() {
+		return this.cmsFriendlinks;
 	}
 
-	/**
-	 * Set the value related to the column: site_id
-	 * @param site the site_id value
-	 */
-	public void setSite (com.yunkuo.cms.entity.main.CmsSite site) {
-		this.site = site;
+	public void setCmsFriendlinks(List<CmsFriendlink> cmsFriendlinks) {
+		this.cmsFriendlinks = cmsFriendlinks;
 	}
 
+	public CmsFriendlink addCmsFriendlink(CmsFriendlink cmsFriendlink) {
+		getCmsFriendlinks().add(cmsFriendlink);
+		cmsFriendlink.setCmsFriendlinkCtg(this);
 
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.assist.CmsFriendlinkCtg)) return false;
-		else {
-			com.yunkuo.cms.entity.assist.CmsFriendlinkCtg cmsFriendlinkCtg = (com.yunkuo.cms.entity.assist.CmsFriendlinkCtg) obj;
-			if (null == this.getId() || null == cmsFriendlinkCtg.getId()) return false;
-			else return (this.getId().equals(cmsFriendlinkCtg.getId()));
-		}
+		return cmsFriendlink;
 	}
 
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
+	public CmsFriendlink removeCmsFriendlink(CmsFriendlink cmsFriendlink) {
+		getCmsFriendlinks().remove(cmsFriendlink);
+		cmsFriendlink.setCmsFriendlinkCtg(null);
+
+		return cmsFriendlink;
+	}*/
+
+	public CmsSite getSite() {
+		return this.site;
 	}
 
-
-	public String toString () {
-		return super.toString();
+	public void setSite(CmsSite cmsSite) {
+		this.site = cmsSite;
 	}
-
 
 }
