@@ -1,380 +1,283 @@
 package com.yunkuo.cms.entity.assist.base;
 
+import com.yunkuo.cms.entity.assist.CmsVoteItem;
+import com.yunkuo.cms.entity.main.CmsSite;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
+import java.util.Set;
 
 
 /**
- * This is an object that contains data related to the cms_vote_topic table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_vote_topic"
+ * The persistent class for the cms_vote_topic database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_vote_topic")*/
+@MappedSuperclass
+public class BaseCmsVoteTopic implements Serializable {
+	private static final long serialVersionUID = 1L;
+    public static String PROP_END_TIME = "endTime";
+    public static String PROP_START_TIME = "startTime";
 
-public abstract class BaseCmsVoteTopic  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="votetopic_id")
+	private Integer id;
 
-	public static String REF = "CmsVoteTopic";
-	public static String PROP_MULTI_SELECT = "multiSelect";
-	public static String PROP_RESTRICT_COOKIE = "restrictCookie";
-	public static String PROP_SITE = "site";
-	public static String PROP_DISABLED = "disabled";
-	public static String PROP_DEF = "def";
-	public static String PROP_RESTRICT_MEMBER = "restrictMember";
-	public static String PROP_RESTRICT_IP = "restrictIp";
-	public static String PROP_TOTAL_COUNT = "totalCount";
-	public static String PROP_REPEATE_HOUR = "repeateHour";
-	public static String PROP_END_TIME = "endTime";
-	public static String PROP_START_TIME = "startTime";
-	public static String PROP_DESCRIPTION = "description";
-	public static String PROP_TITLE = "title";
-	public static String PROP_ID = "id";
+	private String description;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="end_time")
+	private Date endTime;
 
-	// constructors
-	public BaseCmsVoteTopic () {
-		initialize();
-	}
+	@Column(name="is_def")
+	private Boolean def;
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsVoteTopic (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+	@Column(name="is_disabled")
+	private Boolean disabled;
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsVoteTopic (
-		java.lang.Integer id,
-		com.yunkuo.cms.entity.main.CmsSite site,
-		java.lang.String title,
-		java.lang.Integer totalCount,
-		java.lang.Integer multiSelect,
-		java.lang.Boolean restrictMember,
-		java.lang.Boolean restrictIp,
-		java.lang.Boolean restrictCookie,
-		java.lang.Boolean disabled,
-		java.lang.Boolean def) {
+	@Column(name="is_restrict_cookie")
+	private Boolean restrictCookie;
 
-		this.setId(id);
-		this.setSite(site);
-		this.setTitle(title);
-		this.setTotalCount(totalCount);
-		this.setMultiSelect(multiSelect);
-		this.setRestrictMember(restrictMember);
-		this.setRestrictIp(restrictIp);
-		this.setRestrictCookie(restrictCookie);
-		this.setDisabled(disabled);
-		this.setDef(def);
-		initialize();
-	}
+	@Column(name="is_restrict_ip")
+	private Boolean restrictIp;
 
-	protected void initialize () {}
+	@Column(name="is_restrict_member")
+	private Boolean restrictMember;
 
+	@Column(name="multi_select")
+	private Integer multiSelect;
 
+	@Column(name="repeate_hour")
+	private Integer repeateHour;
 
-	private int hashCode = Integer.MIN_VALUE;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="start_time")
+	private Date startTime;
 
-	// primary key
-	private java.lang.Integer id;
+	private String title;
 
-	// fields
-	private java.lang.String title;
-	private java.lang.String description;
-	private java.util.Date startTime;
-	private java.util.Date endTime;
-	private java.lang.Integer repeateHour;
-	private java.lang.Integer totalCount;
-	private java.lang.Integer multiSelect;
-	private java.lang.Boolean restrictMember;
-	private java.lang.Boolean restrictIp;
-	private java.lang.Boolean restrictCookie;
-	private java.lang.Boolean disabled;
-	private java.lang.Boolean def;
+	@Column(name="total_count")
+	private Integer totalCount;
 
-	// many to one
-	private com.yunkuo.cms.entity.main.CmsSite site;
+	//bi-directional many-to-one association to CmsVoteItem
+    //TODO relation
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)//, mappedBy="cmsVoteTopic")
+    @JoinColumn(name="votetopic_id")
+   /* @JoinTable(name = "cms_vote_item"
+            , joinColumns = {
+            @JoinColumn(name = "votetopic_id")
+    },inverseJoinColumns=@JoinColumn(name="votetopic_id"))*/
+	private Set<CmsVoteItem> items;
 
-	// collections
-	private java.util.Set<com.yunkuo.cms.entity.assist.CmsVoteItem> items;
+/*	//bi-directional many-to-one association to CmsVoteRecord
+	@OneToMany(mappedBy="cmsVoteTopic")
+	private List<CmsVoteRecord> cmsVoteRecords;*/
 
+	//bi-directional many-to-one association to CmsSite
+	@ManyToOne
+	@JoinColumn(name="site_id")
+	private CmsSite site;
 
+    // constructors
+    public BaseCmsVoteTopic () {
+        initialize();
+    }
 
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="identity"
-     *  column="votetopic_id"
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsVoteTopic (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsVoteTopic (
+            java.lang.Integer id,
+            com.yunkuo.cms.entity.main.CmsSite site,
+            java.lang.String title,
+            java.lang.Integer totalCount,
+            java.lang.Integer multiSelect,
+            java.lang.Boolean restrictMember,
+            java.lang.Boolean restrictIp,
+            java.lang.Boolean restrictCookie,
+            java.lang.Boolean disabled,
+            java.lang.Boolean def) {
+
+        this.setId(id);
+        this.setSite(site);
+        this.setTitle(title);
+        this.setTotalCount(totalCount);
+        this.setMultiSelect(multiSelect);
+        this.setRestrictMember(restrictMember);
+        this.setRestrictIp(restrictIp);
+        this.setRestrictCookie(restrictCookie);
+        this.setDisabled(disabled);
+        this.setDef(def);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+	public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+	public void setId(Integer votetopicId) {
+		this.id = votetopicId;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: title
-	 */
-	public java.lang.String getTitle () {
-		return title;
+	public String getDescription() {
+		return this.description;
 	}
 
-	/**
-	 * Set the value related to the column: title
-	 * @param title the title value
-	 */
-	public void setTitle (java.lang.String title) {
-		this.title = title;
-	}
-
-
-	/**
-	 * Return the value associated with the column: description
-	 */
-	public java.lang.String getDescription () {
-		return description;
-	}
-
-	/**
-	 * Set the value related to the column: description
-	 * @param description the description value
-	 */
-	public void setDescription (java.lang.String description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
-
-	/**
-	 * Return the value associated with the column: start_time
-	 */
-	public java.util.Date getStartTime () {
-		return startTime;
+	public Date getEndTime() {
+		return this.endTime;
 	}
 
-	/**
-	 * Set the value related to the column: start_time
-	 * @param startTime the start_time value
-	 */
-	public void setStartTime (java.util.Date startTime) {
-		this.startTime = startTime;
-	}
-
-
-	/**
-	 * Return the value associated with the column: end_time
-	 */
-	public java.util.Date getEndTime () {
-		return endTime;
-	}
-
-	/**
-	 * Set the value related to the column: end_time
-	 * @param endTime the end_time value
-	 */
-	public void setEndTime (java.util.Date endTime) {
+	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
 
-
-	/**
-	 * Return the value associated with the column: repeate_hour
-	 */
-	public java.lang.Integer getRepeateHour () {
-		return repeateHour;
+	public Boolean getDef() {
+		return this.def;
 	}
 
-	/**
-	 * Set the value related to the column: repeate_hour
-	 * @param repeateHour the repeate_hour value
-	 */
-	public void setRepeateHour (java.lang.Integer repeateHour) {
-		this.repeateHour = repeateHour;
+	public void setDef(Boolean isDef) {
+		this.def = isDef;
 	}
 
-
-	/**
-	 * Return the value associated with the column: total_count
-	 */
-	public java.lang.Integer getTotalCount () {
-		return totalCount;
+	public Boolean getDisabled() {
+		return this.disabled;
 	}
 
-	/**
-	 * Set the value related to the column: total_count
-	 * @param totalCount the total_count value
-	 */
-	public void setTotalCount (java.lang.Integer totalCount) {
-		this.totalCount = totalCount;
+	public void setDisabled(Boolean isDisabled) {
+		this.disabled = isDisabled;
 	}
 
-
-	/**
-	 * Return the value associated with the column: multi_select
-	 */
-	public java.lang.Integer getMultiSelect () {
-		return multiSelect;
+	public Boolean getRestrictCookie() {
+		return this.restrictCookie;
 	}
 
-	/**
-	 * Set the value related to the column: multi_select
-	 * @param multiSelect the multi_select value
-	 */
-	public void setMultiSelect (java.lang.Integer multiSelect) {
+	public void setRestrictCookie(Boolean isRestrictCookie) {
+		this.restrictCookie = isRestrictCookie;
+	}
+
+	public Boolean getRestrictIp() {
+		return this.restrictIp;
+	}
+
+	public void setRestrictIp(Boolean isRestrictIp) {
+		this.restrictIp = isRestrictIp;
+	}
+
+	public Boolean getRestrictMember() {
+		return this.restrictMember;
+	}
+
+	public void setRestrictMember(Boolean isRestrictMember) {
+		this.restrictMember = isRestrictMember;
+	}
+
+	public Integer getMultiSelect() {
+		return this.multiSelect;
+	}
+
+	public void setMultiSelect(Integer multiSelect) {
 		this.multiSelect = multiSelect;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_restrict_member
-	 */
-	public java.lang.Boolean getRestrictMember () {
-		return restrictMember;
+	public Integer getRepeateHour() {
+		return this.repeateHour;
 	}
 
-	/**
-	 * Set the value related to the column: is_restrict_member
-	 * @param restrictMember the is_restrict_member value
-	 */
-	public void setRestrictMember (java.lang.Boolean restrictMember) {
-		this.restrictMember = restrictMember;
+	public void setRepeateHour(Integer repeateHour) {
+		this.repeateHour = repeateHour;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_restrict_ip
-	 */
-	public java.lang.Boolean getRestrictIp () {
-		return restrictIp;
+	public Date getStartTime() {
+		return this.startTime;
 	}
 
-	/**
-	 * Set the value related to the column: is_restrict_ip
-	 * @param restrictIp the is_restrict_ip value
-	 */
-	public void setRestrictIp (java.lang.Boolean restrictIp) {
-		this.restrictIp = restrictIp;
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_restrict_cookie
-	 */
-	public java.lang.Boolean getRestrictCookie () {
-		return restrictCookie;
+	public String getTitle() {
+		return this.title;
 	}
 
-	/**
-	 * Set the value related to the column: is_restrict_cookie
-	 * @param restrictCookie the is_restrict_cookie value
-	 */
-	public void setRestrictCookie (java.lang.Boolean restrictCookie) {
-		this.restrictCookie = restrictCookie;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_disabled
-	 */
-	public java.lang.Boolean getDisabled () {
-		return disabled;
+	public Integer getTotalCount() {
+		return this.totalCount;
 	}
 
-	/**
-	 * Set the value related to the column: is_disabled
-	 * @param disabled the is_disabled value
-	 */
-	public void setDisabled (java.lang.Boolean disabled) {
-		this.disabled = disabled;
+	public void setTotalCount(Integer totalCount) {
+		this.totalCount = totalCount;
 	}
 
-
-	/**
-	 * Return the value associated with the column: is_def
-	 */
-	public java.lang.Boolean getDef () {
-		return def;
+	public Set<CmsVoteItem> getItems() {
+		return this.items;
 	}
 
-	/**
-	 * Set the value related to the column: is_def
-	 * @param def the is_def value
-	 */
-	public void setDef (java.lang.Boolean def) {
-		this.def = def;
+	public void setItems(Set<CmsVoteItem> cmsVoteItems) {
+		this.items = cmsVoteItems;
 	}
 
+	/*public CmsVoteItem addCmsVoteItem(CmsVoteItem cmsVoteItem) {
+		getCmsVoteItems().add(cmsVoteItem);
+		cmsVoteItem.setCmsVoteTopic(this);
 
-	/**
-	 * Return the value associated with the column: site_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsSite getSite () {
-		return site;
+		return cmsVoteItem;
 	}
 
-	/**
-	 * Set the value related to the column: site_id
-	 * @param site the site_id value
-	 */
-	public void setSite (com.yunkuo.cms.entity.main.CmsSite site) {
-		this.site = site;
+	public CmsVoteItem removeCmsVoteItem(CmsVoteItem cmsVoteItem) {
+		getCmsVoteItems().remove(cmsVoteItem);
+		cmsVoteItem.setCmsVoteTopic(null);
+
+		return cmsVoteItem;
+	}*/
+
+	/*public List<CmsVoteRecord> getCmsVoteRecords() {
+		return this.cmsVoteRecords;
 	}
 
-
-	/**
-	 * Return the value associated with the column: items
-	 */
-	public java.util.Set<com.yunkuo.cms.entity.assist.CmsVoteItem> getItems () {
-		return items;
+	public void setCmsVoteRecords(List<CmsVoteRecord> cmsVoteRecords) {
+		this.cmsVoteRecords = cmsVoteRecords;
 	}
 
-	/**
-	 * Set the value related to the column: items
-	 * @param items the items value
-	 */
-	public void setItems (java.util.Set<com.yunkuo.cms.entity.assist.CmsVoteItem> items) {
-		this.items = items;
+	public CmsVoteRecord addCmsVoteRecord(CmsVoteRecord cmsVoteRecord) {
+		getCmsVoteRecords().add(cmsVoteRecord);
+		cmsVoteRecord.setCmsVoteTopic(this);
+
+		return cmsVoteRecord;
 	}
 
+	public CmsVoteRecord removeCmsVoteRecord(CmsVoteRecord cmsVoteRecord) {
+		getCmsVoteRecords().remove(cmsVoteRecord);
+		cmsVoteRecord.setCmsVoteTopic(null);
 
+		return cmsVoteRecord;
+	}*/
 
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.assist.CmsVoteTopic)) return false;
-		else {
-			com.yunkuo.cms.entity.assist.CmsVoteTopic cmsVoteTopic = (com.yunkuo.cms.entity.assist.CmsVoteTopic) obj;
-			if (null == this.getId() || null == cmsVoteTopic.getId()) return false;
-			else return (this.getId().equals(cmsVoteTopic.getId()));
-		}
+	public CmsSite getSite() {
+		return this.site;
 	}
 
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
+	public void setSite(CmsSite cmsSite) {
+		this.site = cmsSite;
 	}
-
-
-	public String toString () {
-		return super.toString();
-	}
-
 
 }
