@@ -1,221 +1,144 @@
 package com.yunkuo.cms.entity.assist.base;
 
+import com.sun.istack.internal.Nullable;
+import com.yunkuo.cms.entity.assist.CmsAcquisition;
+import com.yunkuo.cms.entity.main.Content;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 
 /**
- * This is an object that contains data related to the cms_acquisition_history table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_acquisition_history"
+ * The persistent class for the cms_acquisition_history database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_acquisition_history")*/
+@MappedSuperclass
+public class BaseCmsAcquisitionHistory implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsAcquisitionHistory  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="history_id")
+	private Integer id;
 
-	public static String REF = "CmsAcquisitionHistory";
-	public static String PROP_ACQUISITION = "acquisition";
-	public static String PROP_DESCRIPTION = "description";
-	public static String PROP_CONTENT_URL = "contentUrl";
-	public static String PROP_ID = "id";
-	public static String PROP_CONTENT = "content";
-	public static String PROP_CHANNEL_URL = "channelUrl";
-	public static String PROP_TITLE = "title";
+	@Column(name="channel_url")
+	private String channelUrl;
 
+    public Content getContent() {
+        return content;
+    }
 
-	// constructors
-	public BaseCmsAcquisitionHistory () {
-		initialize();
-	}
+    public void setContent(Content content) {
+        this.content = content;
+    }
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsAcquisitionHistory (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+    /*	@Column(name="content_id")
+        private int contentId;*/
+    //bi-directional many-to-one association to CmsAcquisition
+    @ManyToOne
+    @JoinColumn(name="content_id")
+    @NotFound(action = NotFoundAction.IGNORE)
+    private Content content;
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsAcquisitionHistory (
-		java.lang.Integer id,
-		java.lang.String channelUrl,
-		java.lang.String contentUrl) {
+	@Column(name="content_url")
+	private String contentUrl;
 
-		this.setId(id);
-		this.setChannelUrl(channelUrl);
-		this.setContentUrl(contentUrl);
-		initialize();
-	}
+	private String description;
 
-	protected void initialize () {}
+	private String title;
 
+	//bi-directional many-to-one association to CmsAcquisition
+	@ManyToOne
+	@JoinColumn(name="acquisition_id")
+	private CmsAcquisition acquisition;
 
+    // constructors
+    public BaseCmsAcquisitionHistory () {
+        initialize();
+    }
 
-	private int hashCode = Integer.MIN_VALUE;
-
-	// primary key
-	private java.lang.Integer id;
-
-	// fields
-	private java.lang.String channelUrl;
-	private java.lang.String contentUrl;
-	private java.lang.String title;
-	private java.lang.String description;
-
-	// many to one
-	private com.yunkuo.cms.entity.assist.CmsAcquisition acquisition;
-	private com.yunkuo.cms.entity.main.Content content;
-
-
-
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="identity"
-     *  column="history_id"
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsAcquisitionHistory (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsAcquisitionHistory (
+            Integer id,
+            String channelUrl,
+            String contentUrl) {
+
+        this.setId(id);
+        this.setChannelUrl(channelUrl);
+        this.setContentUrl(contentUrl);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+	public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+	public void setId(Integer historyId) {
+		this.id = historyId;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: channel_url
-	 */
-	public java.lang.String getChannelUrl () {
-		return channelUrl;
+	public String getChannelUrl() {
+		return this.channelUrl;
 	}
 
-	/**
-	 * Set the value related to the column: channel_url
-	 * @param channelUrl the channel_url value
-	 */
-	public void setChannelUrl (java.lang.String channelUrl) {
+	public void setChannelUrl(String channelUrl) {
 		this.channelUrl = channelUrl;
 	}
-
-
-	/**
-	 * Return the value associated with the column: content_url
-	 */
-	public java.lang.String getContentUrl () {
-		return contentUrl;
+/*
+	public int getContentId() {
+		return this.contentId;
 	}
 
-	/**
-	 * Set the value related to the column: content_url
-	 * @param contentUrl the content_url value
-	 */
-	public void setContentUrl (java.lang.String contentUrl) {
+	public void setContentId(int contentId) {
+		this.contentId = contentId;
+	}*/
+
+	public String getContentUrl() {
+		return this.contentUrl;
+	}
+
+	public void setContentUrl(String contentUrl) {
 		this.contentUrl = contentUrl;
 	}
 
-
-	/**
-	 * Return the value associated with the column: title
-	 */
-	public java.lang.String getTitle () {
-		return title;
+	public String getDescription() {
+		return this.description;
 	}
 
-	/**
-	 * Set the value related to the column: title
-	 * @param title the title value
-	 */
-	public void setTitle (java.lang.String title) {
-		this.title = title;
-	}
-
-
-	/**
-	 * Return the value associated with the column: description
-	 */
-	public java.lang.String getDescription () {
-		return description;
-	}
-
-	/**
-	 * Set the value related to the column: description
-	 * @param description the description value
-	 */
-	public void setDescription (java.lang.String description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
-
-	/**
-	 * Return the value associated with the column: acquisition_id
-	 */
-	public com.yunkuo.cms.entity.assist.CmsAcquisition getAcquisition () {
-		return acquisition;
+	public String getTitle() {
+		return this.title;
 	}
 
-	/**
-	 * Set the value related to the column: acquisition_id
-	 * @param acquisition the acquisition_id value
-	 */
-	public void setAcquisition (com.yunkuo.cms.entity.assist.CmsAcquisition acquisition) {
-		this.acquisition = acquisition;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-
-	/**
-	 * Return the value associated with the column: content_id
-	 */
-	public com.yunkuo.cms.entity.main.Content getContent () {
-		return content;
+	public CmsAcquisition getAcquisition() {
+		return this.acquisition;
 	}
 
-	/**
-	 * Set the value related to the column: content_id
-	 * @param content the content_id value
-	 */
-	public void setContent (com.yunkuo.cms.entity.main.Content content) {
-		this.content = content;
+	public void setAcquisition(CmsAcquisition cmsAcquisition) {
+		this.acquisition = cmsAcquisition;
 	}
-
-
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.assist.CmsAcquisitionHistory)) return false;
-		else {
-			com.yunkuo.cms.entity.assist.CmsAcquisitionHistory cmsAcquisitionHistory = (com.yunkuo.cms.entity.assist.CmsAcquisitionHistory) obj;
-			if (null == this.getId() || null == cmsAcquisitionHistory.getId()) return false;
-			else return (this.getId().equals(cmsAcquisitionHistory.getId()));
-		}
-	}
-
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
-	}
-
-
-	public String toString () {
-		return super.toString();
-	}
-
 
 }
