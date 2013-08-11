@@ -2,8 +2,12 @@ package com.yunkuo.cms.entity.assist;
 
 import com.yunkuo.cms.entity.assist.base.BaseCmsVoteRecord;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
+@Entity
+@Table(name="cms_vote_record")
 public class CmsVoteRecord extends BaseCmsVoteRecord {
 	private static final long serialVersionUID = 1L;
 

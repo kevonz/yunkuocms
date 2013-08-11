@@ -1,207 +1,127 @@
 package com.yunkuo.cms.entity.assist.base;
 
+import com.yunkuo.cms.entity.assist.CmsVoteTopic;
+import com.yunkuo.cms.entity.main.CmsUser;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 
 /**
- * This is an object that contains data related to the cms_vote_record table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_vote_record"
+ * The persistent class for the cms_vote_record database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_vote_record")*/
+@MappedSuperclass
+public class BaseCmsVoteRecord implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsVoteRecord  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="voterecored_id")
+	private int id;
 
-	public static String REF = "CmsVoteRecord";
-	public static String PROP_TIME = "time";
-	public static String PROP_COOKIE = "cookie";
-	public static String PROP_TOPIC = "topic";
-	public static String PROP_USER = "user";
-	public static String PROP_IP = "ip";
-	public static String PROP_ID = "id";
+	@Column(name="vote_cookie")
+	private String cookie;
 
+	@Column(name="vote_ip")
+	private String ip;
 
-	// constructors
-	public BaseCmsVoteRecord () {
-		initialize();
-	}
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="vote_time")
+	private Date time;
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsVoteRecord (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+	//bi-directional many-to-one association to CmsUser
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private CmsUser user;
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsVoteRecord (
-		java.lang.Integer id,
-		com.yunkuo.cms.entity.assist.CmsVoteTopic topic,
-		java.util.Date time,
-		java.lang.String ip,
-		java.lang.String cookie) {
+	//bi-directional many-to-one association to CmsVoteTopic
+	@ManyToOne
+	@JoinColumn(name="votetopic_id")
+	private CmsVoteTopic topic;
 
-		this.setId(id);
-		this.setTopic(topic);
-		this.setTime(time);
-		this.setIp(ip);
-		this.setCookie(cookie);
-		initialize();
-	}
+    // constructors
+    public BaseCmsVoteRecord () {
+        initialize();
+    }
 
-	protected void initialize () {}
-
-
-
-	private int hashCode = Integer.MIN_VALUE;
-
-	// primary key
-	private java.lang.Integer id;
-
-	// fields
-	private java.util.Date time;
-	private java.lang.String ip;
-	private java.lang.String cookie;
-
-	// many to one
-	private com.yunkuo.cms.entity.main.CmsUser user;
-	private com.yunkuo.cms.entity.assist.CmsVoteTopic topic;
-
-
-
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="identity"
-     *  column="voterecored_id"
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsVoteRecord (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsVoteRecord (
+            java.lang.Integer id,
+            com.yunkuo.cms.entity.assist.CmsVoteTopic topic,
+            java.util.Date time,
+            java.lang.String ip,
+            java.lang.String cookie) {
+
+        this.setId(id);
+        this.setTopic(topic);
+        this.setTime(time);
+        this.setIp(ip);
+        this.setCookie(cookie);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+	public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+	public void setId(Integer voterecoredId) {
+		this.id = voterecoredId;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: vote_time
-	 */
-	public java.util.Date getTime () {
-		return time;
+	public String getCookie() {
+		return this.cookie;
 	}
 
-	/**
-	 * Set the value related to the column: vote_time
-	 * @param time the vote_time value
-	 */
-	public void setTime (java.util.Date time) {
-		this.time = time;
+	public void setCookie(String voteCookie) {
+		this.cookie = voteCookie;
 	}
 
-
-	/**
-	 * Return the value associated with the column: vote_ip
-	 */
-	public java.lang.String getIp () {
-		return ip;
+	public String getIp() {
+		return this.ip;
 	}
 
-	/**
-	 * Set the value related to the column: vote_ip
-	 * @param ip the vote_ip value
-	 */
-	public void setIp (java.lang.String ip) {
-		this.ip = ip;
+	public void setIp(String voteIp) {
+		this.ip = voteIp;
 	}
 
-
-	/**
-	 * Return the value associated with the column: vote_cookie
-	 */
-	public java.lang.String getCookie () {
-		return cookie;
+	public Date getTime() {
+		return this.time;
 	}
 
-	/**
-	 * Set the value related to the column: vote_cookie
-	 * @param cookie the vote_cookie value
-	 */
-	public void setCookie (java.lang.String cookie) {
-		this.cookie = cookie;
+	public void setTime(Date voteTime) {
+		this.time = voteTime;
 	}
 
-
-	/**
-	 * Return the value associated with the column: user_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsUser getUser () {
-		return user;
+	public CmsUser getUser() {
+		return this.user;
 	}
 
-	/**
-	 * Set the value related to the column: user_id
-	 * @param user the user_id value
-	 */
-	public void setUser (com.yunkuo.cms.entity.main.CmsUser user) {
-		this.user = user;
+	public void setUser(CmsUser cmsUser) {
+		this.user = cmsUser;
 	}
 
-
-	/**
-	 * Return the value associated with the column: votetopic_id
-	 */
-	public com.yunkuo.cms.entity.assist.CmsVoteTopic getTopic () {
-		return topic;
+	public CmsVoteTopic getTopic() {
+		return this.topic;
 	}
 
-	/**
-	 * Set the value related to the column: votetopic_id
-	 * @param topic the votetopic_id value
-	 */
-	public void setTopic (com.yunkuo.cms.entity.assist.CmsVoteTopic topic) {
-		this.topic = topic;
+	public void setTopic(CmsVoteTopic cmsVoteTopic) {
+		this.topic = cmsVoteTopic;
 	}
-
-
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.assist.CmsVoteRecord)) return false;
-		else {
-			com.yunkuo.cms.entity.assist.CmsVoteRecord cmsVoteRecord = (com.yunkuo.cms.entity.assist.CmsVoteRecord) obj;
-			if (null == this.getId() || null == cmsVoteRecord.getId()) return false;
-			else return (this.getId().equals(cmsVoteRecord.getId()));
-		}
-	}
-
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
-	}
-
-
-	public String toString () {
-		return super.toString();
-	}
-
 
 }
