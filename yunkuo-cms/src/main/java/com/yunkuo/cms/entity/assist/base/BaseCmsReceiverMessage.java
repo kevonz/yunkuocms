@@ -1,289 +1,184 @@
 package com.yunkuo.cms.entity.assist.base;
 
+import com.yunkuo.cms.entity.assist.CmsMessage;
+import com.yunkuo.cms.entity.main.CmsSite;
+import com.yunkuo.cms.entity.main.CmsUser;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 
 /**
- * This is an object that contains data related to the cms_receiver_message table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_receiver_message"
+ * The persistent class for the cms_receiver_message database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_receiver_message")*/
+@MappedSuperclass
+public class BaseCmsReceiverMessage implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsReceiverMessage  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="msg_re_id")
+	private Integer id;
 
-	public static String REF = "CmsReceiverMessage";
-	public static String PROP_MSG_STATUS = "msgStatus";
-	public static String PROP_SITE = "site";
-	public static String PROP_MESSAGE = "message";
-	public static String PROP_MSG_SEND_USER = "msgSendUser";
-	public static String PROP_MSG_CONTENT = "msgContent";
-	public static String PROP_MSG_BOX = "msgBox";
-	public static String PROP_SEND_TIME = "sendTime";
-	public static String PROP_ID = "id";
-	public static String PROP_MSG_RECEIVER_USER = "msgReceiverUser";
-	public static String PROP_MSG_TITLE = "msgTitle";
+	@Column(name="msg_box")
+	private int msgBox;
 
+	@Lob
+	@Column(name="msg_content")
+	private String msgContent;
 
-	// constructors
-	public BaseCmsReceiverMessage () {
-		initialize();
-	}
+	@Column(name="msg_status")
+	private Boolean msgStatus;
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsReceiverMessage (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+	@Column(name="msg_title")
+	private String msgTitle;
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsReceiverMessage (
-		java.lang.Integer id,
-		com.yunkuo.cms.entity.main.CmsUser msgReceiverUser,
-		com.yunkuo.cms.entity.main.CmsUser msgSendUser,
-		com.yunkuo.cms.entity.main.CmsSite site,
-		java.lang.String msgTitle,
-		java.lang.String msgContent,
-		java.util.Date sendTime,
-		boolean msgStatus,
-		java.lang.Integer msgBox) {
+	@Column(name="send_time")
+	private Date sendTime;
 
-		this.setId(id);
-		this.setMsgReceiverUser(msgReceiverUser);
-		this.setMsgSendUser(msgSendUser);
-		this.setSite(site);
-		this.setMsgTitle(msgTitle);
-		this.setMsgContent(msgContent);
-		this.setSendTime(sendTime);
-		this.setMsgStatus(msgStatus);
-		this.setMsgBox(msgBox);
-		initialize();
-	}
+	//bi-directional many-to-one association to CmsMessage
+	@ManyToOne
+	@JoinColumn(name="msg_id")
+	private CmsMessage message;
 
-	protected void initialize () {}
+	//bi-directional many-to-one association to CmsSite
+	@ManyToOne
+	@JoinColumn(name="site_id")
+	private CmsSite site;
 
+	//bi-directional many-to-one association to CmsUser
+	@ManyToOne
+	@JoinColumn(name="msg_receiver_user")
+	private CmsUser msgReceiverUser;
 
+	//bi-directional many-to-one association to CmsUser
+	@ManyToOne
+	@JoinColumn(name="msg_send_user")
+	private CmsUser msgSendUser;
 
-	private int hashCode = Integer.MIN_VALUE;
+    // constructors
+    public BaseCmsReceiverMessage () {
+        initialize();
+    }
 
-	// primary key
-	private java.lang.Integer id;
-
-	// fields
-	private java.lang.String msgTitle;
-	private java.lang.String msgContent;
-	private java.util.Date sendTime;
-	private boolean msgStatus;
-	private java.lang.Integer msgBox;
-
-	
-
-	// many to one
-	private com.yunkuo.cms.entity.main.CmsUser msgReceiverUser;
-	private com.yunkuo.cms.entity.main.CmsUser msgSendUser;
-	private com.yunkuo.cms.entity.main.CmsSite site;
-	private com.yunkuo.cms.entity.assist.CmsMessage message;
-
-
-
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="foreign"
-     *  column="msg_id"
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsReceiverMessage (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsReceiverMessage (
+            java.lang.Integer id,
+            com.yunkuo.cms.entity.main.CmsUser msgReceiverUser,
+            com.yunkuo.cms.entity.main.CmsUser msgSendUser,
+            com.yunkuo.cms.entity.main.CmsSite site,
+            java.lang.String msgTitle,
+            java.lang.String msgContent,
+            java.util.Date sendTime,
+            boolean msgStatus,
+            java.lang.Integer msgBox) {
+
+        this.setId(id);
+        this.setMsgReceiverUser(msgReceiverUser);
+        this.setMsgSendUser(msgSendUser);
+        this.setSite(site);
+        this.setMsgTitle(msgTitle);
+        this.setMsgContent(msgContent);
+        this.setSendTime(sendTime);
+        this.setMsgStatus(msgStatus);
+        this.setMsgBox(msgBox);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+	public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+	public void setId(Integer msgReId) {
+		this.id = msgReId;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: msg_title
-	 */
-	public java.lang.String getMsgTitle () {
-		return msgTitle;
+	public Integer getMsgBox() {
+		return this.msgBox;
 	}
 
-	/**
-	 * Set the value related to the column: msg_title
-	 * @param msgTitle the msg_title value
-	 */
-	public void setMsgTitle (java.lang.String msgTitle) {
-		this.msgTitle = msgTitle;
-	}
-
-
-	/**
-	 * Return the value associated with the column: msg_content
-	 */
-	public java.lang.String getMsgContent () {
-		return msgContent;
-	}
-
-	/**
-	 * Set the value related to the column: msg_content
-	 * @param msgContent the msg_content value
-	 */
-	public void setMsgContent (java.lang.String msgContent) {
-		this.msgContent = msgContent;
-	}
-
-
-	/**
-	 * Return the value associated with the column: send_time
-	 */
-	public java.util.Date getSendTime () {
-		return sendTime;
-	}
-
-	/**
-	 * Set the value related to the column: send_time
-	 * @param sendTime the send_time value
-	 */
-	public void setSendTime (java.util.Date sendTime) {
-		this.sendTime = sendTime;
-	}
-
-
-	/**
-	 * Return the value associated with the column: msg_status
-	 */
-	public boolean isMsgStatus () {
-		return msgStatus;
-	}
-
-	/**
-	 * Set the value related to the column: msg_status
-	 * @param msgStatus the msg_status value
-	 */
-	public void setMsgStatus (boolean msgStatus) {
-		this.msgStatus = msgStatus;
-	}
-
-
-	/**
-	 * Return the value associated with the column: msg_box
-	 */
-	public java.lang.Integer getMsgBox () {
-		return msgBox;
-	}
-
-	/**
-	 * Set the value related to the column: msg_box
-	 * @param msgBox the msg_box value
-	 */
-	public void setMsgBox (java.lang.Integer msgBox) {
+	public void setMsgBox(Integer msgBox) {
 		this.msgBox = msgBox;
 	}
 
-
-	/**
-	 * Return the value associated with the column: message
-	 */
-	public com.yunkuo.cms.entity.assist.CmsMessage getMessage () {
-		return message;
+	public String getMsgContent() {
+		return this.msgContent;
 	}
 
-	/**
-	 * Set the value related to the column: message
-	 * @param message the message value
-	 */
-	public void setMessage (com.yunkuo.cms.entity.assist.CmsMessage message) {
-		this.message = message;
+	public void setMsgContent(String msgContent) {
+		this.msgContent = msgContent;
 	}
 
-
-	/**
-	 * Return the value associated with the column: msg_receiver_user
-	 */
-	public com.yunkuo.cms.entity.main.CmsUser getMsgReceiverUser () {
-		return msgReceiverUser;
+	public Boolean getMsgStatus() {
+		return this.msgStatus;
 	}
 
-	/**
-	 * Set the value related to the column: msg_receiver_user
-	 * @param msgReceiverUser the msg_receiver_user value
-	 */
-	public void setMsgReceiverUser (com.yunkuo.cms.entity.main.CmsUser msgReceiverUser) {
-		this.msgReceiverUser = msgReceiverUser;
+	public void setMsgStatus(Boolean msgStatus) {
+		this.msgStatus = msgStatus;
 	}
 
-
-	/**
-	 * Return the value associated with the column: msg_send_user
-	 */
-	public com.yunkuo.cms.entity.main.CmsUser getMsgSendUser () {
-		return msgSendUser;
+	public String getMsgTitle() {
+		return this.msgTitle;
 	}
 
-	/**
-	 * Set the value related to the column: msg_send_user
-	 * @param msgSendUser the msg_send_user value
-	 */
-	public void setMsgSendUser (com.yunkuo.cms.entity.main.CmsUser msgSendUser) {
-		this.msgSendUser = msgSendUser;
+	public void setMsgTitle(String msgTitle) {
+		this.msgTitle = msgTitle;
 	}
 
-
-	/**
-	 * Return the value associated with the column: site_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsSite getSite () {
-		return site;
+	public Date getSendTime() {
+		return this.sendTime;
 	}
 
-	/**
-	 * Set the value related to the column: site_id
-	 * @param site the site_id value
-	 */
-	public void setSite (com.yunkuo.cms.entity.main.CmsSite site) {
-		this.site = site;
+	public void setSendTime(Date sendTime) {
+		this.sendTime = sendTime;
 	}
 
-
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.assist.CmsReceiverMessage)) return false;
-		else {
-			com.yunkuo.cms.entity.assist.CmsReceiverMessage cmsReceiverMessage = (com.yunkuo.cms.entity.assist.CmsReceiverMessage) obj;
-			if (null == this.getId() || null == cmsReceiverMessage.getId()) return false;
-			else return (this.getId().equals(cmsReceiverMessage.getId()));
-		}
+	public CmsMessage getMessage() {
+		return this.message;
 	}
 
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
+	public void setMessage(CmsMessage cmsMessage) {
+		this.message = cmsMessage;
 	}
 
-
-	public String toString () {
-		return super.toString();
+	public CmsSite getSite() {
+		return this.site;
 	}
 
+	public void setSite(CmsSite cmsSite) {
+		this.site = cmsSite;
+	}
+
+	public CmsUser getMsgReceiverUser() {
+		return this.msgReceiverUser;
+	}
+
+	public void setMsgReceiverUser(CmsUser cmsUser1) {
+		this.msgReceiverUser = cmsUser1;
+	}
+
+	public CmsUser getMsgSendUser() {
+		return this.msgSendUser;
+	}
+
+	public void setMsgSendUser(CmsUser cmsUser2) {
+		this.msgSendUser = cmsUser2;
+	}
 
 }
