@@ -2,8 +2,12 @@ package com.yunkuo.cms.entity.assist;
 
 import com.yunkuo.cms.entity.assist.base.BaseCmsAcquisitionTemp;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
+@Entity
+@Table(name="cms_acquisition_temp")
 public class CmsAcquisitionTemp extends BaseCmsAcquisitionTemp {
 	private static final long serialVersionUID = 1L;
 

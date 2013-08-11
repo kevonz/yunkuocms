@@ -1,245 +1,142 @@
 package com.yunkuo.cms.entity.assist.base;
 
+import com.yunkuo.cms.entity.main.CmsSite;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 
 /**
- * This is an object that contains data related to the cms_acquisition_temp table.
- * Do not modify this class because it will be overwritten if the configuration file
- * related to this class is modified.
- *
- * @hibernate.class
- *  table="cms_acquisition_temp"
+ * The persistent class for the cms_acquisition_temp database table.
+ * 
  */
+/*@Entity
+@Table(name="cms_acquisition_temp")*/
+@MappedSuperclass
+public class BaseCmsAcquisitionTemp implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-public abstract class BaseCmsAcquisitionTemp  implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="temp_id")
+	private Integer id;
 
-	public static String REF = "CmsAcquisitionTemp";
-	public static String PROP_SEQ = "seq";
-	public static String PROP_DESCRIPTION = "description";
-	public static String PROP_SITE = "site";
-	public static String PROP_CONTENT_URL = "contentUrl";
-	public static String PROP_PERCENT = "percent";
-	public static String PROP_ID = "id";
-	public static String PROP_CHANNEL_URL = "channelUrl";
-	public static String PROP_TITLE = "title";
+	@Column(name="channel_url")
+	private String channelUrl;
 
+	@Column(name="content_url")
+	private String contentUrl;
 
-	// constructors
-	public BaseCmsAcquisitionTemp () {
-		initialize();
-	}
+	private String description;
 
-	/**
-	 * Constructor for primary key
-	 */
-	public BaseCmsAcquisitionTemp (java.lang.Integer id) {
-		this.setId(id);
-		initialize();
-	}
+	private Integer percent;
 
-	/**
-	 * Constructor for required fields
-	 */
-	public BaseCmsAcquisitionTemp (
-		java.lang.Integer id,
-		java.lang.String channelUrl,
-		java.lang.String contentUrl,
-		java.lang.Integer percent,
-		java.lang.String description,
-		java.lang.Integer seq) {
+	private Integer seq;
 
-		this.setId(id);
-		this.setChannelUrl(channelUrl);
-		this.setContentUrl(contentUrl);
-		this.setPercent(percent);
-		this.setDescription(description);
-		this.setSeq(seq);
-		initialize();
-	}
+	private String title;
 
-	protected void initialize () {}
+	//bi-directional many-to-one association to CmsSite
+	@ManyToOne
+	@JoinColumn(name="site_id")
+	private CmsSite site;
 
+    // constructors
+    public BaseCmsAcquisitionTemp () {
+        initialize();
+    }
 
-
-	private int hashCode = Integer.MIN_VALUE;
-
-	// primary key
-	private java.lang.Integer id;
-
-	// fields
-	private java.lang.String channelUrl;
-	private java.lang.String contentUrl;
-	private java.lang.String title;
-	private java.lang.Integer percent;
-	private java.lang.String description;
-	private java.lang.Integer seq;
-
-	// many to one
-	private com.yunkuo.cms.entity.main.CmsSite site;
-
-
-
-	/**
-	 * Return the unique identifier of this class
-     * @hibernate.id
-     *  generator-class="identity"
-     *  column="temp_id"
+    /**
+     * Constructor for primary key
      */
-	public java.lang.Integer getId () {
-		return id;
+    public BaseCmsAcquisitionTemp (java.lang.Integer id) {
+        this.setId(id);
+        initialize();
+    }
+
+    /**
+     * Constructor for required fields
+     */
+    public BaseCmsAcquisitionTemp (
+            java.lang.Integer id,
+            java.lang.String channelUrl,
+            java.lang.String contentUrl,
+            java.lang.Integer percent,
+            java.lang.String description,
+            java.lang.Integer seq) {
+
+        this.setId(id);
+        this.setChannelUrl(channelUrl);
+        this.setContentUrl(contentUrl);
+        this.setPercent(percent);
+        this.setDescription(description);
+        this.setSeq(seq);
+        initialize();
+    }
+
+    protected void initialize () {}
+
+	public Integer getId() {
+		return this.id;
 	}
 
-	/**
-	 * Set the unique identifier of this class
-	 * @param id the new ID
-	 */
-	public void setId (java.lang.Integer id) {
-		this.id = id;
-		this.hashCode = Integer.MIN_VALUE;
+	public void setId(Integer tempId) {
+		this.id = tempId;
 	}
 
-
-
-
-	/**
-	 * Return the value associated with the column: channel_url
-	 */
-	public java.lang.String getChannelUrl () {
-		return channelUrl;
+	public String getChannelUrl() {
+		return this.channelUrl;
 	}
 
-	/**
-	 * Set the value related to the column: channel_url
-	 * @param channelUrl the channel_url value
-	 */
-	public void setChannelUrl (java.lang.String channelUrl) {
+	public void setChannelUrl(String channelUrl) {
 		this.channelUrl = channelUrl;
 	}
 
-
-	/**
-	 * Return the value associated with the column: content_url
-	 */
-	public java.lang.String getContentUrl () {
-		return contentUrl;
+	public String getContentUrl() {
+		return this.contentUrl;
 	}
 
-	/**
-	 * Set the value related to the column: content_url
-	 * @param contentUrl the content_url value
-	 */
-	public void setContentUrl (java.lang.String contentUrl) {
+	public void setContentUrl(String contentUrl) {
 		this.contentUrl = contentUrl;
 	}
 
-
-	/**
-	 * Return the value associated with the column: title
-	 */
-	public java.lang.String getTitle () {
-		return title;
+	public String getDescription() {
+		return this.description;
 	}
 
-	/**
-	 * Set the value related to the column: title
-	 * @param title the title value
-	 */
-	public void setTitle (java.lang.String title) {
-		this.title = title;
-	}
-
-
-	/**
-	 * Return the value associated with the column: percent
-	 */
-	public java.lang.Integer getPercent () {
-		return percent;
-	}
-
-	/**
-	 * Set the value related to the column: percent
-	 * @param percent the percent value
-	 */
-	public void setPercent (java.lang.Integer percent) {
-		this.percent = percent;
-	}
-
-
-	/**
-	 * Return the value associated with the column: description
-	 */
-	public java.lang.String getDescription () {
-		return description;
-	}
-
-	/**
-	 * Set the value related to the column: description
-	 * @param description the description value
-	 */
-	public void setDescription (java.lang.String description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
-
-	/**
-	 * Return the value associated with the column: seq
-	 */
-	public java.lang.Integer getSeq () {
-		return seq;
+	public Integer getPercent() {
+		return this.percent;
 	}
 
-	/**
-	 * Set the value related to the column: seq
-	 * @param seq the seq value
-	 */
-	public void setSeq (java.lang.Integer seq) {
+	public void setPercent(Integer percent) {
+		this.percent = percent;
+	}
+
+	public Integer getSeq() {
+		return this.seq;
+	}
+
+	public void setSeq(Integer seq) {
 		this.seq = seq;
 	}
 
-
-	/**
-	 * Return the value associated with the column: site_id
-	 */
-	public com.yunkuo.cms.entity.main.CmsSite getSite () {
-		return site;
+	public String getTitle() {
+		return this.title;
 	}
 
-	/**
-	 * Set the value related to the column: site_id
-	 * @param site the site_id value
-	 */
-	public void setSite (com.yunkuo.cms.entity.main.CmsSite site) {
-		this.site = site;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-
-
-	public boolean equals (Object obj) {
-		if (null == obj) return false;
-		if (!(obj instanceof com.yunkuo.cms.entity.assist.CmsAcquisitionTemp)) return false;
-		else {
-			com.yunkuo.cms.entity.assist.CmsAcquisitionTemp cmsAcquisitionTemp = (com.yunkuo.cms.entity.assist.CmsAcquisitionTemp) obj;
-			if (null == this.getId() || null == cmsAcquisitionTemp.getId()) return false;
-			else return (this.getId().equals(cmsAcquisitionTemp.getId()));
-		}
+	public CmsSite getSite() {
+		return this.site;
 	}
 
-	public int hashCode () {
-		if (Integer.MIN_VALUE == this.hashCode) {
-			if (null == this.getId()) return super.hashCode();
-			else {
-				String hashStr = this.getClass().getName() + ":" + this.getId().hashCode();
-				this.hashCode = hashStr.hashCode();
-			}
-		}
-		return this.hashCode;
+	public void setSite(CmsSite cmsSite) {
+		this.site = cmsSite;
 	}
-
-
-	public String toString () {
-		return super.toString();
-	}
-
 
 }

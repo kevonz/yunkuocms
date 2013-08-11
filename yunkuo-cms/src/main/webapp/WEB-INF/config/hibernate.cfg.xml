@@ -46,6 +46,7 @@
         <mapping class="com.yunkuo.cms.entity.assist.CmsAdvertising" />
         <!--<mapping class="com.yunkuo.cms.entity.assist.CmsAdvertisingAttr" />-->
         <mapping class="com.yunkuo.cms.entity.assist.CmsAdvertisingSpace" />
+        <mapping class="com.yunkuo.cms.entity.assist.CmsAcquisitionTemp" />
     </session-factory>
 
          
