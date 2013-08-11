@@ -63,7 +63,7 @@ public class BaseCmsVoteTopic implements Serializable {
 	private Integer totalCount;
 
 	//bi-directional many-to-one association to CmsVoteItem
-    //TODO relation
+    //TODO relation, delete bug need fix.
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)//, mappedBy="cmsVoteTopic")
     @JoinColumn(name="votetopic_id")
    /* @JoinTable(name = "cms_vote_item"
