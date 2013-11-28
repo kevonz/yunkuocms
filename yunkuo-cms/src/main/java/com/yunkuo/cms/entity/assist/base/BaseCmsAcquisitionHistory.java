@@ -1,6 +1,6 @@
 package com.yunkuo.cms.entity.assist.base;
 
-import com.sun.istack.internal.Nullable;
+//import com.sun.istack.internal.Nullable;
 import com.yunkuo.cms.entity.assist.CmsAcquisition;
 import com.yunkuo.cms.entity.main.Content;
 import org.hibernate.annotations.NotFound;
